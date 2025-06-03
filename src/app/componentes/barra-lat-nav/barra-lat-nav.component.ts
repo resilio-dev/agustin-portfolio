@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {faAnglesRight, faXmark} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -7,13 +7,11 @@ import {faAnglesRight, faXmark} from '@fortawesome/free-solid-svg-icons';
   templateUrl: './barra-lat-nav.component.html',
   styleUrls: ['./barra-lat-nav.component.less']
 })
-export class BarraLatNavComponent implements OnInit {
+export class BarraLatNavComponent {
   open = faAnglesRight;
   close = faXmark;
 
   constructor(@Inject(DOCUMENT) private dom: Document) {}
-
-  ngOnInit(): void {}
 
   openNav() {
     this.dom.getElementById("mySidebar")!.style.width="270px";

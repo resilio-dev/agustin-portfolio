@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { IHabilidad } from 'src/app/modelos/IHabilidad';
 import { HabilidadService } from 'src/app/servicios/api/habilidad.service';
 import { faTrashCan, faPlus, faPencil } from '@fortawesome/free-solid-svg-icons';
@@ -13,8 +13,8 @@ import { IUsuario } from 'src/app/modelos/IUsuario';
   templateUrl: './habilidad.component.html',
   styleUrls: ['./habilidad.component.less']
 })
-export class HabilidadComponent implements OnInit {
-  public habilidades :IHabilidad[] = [];
+export class HabilidadComponent {
+  habilidades :IHabilidad[] = [];
   eliminarIcon = faTrashCan;
   agregarIcon = faPlus;
   editarIcon = faPencil;
@@ -23,22 +23,18 @@ export class HabilidadComponent implements OnInit {
     private loginService :LoginService,
     private usuarioService :UsuarioService) { }
 
-  ngOnInit(): void {
-    this.obtenerHabildades();
-  }
-
-  public obtenerHabildades() {
+  obtenerHabildades() {
     this.habilidadService.obtenerHabilidades().subscribe({
       next: (response :IHabilidad[]) => {
         this.habilidades = response;
       },
       error: (error :HttpErrorResponse) => {
-        alert(error.message);
+        console.error(error.message);
       }
     })
   }
 
-  public agregarHabilidad(formHab: NgForm) {
+  agregarHabilidad(formHab: NgForm) {
     this.usuarioService.obtenerUsuario().subscribe({
       next:(response :IUsuario) => {
         this.habilidadService.agregarHabilidad2(formHab.value, response.id).subscribe({
@@ -47,35 +43,35 @@ export class HabilidadComponent implements OnInit {
             this.obtenerHabildades();
           },
           error: (error: HttpErrorResponse) => {
-            alert(error.message);
+            console.error(error.message);
           }
         })
       },
       error: (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.error(error.message);
       }
     })
   }
 
-  public eliminarHabilidad(id: number) {
+  eliminarHabilidad(id: number) {
     this.habilidadService.eliminarHabilidad(id).subscribe({
       next: () => {
         this.obtenerHabildades();
       },
       error: (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.error(error.message);
       }
     })
   }
 
-  public editarHabilidad(formHab: NgForm) {
+  editarHabilidad(formHab: NgForm) {
     this.habilidadService.actualizarHabilidad(formHab.value).subscribe({
       next: () => {
         formHab.reset();
         this.obtenerHabildades();
       },
       error: (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.error(error.message);
       }
     })
   }

@@ -1,15 +1,20 @@
 <ng-container *ngIf="this.show">
-    <div class="modal-container w-100 ">
-      <div class="modal-box text-center w-100 d-flex flex-column align-items-center justify-content-center">
-        <div class="modal-header m-2 d-flex align-items-center">
-          <h5 class="align-self-end mx-2">{{titulo}}</h5>
-          <button class="close btn btn-danger" aria-label="close" type="button" (click)="this.toggleModal()">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <ng-content></ng-content>
-        </div>
-      </div>
+  <div
+    class="modal-container text-center w-100 d-flex flex-column align-items-center justify-content-center"
+  >
+    <div class="modal-header m-2 d-flex align-items-center">
+      <h5 class="align-self-end mx-2">{{ titulo }}</h5>
+      <button
+        class="close btn btn-danger"
+        aria-label="close"
+        type="button"
+        (click)="this.toggleModal()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <ng-content></ng-content>
+    </div>
+  </div>
 </ng-container>

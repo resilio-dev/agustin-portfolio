@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { IFormacion } from 'src/app/modelos/IFormacion';
 import { FormacionService } from 'src/app/servicios/api/formacion.service';
 import { faTrashCan, faPlus, faPencil } from '@fortawesome/free-solid-svg-icons';
@@ -11,8 +11,8 @@ import { LoginService } from 'src/app/servicios/login/login.service';
   templateUrl: './formacion.component.html',
   styleUrls: ['./formacion.component.less']
 })
-export class FormacionComponent implements OnInit {
-  public formaciones!: IFormacion[];
+export class FormacionComponent {
+  formaciones?: IFormacion[];
   editFormacion?: IFormacion;
   agregarIcon = faPlus;
   editarIcon = faPencil;
@@ -21,52 +21,48 @@ export class FormacionComponent implements OnInit {
   constructor(private formacionService: FormacionService,
     private loginService :LoginService) { }
 
-  ngOnInit(): void {
-    this.obtenerFormaciones();
-  }
-
-  public obtenerFormaciones() {
+  obtenerFormaciones() {
     this.formacionService.obtenerFormaciones().subscribe({
       next: (response: IFormacion[]) => {
         this.formaciones = response;
       },
       error: (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.error(error.message);
       }
     })
   }
 
-  public agregarFormacion(formHab: NgForm) {
+  agregarFormacion(formHab: NgForm) {
     this.formacionService.agregarFormacion(formHab.value).subscribe({
       next: () => {
         formHab.reset();
         this.obtenerFormaciones();
       },
       error: (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.error(error.message);
       }
     })
   }
 
-  public eliminarFormacion(id: number) {
+  eliminarFormacion(id: number) {
     this.formacionService.eliminarFormacion(id).subscribe({
       next: () => {
         this.obtenerFormaciones();
       },
       error: (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.error(error.message);
       }
     })
   }
 
-  public editarFormacion(formHab: NgForm) {
+  editarFormacion(formHab: NgForm) {
     this.formacionService.actualizarFormacion(formHab.value).subscribe({
       next: () => {
         formHab.reset();
         this.obtenerFormaciones();
       },
       error: (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.error(error.message);
       }
     })
   }

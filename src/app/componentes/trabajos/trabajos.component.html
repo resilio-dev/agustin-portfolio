@@ -41,7 +41,7 @@
       <div class="d-flex justify-content-center" *ngIf="estaLogeado()">
         <div id="modal-edit">
           <button class="btn btn-outline-secondary" type="button"
-            (click)="modalEditar.toggleModal(); editTrabajo = this.trabajo">
+            (click)="modalEditar.toggleModal(); editTrabajo = trabajo">
             <fa-icon [icon]="editarIcon"></fa-icon>
           </button>
           <app-modal #modalEditar [titulo]="'Editar Trabajo'">
@@ -76,9 +76,9 @@
             <fa-icon [icon]="eliminarIcon"></fa-icon>
           </button>
           <app-modal #modalEliminar [titulo]="'Eliminar Formación'">
-            <p>¿Realmente deseas eliminar <b>{{this.trabajo.nombre}}</b>?</p>
+            <p>¿Realmente deseas eliminar <b>{{trabajo.nombre}}</b>?</p>
             <button class="btn btn-danger m-2" type="submit"
-              (click)="eliminarTrabajo(this.trabajo.idTrab); modalEliminar.toggleModal()">Eliminar</button>
+              (click)="eliminarTrabajo(trabajo.idTrab); modalEliminar.toggleModal()">Eliminar</button>
           </app-modal>
         </div>
       </div>

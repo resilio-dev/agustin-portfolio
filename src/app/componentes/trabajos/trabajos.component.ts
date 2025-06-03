@@ -11,7 +11,7 @@ import { LoginService } from 'src/app/servicios/login/login.service';
   templateUrl: './trabajos.component.html',
   styleUrls: ['./trabajos.component.less']
 })
-export class TrabajosComponent implements OnInit {
+export class TrabajosComponent {
   public trabajos!: ITrabajo[];
   public editTrabajo?: ITrabajo;
   agregarIcon = faPlus;
@@ -21,52 +21,48 @@ export class TrabajosComponent implements OnInit {
   constructor(private trabajoService: TrabajoService,
     private loginService :LoginService) { }
 
-  ngOnInit(): void {
-    this.obtenerTrabajos();
-  }
-
-  public obtenerTrabajos() {
+  obtenerTrabajos() {
     this.trabajoService.obtenerTrabajos().subscribe({
       next: (response: ITrabajo[]) => {
         this.trabajos = response;
       },
       error: (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.error(error.message);
       }
     })
   }
 
-  public agregarTrabajo(formHab: NgForm) {
+  agregarTrabajo(formHab: NgForm) {
     this.trabajoService.agregarTrabajo(formHab.value).subscribe({
       next: () => {
         formHab.reset();
         this.obtenerTrabajos();
       },
       error: (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.error(error.message);
       }
     })
   }
 
-  public eliminarTrabajo(id: number) {
+  eliminarTrabajo(id: number) {
     this.trabajoService.eliminarTrabajo(id).subscribe({
       next: () => {
         this.obtenerTrabajos();
       },
       error: (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.error(error.message);
       }
     })
   }
 
-  public editarTrabajo(formHab: NgForm) {
+  editarTrabajo(formHab: NgForm) {
     this.trabajoService.actualizarTrabajo(formHab.value).subscribe({
       next: () => {
         formHab.reset();
         this.obtenerTrabajos();
       },
       error: (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.error(error.message);
       }
     })
   }

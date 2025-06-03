@@ -1,8 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { faInstagram, faFacebook, faWhatsapp, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faMoon, faSun, faBars, faUserSecret, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
+import { faMoon, faSun, faUserSecret, faRightToBracket, faBars } from '@fortawesome/free-solid-svg-icons';
 import { IUsuario } from 'src/app/modelos/IUsuario';
 import { UsuarioService } from 'src/app/servicios/api/usuario.service';
 import { LoginService } from 'src/app/servicios/login/login.service';
@@ -13,7 +13,7 @@ import { TemaService } from 'src/app/servicios/multitemas/tema.service';
   templateUrl: './barra-sup-nav.component.html',
   styleUrls: ['./barra-sup-nav.component.less']
 })
-export class BarraSupNavComponent implements OnInit {
+export class BarraSupNavComponent {
   insta = faInstagram;
   face = faFacebook;
   what = faWhatsapp;
@@ -21,8 +21,8 @@ export class BarraSupNavComponent implements OnInit {
   link = faLinkedin;
   dark = faMoon;
   light = faSun;
-  menu = faBars;
   user = faUserSecret;
+  menu = faBars;
   login = faRightToBracket;
 
   temaActual: string;
@@ -35,10 +35,6 @@ export class BarraSupNavComponent implements OnInit {
     this.temaServicio.setTema(this.temaServicio.getTema());
   }
 
-  ngOnInit(): void {
-    this.obtenerUsuario();
-  }
-
   cambiarTema() {
     if (this.temaActual === "default") {
       this.temaActual = "dark";
@@ -49,13 +45,13 @@ export class BarraSupNavComponent implements OnInit {
     }
   }
 
-  public obtenerUsuario() {
+  obtenerUsuario() {
     this.usuarioService.obtenerUsuario().subscribe({
       next: (response :IUsuario) => {
         this.usuario = response;
       },
       error: (error :HttpErrorResponse) => {
-        alert(error.message);
+        console.error(error.message);
       }
     })
   }
@@ -64,14 +60,14 @@ export class BarraSupNavComponent implements OnInit {
     return this.loginService.estaLogeado();
   }
 
-  public logear(formLogin :NgForm){
+  logear(formLogin :NgForm){
     this.loginService.login(formLogin.value)
     .then(response => {console.log("Has iniciado sesión")})
     .catch(error => console.log("No se pudo iniciar sesión"))
     .finally(() => formLogin.reset())
   }
 
-  public cerrarSesion() {
+  cerrarSesion() {
     this.loginService.logout()
     .then(() => {console.log('Se cerro la sesión')})
     .catch(error => (console.log("No se pudo cerrar sesión")))

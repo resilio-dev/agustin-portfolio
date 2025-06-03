@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { faUserGraduate } from '@fortawesome/free-solid-svg-icons';
 import { IUsuario } from 'src/app/modelos/IUsuario';
@@ -11,29 +11,25 @@ import { LoginService } from 'src/app/servicios/login/login.service';
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.less']
 })
-export class InicioComponent implements OnInit {
+export class InicioComponent {
   emoteInicio = faUserGraduate;
   usuario?:IUsuario;
 
   constructor(private usuarioService: UsuarioService,
     private loginService: LoginService) { }
 
-  ngOnInit(): void {
-    this.obtenerUsuario();
-  }
-
-  public obtenerUsuario() {
+  obtenerUsuario() {
     this.usuarioService.obtenerUsuario().subscribe({
-      next:(response: IUsuario | undefined) => {
+      next:(response: IUsuario) => {
         this.usuario = response;
       },
       error:(error: HttpErrorResponse) => {
-        alert(error.message);
+        console.error(error.message);
       }
     })
   }
 
-  public editarUsuario(usuario: NgForm) {
+  editarUsuario(usuario: NgForm) {
     this.usuarioService.editarUsuario(usuario.value).subscribe({
       next:() => {
         usuario.reset();

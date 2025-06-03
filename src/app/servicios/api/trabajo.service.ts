@@ -11,11 +11,11 @@ export class TrabajoService {
   constructor(private http: HttpClient) { }
 
   public obtenerTrabajo(id:number):Observable<ITrabajo> {
-    return this.http.get<ITrabajo>(`${this.url}/trabajo/${id}`);
+    return this.http.get<ITrabajo>(`${this.url}/trabajos/${id}`);
   }
 
   public obtenerTrabajos():Observable<ITrabajo[]> {
-    return this.http.get<ITrabajo[]>(`${this.url}/trabajos/`);
+    return this.http.get<ITrabajo[]>(`${this.url}/trabajos`);
   }
 
   public actualizarTrabajo(trabajo:ITrabajo):Observable<void> {

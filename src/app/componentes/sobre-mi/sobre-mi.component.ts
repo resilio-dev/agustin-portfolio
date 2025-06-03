@@ -11,7 +11,7 @@ import { IHabilidad } from 'src/app/modelos/IHabilidad';
   templateUrl: './sobre-mi.component.html',
   styleUrls: ['./sobre-mi.component.less']
 })
-export class SobreMiComponent implements OnInit {
+export class SobreMiComponent {
   edit = faPencil;
   remove = faTrashCan;
   add = faPlus;
@@ -19,22 +19,19 @@ export class SobreMiComponent implements OnInit {
   public usuario?: IUsuario;
   constructor(private usuarioService: UsuarioService) { }
 
-  ngOnInit(): void {
-    this.obtenerUsuario();
-  }
 
-  public obtenerUsuario() {
+  obtenerUsuario() {
     this.usuarioService.obtenerUsuario().subscribe({
-      next: (response: IUsuario | undefined) => {
+      next: (response: IUsuario) => {
         this.usuario = response;
       },
       error: (error: HttpErrorResponse) => {
-        alert(error.message)
+        console.error(error.message)
       }
     })
   }
 
-  public calcularEdad(fechaNac: string) {
+  calcularEdad(fechaNac: string) {
     const hoy: Date = new Date();
     const fechaNacimiento: Date = new Date(fechaNac);
     let edad: number = hoy.getFullYear() - fechaNacimiento.getFullYear();
