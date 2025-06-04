@@ -2,11 +2,8 @@ export interface IUsuario {
   id: number;
   nombre: string;
   apellido: string;
-  fechaNacimiento: string;
+  edad: number;
   descripcion: string;
-  domicilio: string;
-  estado: string;
-  telefono :string;
   email: string;
   foto: string;
 }

@@ -2,28 +2,19 @@
   <div class="p-2 pb-3">
     <h1>Perfil Profesional</h1>
     <div class="px-4 mi-perfil" *ngIf="this.usuario">
-      <p>Tengo {{calcularEdad(this.usuario.fechaNacimiento)}} años y soy programador web full stack.
-        <br>{{this.usuario.descripcion}}
+      <p>
+        Tengo {{ this.usuario.edad }} años y soy Desarrollador de Software.
+        <br />{{ this.usuario.descripcion }}
       </p>
     </div>
-    <div class="row row-cols-2 info-personal" *ngIf="this.usuario">
-      <div class="info-item d-flex justify-content-center">
-        <p><b>Fecha de Nacimiento: </b><span>{{this.usuario.fechaNacimiento}}</span></p>
-      </div>
-      <div class="info-item d-flex align-items-baseline justify-content-center">
-        <p><b>Nombres: </b><span>{{this.usuario.nombre}}</span></p>
-      </div>
-      <div class="info-item d-flex align-items-baseline justify-content-center">
-        <p><b>Apellidos: </b><span>{{this.usuario.apellido}}</span></p>
-      </div>
-      <div class="info-item d-flex align-items-baseline justify-content-center">
-        <p><b>Estado civil: </b><span>{{this.usuario.estado}}</span></p>
-      </div>
-    </div>
-    <div>
-      <a href="assets\CV Agustin Collueque.pdf" download="cv-agustin-collueque" class="btn">Descargar CV</a>
-      <a routerLink="/contacto" class="btn">Contáctame</a>
-    </div>
+
+    <a
+      href="assets\CV Agustin Collueque.pdf"
+      download="cv-agustin-collueque"
+      class="btn"
+      >Descargar CV</a
+    >
+    <a routerLink="/contacto" class="btn">Contáctame</a>
   </div>
   <app-habilidad></app-habilidad>
 </div>

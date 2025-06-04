@@ -19,6 +19,11 @@ import { ModalComponent } from './componentes/modals/modal/modal.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
+import { BrandComponent } from './shared/brand/brand.component';
+import { NavbarComponent } from './features/navbar/navbar.component';
+import { NavIconComponent } from './features/navbar/components/nav-icon/nav-icon.component';
+import { LoginComponent } from './features/login/login.component';
+import { FormEditUserComponent } from './features/inicio/components/form-edit-user/form-edit-user.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +37,12 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     TrabajosComponent,
     PaginaErrorComponent,
     HabilidadComponent,
-    ModalComponent
+    ModalComponent,
+    BrandComponent,
+    NavbarComponent,
+    NavIconComponent,
+    LoginComponent,
+    FormEditUserComponent
   ],
   imports: [
     BrowserModule,

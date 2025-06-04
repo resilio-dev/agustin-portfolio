@@ -1,0 +1,40 @@
+<nav class="collapse navbar-collapse flex-wrap" id="collapsibleNavbar">
+  <ul class="d-flex flex-column align-items-center">
+    <app-nav-icon *ngFor="let item of this.items" [link]="item.link">
+      <fa-icon icono [icon]="item.icon"></fa-icon>
+    </app-nav-icon>
+  </ul>
+  <div class="d-flex flex-column align-items-center">
+    <button (click)="cambiarTema()" class="btn">
+      <fa-icon [icon]="dark" *ngIf="temaActual === 'default'"></fa-icon>
+      <fa-icon [icon]="light" *ngIf="temaActual === 'dark'"></fa-icon>
+    </button>
+    <button
+      type="button"
+      class="btn"
+      *ngIf="estaLogeado()"
+      (click)="logoutModal.toggleModal()"
+    >
+      <fa-icon [icon]="user"></fa-icon>
+    </button>
+    <app-modal #logoutModal [titulo]="'¿Seguro que quieres cerrar sesión?'">
+      <button
+        class="btn btn-success"
+        (click)="cerrarSesion(); logoutModal.toggleModal()"
+      >
+        Cerrar Sesión
+      </button>
+    </app-modal>
+    <button
+      type="button"
+      class="btn"
+      *ngIf="!estaLogeado()"
+      (click)="loginModal.toggleModal()"
+    >
+      <fa-icon [icon]="loginIcon"></fa-icon>
+    </button>
+    <app-modal #loginModal>
+      <app-login (response)="loginModal.toggleModal()"></app-login>
+    </app-modal>
+  </div>
+</nav>

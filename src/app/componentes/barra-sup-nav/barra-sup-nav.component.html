@@ -1,69 +1,18 @@
-<nav class="navbar navbar-expand-lg">
-  <div class="container-fluid">
-    <div class="container-navbar-brand">
-      <a class="navbar-brand mx-3" href="javascript:void(0)"><span class="blanco">{{"{"}}</span><span class="green">^</span><span class="texto">éxitos</span><span class="blanco">&#125;</span></a>
-    </div>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+<header class="d-flex align-items-center justify-content-between">
+  <app-brand></app-brand>
+  <section>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapsibleNavbar"
+      (click)="toggleMenu()"
+    >
       <span class="navbar-toggler-icon nav-icon">
-        <fa-icon [icon]="menu"></fa-icon>
+        <fa-icon [icon]="menu" *ngIf="!activeMenu"></fa-icon>
+        <fa-icon [icon]="close" *ngIf="activeMenu"></fa-icon>
       </span>
     </button>
-    <div class="collapse navbar-collapse flex-wrap" id="collapsibleNavbar">
-      <ul class="navbar-nav flex-wrap">
-        <li class="nav-item">
-          <a class="nav-link nav-icon" href="https://www.facebook.com/agustiin007">
-            <fa-icon [icon]="face"></fa-icon>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav-icon" href="https://www.instagram.com/acov912/">
-            <fa-icon [icon]="insta"></fa-icon>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav-icon" href="https://www.linkedin.com/in/agustin-collueque/">
-            <fa-icon [icon]="link"></fa-icon>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav-icon" href="https://github.com/LicDeveloperJunior/">
-            <fa-icon [icon]="git"></fa-icon>
-          </a>
-        </li>
-        <li class="nav-item nav-icon">
-          <a class="nav-link" href="https://walink.co/47dd51">
-            <fa-icon [icon]="what"></fa-icon>
-          </a>
-        </li>
-      </ul>
-      <div class="botones d-flex">
-        <button (click)="cambiarTema()" class="btn">
-          <fa-icon [icon]="dark" *ngIf="temaActual === 'default'"></fa-icon>
-          <fa-icon [icon]="light" *ngIf="temaActual === 'dark'"></fa-icon>
-        </button>
-        <button type="button" class="btn" *ngIf="estaLogeado()" (click)="logoutModal.toggleModal()">
-          <fa-icon [icon]="user"></fa-icon>
-        </button>
-        <app-modal #logoutModal [titulo]="'¿Seguro que quieres cerrar sesión?'">
-          <button class="btn btn-success" (click)="cerrarSesion(); logoutModal.toggleModal()">Cerrar Sesión</button>
-        </app-modal>
-        <button type="button" class="btn" *ngIf="!estaLogeado()" (click)="loginModal.toggleModal()">
-          <fa-icon [icon]="login"></fa-icon>
-        </button>
-        <app-modal #loginModal [titulo]="'Iniciar Sesión'">
-          <form #loginForm="ngForm" (ngSubmit)="logear(loginForm)">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" ngModel name="email" class="form-control" id="email" placeholder="ejemplo@gmail.com" required>
-            </div>
-            <div class="form-group">
-              <label for="contrasenia">Contraseña</label>
-              <input type="password" ngModel name="contrasenia" class="form-control" id="contrasenia" placeholder="********" required>
-            </div>
-          </form>
-          <button class="btn btn-success" (click)="logear(loginForm); loginModal.toggleModal()">Iniciar Sesion</button>
-        </app-modal>
-      </div>
-    </div>
-  </div>
-</nav>
+      <app-navbar class="abs"></app-navbar>
+  </section>
+</header>
