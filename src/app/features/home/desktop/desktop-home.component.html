@@ -1,13 +1,62 @@
-<div class="d-md-flex align-items-center h-100">
-  <div class="d-flex flex-column gap-3 w-50" *ngIf="this.usuario">
-    <div class="relative">
-      <h1>Web Developer</h1>
-      <span class="icon-graduate">
-        <fa-icon [icon]="emoteInicio"></fa-icon>
-      </span>
+<div
+  class="bg d-flex justify-content-center"
+>
+  <div
+    class="bg-left h-100"
+    [style.background-color]="this.temaActual.properties.colorFuerte"
+    id="bg-left"
+  >
+    <span
+      class="decoracion-linea-punteada"
+      style="top: 34%; left: 5%; transform: rotate(154deg)"
+    ></span>
+    <span
+      class="decoracion-linea-punteada"
+      style="top: 15%; left: 65%; transform: rotate(120deg)"
+    ></span>
+    <span
+      class="decoracion-linea-punteada"
+      style="top: 85%; left: 45%; transform: rotate(23deg)"
+    ></span>
+  </div>
+  <div
+    class="bg-right h-100 d-flex"
+    [style.background-color]="this.temaActual.properties.colorDebil"
+    id="bg-right"
+  >
+    <span
+      class="decoracion-linea-punteada"
+      style="top: 25%; left: 32%; transform: rotate(190deg)"
+    ></span>
+    <span
+      class="decoracion-linea-punteada"
+      style="top: 85%; left: 83%; transform: rotate(75deg)"
+    ></span>
+  </div>
+  <div
+    class="d-flex align-items-center gap-4 content"
+  >
+    <div class="d-md-flex align-items-center h-100" [style.color]="this.temaActual.properties.colorDebil">
+      <div class="d-flex flex-column gap-3 w-50 info-user" *ngIf="this.usuario">
+        <div class="relative">
+          <h1>Web Developer</h1>
+          <span class="icon-graduate">
+            <fa-icon [icon]="emoteInicio"></fa-icon>
+          </span>
+        </div>
+        <p>
+          {{ this.usuario.descripcion }}
+        </p>
+      </div>
     </div>
-    <p>
-      {{ this.usuario.descripcion }}
-    </p>
+    <div
+      class="photo-frame"
+      [style.color]="this.temaActual.properties.colorFuerte"
+    >
+      <div class="img d-flex justify-content-center align-items-center">
+        <img src="assets\img\me-vertical.jpeg" alt="Agustin Collueque Perfil" />
+      </div>
+      <div class="decoracion-fondo-img"></div>
+    </div>
   </div>
 </div>

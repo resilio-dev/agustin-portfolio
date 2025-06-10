@@ -1,43 +1,8 @@
-<div
-  class="bg d-flex justify-content-center w-100"
-  [style.color]="this.temaActual.properties.textoPrimario"
->
-  <div
-    class="bg-left h-100"
-    [style.background-color]="this.temaActual.properties.colorFuerte"
-  id="bg-left">
-  <span class="decoracion-linea-punteada color-debil" style="top: 34%; left: 5%; transform: rotate(154deg);"></span>
-  <span class="decoracion-linea-punteada color-debil" style="top: 25%; left: 65%; transform: rotate(110deg);"></span>
-  <span class="decoracion-linea-punteada color-debil" style="top: 85%; left: 65%; transform: rotate(23deg);"></span>
-  </div>
-  <div
-    class="bg-right h-100 d-flex"
-    [style.background-color]="this.temaActual.properties.colorDebil"
-    id="bg-right"
-  >
-  <span class="decoracion-linea-punteada color-fuerte" style="top: 25%; left: 32%; transform: rotate(190deg);"></span>
-  <span class="decoracion-linea-punteada color-fuerte" style="top: 85%; left: 43%; transform: rotate(75deg);"></span>
-  </div>
-  <div
-    class="d-flex flex-column align-items-center absolute h-100 gap-4 content"
-  >
-    <header class="w-100 mb-4">
-      <app-navbar></app-navbar>
-    </header>
-    <main class="w-100 h-100 d-flex align-items-center">
-      <app-home></app-home>
-      <div
-        class="photo-frame"
-        [style.background-color]="this.temaActual.properties.textoPrimario"
-      >
-        <div class="img d-flex justify-content-center align-items-center">
-          <img
-            src="assets\img\me-vertical.jpeg"
-            alt="Agustin Collueque Perfil"
-          />
-        </div>
-        <div class="decoracion-fondo-img"></div>
-      </div>
-    </main>
-  </div>
+<div class="app">
+  <header class="w-100 mb-4 absolute" id="navbar">
+    <app-navbar></app-navbar>
+  </header>
+  <main class="w-100 h-100 d-flex align-items-center">
+    <router-outlet></router-outlet>
+  </main>
 </div>

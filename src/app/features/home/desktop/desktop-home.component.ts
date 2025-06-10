@@ -1,11 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { faUserGraduate } from '@fortawesome/free-solid-svg-icons';
 import { finalize } from 'rxjs';
 import { IUsuario } from 'modelos/IUsuario';
 import { UsuarioService } from 'src/app/servicios/api/usuario.service';
-import { LoginService } from 'src/app/servicios/login/login.service';
+import { ITema } from 'src/app/servicios/multitemas/itema-interface';
+import { TemaService } from 'src/app/servicios/multitemas/tema.service';
 
 @Component({
   selector: 'app-home',
@@ -15,14 +15,16 @@ import { LoginService } from 'src/app/servicios/login/login.service';
 export class DesktopHomeComponent implements OnInit {
   emoteInicio = faUserGraduate;
   usuario?: IUsuario;
+  temaActual!: ITema;
 
   constructor(
     private usuarioService: UsuarioService,
-    private loginService: LoginService
+    private temaService: TemaService
   ) {}
 
   ngOnInit(): void {
     this.obtenerUsuario();
+    this.temaService.temaActual$.subscribe((tema) => this.temaActual = tema)
   }
 
   obtenerUsuario() {
@@ -52,21 +54,5 @@ export class DesktopHomeComponent implements OnInit {
           console.error(error.message);
         },
       });
-  }
-
-  editarUsuario(usuario: NgForm) {
-    this.usuarioService.editarUsuario(usuario.value).subscribe({
-      next: () => {
-        usuario.reset();
-        this.obtenerUsuario();
-      },
-      error: (error: HttpErrorResponse) => {
-        alert(error.message);
-      },
-    });
-  }
-
-  estaLogeado(): boolean {
-    return this.loginService.estaLogeado();
   }
 }

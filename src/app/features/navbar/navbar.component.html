@@ -1,13 +1,21 @@
-<nav class="navbar navbar-light align-items-center">
+<nav class="navbar align-items-center">
   <app-brand></app-brand>
   <div class="menu text-center">
     <button (click)="showHideMenu()">
-      <div class="button-menu-bar d-flex flex-column align-items-end h-100" [style.color]="this.temaActual?.properties?.colorFuerte" *ngIf="!this.showMenu">
+      <div
+        class="button-menu-bar d-flex flex-column align-items-end h-100"
+        *ngIf="!this.showMenu"
+         [style.color]="this.temaActual?.properties?.colorFuerte"
+      >
         <span class="lineup1"></span>
         <span class="lineup2"></span>
         <span class="lineup3"></span>
       </div>
-      <span class="button-menu-close" [style.background-color]="this.temaActual?.properties?.colorFuerte" *ngIf="this.showMenu"></span>
+      <span
+        class="button-menu-close"
+        *ngIf="this.showMenu"
+        [style.background-color]="this.temaActual?.properties?.colorFuerte"
+      ></span>
     </button>
     <ul
       class="menu-navbar p-4"
@@ -16,10 +24,14 @@
       [style.color]="this.temaActual?.properties?.textoPrimario"
       [style.background-color]="this.temaActual?.properties?.colorFuerte"
     >
-      <app-nav-icon *ngFor="let item of this.items" [link]="item.link" class="item">
+      <app-nav-icon
+        *ngFor="let item of this.items"
+        [link]="item.link"
+        class="item"
+      >
         <fa-icon icono [icon]="item.icon"></fa-icon>
       </app-nav-icon>
-      <hr>
+      <hr />
       <a (click)="toggleTema()">
         <span *ngIf="this.temaActual?.name === 'light'">
           <fa-icon [icon]="this.light"></fa-icon>
