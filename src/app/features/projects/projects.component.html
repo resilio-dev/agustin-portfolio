@@ -1,0 +1,21 @@
+<section class="section-content p-5">
+  <div
+    class="title text-center"
+    [style.color]="this.temaActual.properties.colorFuerte"
+  >
+    Proyectos
+  </div>
+  <div
+    class="grid-columns-2 gap-4"
+    *ngIf="this.projects.length > 0; else noProjects"
+  >
+    <div class="project" *ngFor="let project of this.projects">
+      <app-card [project]="project" class="p-2"></app-card>
+    </div>
+  </div>
+  <ng-template #noProjects>
+    <p class="text-center" [style.color]="this.temaActual.properties.colorFuerte" [style.font-size]="this.temaActual.properties.textoGrande">
+      - No pudimos cargar los proyectos en este momento. -
+    </p>
+  </ng-template>
+</section>

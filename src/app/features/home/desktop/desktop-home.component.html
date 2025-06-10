@@ -1,10 +1,7 @@
-<div
-  class="bg d-flex justify-content-center"
->
+<div class="bg-home h-100 d-flex">
   <div
     class="bg-left h-100"
     [style.background-color]="this.temaActual.properties.colorFuerte"
-    id="bg-left"
   >
     <span
       class="decoracion-linea-punteada"
@@ -20,9 +17,8 @@
     ></span>
   </div>
   <div
-    class="bg-right h-100 d-flex"
+    class="bg-right"
     [style.background-color]="this.temaActual.properties.colorDebil"
-    id="bg-right"
   >
     <span
       class="decoracion-linea-punteada"
@@ -33,30 +29,31 @@
       style="top: 85%; left: 83%; transform: rotate(75deg)"
     ></span>
   </div>
+</div>
+<div class="d-flex align-items-center gap-4 content">
   <div
-    class="d-flex align-items-center gap-4 content"
+    class="d-md-flex align-items-center"
+    [style.color]="this.temaActual.properties.colorDebil"
   >
-    <div class="d-md-flex align-items-center h-100" [style.color]="this.temaActual.properties.colorDebil">
-      <div class="d-flex flex-column gap-3 w-50 info-user" *ngIf="this.usuario">
-        <div class="relative">
-          <h1>Web Developer</h1>
-          <span class="icon-graduate">
-            <fa-icon [icon]="emoteInicio"></fa-icon>
-          </span>
-        </div>
-        <p>
-          {{ this.usuario.descripcion }}
-        </p>
+    <div class="d-flex flex-column gap-3 w-50 info-user" *ngIf="this.usuario">
+      <div class="relative">
+        <h1>Web Developer</h1>
+        <span class="icon-graduate">
+          <fa-icon [icon]="emoteInicio"></fa-icon>
+        </span>
       </div>
+      <p>
+        {{ this.usuario.descripcion }}
+      </p>
     </div>
-    <div
-      class="photo-frame"
-      [style.color]="this.temaActual.properties.colorFuerte"
-    >
-      <div class="img d-flex justify-content-center align-items-center">
-        <img src="assets\img\me-vertical.jpeg" alt="Agustin Collueque Perfil" />
-      </div>
-      <div class="decoracion-fondo-img"></div>
+  </div>
+  <div
+    class="photo-frame"
+    [style.color]="this.temaActual.properties.colorFuerte"
+  >
+    <div class="img d-flex justify-content-center align-items-center">
+      <img src="assets\img\me-vertical.jpeg" alt="Agustin Collueque Perfil" />
     </div>
+    <div class="decoracion-fondo-img" [style.background-color]="this.temaActual.properties.colorDebil"></div>
   </div>
 </div>

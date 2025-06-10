@@ -24,6 +24,8 @@ import { NavIconComponent } from './features/navbar/components/nav-icon/nav-icon
 import { LoginComponent } from './features/login/login.component';
 import { DesktopLayoutComponent } from './layouts/home-desktop-layout/home-desktop-layout.component';
 import { DesktopHomeComponent } from './features/home/desktop/desktop-home.component';
+import { ProjectsComponent } from './features/projects/projects.component';
+import { CardComponent } from './features/projects/components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { DesktopHomeComponent } from './features/home/desktop/desktop-home.compo
     NavIconComponent,
     LoginComponent,
     DesktopLayoutComponent,
-    DesktopHomeComponent
+    DesktopHomeComponent,
+    ProjectsComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

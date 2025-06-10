@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PaginaErrorComponent } from './componentes/pagina-error/pagina-error.component';
 import { DesktopLayoutComponent } from './layouts/home-desktop-layout/home-desktop-layout.component';
 import { DesktopHomeComponent } from './features/home/desktop/desktop-home.component';
+import { ProjectsComponent } from './features/projects/projects.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
       {
         path: '',
         component: DesktopHomeComponent
+      },
+      {
+        path: 'projects',
+        component: ProjectsComponent
       }
     ]
   },

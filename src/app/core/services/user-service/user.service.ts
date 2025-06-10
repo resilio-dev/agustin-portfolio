@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IUsuario } from 'modelos/IUsuario';
+import { IUsuario } from 'src/app/core/models/IUsuario';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -10,12 +10,12 @@ export class UserService {
   private user$ = new BehaviorSubject<IUsuario | null>(null);
   private url: string = '#';
   constructor(private http: HttpClient) {
-    this.http.get<IUsuario>(`${this.url}/usuarios/1`).subscribe({
+    /*this.http.get<IUsuario>(`${this.url}/usuarios/1`).subscribe({
       next: (user) => {
         this.user$.next(user);
       },
       error: (err) => console.error(err),
-    });
+    });*/
   }
 
   obtenerUsuario(): Observable<IUsuario | null> {

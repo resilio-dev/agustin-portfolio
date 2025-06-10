@@ -6,7 +6,7 @@ import { faTrashCan, faPlus, faPencil } from '@fortawesome/free-solid-svg-icons'
 import { NgForm } from '@angular/forms';
 import { LoginService } from 'src/app/servicios/login/login.service';
 import { UsuarioService } from 'src/app/servicios/api/usuario.service';
-import { IUsuario } from 'modelos/IUsuario';
+import { IUsuario } from 'src/app/core/models/IUsuario';
 
 @Component({
   selector: 'app-habilidad',

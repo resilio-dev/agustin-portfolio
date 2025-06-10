@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { IUsuario } from 'modelos/IUsuario';
+import { IUsuario } from 'src/app/core/models/IUsuario';
 import { UsuarioService } from 'src/app/servicios/api/usuario.service';
 import { faPencil, faTrashCan, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { NgForm } from '@angular/forms';

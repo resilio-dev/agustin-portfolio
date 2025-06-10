@@ -7,7 +7,7 @@ import { ITrabajo } from 'modelos/ITrabajo';
   providedIn: 'root'
 })
 export class TrabajoService {
-  private url:string = 'https://portfolioacv.herokuapp.com';
+  private url:string = '#';
   constructor(private http: HttpClient) { }
 
   public obtenerTrabajo(id:number):Observable<ITrabajo> {

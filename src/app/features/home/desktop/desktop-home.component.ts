@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { faUserGraduate } from '@fortawesome/free-solid-svg-icons';
 import { finalize } from 'rxjs';
-import { IUsuario } from 'modelos/IUsuario';
+import { IUsuario } from 'src/app/core/models/IUsuario';
 import { UsuarioService } from 'src/app/servicios/api/usuario.service';
 import { ITema } from 'src/app/shared/services/multitemas/itema.interface';
 import { TemaService } from 'src/app/shared/services/multitemas/tema.service';
