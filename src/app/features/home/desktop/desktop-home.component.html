@@ -1,0 +1,13 @@
+<div class="d-md-flex align-items-center h-100">
+  <div class="d-flex flex-column gap-3 w-50" *ngIf="this.usuario">
+    <div class="relative">
+      <h1>Web Developer</h1>
+      <span class="icon-graduate">
+        <fa-icon [icon]="emoteInicio"></fa-icon>
+      </span>
+    </div>
+    <p>
+      {{ this.usuario.descripcion }}
+    </p>
+  </div>
+</div>

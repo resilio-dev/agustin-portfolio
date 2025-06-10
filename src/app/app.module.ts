@@ -7,7 +7,6 @@ import { BarraSupNavComponent } from './componentes/barra-sup-nav/barra-sup-nav.
 import { SobreMiComponent } from './componentes/sobre-mi/sobre-mi.component';
 import { BarraLatNavComponent } from './componentes/barra-lat-nav/barra-lat-nav.component';
 import { ContactoComponent } from './componentes/contacto/contacto.component';
-import { InicioComponent } from './componentes/inicio/inicio.component';
 import { FormacionComponent } from './componentes/formacion/formacion.component';
 import { TrabajosComponent } from './componentes/trabajos/trabajos.component';
 import { PaginaErrorComponent } from './componentes/pagina-error/pagina-error.component';
@@ -23,7 +22,8 @@ import { BrandComponent } from './shared/brand/brand.component';
 import { NavbarComponent } from './features/navbar/navbar.component';
 import { NavIconComponent } from './features/navbar/components/nav-icon/nav-icon.component';
 import { LoginComponent } from './features/login/login.component';
-import { FormEditUserComponent } from './features/inicio/components/form-edit-user/form-edit-user.component';
+import { DesktopLayoutComponent } from './layouts/home-desktop-layout/home-desktop-layout.component';
+import { DesktopHomeComponent } from './features/home/desktop/desktop-home.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,6 @@ import { FormEditUserComponent } from './features/inicio/components/form-edit-us
     SobreMiComponent,
     BarraLatNavComponent,
     ContactoComponent,
-    InicioComponent,
     FormacionComponent,
     TrabajosComponent,
     PaginaErrorComponent,
@@ -42,7 +41,8 @@ import { FormEditUserComponent } from './features/inicio/components/form-edit-us
     NavbarComponent,
     NavIconComponent,
     LoginComponent,
-    FormEditUserComponent
+    DesktopLayoutComponent,
+    DesktopHomeComponent
   ],
   imports: [
     BrowserModule,

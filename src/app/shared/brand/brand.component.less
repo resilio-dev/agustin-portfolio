@@ -1,21 +1,38 @@
-.container-navbar-brand .navbar-brand {
-  width: 150px;
-  height: 100px;
+.relative {
+  position: relative;
+  cursor: default;
+}
 
-  span {
-    font-family: "Great Vibes", cursive;
-    font-size: 2.5em;
+.meddon-regular {
+  font-family: "Meddon", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 4rem;
+  
+}
+
+.train {
+  font-size: 2.2rem;
+  position: absolute;
+  z-index: 2;
+  top: -35px;
+  left: 35px;
+  transition: transform 1s ease;
+
+  &:hover {
+    transform: translate(-48px, 6px);
   }
+}
+.hide {
+  position: absolute;
+  z-index: 1;
+  top: -17px;
+  left: 41px;
+  font-family: "Meddon", cursive;
+  font-size: 1rem;
+  transition: transform 1s ease-in;
 
-  .green {
-    color: rgb(50, 200, 50);
-  }
-
-  .blanco {
-    color: var(--textoPrimario);
-  }
-
-  .debil {
-    color: white;
+  &:hover {
+    transform: scale(1.2rem);
   }
 }

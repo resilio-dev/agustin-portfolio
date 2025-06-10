@@ -1,6 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   faFacebook,
   faGithub,
@@ -15,9 +14,8 @@ import {
   faSun,
   faUserSecret,
 } from '@fortawesome/free-solid-svg-icons';
-import { IUsuario } from 'src/app/modelos/IUsuario';
-import { UsuarioService } from 'src/app/servicios/api/usuario.service';
-import { LoginService } from 'src/app/servicios/login/login.service';
+import { IUsuario } from 'modelos/IUsuario';
+import { ITema } from 'src/app/servicios/multitemas/itema-interface';
 import { TemaService } from 'src/app/servicios/multitemas/tema.service';
 
 @Component({
@@ -25,7 +23,8 @@ import { TemaService } from 'src/app/servicios/multitemas/tema.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.less'],
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit, OnDestroy {
+  showMenu = false;
   items = [
     { link: 'https://www.instagram.com/acov912/', icon: faInstagram },
     { link: 'https://www.facebook.com/agustiin007/', icon: faFacebook },
@@ -42,62 +41,27 @@ export class NavbarComponent {
   menu = faBars;
   loginIcon = faRightToBracket;
 
-  temaActual: string;
-  usuario: IUsuario | undefined;
+  temaActual?: ITema;
+  usuario?: IUsuario;
 
-  constructor(
-    private temaServicio: TemaService,
-    private usuarioService: UsuarioService,
-    private loginService: LoginService
-  ) {
-    this.temaActual = this.temaServicio.getTema();
-    this.temaServicio.setTema(this.temaActual);
+  constructor(private temaServicio: TemaService) {
   }
 
-  cambiarTema() {
-    if (this.temaActual === 'default') {
-      this.temaActual = 'dark';
-    } else {
-      this.temaActual = 'default';
-    }
-    this.temaServicio.setTema(this.temaActual);
+  ngOnInit(): void {
+    this.temaServicio.temaActual$.subscribe(
+      (theme) => (this.temaActual = theme)
+    );
   }
 
-  obtenerUsuario() {
-    this.usuarioService.obtenerUsuario().subscribe({
-      next: (response: IUsuario) => {
-        this.usuario = response;
-      },
-      error: (error: HttpErrorResponse) => {
-        console.error(error.message);
-      },
-    });
-    if (!this.usuario) {
-      this.usuario = {
-        id: 1,
-        nombre: 'Agustin',
-        apellido: 'Colluque',
-        edad: 27,
-        descripcion:
-          'I like to craft solid and scalable frontend products with great user experiences.',
-        email: 'agustincv1997@gmail.com',
-        foto: '#',
-      } as IUsuario;
-    }
+  ngOnDestroy(): void {
+    this.temaServicio.temaActual$.unsubscribe();
   }
 
-  estaLogeado(): boolean {
-    return this.loginService.estaLogeado();
+  toggleTema() {
+    this.temaServicio.toggleTema();
   }
 
-
-
-  cerrarSesion() {
-    this.loginService
-      .logout()
-      .then(() => {
-        console.log('Se cerro la sesión');
-      })
-      .catch((error) => console.log('No se pudo cerrar sesión', error));
+  showHideMenu() {
+    this.showMenu = !this.showMenu;
   }
 }

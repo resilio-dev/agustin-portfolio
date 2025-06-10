@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { faTrashCan, faPlus, faPencil } from '@fortawesome/free-solid-svg-icons';
-import { ITrabajo } from 'src/app/modelos/ITrabajo';
+import { ITrabajo } from 'modelos/ITrabajo';
 import { TrabajoService } from 'src/app/servicios/api/trabajo.service';
 import { LoginService } from 'src/app/servicios/login/login.service';
 

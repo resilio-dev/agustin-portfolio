@@ -1,12 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { IHabilidad } from 'src/app/modelos/IHabilidad';
+import { IHabilidad } from 'modelos/IHabilidad';
 import { HabilidadService } from 'src/app/servicios/api/habilidad.service';
 import { faTrashCan, faPlus, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { NgForm } from '@angular/forms';
 import { LoginService } from 'src/app/servicios/login/login.service';
 import { UsuarioService } from 'src/app/servicios/api/usuario.service';
-import { IUsuario } from 'src/app/modelos/IUsuario';
+import { IUsuario } from 'modelos/IUsuario';
 
 @Component({
   selector: 'app-habilidad',

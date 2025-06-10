@@ -1,28 +1,21 @@
-import { DOCUMENT } from '@angular/common';
-import { Inject, Injectable } from '@angular/core';
-import { IPropiedadesTema } from './itema-interface';
-import {TEMAS} from "./tema-config"
+import { Injectable, OnInit } from '@angular/core';
+import { ITema } from './itema-interface';
+import { TEMAS } from './tema-config';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class TemaService {
+export class TemaService implements OnInit {
+  temaActual$ = new BehaviorSubject<ITema>(TEMAS[0]);
 
-  constructor(@Inject(DOCUMENT) private document: Document) {
-   }
+  constructor() {
+  }
+  
+  ngOnInit(): void {
+  }
 
-   getTema():string {
-    return localStorage.getItem('temaSeleccionado') || 'default';
-   }
-
-  setTema(nombre:string) {
-    localStorage.setItem('temaSeleccionado', nombre);
-    const tema :IPropiedadesTema = (TEMAS as any)[nombre];
-    Object.keys(tema).forEach((estilo:string) => {
-      this.document.documentElement.style.setProperty(
-        `--${estilo}`,
-        (tema as any)[estilo]
-      )
-    })
+  toggleTema() {
+    this.temaActual$.next(this.temaActual$.value.name === 'light' ? TEMAS[1] : TEMAS[0]);
   }
 }

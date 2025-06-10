@@ -1,4 +1,4 @@
-export interface IPropiedadesTema{
+export interface IPropiedadesTema {
   colorFuerte: string;
   colorDebil: string;
   textoPrimario: string;
@@ -8,6 +8,6 @@ export interface IPropiedadesTema{
 }
 
 export interface ITema {
-  default: IPropiedadesTema;
-  dark?: IPropiedadesTema;
+  name: string;
+  properties: IPropiedadesTema;
 }

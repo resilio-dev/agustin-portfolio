@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormEditUserComponent } from './form-edit-user.component';
+import { DesktopLayoutComponent } from './home-desktop-layout.component';
 
-describe('FormEditUserComponent', () => {
-  let component: FormEditUserComponent;
-  let fixture: ComponentFixture<FormEditUserComponent>;
+describe('DesktopLayoutComponent', () => {
+  let component: DesktopLayoutComponent;
+  let fixture: ComponentFixture<DesktopLayoutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormEditUserComponent ]
+      declarations: [ DesktopLayoutComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FormEditUserComponent);
+    fixture = TestBed.createComponent(DesktopLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

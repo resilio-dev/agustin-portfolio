@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IUsuario } from 'src/app/modelos/IUsuario';
+import { IUsuario } from 'modelos/IUsuario';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsuarioService {
-  private url: string = 'https://portfolioacv.herokuapp.com';
+  private url: string = '#';
   constructor(private http: HttpClient) {}
 
   public obtenerUsuario(): Observable<IUsuario> {

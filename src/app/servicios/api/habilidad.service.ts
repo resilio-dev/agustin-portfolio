@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IHabilidad } from 'src/app/modelos/IHabilidad';
+import { IHabilidad } from 'modelos/IHabilidad';
 
 @Injectable({
   providedIn: 'root'

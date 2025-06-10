@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { IFormacion } from 'src/app/modelos/IFormacion';
+import { IFormacion } from 'modelos/IFormacion';
 import { FormacionService } from 'src/app/servicios/api/formacion.service';
 import { faTrashCan, faPlus, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { NgForm } from '@angular/forms';

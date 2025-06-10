@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { faMobileScreenButton, faLocationDot, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { IUsuario } from 'src/app/modelos/IUsuario';
+import { IUsuario } from 'modelos/IUsuario';
 import { UsuarioService } from 'src/app/servicios/api/usuario.service';
 
 @Component({

@@ -1,40 +1,33 @@
-<nav class="collapse navbar-collapse flex-wrap" id="collapsibleNavbar">
-  <ul class="d-flex flex-column align-items-center">
-    <app-nav-icon *ngFor="let item of this.items" [link]="item.link">
-      <fa-icon icono [icon]="item.icon"></fa-icon>
-    </app-nav-icon>
-  </ul>
-  <div class="d-flex flex-column align-items-center">
-    <button (click)="cambiarTema()" class="btn">
-      <fa-icon [icon]="dark" *ngIf="temaActual === 'default'"></fa-icon>
-      <fa-icon [icon]="light" *ngIf="temaActual === 'dark'"></fa-icon>
+<nav class="navbar navbar-light align-items-center">
+  <app-brand></app-brand>
+  <div class="menu text-center">
+    <button (click)="showHideMenu()">
+      <div class="button-menu-bar d-flex flex-column align-items-end h-100" [style.color]="this.temaActual?.properties?.colorFuerte" *ngIf="!this.showMenu">
+        <span class="lineup1"></span>
+        <span class="lineup2"></span>
+        <span class="lineup3"></span>
+      </div>
+      <span class="button-menu-close" [style.background-color]="this.temaActual?.properties?.colorFuerte" *ngIf="this.showMenu"></span>
     </button>
-    <button
-      type="button"
-      class="btn"
-      *ngIf="estaLogeado()"
-      (click)="logoutModal.toggleModal()"
+    <ul
+      class="menu-navbar p-4"
+      [class.show]="this.showMenu"
+      [class.hide]="!this.showMenu"
+      [style.color]="this.temaActual?.properties?.textoPrimario"
+      [style.background-color]="this.temaActual?.properties?.colorFuerte"
     >
-      <fa-icon [icon]="user"></fa-icon>
-    </button>
-    <app-modal #logoutModal [titulo]="'¿Seguro que quieres cerrar sesión?'">
-      <button
-        class="btn btn-success"
-        (click)="cerrarSesion(); logoutModal.toggleModal()"
-      >
-        Cerrar Sesión
-      </button>
-    </app-modal>
-    <button
-      type="button"
-      class="btn"
-      *ngIf="!estaLogeado()"
-      (click)="loginModal.toggleModal()"
-    >
-      <fa-icon [icon]="loginIcon"></fa-icon>
-    </button>
-    <app-modal #loginModal>
-      <app-login (response)="loginModal.toggleModal()"></app-login>
-    </app-modal>
+      <app-nav-icon *ngFor="let item of this.items" [link]="item.link" class="item">
+        <fa-icon icono [icon]="item.icon"></fa-icon>
+      </app-nav-icon>
+      <hr>
+      <a (click)="toggleTema()">
+        <span *ngIf="this.temaActual?.name === 'light'">
+          <fa-icon [icon]="this.light"></fa-icon>
+        </span>
+        <span *ngIf="this.temaActual?.name === 'dark'">
+          <fa-icon [icon]="this.dark"></fa-icon>
+        </span>
+      </a>
+    </ul>
   </div>
 </nav>
