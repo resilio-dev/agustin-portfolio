@@ -1,6 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
-import { ITema } from './itema-interface';
-import { TEMAS } from './tema-config';
+import { ITema } from './itema.interface';
+import { TEMAS } from './tema.config';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { TemaService } from 'src/app/servicios/multitemas/tema.service';
+import { TemaService } from 'src/app/shared/services/multitemas/tema.service';
 
 @Component({
   selector: 'app-brand',

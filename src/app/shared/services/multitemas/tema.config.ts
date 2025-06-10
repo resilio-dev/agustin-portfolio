@@ -1,4 +1,4 @@
-import { ITema } from './itema-interface';
+import { ITema } from './itema.interface';
 export const TEMAS: ITema[] = [
   {
     name: 'light',

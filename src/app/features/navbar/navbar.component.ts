@@ -15,8 +15,8 @@ import {
   faUserSecret,
 } from '@fortawesome/free-solid-svg-icons';
 import { IUsuario } from 'modelos/IUsuario';
-import { ITema } from 'src/app/servicios/multitemas/itema-interface';
-import { TemaService } from 'src/app/servicios/multitemas/tema.service';
+import { ITema } from 'src/app/shared/services/multitemas/itema.interface';
+import { TemaService } from 'src/app/shared/services/multitemas/tema.service';
 
 @Component({
   selector: 'app-navbar',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TemaService } from './servicios/multitemas/tema.service';
+import { TemaService } from './shared/services/multitemas/tema.service';
 
 @Component({
   selector: 'app-root',
