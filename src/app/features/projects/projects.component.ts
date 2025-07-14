@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IProject } from './models/IProject.interface';
 import { UserService } from 'src/app/core/services/user-service/user.service';
 import { TemaService } from 'src/app/shared/services/multitemas/tema.service';
 import { ITema } from 'src/app/shared/services/multitemas/itema.interface';
+import { IProject } from 'src/app/core/models/IProject.model';
 
 @Component({
   selector: 'app-projects',
@@ -18,7 +18,7 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit(): void {
     this.temaService.temaActual$.subscribe((theme)=> this.temaActual = theme);
-    this.userService.obtenerUsuario().subscribe((user) => {
+    this.userService.obtenerUsuario(1).subscribe((user) => {
      if (user) {
         this.projects = user?.projects;
       }

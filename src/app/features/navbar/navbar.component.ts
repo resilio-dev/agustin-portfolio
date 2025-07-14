@@ -14,7 +14,7 @@ import {
   faSun,
   faUserSecret,
 } from '@fortawesome/free-solid-svg-icons';
-import { IUsuario } from 'src/app/core/models/IUsuario';
+import { IUser } from 'src/app/core/models/IUser.model';
 import { ITema } from 'src/app/shared/services/multitemas/itema.interface';
 import { TemaService } from 'src/app/shared/services/multitemas/tema.service';
 
@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   loginIcon = faRightToBracket;
 
   temaActual?: ITema;
-  usuario?: IUsuario;
+  usuario?: IUser;
 
   constructor(private temaServicio: TemaService) {
   }

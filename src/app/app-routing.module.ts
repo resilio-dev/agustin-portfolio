@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PaginaErrorComponent } from './componentes/pagina-error/pagina-error.component';
-import { DesktopLayoutComponent } from './layouts/home-desktop-layout/home-desktop-layout.component';
+import { PaginaErrorComponent } from './shared/components/pagina-error/pagina-error.component';
+import { DesktopLayoutComponent } from './layouts/desktop/desktop-layout.component';
 import { DesktopHomeComponent } from './features/home/desktop/desktop-home.component';
 import { ProjectsComponent } from './features/projects/projects.component';
+import { HabilidadComponent } from './features/skill/habilidad.component';
+import { TrabajosComponent } from './features/job/trabajos.component';
+import { ContactoComponent } from './shared/components/form-contact/contacto.component';
 
 const routes: Routes = [
   {
@@ -17,6 +20,18 @@ const routes: Routes = [
       {
         path: 'projects',
         component: ProjectsComponent
+      },
+      {
+        path: 'skills',
+        component: HabilidadComponent
+      },
+      {
+        path: 'jobs',
+        component: TrabajosComponent
+      },
+      {
+        path: 'contact',
+        component: ContactoComponent
       }
     ]
   },

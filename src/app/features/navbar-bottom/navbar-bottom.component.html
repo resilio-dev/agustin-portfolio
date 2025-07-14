@@ -1,0 +1,32 @@
+<!-- Barra de navegación inferior tipo carrusel -->
+<nav class="d-flex justify-content-center align-items-center gap-4">
+  <button
+    class="btn nav-icon center-icon diamond-wrapper"
+    (click)="navigateTo('contact-me')"
+  >
+    <div
+      class="diamond-shape"
+      [style.background-color]="tema.properties.colorDebil"
+    ></div>
+  </button>
+
+  <button
+    class="btn nav-icon center-icon diamond-wrapper"
+    (click)="navigateTo('home')"
+  >
+    <div
+      class="diamond-shape"
+      [style.background-color]="tema.properties.colorDebil"
+    ></div>
+  </button>
+
+  <button
+    class="btn nav-icon center-icon diamond-wrapper"
+    (click)="navigateTo('projects')"
+  >
+    <div
+      class="diamond-shape"
+      [style.background-color]="tema.properties.colorDebil"
+    ></div>
+  </button>
+</nav>

@@ -1,0 +1,87 @@
+<div class="espaciado text-center">
+  <div class="p-3">
+    <h1>Portfolio</h1>
+  </div>
+  <div class="container">
+    <div class="titulo d-flex justify-content-center">
+      <h3>Mis últimos proyectos</h3>
+      <div *ngIf="estaLogeado()">
+        <button class="btn btn-outline-success mx-3" type="button" (click)="modalAgregar.toggleModal()">
+          <fa-icon [icon]="agregarIcon"></fa-icon>
+        </button>
+        <app-modal #modalAgregar [titulo]="'Agregar Trabajo'">
+          <form #addForm="ngForm" (ngSubmit)="agregarTrabajo(addForm)">
+            <div class="Form-group">
+              <label for="name">Nombre</label>
+              <input type="text" ngModel name="name" class="form-control" id="name" placeholder="nombre"
+                required>
+            </div>
+            <div class="form-group">
+              <label for="description">Descripcion</label>
+              <input type="text" ngModel name="description" class="form-control" id="description"
+                placeholder="descripcion" required>
+            </div>
+            <div class="form-group">
+              <label for="img">URL imagen</label>
+              <input type="url" ngModel name="img" class="form-control" id="img" placeholder="url imagen"
+                required>
+            </div>
+          </form>
+          <button class="btn btn-success m-2" type="submit"
+            (click)="agregarTrabajo(addForm); modalAgregar.toggleModal()">Agregar</button>
+        </app-modal>
+      </div>
+    </div>
+    <div class="row text-center border rounded-top p-3 m-2" *ngFor="let trabajo of this.trabajos">
+      <div class="col">
+        <h5>{{trabajo.job}}</h5>
+        <img [src]="trabajo.imgSrc" alt="img-item-proyecto" width="200px">
+        <p>{{trabajo.description}}</p>
+      </div>
+      <div class="d-flex justify-content-center" *ngIf="estaLogeado()">
+        <div id="modal-edit">
+          <button class="btn btn-outline-secondary" type="button"
+            (click)="modalEditar.toggleModal(); editTrabajo = trabajo">
+            <fa-icon [icon]="editarIcon"></fa-icon>
+          </button>
+          <app-modal #modalEditar [titulo]="'Editar Trabajo'">
+            <form #editForm="ngForm" (ngSubmit)="editarTrabajo(editForm)">
+              <div class="form-group">
+                <label for="idTrab">Id</label>
+                <input type="hidden" ngModel="{{editTrabajo?.id}}" name="idTrab" class="form-control" id="idTrab"
+                  placeholder="id" required>
+              </div>
+              <div class="Form-group">
+                <label for="nombreTrab">Nombre</label>
+                <input type="text" ngModel="{{editTrabajo?.job}}" name="nombre" class="form-control" id="nombreTrab"
+                  placeholder="nombre" required>
+              </div>
+              <div class="form-group">
+                <label for="descripcionTrab">Descripcion</label>
+                <input type="text" ngModel="{{editTrabajo?.description}}" name="descripcion" class="form-control"
+                  id="descripcionTrab" placeholder="descripcion" required>
+              </div>
+              <div class="form-group">
+                <label for="urlimagen">URL imagen</label>
+                <input type="url" ngModel="{{editTrabajo?.imgSrc}}" name="imagen" class="form-control" id="urlimagen"
+                  placeholder="imagen" required>
+              </div>
+            </form>
+            <button class="btn btn-success m-2" type="submit"
+              (click)="editarTrabajo(editForm); modalEditar.toggleModal()">Editar</button>
+          </app-modal>
+        </div>
+        <div id="modal-remove">
+          <button class="btn btn-outline-danger" type="button" (click)="modalEliminar.toggleModal()">
+            <fa-icon [icon]="eliminarIcon"></fa-icon>
+          </button>
+          <app-modal #modalEliminar [titulo]="'Eliminar Formación'">
+            <p>¿Realmente deseas eliminar <b>{{trabajo.job}}</b>?</p>
+            <button class="btn btn-danger m-2" type="submit"
+              (click)="eliminarTrabajo(trabajo.id); modalEliminar.toggleModal()">Eliminar</button>
+          </app-modal>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

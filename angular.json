@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Mi-Portfolio": {
+    "mi-portfolio": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -66,16 +66,16 @@
               "namedChunks": true
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Mi-Portfolio:build:production"
+              "browserTarget": "mi-portfolio:build:production"
             },
             "development": {
-              "browserTarget": "Mi-Portfolio:build:development"
+              "browserTarget": "mi-portfolio:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Mi-Portfolio:build"
+            "browserTarget": "mi-portfolio:build"
           }
         },
         "test": {

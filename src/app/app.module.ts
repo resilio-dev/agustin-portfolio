@@ -1,38 +1,32 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BarraSupNavComponent } from './componentes/barra-sup-nav/barra-sup-nav.component';
-import { SobreMiComponent } from './componentes/sobre-mi/sobre-mi.component';
-import { BarraLatNavComponent } from './componentes/barra-lat-nav/barra-lat-nav.component';
-import { ContactoComponent } from './componentes/contacto/contacto.component';
-import { FormacionComponent } from './componentes/formacion/formacion.component';
-import { TrabajosComponent } from './componentes/trabajos/trabajos.component';
-import { PaginaErrorComponent } from './componentes/pagina-error/pagina-error.component';
+import { SobreMiComponent } from './features/about-me/sobre-mi.component';
+import { ContactoComponent } from './shared/components/form-contact/contacto.component';
+import { FormacionComponent } from './features/formation/formacion.component';
+import { TrabajosComponent } from './features/job/trabajos.component';
+import { PaginaErrorComponent } from './shared/components/pagina-error/pagina-error.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { HabilidadComponent } from './componentes/habilidad/habilidad.component';
-import { ModalComponent } from './componentes/modals/modal/modal.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { BrandComponent } from './shared/brand/brand.component';
+import { HabilidadComponent } from './features/skill/habilidad.component';
+import { ModalComponent } from './shared/components/modal/modal.component';
+import { BrandComponent } from './shared/components/brand/brand.component';
 import { NavbarComponent } from './features/navbar/navbar.component';
 import { NavIconComponent } from './features/navbar/components/nav-icon/nav-icon.component';
 import { LoginComponent } from './features/login/login.component';
-import { DesktopLayoutComponent } from './layouts/home-desktop-layout/home-desktop-layout.component';
+import { DesktopLayoutComponent } from './layouts/desktop/desktop-layout.component';
 import { DesktopHomeComponent } from './features/home/desktop/desktop-home.component';
 import { ProjectsComponent } from './features/projects/projects.component';
 import { CardComponent } from './features/projects/components/card/card.component';
+import { NavbarBottomComponent } from './features/navbar-bottom/navbar-bottom.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BarraSupNavComponent,
     SobreMiComponent,
-    BarraLatNavComponent,
     ContactoComponent,
     FormacionComponent,
     TrabajosComponent,
@@ -46,16 +40,15 @@ import { CardComponent } from './features/projects/components/card/card.componen
     DesktopLayoutComponent,
     DesktopHomeComponent,
     ProjectsComponent,
-    CardComponent
+    CardComponent,
+    NavbarBottomComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,
-    FormsModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth())
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

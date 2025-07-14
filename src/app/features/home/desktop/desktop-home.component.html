@@ -35,7 +35,10 @@
     class="d-md-flex align-items-center"
     [style.color]="this.temaActual.properties.colorDebil"
   >
-    <div class="d-flex flex-column gap-3 w-50 info-user" *ngIf="this.usuario">
+    <div
+      class="d-flex align-items-center flex-column gap-3 w-50 info-user"
+      *ngIf="this.usuario"
+    >
       <div class="relative">
         <h1>Web Developer</h1>
         <span class="icon-graduate">
@@ -43,8 +46,19 @@
         </span>
       </div>
       <p>
-        {{ this.usuario.descripcion }}
+        {{ this.usuario.description }}
       </p>
+      <button
+        class="btn w-50 call-button"
+        [ngStyle]="{
+          'background-color': temaActual.properties.colorDebil,
+          color: temaActual.properties.colorFuerte,
+          '--colorDebil': temaActual.properties.colorDebil,
+          '--colorFuerte': temaActual.properties.colorFuerte
+        }"
+      >
+        <b>Contactame</b>
+      </button>
     </div>
   </div>
   <div
@@ -54,6 +68,9 @@
     <div class="img d-flex justify-content-center align-items-center">
       <img src="assets\img\me-vertical.jpeg" alt="Agustin Collueque Perfil" />
     </div>
-    <div class="decoracion-fondo-img" [style.background-color]="this.temaActual.properties.colorDebil"></div>
+    <div
+      class="decoracion-fondo-img"
+      [style.background-color]="this.temaActual.properties.colorDebil"
+    ></div>
   </div>
 </div>

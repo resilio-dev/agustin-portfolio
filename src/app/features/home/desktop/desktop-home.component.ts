@@ -2,8 +2,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { faUserGraduate } from '@fortawesome/free-solid-svg-icons';
 import { finalize } from 'rxjs';
-import { IUsuario } from 'src/app/core/models/IUsuario';
-import { UsuarioService } from 'src/app/servicios/api/usuario.service';
+import { IUser } from 'src/app/core/models/IUser.model';
+import { UserService } from 'src/app/core/services/user-service/user.service';
 import { ITema } from 'src/app/shared/services/multitemas/itema.interface';
 import { TemaService } from 'src/app/shared/services/multitemas/tema.service';
 
@@ -14,11 +14,11 @@ import { TemaService } from 'src/app/shared/services/multitemas/tema.service';
 })
 export class DesktopHomeComponent implements OnInit {
   emoteInicio = faUserGraduate;
-  usuario?: IUsuario;
+  usuario?: IUser;
   temaActual!: ITema;
 
   constructor(
-    private usuarioService: UsuarioService,
+    private usuarioService: UserService,
     private temaService: TemaService
   ) {}
 
@@ -29,25 +29,28 @@ export class DesktopHomeComponent implements OnInit {
 
   obtenerUsuario() {
     this.usuarioService
-      .obtenerUsuario()
+      .obtenerUsuario(1)
       .pipe(
         finalize(() => {
           if (!this.usuario) {
             this.usuario = {
               id: 1,
-              nombre: 'Agustin',
-              apellido: 'Collueque',
-              edad: 27,
-              descripcion:
+              name: 'Agustin',
+              lastName: 'Collueque',
+              age: 27,
+              description:
                 'I like to craft solid and scalable frontend products with great user experiences.',
               email: 'agustincv1997@gmail.com',
-              foto: '#',
-            } as IUsuario;
+              picture: '#',
+              projects: [],
+              jobs: [],
+              skills: []
+            } as IUser;
           }
         })
       )
       .subscribe({
-        next: (response: IUsuario) => {
+        next: (response: IUser) => {
           this.usuario = response;
         },
         error: (error: HttpErrorResponse) => {

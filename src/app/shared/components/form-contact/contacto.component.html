@@ -1,0 +1,20 @@
+<div class="container d-flex flex-column justify-content-center align-items-center gap-3">
+  <div class="container-fluid">
+    <h1>Contáctame</h1>
+    <h3>¿Tienes alguna pregunta?</h3>
+    <h5>Estoy a tu servicio</h5>
+    <div class="row" *ngIf="this.usuario">
+      <div class="col">Redes sociales</div>
+    </div>
+  </div>
+  <form action="">
+    <div class="row-form">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" />
+    </div>
+    <div class="row-form">
+      <label for="message">Mensaje</label>
+      <input type="text" name="message" id="message" />
+    </div>
+  </form>
+</div>

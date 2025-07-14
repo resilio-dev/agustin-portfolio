@@ -28,6 +28,20 @@
         left: 180px;
         top: 10px;
       }
+
+      .call-button {
+        transition: all 0.3s ease;
+        font-weight: bold;
+        border: 2px solid transparent;
+
+        &:hover {
+          background-color: var(--colorFuerte);
+          color: var(--colorDebil);
+          border-color: var(--colorFuerte);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          transform: translateY(-2px);
+        }
+      }
     }
     h1 {
       font-family: "SF UI Text", "Helvetica Neue", "Segoe UI", "Oxygen",

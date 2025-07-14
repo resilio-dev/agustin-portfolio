@@ -1,0 +1,25 @@
+.app {
+  position: relative;
+  .absolute {
+    position: absolute;
+  }
+
+  .bg {
+    position: relative;
+    height: 100vh;
+  }
+
+  .nav-bottom {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 30px;
+    padding: 10px 20px;
+  }
+}
+
+#navbar-top,
+#navbar-bottom {
+  z-index: 999;
+}

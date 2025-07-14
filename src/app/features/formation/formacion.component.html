@@ -1,0 +1,91 @@
+<section class="espaciado text-center">
+  <div class="container">
+    <div class="container-fluid p-3 d-flex justify-content-center align-items-center">
+      <h1>Formación</h1>
+      <div *ngIf="estaLogeado()">
+        <button class="btn btn-outline-success mx-3" type="button" (click)="modalAgregar.toggleModal()">
+          <fa-icon [icon]="agregarIcon"></fa-icon>
+        </button>
+        <app-modal #modalAgregar [titulo]="'Agregar Formación'">
+          <form #addForm="ngForm" (ngSubmit)="agregarFormacion(addForm)">
+            <div class="form-group">
+              <label for="tituloForm">Título</label>
+              <input type="text" ngModel name="titulo" class="form-control" id="tituloForm" placeholder="titulo" required>
+            </div>
+            <div class="form-group">
+              <label for="tiempoForm">Tiempo</label>
+              <input type="text" ngModel name="tiempo" class="form-control" id="tiempoForm" placeholder="tiempo" required>
+            </div>
+            <div class="form-group">
+              <label for="enlaceForm">Enlace</label>
+              <input type="url" ngModel name="enlace" class="form-control" id="enlaceForm" placeholder="http://www.example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="imagenForm">URL Imagen</label>
+              <input type="url" ngModel name="imagen" class="form-control" id="imagenForm" placeholder="URL" required>
+            </div>
+          </form>
+          <button class="btn btn-success m-2" type="submit" (click)="agregarFormacion(addForm); modalAgregar.toggleModal()">Agregar</button>
+        </app-modal>
+      </div>
+    </div>
+    <div class="row p-3" *ngFor="let formacion of this.formaciones">
+      <div class="col">
+        <img [src]="formacion.img" alt="img-item-formacion" width="150px">
+        <h4>{{formacion.title}}</h4>
+        <div class="descripcion p-2">
+          <p>{{formacion.timeForm}}</p>
+          <a [href]="formacion.link">link</a>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center" *ngIf="estaLogeado()">
+        <div id="modal-edit">
+          <button class="btn btn-outline-secondary" type="button" (click)="modalEditar.toggleModal(); editFormacion = this.editFormacion">
+            <fa-icon [icon]="editarIcon"></fa-icon>
+          </button>
+          <app-modal #modalEditar [titulo]="'Editar Formacion'">
+            <form #editForm="ngForm" (ngSubmit)="editarFormacion(editForm)">
+              <div class="form-group">
+                <label for="idForm">Id</label>
+                <input type="hidden" ngModel="{{editFormacion?.id}}" name="idForm" class="form-control" id="idForm"
+                  placeholder="id" required>
+              </div>
+              <div class="form-group">
+                <label for="tituloHab">Titulo</label>
+                <input type="text" ngModel="{{editFormacion?.title}}" name="titulo" class="form-control"
+                  id="tituloHab" placeholder="titulo" required>
+              </div>
+              <div class="form-group">
+                <label for="tiempoHab">Tiempo</label>
+                <input type="text" ngModel="{{editFormacion?.timeForm}}" name="tiempo" class="form-control"
+                  id="tiempoHab" placeholder="tiempo" required>
+              </div>
+              <div class="form-group">
+                <label for="urlimagen">URL imagen</label>
+                <input type="url" ngModel="{{editFormacion?.img}}" name="imagen" class="form-control" id="urlimagen"
+                  placeholder="imagen" required>
+              </div>
+              <div class="form-group">
+                <label for="enlaceHab">enlace</label>
+                <input type="url" ngModel="{{editFormacion?.link}}" name="enlace" class="form-control"
+                  id="enlaceHab" placeholder="http://www.example.com" required>
+              </div>
+            </form>
+            <button class="btn btn-success m-2" type="submit" (click)="editarFormacion(editForm); modalEditar.toggleModal()">Editar</button>
+          </app-modal>
+        </div>
+        <div id="modal-remove">
+          <button class="btn btn-outline-danger" type="button" (click)="modalEliminar.toggleModal()">
+            <fa-icon [icon]="eliminarIcon"></fa-icon>
+          </button>
+          <app-modal #modalEliminar [titulo]="'Eliminar Formación'">
+            <p>¿Realmente deseas eliminar <b>{{this.editFormacion?.title}}</b>?</p>
+            <button class="btn btn-danger m-2" type="submit"
+              (click)="eliminarFormacion(); modalEliminar.toggleModal()">Eliminar</button>
+          </app-modal>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-trabajos></app-trabajos>
