@@ -1,5 +1,3 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { PaginaErrorComponent } from './shared/components/pagina-error/pagina-error.component';
 import { DesktopLayoutComponent } from './layouts/desktop/desktop-layout.component';
 import { DesktopHomeComponent } from './features/home/desktop/desktop-home.component';
@@ -7,40 +5,35 @@ import { ProjectsComponent } from './features/projects/projects.component';
 import { HabilidadComponent } from './features/skill/habilidad.component';
 import { TrabajosComponent } from './features/job/trabajos.component';
 import { ContactoComponent } from './shared/components/form-contact/contacto.component';
+import { Routes } from '@angular/router';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: 'desktop',
     component: DesktopLayoutComponent,
     children: [
       {
         path: '',
-        component: DesktopHomeComponent
+        component: DesktopHomeComponent,
       },
       {
         path: 'projects',
-        component: ProjectsComponent
+        component: ProjectsComponent,
       },
       {
         path: 'skills',
-        component: HabilidadComponent
+        component: HabilidadComponent,
       },
       {
         path: 'jobs',
-        component: TrabajosComponent
+        component: TrabajosComponent,
       },
       {
         path: 'contact',
-        component: ContactoComponent
-      }
-    ]
+        component: ContactoComponent,
+      },
+    ],
   },
   { path: '', redirectTo: '/desktop', pathMatch: 'full' },
   { path: '**', component: PaginaErrorComponent },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}
