@@ -13,7 +13,7 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
-      "architect": {
+      "targets": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
@@ -23,8 +23,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "less",
-            "assets": 
-              ["src/assets"],
+            "assets": ["src/assets"],
             "styles": [
               "src/styles.less",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
@@ -70,12 +69,15 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "buildTarget": "mi-portfolio:build"
+          },
           "configurations": {
             "production": {
-              "browserTarget": "mi-portfolio:build:production"
+              "buildTarget": "mi-portfolio:build:production"
             },
             "development": {
-              "browserTarget": "mi-portfolio:build:development"
+              "buildTarget": "mi-portfolio:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +85,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "mi-portfolio:build"
+            "buildTarget": "mi-portfolio:build"
           }
         },
         "test": {
@@ -94,12 +96,8 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "less",
-            "assets": [
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.less"
-            ],
+            "assets": ["src/assets"],
+            "styles": ["src/styles.less"],
             "scripts": []
           }
         }
