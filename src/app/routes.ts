@@ -1,10 +1,4 @@
-import { PaginaErrorComponent } from './shared/components/pagina-error/pagina-error.component';
 import { DesktopLayoutComponent } from './layouts/desktop/desktop-layout.component';
-import { DesktopHomeComponent } from './features/home/desktop/desktop-home.component';
-import { ProjectsComponent } from './features/projects/projects.component';
-import { HabilidadComponent } from './features/skill/habilidad.component';
-import { TrabajosComponent } from './features/job/trabajos.component';
-import { ContactoComponent } from './shared/components/form-contact/contacto.component';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
@@ -14,26 +8,47 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: DesktopHomeComponent,
+        loadComponent: () =>
+          import('./features/home/desktop/desktop-home.component').then(
+            (m) => m.DesktopHomeComponent
+          ),
       },
       {
         path: 'projects',
-        component: ProjectsComponent,
+        loadComponent: () =>
+          import('./features/projects/projects.component').then(
+            (m) => m.ProjectsComponent
+          ),
       },
       {
-        path: 'skills',
-        component: HabilidadComponent,
+        path: 'formation',
+        loadComponent: () =>
+          import('./features/formation/formacion.component').then(
+            (m) => m.FormacionComponent
+          ),
       },
       {
         path: 'jobs',
-        component: TrabajosComponent,
+        loadComponent: () =>
+          import('./features/job/trabajos.component').then(
+            (m) => m.TrabajosComponent
+          ),
       },
       {
         path: 'contact',
-        component: ContactoComponent,
+        loadComponent: () =>
+          import('./shared/components/form-contact/contacto.component').then(
+            (m) => m.ContactoComponent
+          ),
       },
     ],
   },
   { path: '', redirectTo: '/desktop', pathMatch: 'full' },
-  { path: '**', component: PaginaErrorComponent },
+  {
+    path: '**',
+    loadComponent: () =>
+      import('./shared/components/pagina-error/pagina-error.component').then(
+        (m) => m.PaginaErrorComponent
+      ),
+  },
 ];
