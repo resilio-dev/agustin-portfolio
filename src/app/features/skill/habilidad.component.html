@@ -7,7 +7,7 @@
         type="button"
         (click)="modalAgregar.toggleModal()"
       >
-        <fa-icon [icon]="agregarIcon"></fa-icon>
+        <i class="fa fa-plus"></i>
       </button>
       <app-modal #modalAgregar [titulo]="'Agregar Habilidad'">
         <form #addForm="ngForm" (ngSubmit)="agregarHabilidad(addForm)">
@@ -81,7 +81,7 @@
               type="button"
               (click)="modalEditar.toggleModal(); editHabilidad = habilidad"
             >
-              <fa-icon [icon]="editarIcon"></fa-icon>
+              <i class="fa fa-pencil"></i>
             </button>
             <app-modal #modalEditar [titulo]="'Editar Habilidad'">
               <form #editForm="ngForm" (ngSubmit)="editarHabilidad(editForm)">
@@ -137,7 +137,7 @@
               type="button"
               (click)="modalEliminar.toggleModal()"
             >
-              <fa-icon [icon]="eliminarIcon"></fa-icon>
+              <i class="fa fa-trash-can"></i>
             </button>
             <app-modal #modalEliminar [titulo]="'Eliminar Habilidad'">
               <p>

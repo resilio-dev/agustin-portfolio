@@ -7,7 +7,7 @@
       <h3>Mis últimos proyectos</h3>
       <div *ngIf="estaLogeado()">
         <button class="btn btn-outline-success mx-3" type="button" (click)="modalAgregar.toggleModal()">
-          <fa-icon [icon]="agregarIcon"></fa-icon>
+          <i class="fa faPlus"></i>
         </button>
         <app-modal #modalAgregar [titulo]="'Agregar Trabajo'">
           <form #addForm="ngForm" (ngSubmit)="agregarTrabajo(addForm)">
@@ -42,7 +42,7 @@
         <div id="modal-edit">
           <button class="btn btn-outline-secondary" type="button"
             (click)="modalEditar.toggleModal(); editTrabajo = trabajo">
-            <fa-icon [icon]="editarIcon"></fa-icon>
+            <i class="fa faPencil"></i>
           </button>
           <app-modal #modalEditar [titulo]="'Editar Trabajo'">
             <form #editForm="ngForm" (ngSubmit)="editarTrabajo(editForm)">
@@ -73,7 +73,7 @@
         </div>
         <div id="modal-remove">
           <button class="btn btn-outline-danger" type="button" (click)="modalEliminar.toggleModal()">
-            <fa-icon [icon]="eliminarIcon"></fa-icon>
+            <i class="fa faTrashCan"></i>
           </button>
           <app-modal #modalEliminar [titulo]="'Eliminar Formación'">
             <p>¿Realmente deseas eliminar <b>{{trabajo.job}}</b>?</p>

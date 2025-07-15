@@ -5,7 +5,7 @@
       <div
         class="button-menu-bar d-flex flex-column align-items-end h-100"
         *ngIf="!this.showMenu"
-         [style.color]="this.temaActual?.properties?.colorFuerte"
+        [style.color]="this.temaActual?.properties?.colorFuerte"
       >
         <span class="lineup1"></span>
         <span class="lineup2"></span>
@@ -24,20 +24,18 @@
       [style.color]="this.temaActual?.properties?.textoPrimario"
       [style.background-color]="this.temaActual?.properties?.colorFuerte"
     >
-      <app-nav-icon
-        *ngFor="let item of this.items"
-        [link]="item.link"
-        class="item"
-      >
-        <fa-icon icono [icon]="item.icon"></fa-icon>
-      </app-nav-icon>
+      <li *ngFor="let item of items">
+        <a [href]="item.link" target="_blank" rel="noopener noreferrer" [style.color]="this.temaActual?.properties?.colorDebil">
+          <i [class]="item.iconClass"></i>
+        </a>
+      </li>
       <hr />
       <a (click)="toggleTema()">
         <span *ngIf="this.temaActual?.name === 'light'">
-          <fa-icon [icon]="this.light"></fa-icon>
+          <i class="fa fa-sun"></i>
         </span>
         <span *ngIf="this.temaActual?.name === 'dark'">
-          <fa-icon [icon]="this.dark"></fa-icon>
+          <i class="fa fa-moon"></i>
         </span>
       </a>
       <button routerLink="/desktop/projects">Projects</button>

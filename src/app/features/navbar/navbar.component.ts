@@ -1,19 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-  faFacebook,
-  faGithub,
-  faInstagram,
-  faLinkedin,
-  faWhatsapp,
-} from '@fortawesome/free-brands-svg-icons';
-import {
-  faBars,
-  faMoon,
-  faRightToBracket,
-  faSun,
-  faUserSecret,
-} from '@fortawesome/free-solid-svg-icons';
 import { IUser } from 'src/app/core/models/IUser.model';
 import { BrandComponent } from 'src/app/shared/components/brand/brand.component';
 import { ITema } from 'src/app/shared/services/multitemas/itema.interface';
@@ -23,27 +9,22 @@ import { NavIconComponent } from './components/nav-icon/nav-icon.component';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, BrandComponent, NavIconComponent],
+  imports: [CommonModule, BrandComponent],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.less'],
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   showMenu = false;
   items = [
-    { link: 'https://www.instagram.com/acov912/', icon: faInstagram },
-    { link: 'https://www.facebook.com/agustiin007/', icon: faFacebook },
-    { link: 'https://walink.co/47dd51', icon: faWhatsapp },
-    { link: 'https://github.com/LicDeveloperJunior/', icon: faGithub },
+    { link: 'https://www.instagram.com/acov912/', iconClass: "fab fa-instagram" },
+    { link: 'https://www.facebook.com/agustiin007/', iconClass: "fab fa-facebook" },
+    { link: 'https://walink.co/47dd51', iconClass: "fab fa-whatsapp" },
+    { link: 'https://github.com/LicDeveloperJunior/', iconClass: "fab fa-github" },
     {
       link: 'https://www.linkedin.com/in/agustin-collueque/',
-      icon: faLinkedin,
+      iconClass: "fab fa-linkedin",
     },
   ];
-  dark = faMoon;
-  light = faSun;
-  user = faUserSecret;
-  menu = faBars;
-  loginIcon = faRightToBracket;
 
   temaActual?: ITema;
   usuario?: IUser;

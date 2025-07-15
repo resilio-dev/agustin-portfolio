@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { faUserGraduate } from '@fortawesome/free-solid-svg-icons';
 import { finalize } from 'rxjs';
 import { IUser } from 'src/app/core/models/IUser.model';
 import { UserService } from 'src/app/core/services/user-service/user.service';
@@ -16,7 +15,6 @@ import { TemaService } from 'src/app/shared/services/multitemas/tema.service';
   styleUrls: ['./desktop-home.component.less'],
 })
 export class DesktopHomeComponent implements OnInit {
-  emoteInicio = faUserGraduate;
   usuario?: IUser;
   temaActual!: ITema;
 

@@ -1,7 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { faTrashCan, faPlus, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { TrabajoService } from 'src/app/core/services/job-service/trabajo.service';
 import { LoginService } from 'src/app/core/services/auth-service/login/login.service';
 import { IJob } from 'src/app/core/models/IJob.model';
@@ -18,9 +17,6 @@ import { ModalComponent } from 'src/app/shared/components/modal/modal.component'
 export class TrabajosComponent {
   trabajos!: IJob[];
   editTrabajo?: IJob;
-  agregarIcon = faPlus;
-  editarIcon = faPencil;
-  eliminarIcon = faTrashCan;
 
   constructor(private trabajoService: TrabajoService,
     private loginService :LoginService) { }

@@ -1,7 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { HabilidadService } from 'src/app/core/services/skill-service/habilidad.service';
-import { faTrashCan, faPlus, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { FormsModule, NgForm } from '@angular/forms';
 import { LoginService } from 'src/app/core/services/auth-service/login/login.service';
 
@@ -20,9 +19,6 @@ import { ModalComponent } from 'src/app/shared/components/modal/modal.component'
 })
 export class HabilidadComponent {
   habilidades :ISkill[] = [];
-  eliminarIcon = faTrashCan;
-  agregarIcon = faPlus;
-  editarIcon = faPencil;
   editHabilidad?: ISkill;
   constructor(private habilidadService :HabilidadService,
     private loginService :LoginService,

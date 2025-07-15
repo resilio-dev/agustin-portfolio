@@ -4,7 +4,7 @@
       <h1>Formación</h1>
       <div *ngIf="estaLogeado()">
         <button class="btn btn-outline-success mx-3" type="button" (click)="modalAgregar.toggleModal()">
-          <fa-icon [icon]="agregarIcon"></fa-icon>
+          <i class="fas faPlus"></i>
         </button>
         <app-modal #modalAgregar [titulo]="'Agregar Formación'">
           <form #addForm="ngForm" (ngSubmit)="agregarFormacion(addForm)">
@@ -41,7 +41,7 @@
       <div class="d-flex justify-content-center" *ngIf="estaLogeado()">
         <div id="modal-edit">
           <button class="btn btn-outline-secondary" type="button" (click)="modalEditar.toggleModal(); editFormacion = this.editFormacion">
-            <fa-icon [icon]="editarIcon"></fa-icon>
+            <i class="fa faPencil"></i>
           </button>
           <app-modal #modalEditar [titulo]="'Editar Formacion'">
             <form #editForm="ngForm" (ngSubmit)="editarFormacion(editForm)">
@@ -76,7 +76,7 @@
         </div>
         <div id="modal-remove">
           <button class="btn btn-outline-danger" type="button" (click)="modalEliminar.toggleModal()">
-            <fa-icon [icon]="eliminarIcon"></fa-icon>
+            <i class="fa faTrashCan"></i>
           </button>
           <app-modal #modalEliminar [titulo]="'Eliminar Formación'">
             <p>¿Realmente deseas eliminar <b>{{this.editFormacion?.title}}</b>?</p>
