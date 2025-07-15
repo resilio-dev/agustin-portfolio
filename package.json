@@ -1,0 +1,44 @@
+{
+  "name": "portfolio-frontend",
+  "version": "1.0.0",
+  "description": "Codigo referente a la capa de frontend del proyecto Argentina Programa",
+  "main": "karma.conf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LicDeveloperJunior/portfolio-frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/LicDeveloperJunior/portfolio-frontend/issues"
+  },
+  "homepage": "https://github.com/LicDeveloperJunior/portfolio-frontend#readme",
+  "dependencies": {
+    "@angular/animations": "16.2.0",
+    "@angular/common": "16.2.0",
+    "@angular/compiler": "16.2.0",
+    "@angular/core": "16.2.0",
+    "@angular/forms": "16.2.0",
+    "@angular/platform-browser": "16.2.0",
+    "@angular/platform-browser-dynamic": "16.2.0",
+    "@angular/router": "16.2.0",
+    "@fortawesome/angular-fontawesome": "^0.13.0",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "rxjs": "^7.8.1",
+    "tslib": "^2.3.0",
+    "zone.js": "^0.13.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "16.2.0",
+    "@angular/cli": "16.2.0",
+    "@angular/compiler-cli": "16.2.0",
+    "typescript": "5.3"
+  }
+}
