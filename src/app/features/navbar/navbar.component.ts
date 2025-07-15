@@ -1,4 +1,4 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   faFacebook,
@@ -15,11 +15,15 @@ import {
   faUserSecret,
 } from '@fortawesome/free-solid-svg-icons';
 import { IUser } from 'src/app/core/models/IUser.model';
+import { BrandComponent } from 'src/app/shared/components/brand/brand.component';
 import { ITema } from 'src/app/shared/services/multitemas/itema.interface';
 import { TemaService } from 'src/app/shared/services/multitemas/tema.service';
+import { NavIconComponent } from './components/nav-icon/nav-icon.component';
 
 @Component({
   selector: 'app-navbar',
+  standalone: true,
+  imports: [CommonModule, BrandComponent, NavIconComponent],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.less'],
 })

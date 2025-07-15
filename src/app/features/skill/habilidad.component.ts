@@ -2,15 +2,19 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { HabilidadService } from 'src/app/core/services/skill-service/habilidad.service';
 import { faTrashCan, faPlus, faPencil } from '@fortawesome/free-solid-svg-icons';
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { LoginService } from 'src/app/core/services/auth-service/login/login.service';
 
 import { IUser } from 'src/app/core/models/IUser.model';
 import { ISkill } from 'src/app/core/models/ISkill.model';
 import { UserService } from 'src/app/core/services/user-service/user.service';
+import { CommonModule } from '@angular/common';
+import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-habilidad',
+  standalone: true,
+  imports: [CommonModule, ModalComponent, FormsModule],
   templateUrl: './habilidad.component.html',
   styleUrls: ['./habilidad.component.less']
 })

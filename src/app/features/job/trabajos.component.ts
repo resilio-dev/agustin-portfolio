@@ -1,13 +1,17 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { faTrashCan, faPlus, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { TrabajoService } from 'src/app/core/services/job-service/trabajo.service';
 import { LoginService } from 'src/app/core/services/auth-service/login/login.service';
 import { IJob } from 'src/app/core/models/IJob.model';
+import { CommonModule } from '@angular/common';
+import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-trabajos',
+  standalone: true,
+  imports: [CommonModule, ModalComponent, FormsModule],
   templateUrl: './trabajos.component.html',
   styleUrls: ['./trabajos.component.less']
 })

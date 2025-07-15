@@ -3,6 +3,8 @@ import { faSadCry } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-pagina-error',
+  standalone: true,
+  imports: [],
   templateUrl: './pagina-error.component.html',
   styleUrls: ['./pagina-error.component.less']
 })

@@ -3,9 +3,13 @@ import { UserService } from 'src/app/core/services/user-service/user.service';
 import { TemaService } from 'src/app/shared/services/multitemas/tema.service';
 import { ITema } from 'src/app/shared/services/multitemas/itema.interface';
 import { IProject } from 'src/app/core/models/IProject.model';
+import { CommonModule } from '@angular/common';
+import { CardComponent } from './components/card/card.component';
 
 @Component({
   selector: 'app-projects',
+  standalone: true,
+  imports: [CommonModule, CardComponent],
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.less'],
 })

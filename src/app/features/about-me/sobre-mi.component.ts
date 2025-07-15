@@ -6,6 +6,8 @@ import { UserService } from 'src/app/core/services/user-service/user.service';
 
 @Component({
   selector: 'app-sobre-mi',
+  standalone: true,
+  imports: [],
   templateUrl: './sobre-mi.component.html',
   styleUrls: ['./sobre-mi.component.less']
 })

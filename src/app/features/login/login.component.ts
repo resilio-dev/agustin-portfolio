@@ -1,9 +1,11 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { LoginService } from 'src/app/core/services/auth-service/login/login.service';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
+  imports: [FormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.less'],
 })

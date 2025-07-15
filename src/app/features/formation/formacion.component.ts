@@ -2,12 +2,16 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormacionService } from 'src/app/core/services/formation-service/formacion.service';
 import { faTrashCan, faPlus, faPencil } from '@fortawesome/free-solid-svg-icons';
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { LoginService } from 'src/app/core/services/auth-service/login/login.service';
 import { IFormation } from 'src/app/core/models/IFormation.model';
+import { CommonModule } from '@angular/common';
+import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-formacion',
+  standalone: true,
+  imports: [CommonModule, ModalComponent, FormsModule],
   templateUrl: './formacion.component.html',
   styleUrls: ['./formacion.component.less']
 })

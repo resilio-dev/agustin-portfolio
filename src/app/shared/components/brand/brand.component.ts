@@ -3,6 +3,8 @@ import { TemaService } from 'src/app/shared/services/multitemas/tema.service';
 
 @Component({
   selector: 'app-brand',
+  standalone: true,
+  imports: [],
   templateUrl: './brand.component.html',
   styleUrls: ['./brand.component.less']
 })

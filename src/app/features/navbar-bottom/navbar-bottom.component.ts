@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { faGem } from '@fortawesome/free-solid-svg-icons';
 import { ITema } from 'src/app/shared/services/multitemas/itema.interface';
 import { TemaService } from 'src/app/shared/services/multitemas/tema.service';
 
 @Component({
   selector: 'app-navbar-bottom',
+  standalone: true,
+  imports: [],
   templateUrl: './navbar-bottom.component.html',
   styleUrls: ['./navbar-bottom.component.less']
 })
 export class NavbarBottomComponent implements OnInit {
   tema!: ITema;
   active: 'left' | 'center' | 'right' = 'center';
-  diamond = faGem;
 
   constructor(private router: Router, private temaService: TemaService) { }
 

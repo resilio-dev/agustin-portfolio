@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { faUserGraduate } from '@fortawesome/free-solid-svg-icons';
@@ -9,6 +10,8 @@ import { TemaService } from 'src/app/shared/services/multitemas/tema.service';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './desktop-home.component.html',
   styleUrls: ['./desktop-home.component.less'],
 })
