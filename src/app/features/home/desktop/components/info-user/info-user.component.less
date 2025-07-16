@@ -1,7 +1,6 @@
 .icon-graduate {
   position: absolute;
   font-size: 3rem;
-
   left: 180px;
   top: 10px;
 }
@@ -10,12 +9,13 @@
   transition: all 0.3s ease;
   font-weight: bold;
   border: 2px solid transparent;
+  color: var(--link-color);
 
   &:hover {
-    background-color: var(--colorFuerte);
-    color: var(--colorDebil);
-    border-color: var(--colorFuerte);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background-color: var(--bg-secondary);
+    color: var(--primary-text-color);
+    border-color: var(--primary-text-color);
+    box-shadow: 0 4px 12px var(--card-color-shadow);
     transform: translateY(-2px);
   }
 }
@@ -27,8 +27,10 @@ h1 {
   font-size: 4.4em;
   line-height: 1.1;
   letter-spacing: -0.03em;
+  color: var(--primary-text-color);
 }
 
 p {
   font-size: 1.3em;
+  color: var(--primary-text-color);
 }

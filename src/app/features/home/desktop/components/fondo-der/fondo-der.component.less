@@ -1,23 +1,20 @@
 .fondo-der {
   width: 30%;
-  height: 100vh;
   pointer-events: none;
+  background-color: var(--bg-secondary-color);
   right: 0;
-  top: 0;
 }
 
 //Decoraciones
 .decoracion-linea-punteada {
-  position: absolute;
   width: 150px;
   height: 10px;
-  z-index: 1;
   opacity: 20%;
-  border-top: 5px dotted black;
+  border-top: 5px dotted var(--bg-primary-color);
 }
 
 @media (max-width: 900px) {
-  .bg-right {
+  .fondo-der {
     display: none !important;
   }
 }

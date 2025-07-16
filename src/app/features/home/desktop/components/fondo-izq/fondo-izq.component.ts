@@ -7,6 +7,4 @@ import { Component, Input } from '@angular/core';
   styleUrl: './fondo-izq.component.less'
 })
 export class FondoIzqComponent {
-  @Input() color: string = 'white';
-
 }

@@ -1,10 +1,11 @@
 .photo-frame {
   position: relative;
+  color: var(--bg-primary-color);
   width: 250px;
   height: 300px;
   border: 5px solid #ccc;
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px var(--card-shadow-color);
 
   .img {
     position: absolute;
@@ -24,10 +25,9 @@
 }
 
 .decoracion-fondo-img {
-  background-image: radial-gradient(rgb(72, 49, 212) 1px, transparent 1px);
+  background-image: radial-gradient(var(--bg-primary-color) 1px, transparent 1px);
+  background-color: var(--bg-secondary-color);
   background-size: 10px 10px;
-  width: 100%;
-  height: 100%;
   display: inline-block;
 }
 

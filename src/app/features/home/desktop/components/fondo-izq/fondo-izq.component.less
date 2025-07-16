@@ -1,23 +1,20 @@
 .fondo-izq {
   width: 70%;
-  height: 100vh;
   pointer-events: none;
-  left: 0;
-  top: 0;
+  background-color: var(--bg-primary-color);
 }
 
 //Decoraciones
 .decoracion-linea-punteada {
-  position: absolute;
   width: 150px;
   height: 10px;
-  z-index: 1;
   opacity: 20%;
-  border-top: 5px dotted black;
+
+  border-top: 5px dotted var(--bg-secondary-color);
 }
 
 @media (max-width: 900px) {
-  .bg-left {
+  .fondo-izq {
     width: 100% !important;
   }
 }

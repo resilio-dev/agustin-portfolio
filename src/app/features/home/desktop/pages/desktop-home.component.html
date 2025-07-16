@@ -1,11 +1,10 @@
-<app-fondo-izq [color]="temaActual.properties.colorFuerte"></app-fondo-izq>
-<app-fondo-der [color]="temaActual.properties.colorDebil"></app-fondo-der>
+<app-fondo-izq></app-fondo-izq>
+<app-fondo-der></app-fondo-der>
 <div
   class="d-flex align-items-center justify-content-center gap-4 position-relative z-2 p-4"
 >
   <app-info-user
     [usuario]="this.usuario"
-    [tema]="this.temaActual"
   ></app-info-user>
-  <app-foto-user [tema]="this.temaActual"></app-foto-user>
+  <app-foto-user></app-foto-user>
 </div>

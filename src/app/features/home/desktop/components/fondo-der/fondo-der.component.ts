@@ -7,5 +7,4 @@ import { Component, Input } from '@angular/core';
   styleUrl: './fondo-der.component.less'
 })
 export class FondoDerComponent {
-  @Input() color: string = 'white';
 }

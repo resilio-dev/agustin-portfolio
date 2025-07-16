@@ -4,7 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { finalize } from 'rxjs';
 import { IUser } from 'src/app/core/models/IUser.model';
 import { UserService } from 'src/app/core/services/user-service/user.service';
-import { ITema } from 'src/app/shared/services/multitemas/itema.interface';
 import { TemaService } from 'src/app/shared/services/multitemas/tema.service';
 import { FondoIzqComponent } from '../components/fondo-izq/fondo-izq.component';
 import { FondoDerComponent } from '../components/fondo-der/fondo-der.component';
@@ -19,7 +18,6 @@ import { FotoUserComponent } from '../components/foto-user/foto-user.component';
 })
 export class DesktopHomeComponent implements OnInit {
   usuario?: IUser;
-  temaActual!: ITema;
 
   constructor(
     private usuarioService: UserService,
@@ -28,7 +26,6 @@ export class DesktopHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerUsuario();
-    this.temaService.temaActual$.subscribe((tema) => this.temaActual = tema)
   }
 
   obtenerUsuario() {

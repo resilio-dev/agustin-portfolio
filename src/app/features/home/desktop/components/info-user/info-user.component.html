@@ -1,12 +1,11 @@
 <div
   class="d-md-flex align-items-center"
-  [style.color]="this.tema.properties.colorDebil"
 >
   <div
     class="d-flex align-items-center flex-column gap-3 w-50 info-user"
     *ngIf="this.usuario"
   >
-    <div class="relative">
+    <div class="position-relative">
       <h1>Web Developer</h1>
       <span class="icon-graduate">
         <i class="fa faUserGraduate"></i>
@@ -17,12 +16,6 @@
     </p>
     <button
       class="btn w-50 call-button"
-      [ngStyle]="{
-        'background-color': tema.properties.colorDebil,
-        color: tema.properties.colorFuerte,
-        '--colorDebil': tema.properties.colorDebil,
-        '--colorFuerte': tema.properties.colorFuerte
-      }"
     (click)="irAContacto()"
     >
       <b>Contactame</b>
