@@ -4,7 +4,7 @@ import { TemaService } from 'src/app/shared/services/multitemas/tema.service';
 import { ITema } from 'src/app/shared/services/multitemas/itema.interface';
 import { IProject } from 'src/app/core/models/IProject.model';
 import { CommonModule } from '@angular/common';
-import { CardComponent } from './components/card/card.component';
+import { CardComponent } from '../../../../shared/components/card/card.component';
 
 @Component({
   selector: 'app-projects',

@@ -1,8 +1,18 @@
 <nav class="d-flex justify-content-center align-items-center gap-4">
   <button
     class="btn nav-icon center-icon diamond-wrapper"
-    (click)="navigateTo('contact-me')"
+    (click)="navigateTo('contact')"
   >
+    <div
+      class="diamond-shape"
+      [style.background-color]="tema.properties.colorDebil"
+    ></div>
+  </button>
+
+  <button
+    class="btn nav-icon center-icon diamond-wrapper"
+    (click)="navigateTo('skills')"
+    >
     <div
       class="diamond-shape"
       [style.background-color]="tema.properties.colorDebil"
@@ -18,10 +28,18 @@
       [style.background-color]="tema.properties.colorDebil"
     ></div>
   </button>
-
   <button
     class="btn nav-icon center-icon diamond-wrapper"
-    (click)="navigateTo('projects')"
+    (click)="navigateTo('formation')"
+  >
+    <div
+      class="diamond-shape"
+      [style.background-color]="tema.properties.colorDebil"
+    ></div>
+  </button>
+  <button
+    class="btn nav-icon center-icon diamond-wrapper"
+    (click)="navigateTo('jobs')"
   >
     <div
       class="diamond-shape"

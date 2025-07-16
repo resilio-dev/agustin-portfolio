@@ -6,11 +6,12 @@ import { LoginService } from 'src/app/core/services/auth-service/login/login.ser
 import { IJob } from 'src/app/core/models/IJob.model';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
+import { ProjectsComponent } from "./components/projects/projects.component";
 
 @Component({
   selector: 'app-trabajos',
   standalone: true,
-  imports: [CommonModule, ModalComponent, FormsModule],
+  imports: [CommonModule, ModalComponent, FormsModule, ProjectsComponent],
   templateUrl: './trabajos.component.html',
   styleUrls: ['./trabajos.component.less']
 })

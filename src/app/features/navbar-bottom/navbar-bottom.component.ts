@@ -23,13 +23,19 @@ export class NavbarBottomComponent implements OnInit {
   navigateTo(page: string) {
     switch (page) {
       case 'home':
-        this.router.navigate(['/']);
+        this.router.navigate(['']);
         break;
-      case 'projects':
-        this.router.navigate(['/']);
+      case 'jobs':
+        this.router.navigate(['/desktop/jobs']);
         break;
       case 'contact':
-        this.router.navigate(['/']);
+        this.router.navigate(['/desktop/contact']);
+        break;
+      case 'formation':
+        this.router.navigate(['/desktop/formation']);
+        break;
+      case 'skills':
+        this.router.navigate(['/desktop/skills']);
         break;
     }
   }

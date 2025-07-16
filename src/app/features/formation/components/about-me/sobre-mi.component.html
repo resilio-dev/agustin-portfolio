@@ -1,0 +1,46 @@
+<div class="sobre-mi text-center">
+  <div class="p-2 pb-3">
+    <h1>Perfil Profesional</h1>
+    <div class="px-4 mi-perfil" *ngIf="this.usuario">
+      <p>
+        Tengo {{ this.usuario.age }} años y soy Desarrollador Web. <br />{{
+          this.usuario.description
+        }}
+      </p>
+    </div>
+
+    <a
+      href="assets\CV Agustin Collueque.pdf"
+      download="cv-agustin-collueque"
+      class="btn"
+      >Descargar CV</a
+    >
+    <button
+      class="btn w-50 call-button"
+      [ngStyle]="{
+        'background-color': tema.properties.colorDebil,
+        color: tema.properties.colorFuerte,
+        '--colorDebil': tema.properties.colorDebil,
+        '--colorFuerte': tema.properties.colorFuerte
+      }"
+    >
+      <a
+        href="assets\CV Agustin Collueque.pdf"
+        download="cv-agustin-collueque"
+      ></a
+      ><b>Descargar</b>
+    </button>
+    <button
+      class="btn w-50 call-button"
+      [ngStyle]="{
+        'background-color': tema.properties.colorDebil,
+        color: tema.properties.colorFuerte,
+        '--colorDebil': tema.properties.colorDebil,
+        '--colorFuerte': tema.properties.colorFuerte
+      }"
+    >
+      <b>Contactame</b>
+    </button>
+  </div>
+  <app-habilidad></app-habilidad>
+</div>

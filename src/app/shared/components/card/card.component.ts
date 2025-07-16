@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IProject } from '../../../../core/models/IProject.model';
+import { IProject } from '../../../core/models/IProject.model';
 import { TemaService } from 'src/app/shared/services/multitemas/tema.service';
 import { ITema } from 'src/app/shared/services/multitemas/itema.interface';
 import { CommonModule } from '@angular/common';

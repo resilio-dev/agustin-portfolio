@@ -6,11 +6,12 @@ import { LoginService } from 'src/app/core/services/auth-service/login/login.ser
 import { IFormation } from 'src/app/core/models/IFormation.model';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
+import { SobreMiComponent } from "./components/about-me/sobre-mi.component";
 
 @Component({
   selector: 'app-formacion',
   standalone: true,
-  imports: [CommonModule, ModalComponent, FormsModule],
+  imports: [CommonModule, ModalComponent, FormsModule, SobreMiComponent],
   templateUrl: './formacion.component.html',
   styleUrls: ['./formacion.component.less']
 })

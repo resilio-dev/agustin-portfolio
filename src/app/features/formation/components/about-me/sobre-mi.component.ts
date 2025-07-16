@@ -1,23 +1,31 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IUser } from 'src/app/core/models/IUser.model';
-import { faPencil, faTrashCan, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { UserService } from 'src/app/core/services/user-service/user.service';
+import { HabilidadComponent } from '../../../skill/habilidad.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sobre-mi',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, HabilidadComponent],
   templateUrl: './sobre-mi.component.html',
   styleUrls: ['./sobre-mi.component.less']
 })
-export class SobreMiComponent {
-  edit = faPencil;
-  remove = faTrashCan;
-  add = faPlus;
-
+export class SobreMiComponent implements OnInit {
+  tema :any;
   usuario?: IUser;
   constructor(private usuarioService: UserService) { }
+
+  ngOnInit(): void {
+    this.tema = {
+      name: 'light',
+      properties: {
+        colorFuerte: 'black',
+        colorDebil: 'light'
+      }
+    }
+  }
 
 
   obtenerUsuario() {
