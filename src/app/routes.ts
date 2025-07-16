@@ -37,7 +37,7 @@ export const routes: Routes = [
       {
         path: 'contact',
         loadComponent: () =>
-          import('./shared/components/form-contact/contacto.component').then(
+          import('./features/contact/contacto.component').then(
             (m) => m.ContactoComponent
           ),
       },

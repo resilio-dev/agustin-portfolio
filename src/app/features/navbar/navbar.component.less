@@ -5,24 +5,27 @@
     width: 300px;
     justify-items: center;
 
-    button {
+    .btn-menu {
       background-color: transparent;
       border-style: none;
 
       .button-menu-bar {
         .lineup1 {
           border-top: 10px solid;
+          color: var(--bg-primary-color);
           margin: 5px 0;
           width: 65px;
           padding: 0;
         }
         .lineup2 {
+          color: var(--bg-primary-color);
           border-top: 10px solid;
           margin: 8px 0;
           width: 45px;
           padding: 0;
         }
         .lineup3 {
+          color: var(--bg-primary-color);
           border-top: 10px solid;
           margin: 5px 0;
           width: 25px;
@@ -37,6 +40,7 @@
       }
       .button-menu-close {
         display: block;
+        background-color: var(--bg-primary-color);
         width: 55px;
         height: 55px;
         clip-path: polygon(
@@ -62,23 +66,25 @@
     }
     .menu-navbar {
       width: 150px;
-      text-align: center;
       list-style: none;
       padding: 0;
       margin: 0;
-      position: absolute;
       top: calc(100% + 5px);
       right: 0;
       transition: opacity 1s ease, visibility 1s ease;
+      background-color: var(--bg-primary-color);
 
-      a {
-        cursor: pointer;
-        transition: transform 1s;
-        font-size: 1.5rem;
-        margin: 0 1rem;
+      .btn-nav {
+        background: none;
+        border: none;
+        color: var(--link-color);
 
         &:hover {
           transform: scale(1.2);
+        }
+
+        i {
+          font-size: var(--medium-text-size);
         }
       }
     }

@@ -1,19 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { IUser } from 'src/app/core/models/IUser.model';
 import { BrandComponent } from 'src/app/shared/components/brand/brand.component';
-import { ITema } from 'src/app/shared/services/multitemas/itema.interface';
 import { TemaService } from 'src/app/shared/services/multitemas/tema.service';
-import { NavIconComponent } from './components/nav-icon/nav-icon.component';
+import { NavIconComponent } from "./components/nav-icon/nav-icon.component";
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, BrandComponent],
+  imports: [CommonModule, BrandComponent, NavIconComponent],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.less'],
 })
-export class NavbarComponent implements OnInit, OnDestroy {
+export class NavbarComponent {
   showMenu = false;
   items = [
     { link: 'https://www.instagram.com/acov912/', iconClass: "fab fa-instagram" },
@@ -26,20 +25,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
     },
   ];
 
-  temaActual?: ITema;
   usuario?: IUser;
 
   constructor(private temaServicio: TemaService) {
   }
 
-  ngOnInit(): void {
-    this.temaServicio.temaActual$.subscribe(
-      (theme) => (this.temaActual = theme)
-    );
-  }
-
-  ngOnDestroy(): void {
-    this.temaServicio.temaActual$.unsubscribe();
+  getTema(): string {
+    return this.temaServicio.getTemaActual();
   }
 
   toggleTema() {

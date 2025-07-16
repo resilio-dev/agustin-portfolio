@@ -13,20 +13,12 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./sobre-mi.component.less']
 })
 export class SobreMiComponent implements OnInit {
-  tema :any;
   usuario?: IUser;
   constructor(private usuarioService: UserService) { }
 
   ngOnInit(): void {
-    this.tema = {
-      name: 'light',
-      properties: {
-        colorFuerte: 'black',
-        colorDebil: 'light'
-      }
-    }
+    this.obtenerUsuario();
   }
-
 
   obtenerUsuario() {
     this.usuarioService.obtenerUsuario(1).subscribe({

@@ -9,11 +9,13 @@ import { ISkill } from 'src/app/core/models/ISkill.model';
 import { UserService } from 'src/app/core/services/user-service/user.service';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
+import { FormAgregarSkillComponent } from "./components/form-agregar-skill/form-agregar-skill.component";
+import { FormEditarSkillComponent } from "./components/form-editar-skill/form-editar-skill.component";
 
 @Component({
   selector: 'app-habilidad',
   standalone: true,
-  imports: [CommonModule, ModalComponent, FormsModule],
+  imports: [CommonModule, ModalComponent, FormsModule, FormAgregarSkillComponent, FormEditarSkillComponent],
   templateUrl: './habilidad.component.html',
   styleUrls: ['./habilidad.component.less']
 })
@@ -35,12 +37,11 @@ export class HabilidadComponent {
     })
   }
 
-  agregarHabilidad(formHab: NgForm) {
+  agregarHabilidad(formHab: ISkill) {
     this.usuarioService.obtenerUsuario(1).subscribe({
       next:(response :IUser) => {
-        this.habilidadService.agregarHabilidad2(formHab.value, response.id).subscribe({
+        this.habilidadService.agregarHabilidad2(formHab, response.id).subscribe({
           next: () => {
-            formHab.reset();
             this.obtenerHabildades();
           },
           error: (error: HttpErrorResponse) => {
@@ -65,10 +66,9 @@ export class HabilidadComponent {
     })
   }
 
-  editarHabilidad(formHab: NgForm) {
-    this.habilidadService.actualizarHabilidad(formHab.value).subscribe({
+  editarHabilidad(hab: ISkill) {
+    this.habilidadService.actualizarHabilidad(hab).subscribe({
       next: () => {
-        formHab.reset();
         this.obtenerHabildades();
       },
       error: (error: HttpErrorResponse) => {

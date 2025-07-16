@@ -1,4 +1,4 @@
-<div class="sobre-mi text-center">
+<div class="sobre-mi overflow-x-hidden text-center">
   <div class="p-2 pb-3">
     <h1>Perfil Profesional</h1>
     <div class="px-4 mi-perfil" *ngIf="this.usuario">
@@ -17,12 +17,6 @@
     >
     <button
       class="btn w-50 call-button"
-      [ngStyle]="{
-        'background-color': tema.properties.colorDebil,
-        color: tema.properties.colorFuerte,
-        '--colorDebil': tema.properties.colorDebil,
-        '--colorFuerte': tema.properties.colorFuerte
-      }"
     >
       <a
         href="assets\CV Agustin Collueque.pdf"
@@ -32,12 +26,6 @@
     </button>
     <button
       class="btn w-50 call-button"
-      [ngStyle]="{
-        'background-color': tema.properties.colorDebil,
-        color: tema.properties.colorFuerte,
-        '--colorDebil': tema.properties.colorDebil,
-        '--colorFuerte': tema.properties.colorFuerte
-      }"
     >
       <b>Contactame</b>
     </button>

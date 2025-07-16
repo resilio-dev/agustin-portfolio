@@ -9,6 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NavIconComponent implements OnInit {
   @Input() link!: string;
+  @Input() classIcon! :string;
   constructor() { }
 
   ngOnInit(): void {

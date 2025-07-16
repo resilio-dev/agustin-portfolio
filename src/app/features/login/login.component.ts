@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { LoginService } from 'src/app/core/services/auth-service/login/login.service';
 
@@ -9,12 +9,8 @@ import { LoginService } from 'src/app/core/services/auth-service/login/login.ser
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.less'],
 })
-export class LoginComponent implements OnInit {
-  response: EventEmitter<boolean> = new EventEmitter<boolean>();
-
+export class LoginComponent {
   constructor(private loginService: LoginService) {}
-
-  ngOnInit(): void {}
 
   login(formLogin: NgForm) {
     this.loginService.login(formLogin.value);
