@@ -1,11 +1,11 @@
-<div class="app">
-  <header class="w-100 absolute" id="navbar-top">
+<section class="app position-relative overflow-hidden">
+  <header class="w-100 position-absolute top-0 start-0 z-3" id="navbar-top">
     <app-navbar></app-navbar>
   </header>
-  <main class="bg" role="main">
+  <main class="position-relative z-1" role="main">
     <router-outlet></router-outlet>
   </main>
-  <div class="nav-bottom" id="navbar-bottom">
+  <div class="position-absolute bottom-0 w-100 z-3" id="navbar-bottom">
     <app-navbar-bottom></app-navbar-bottom>
   </div>
-</div>
+</section>

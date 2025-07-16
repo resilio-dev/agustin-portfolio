@@ -14,10 +14,10 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'projects',
+        path: 'skills',
         loadComponent: () =>
-          import('./features/projects/projects.component').then(
-            (m) => m.ProjectsComponent
+          import('./features/skill/habilidad.component').then(
+            (m) => m.HabilidadComponent
           ),
       },
       {
