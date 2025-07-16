@@ -3,6 +3,110 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: var(--textoPrimario);
-  font-family: 'Calibri';
+}
+
+/* Tema claro */
+:root.light {
+  --bg-primary-color: #4831d4;
+  --bg-secondary-color: #ccf381;
+  --primary-text-color: #ccf381;
+  --small-text-size: 1rem;
+  --medium-text-size: 1.5rem;
+  --big-text-size: 1.8rem;
+  --card-color: #ffffff;
+  --card-shadow-config: 0 2px 8px rgba(56, 56, 21, 0.05);
+  --link-color: rgb(219, 247, 65);
+}
+
+/* Tema oscuro */
+:root.dark {
+  --bg-primary-color: black;
+  --bg-secondary-color: #1e1e1e;
+  --primary-text-color: #f9f9f9;
+  --small-text-size: 1rem;
+  --medium-text-size: 1.2rem;
+  --big-text-size: 1.6rem;
+  --card-color: #777575ff;
+  --card-shadow-config: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --link-color: #a4a1d1ff;
+}
+
+/* ====== Estilos globales ====== */
+
+body {
+  background-color: var(--bg-primary-color);
+  color: var(--primary-text-color);
+  font-size: var(--medium-text-size);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Tipografía */
+h1 {
+  font-size: var(--big-text-size);
+}
+h2 {
+  font-size: calc(var(--big-text-size) - 0.2rem);
+}
+h3 {
+  font-size: var(--medium-text-size);
+}
+p,
+span,
+li {
+  font-size: var(--small-text-size);
+}
+
+/* ====== Bootstrap ====== */
+
+/* Card */
+.card {
+  background-color: var(--card-color) !important;
+  box-shadow: var(--card-shadow-color) !important;
+  color: var(--primary-text-color);
+  border: none;
+}
+
+/* Botones */
+.btn {
+  background-color: var(--bg-secondary-color);
+  color: var(--primary-text-color);
+  border: none;
+  font-size: var(--big-text-size);
+  transition: 0.3s;
+}
+.btn:hover {
+  background-color: var(--primary-text-color);
+}
+
+/* Links */
+a {
+  cursor: pointer;
+  transition: transform 1s;
+  font-size: 1.5rem;
+  margin: 0 1rem;
+  color: var(--link-color);
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+/* Formulario */
+input.form-control,
+select.form-control,
+textarea.form-control {
+  background-color: var(--card-color);
+  color: var(--primary-text-color);
+  border: 1px solid var(--bg-secondary-color);
+}
+
+/* Fondo y texto utilitarios */
+.bg-primary {
+  background-color: var(--bg-primary-color) !important;
+}
+.bg-secondary {
+  background-color: var(--bg-secondary-color) !important;
+}
+.text-primary {
+  color: var(--primary-text-color) !important;
 }

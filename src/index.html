@@ -25,3 +25,8 @@
     <app-root></app-root>
   </body>
 </html>
+<script>
+  const tema = localStorage.getItem('theme') || 'light';
+  document.documentElement.classList.add(tema);
+</script>
+
