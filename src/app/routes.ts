@@ -9,7 +9,7 @@ export const routes: Routes = [
       {
         path: '',
         loadComponent: () =>
-          import('./features/home/desktop/desktop-home.component').then(
+          import('./features/home/desktop/pages/desktop-home.component').then(
             (m) => m.DesktopHomeComponent
           ),
       },

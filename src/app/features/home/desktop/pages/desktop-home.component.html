@@ -1,0 +1,15 @@
+<div class="bg-home h-100 d-flex">
+  <app-fondo-izq
+    [color]="this.temaActual.properties.colorFuerte"
+  ></app-fondo-izq>
+  <app-fondo-der
+    [color]="this.temaActual.properties.colorDebil"
+  ></app-fondo-der>
+  <div class="content d-flex align-items-center gap-4">
+    <app-info-user
+      [usuario]="this.usuario"
+      [tema]="this.temaActual"
+    ></app-info-user>
+    <app-foto-user [tema]="this.temaActual"></app-foto-user>
+  </div>
+</div>

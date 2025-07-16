@@ -6,11 +6,14 @@ import { IUser } from 'src/app/core/models/IUser.model';
 import { UserService } from 'src/app/core/services/user-service/user.service';
 import { ITema } from 'src/app/shared/services/multitemas/itema.interface';
 import { TemaService } from 'src/app/shared/services/multitemas/tema.service';
-
+import { FondoIzqComponent } from '../components/fondo-izq/fondo-izq.component';
+import { FondoDerComponent } from '../components/fondo-der/fondo-der.component';
+import { InfoUserComponent } from '../components/info-user/info-user.component';
+import { FotoUserComponent } from '../components/foto-user/foto-user.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FondoIzqComponent, FondoDerComponent, InfoUserComponent, FotoUserComponent],
   templateUrl: './desktop-home.component.html',
   styleUrls: ['./desktop-home.component.less'],
 })
