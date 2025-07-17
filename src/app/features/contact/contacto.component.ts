@@ -22,6 +22,6 @@ export class ContactoComponent implements OnInit {
   }
 
   irAHome() {
-    this.router.navigateByUrl('/desktop/home')
+    this.router.navigateByUrl('/desktop')
   }
 }

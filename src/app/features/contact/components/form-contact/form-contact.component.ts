@@ -10,7 +10,8 @@ import { Component } from '@angular/core';
 })
 export class FormContactComponent {
 
-  enviar() {
+  enviar(form: any) {
+    console.log(form.value);
     alert('Mensaje enviado')
   }
 }

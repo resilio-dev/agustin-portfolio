@@ -1,11 +1,25 @@
-<form action="">
-  <div class="row-form">
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" />
+<form #contactForm class="contact-form p-4 rounded shadow d-flex flex-column gap-3" (ngSubmit)="enviar(contactForm)">
+  <div class="form-group mb-3">
+    <label for="email" class="form-label fw-bold">Email</label>
+    <input
+      type="email"
+      name="email"
+      id="email"
+      class="form-control custom-input"
+      placeholder="Tu correo electrónico"
+    />
   </div>
-  <div class="row-form">
-    <label for="message">Mensaje</label>
-    <input type="text" name="message" id="message" />
+
+  <div class="form-group mb-4">
+    <label for="message" class="form-label fw-bold">Mensaje</label>
+    <input
+      type="text"
+      name="message"
+      id="message"
+      class="form-control custom-input"
+      placeholder="Escribí tu mensaje"
+    />
   </div>
+
+  <button class="btn w-100 custom-btn" type="submit">ENVIAR</button>
 </form>
-<button class="btn" (click)="enviar()">ENVIAR</button>

@@ -1,5 +1,33 @@
-@media (max-width: 599px) {
-  .row {
-    flex-direction: column;
+.contact-form {
+  width: 500px;
+  max-width: 900px;
+  margin: 40px auto;
+  background-color: var(--bg-primary-color);
+  color: var(--bg-secondary-color);
+  border: 1px solid var(--link-color);
+}
+
+.custom-input {
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: var(--link-color);
+    box-shadow: 0 0 0 0.2rem var(--bg-primary-color);
+  }
+}
+
+.custom-btn {
+  border-radius: 0.5rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  background-color: var(--bg-secondary-color);
+
+  &:hover {
+    background-color: var(--bg-primary-color);
   }
 }
