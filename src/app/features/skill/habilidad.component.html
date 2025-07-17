@@ -1,27 +1,28 @@
-<section class="container-fluid p-5">
-  <div class="d-flex align-items-center justify-content-center">
-    <h1>Habilidades</h1>
-    <div *ngIf="estaLogeado()">
-      <button
-        class="btn btn-outline-success mx-3"
-        type="button"
-        (click)="modalAgregar.toggleModal()"
-      >
-        <i class="fa fa-plus"></i>
-      </button>
-      <app-modal #modalAgregar [titulo]="'Agregar Habilidad'">
-        <app-form-agregar-skill (agregar)="agregarHabilidad($event); modalAgregar.toggleModal()"></app-form-agregar-skill>
-      </app-modal>
-    </div>
-  </div>
-  <div class="row">
-    <div
-      class="col-12 col-sm-6 hab-item pe-5 pb-3 align-center"
+<article
+  class="bg-skills text-center position-absolute top-0 left-0 min-vh-100 w-100"
+>
+  <header class="d-flex align-items-center justify-content-center">
+    <h1 class="title">Habilidades</h1>
+    <button
+      class="btn btn-outline-success mx-3"
+      type="button"
+      (click)="modalAgregar.toggleModal()"
+      *ngIf="estaLogeado()"
+    >
+      <i class="fa fa-plus"></i>
+    </button>
+  </header>
+  <section
+    class="row d-flex align-items-baseline justify-content-center"
+    *ngIf="habilidades.length > 0; else noSkills"
+  >
+    <article
+      class="col-12 col-sm-6 hab-item pe-5 pb-3"
       *ngFor="let habilidad of this.habilidades"
     >
-      <div class="d-flex align-items-baseline justify-content-center">
-        <div class="hab-item d-flex">
-          <p>{{ habilidad.name }}</p>
+      <div class="">
+        <header class="hab-item d-flex">
+          <h5>{{ habilidad.name }}</h5>
           <img
             [src]="habilidad.logo"
             alt="logo-item"
@@ -29,46 +30,61 @@
             height="30px"
             class="mx-2"
           />
-        </div>
-        <div class="d-flex" *ngIf="estaLogeado()">
-          <div id="modal-edit">
-            <button
-              class="btn btn-outline-secondary"
-              type="button"
-              (click)="modalEditar.toggleModal(); editHabilidad = habilidad"
-            >
-              <i class="fa fa-pencil"></i>
-            </button>
-            <app-modal #modalEditar [titulo]="'Editar Habilidad'">
-              <app-form-editar-skill [editHabilidad]="habilidad" (editar)="editarHabilidad($event); modalEditar.toggleModal()"></app-form-editar-skill>
-            </app-modal>
-          </div>
-          <div id="modal-remove">
-            <button
-              class="btn btn-outline-danger"
-              type="button"
-              (click)="modalEliminar.toggleModal()"
-            >
-              <i class="fa fa-trash-can"></i>
-            </button>
-            <app-modal #modalEliminar [titulo]="'Eliminar Habilidad'">
-              <p>
-                ¿Realmente deseas eliminar <b>{{ habilidad.name }}</b
-                >?
-              </p>
-              <button
-                class="btn btn-danger m-2"
-                type="submit"
-                (click)="
-                  eliminarHabilidad(habilidad.id); modalEliminar.toggleModal()
-                "
-              >
-                Eliminar
-              </button>
-            </app-modal>
-          </div>
-        </div>
+        </header>
+        <footer class="d-flex" *ngIf="estaLogeado()">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="seleccionarHabilidad(habilidad); modalEditar.toggleModal()"
+          >
+            <i class="fa fa-pencil"></i>
+          </button>
+          <button
+            class="btn btn-outline-danger"
+            type="button"
+            (click)="
+              seleccionarHabilidad(habilidad); modalEliminar.toggleModal()
+            "
+          >
+            <i class="fa fa-trash-can"></i>
+          </button>
+        </footer>
       </div>
-    </div>
-  </div>
-</section>
+    </article>
+  </section>
+</article>
+
+<app-modal #modalAgregar [titulo]="'Agregar Habilidad'">
+  <app-form-agregar-skill
+    (agregar)="agregarHabilidad($event); modalAgregar.toggleModal()"
+  ></app-form-agregar-skill>
+</app-modal>
+
+<app-modal #modalEditar [titulo]="'Editar Habilidad'">
+  <app-form-editar-skill
+    [editHabilidad]="habilidadSeleccionada"
+    (editar)="editarHabilidad($event); modalEditar.toggleModal()"
+  ></app-form-editar-skill>
+</app-modal>
+
+<app-modal #modalEliminar [titulo]="'Eliminar Habilidad'">
+  <p *ngIf="this.habilidadSeleccionada">
+    ¿Realmente deseas eliminar <b>{{ habilidadSeleccionada.name }}</b
+    >?
+  </p>
+  <button
+    *ngIf="this.habilidadSeleccionada"
+    class="btn btn-danger m-2"
+    type="submit"
+    (click)="
+      eliminarHabilidad(habilidadSeleccionada.id); modalEliminar.toggleModal()
+    "
+  >
+    Eliminar
+  </button>
+</app-modal>
+<ng-template #noSkills>
+  <p class="text-center">
+    - No pudimos cargar las habilidades en este momento. -
+  </p>
+</ng-template>

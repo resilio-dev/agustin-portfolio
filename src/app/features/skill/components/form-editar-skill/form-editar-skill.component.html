@@ -1,4 +1,4 @@
-<form #editForm (ngSubmit)="editarHabilidad(editForm)">
+<form #editForm (ngSubmit)="editarHabilidad(editForm)" *ngIf="this.editHabilidad">
   <div class="form-group">
     <label for="idHab">Id</label>
     <input

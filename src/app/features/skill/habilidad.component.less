@@ -1,14 +1,18 @@
-.container-fluid .row {
-  .hab-item {
-    p {
-      font-family: monospace;
-      margin: 0;
-      margin-right: 20px;
-      font-size: var(--textoChico);
-    }
+.bg-skills {
+  color: var(--primary-text-color);
+  padding-top: 200px;
 
-    .progress .progress-bar {
-      background: linear-gradient(var(--colorDebil), var(--colorFuerte));
-    }
-  }
+  background: linear-gradient(
+    45deg,
+    var(--bg-primary-color) 50%, 
+    var(--bg-secondary-color) 40%
+  );
+
+  transition: background 0.5s ease;
+}
+
+.title {
+  font-family: fantasy;
+  letter-spacing: 0.2rem;
+  font-size: 2rem;
 }
