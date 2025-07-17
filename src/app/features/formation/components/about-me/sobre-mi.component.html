@@ -1,28 +1,28 @@
-<div class="sobre-mi text-center w-100">
-  <div class="p-2 pb-3">
-    <h1>Perfil Profesional</h1>
-    <div class="px-4 mi-perfil">
-      <p>Desarrollador Web con + de 2 años de experiencia.</p>
-      <hr />
-      <p *ngIf="this.usuario; else noDescription">
-        {{ this.usuario.description }}
-      </p>
-      <ng-template #noDescription
-        >I like to craft solid and scalable frontend products with great user
-        experiences.</ng-template
-      >
-    </div>
-    <hr />
-    <div class="buttons d-flex align-items-center">
-      <a
-        href="assets\CV Agustin Collueque.pdf"
-        download="cv-agustin-collueque"
-        class="btn w-50 call-button"
-        >Descargar CV</a
-      >
-      <button class="btn w-50 call-button" (click)="irAContacto()">
-        <b>Contactame</b>
-      </button>
-    </div>
-  </div>
-</div>
+<article class="sobre-mi text-center w-100">
+  <header>
+    <h1 class="title">Perfil Profesional</h1>
+    <p>Desarrollador Web con + de 2 años de experiencia.</p>
+  </header>
+  <hr />
+  <section class="px-4 mi-perfil">
+    <p *ngIf="this.usuario; else noDescription">
+      {{ this.usuario.description }}
+    </p>
+  </section>
+  <ng-template #noDescription
+    >I like to craft solid and scalable frontend products with great user
+    experiences.</ng-template
+  >
+  <hr />
+  <footer class="buttons d-flex align-items-center">
+    <a
+      href="assets\CV Agustin Collueque.pdf"
+      download="cv-agustin-collueque"
+      class="btn w-50 call-button"
+      >Descargar CV</a
+    >
+    <button class="btn w-50 call-button" (click)="irAContacto()">
+      <b>Contactame</b>
+    </button>
+  </footer>
+</article>

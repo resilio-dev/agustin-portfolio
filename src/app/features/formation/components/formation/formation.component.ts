@@ -1,41 +1,36 @@
 import { Component } from '@angular/core';
-import { ModalAgregarComponent } from '../modal-agregar/modal-agregar.component';
 import { CommonModule } from '@angular/common';
 import { IFormation } from 'src/app/core/models/IFormation.model';
-import { ModalEditComponent } from '../modal-edit/modal-edit.component';
+import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
+import { FormAgregarFormationComponent } from "../form-agregar-formation/form-agregar-formation.component";
+import { FormEditarFormationComponent } from "../form-editar-formation/form-editar-formation.component";
 
 @Component({
   selector: 'app-formation',
-  imports: [CommonModule, ModalAgregarComponent, ModalEditComponent],
+  imports: [CommonModule, ModalComponent, FormAgregarFormationComponent, FormEditarFormationComponent],
   templateUrl: './formation.component.html',
   styleUrl: './formation.component.less',
 })
 export class FormationComponent {
   formaciones: IFormation[] = [];
-  formSelected?: IFormation;
+  formacionSeleccionada?: IFormation;
 
-  showModalEdit: boolean = false;
-  showModalRemove: boolean = false;
-  showModalAdd: boolean = false;
-
-  eliminarFormacion(form: IFormation) {
-    this.formSelected = form;
+  eliminarFormacion(id: number) {
+    alert('formacion eliminada -> ' + id);
   }
-  eliminarFormacionSeleccionada() {
-    alert('formacion eliminada');
-  }
-
-  editarFormacion(form: IFormation) {
-    this.formSelected = form;
-  }
-  editarFormacionSeleccionada(form: IFormation) {
-    alert('form editada '+form.title)
+  editarFormacion(form :IFormation) {
+    alert('formacion editada '+form.id);
   }
 
   agregarFormacion(form: IFormation) {
-    this.formSelected = form;
+    this.formacionSeleccionada = form;
   }
-  agregarFormacionSeleccionada(form: IFormation) {
-    alert('form agregada '+form.title)
+
+  seleccionarFormacion(form: IFormation) {
+    this.formacionSeleccionada = form;
+  }
+
+  estaLogeado(): boolean {
+    return false;
   }
 }

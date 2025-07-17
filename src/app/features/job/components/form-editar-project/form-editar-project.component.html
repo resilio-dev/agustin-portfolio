@@ -1,0 +1,73 @@
+<form #formEdit (ngSubmit)="editarProyecto(formEdit)">
+  <div class="form-group">
+    <label for="title">Titulo</label>
+    <input
+      type="text"
+      [ngModel]="proyecto?.title"
+      name="title"
+      class="form-control"
+      id="title"
+      [placeholder]="proyecto?.title"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="description">Descripción</label>
+    <textarea
+      [ngModel]="proyecto?.description"
+      name="description"
+      class="form-control"
+      id="description"
+      [placeholder]="proyecto?.description"
+      required
+    ></textarea>
+  </div>
+  <div class="form-group">
+    <label for="imgSrc">Url img</label>
+    <input
+      type="text"
+      [ngModel]="proyecto?.imgSrc"
+      name="imgSrc"
+      class="form-control"
+      id="imgSrc"
+      [placeholder]="proyecto?.imgSrc"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="linkDemo">Link a Demo</label>
+    <input
+      type="text"
+      [ngModel]="proyecto?.linkDemo"
+      name="linkDemo"
+      class="form-control"
+      id="linkDemo"
+      [placeholder]="proyecto?.linkDemo"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="creationDate">Fecha de creacion</label>
+    <input
+      type="date"
+      [ngModel]="proyecto?.creationDate"
+      name="creationDate"
+      class="form-control"
+      id="creationDate"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="tecnologies">Tecnologías usadas</label>
+    <input
+      type="text"
+      [ngModel]="proyecto?.tecnologies"
+      name="tecnologies"
+      class="form-control"
+      id="tecnologies"
+      [placeholder]="proyecto?.tecnologies"
+      required
+    />
+  </div>
+  <button class="btn btn-success m-2" type="submit">Guardar</button>
+</form>

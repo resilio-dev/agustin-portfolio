@@ -1,4 +1,13 @@
-<form #contactForm class="contact-form p-4 rounded shadow d-flex flex-column gap-3" (ngSubmit)="enviar(contactForm)">
+<form
+  #contactForm
+  class="contact-form p-4 rounded shadow d-flex flex-column gap-3"
+  (ngSubmit)="enviar(contactForm)"
+>
+  <div class="form-group mb-3">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+  </div>
+
   <div class="form-group mb-3">
     <label for="email" class="form-label fw-bold">Email</label>
     <input
@@ -21,5 +30,5 @@
     />
   </div>
 
-  <button class="btn w-100 custom-btn" type="submit">ENVIAR</button>
+  <button class="btn w-100 custom-btn" type="submit">Enviar</button>
 </form>

@@ -18,7 +18,7 @@ import { FormEditarJobComponent } from '../form-editar-job/form-editar-job.compo
 })
 export class JobsComponent {
   trabajos: IJob[] = [];
-  trabajoSeleccionado!: IJob;
+  trabajoSeleccionado?: IJob;
 
   agregarTrabajo(job: IJob) {
     alert('trabajo creado');
