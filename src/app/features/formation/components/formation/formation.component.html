@@ -1,44 +1,52 @@
-<h1>Formación</h1>
-<div id="modal-add" *ngIf="this.showModalAdd">
-  <app-modal-agregar
-    [addFormacion]="this.formSelected"
-    (agregar)="this.agregarFormacion($event)"
-  ></app-modal-agregar>
-</div>
-<div class="row p-3" *ngFor="let formacion of this.formaciones">
-  <div class="col">
-    <img [src]="formacion.img" alt="img-item-formacion" width="150px" />
-    <h4>{{ formacion.title }}</h4>
-    <div class="descripcion p-2">
-      <p>{{ formacion.timeForm }}</p>
-      <a [href]="formacion.link">link</a>
+<div class="text-center w-100 forms">
+  <h1>Formación</h1>
+  <div id="modal-add" *ngIf="this.showModalAdd">
+    <app-modal-agregar
+      [addFormacion]="this.formSelected"
+      (agregar)="this.agregarFormacion($event)"
+    ></app-modal-agregar>
+  </div>
+  <div *ngIf="this.formaciones.length === 0">
+    <div class="row p-3" *ngFor="let formacion of this.formaciones">
+      <div class="col">
+        <img [src]="formacion.img" alt="img-item-formacion" width="150px" />
+        <h4>{{ formacion.title }}</h4>
+        <div class="descripcion p-2">
+          <p>{{ formacion.timeForm }}</p>
+          <a [href]="formacion.link">link</a>
+        </div>
+      </div>
+      <button class="btn" type="button" (click)="editarFormacion(formacion)">
+        <i class="fa fa-plus"></i>
+      </button>
+      <button
+        class="btn btn-outline-danger"
+        type="button"
+        (click)="eliminarFormacion(formacion)"
+      >
+        <i class="fa faTrashCan"></i>
+      </button>
+    </div>
+    <div id="modal-edit" *ngIf="this.showModalEdit">
+      <app-modal-edit
+        [editFormacion]="this.formSelected"
+        (editar)="editarFormacion($event)"
+      ></app-modal-edit>
+    </div>
+    <div id="modal-remove" *ngIf="this.showModalRemove">
+      <button
+        class="btn btn-close"
+        (click)="this.showModalRemove = false"
+      ></button>
+      <p>
+        ¿Realmente deseas eliminar <b>{{ this.formSelected?.title }}</b
+        >?
+      </p>
+      <button
+        class="btn btn-close"
+        (click)="eliminarFormacionSeleccionada()"
+      ></button>
     </div>
   </div>
-  <button class="btn" type="button" (click)="editarFormacion(formacion)">
-    <i class="fa fa-plus"></i>
-  </button>
-  <button
-    class="btn btn-outline-danger"
-    type="button"
-    (click)="eliminarFormacion(formacion)"
-  >
-    <i class="fa faTrashCan"></i>
-  </button>
 </div>
-<div id="modal-edit" *ngIf="this.showModalEdit">
-  <app-modal-edit
-    [editFormacion]="this.formSelected"
-    (editar)="editarFormacion($event)"
-  ></app-modal-edit>
-</div>
-<div id="modal-remove" *ngIf="this.showModalRemove">
-  <button class="btn btn-close" (click)="this.showModalRemove = false"></button>
-  <p>
-    ¿Realmente deseas eliminar <b>{{ this.formSelected?.title }}</b
-    >?
-  </p>
-  <button
-    class="btn btn-close"
-    (click)="eliminarFormacionSeleccionada()"
-  ></button>
-</div>
+  <p *ngIf="this.formaciones.length === 0">No podemos cargar las formaciones en este momento.</p>

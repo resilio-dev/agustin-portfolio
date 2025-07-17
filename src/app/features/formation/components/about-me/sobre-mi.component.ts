@@ -2,22 +2,28 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { IUser } from 'src/app/core/models/IUser.model';
 import { UserService } from 'src/app/core/services/user-service/user.service';
-import { HabilidadComponent } from '../../../skill/habilidad.component';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sobre-mi',
   standalone: true,
-  imports: [CommonModule, HabilidadComponent],
+  imports: [CommonModule],
   templateUrl: './sobre-mi.component.html',
   styleUrls: ['./sobre-mi.component.less']
 })
 export class SobreMiComponent implements OnInit {
   usuario?: IUser;
-  constructor(private usuarioService: UserService) { }
+  constructor(private usuarioService: UserService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.obtenerUsuario();
+  }
+
+  irAContacto() {
+    this.router.navigateByUrl("/desktop/contact")
   }
 
   obtenerUsuario() {
