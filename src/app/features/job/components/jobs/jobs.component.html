@@ -1,68 +1,80 @@
-<div class="d-flex flex-column justify-content-space-between" *ngIf="trabajos.length > 0; else noJobs">
-  <h3>Mis últimos trabajos</h3>
-  <button
-    class="btn btn-outline-success mx-3"
-    type="button"
-    (click)="modalAgregar.toggleModal()"
-    *ngIf="estaLogeado()"
+<article class="d-flex flex-column justify-content-space-between">
+  <header
+    class="d-flex flex-column justify-content-space-between align-ites-center"
   >
-    <i class="fa faPlus"></i>
-  </button>
-  <app-modal #modalAgregar [titulo]="'Agregar Trabajo'">
-    <app-form-agregar-job (agregar)="agregarTrabajo($event); modalAgregar.toggleModal()"></app-form-agregar-job>
-  </app-modal>
-</div>
-<div
-  class="row text-center border rounded-top p-3 m-2"
-  *ngFor="let trabajo of this.trabajos"
->
-  <div class="col">
-    <h5>{{ trabajo.job }}</h5>
-    <img [src]="trabajo.imgSrc" alt="img-item-proyecto" width="200px" />
-    <p>{{ trabajo.description }}</p>
-  </div>
-  <div class="d-flex justify-content-center" *ngIf="estaLogeado()">
-    <div id="modal-edit">
-      <button
-        class="btn btn-outline-secondary"
-        type="button"
-        (click)="modalEditar.toggleModal()"
-      >
-        <i class="fa faPencil"></i>
-      </button>
-      <app-modal #modalEditar [titulo]="'Editar Trabajo'">
-        <app-form-editar-job
-          [job]="trabajo"
-          (editar)="editarTrabajo($event); modalEditar.toggleModal()"
-        ></app-form-editar-job>
-      </app-modal>
-    </div>
-    <div id="modal-remove">
-      <button
-        class="btn btn-outline-danger"
-        type="button"
-        (click)="modalEliminar.toggleModal()"
-      >
-        <i class="fa faTrashCan"></i>
-      </button>
-      <app-modal #modalEliminar [titulo]="'Eliminar Formación'">
-        <p>
-          ¿Realmente deseas eliminar <b>{{ trabajo.job }}</b
-          >?
-        </p>
+    <h2 class="title">Mis últimos trabajos</h2>
+    <button
+      class="btn btn-outline-success mx-3"
+      type="button"
+      aria-label="agregar nuevo trabajo"
+      (click)="modalAgregar.toggleModal()"
+      *ngIf="estaLogeado()"
+    >
+      <i class="fa faPlus" aria-hidden="true"></i>
+    </button>
+  </header>
+  <section *ngIf="trabajos.length > 0; else noJobs">
+    <article
+      class="row text-center border rounded-top p-3 m-2"
+      *ngFor="let trabajo of this.trabajos"
+    >
+      <header class="col">
+        <h5>{{ trabajo.job }}</h5>
+      </header>
+      <section>
+        <img [src]="trabajo.imgSrc" alt="img-item-proyecto" width="200px" />
+        <p>{{ trabajo.description }}</p>
+      </section>
+      <footer class="d-flex justify-content-center" *ngIf="estaLogeado()">
         <button
-          class="btn btn-danger m-2"
-          type="submit"
-          (click)="eliminarTrabajo(trabajo.id); modalEliminar.toggleModal()"
+          class="btn btn-outline-secondary"
+          type="button"
+          aria-label="editar trabajo"
+          (click)="seleccionarTrabajo(trabajo); modalEditar.toggleModal()"
         >
-          Eliminar
+          <i class="fa faPencil" aria-hidden="true"></i>
         </button>
-      </app-modal>
-    </div>
-  </div>
-</div>
+        <button
+          class="btn btn-outline-danger"
+          type="button"
+          aria-label="eliminar trabajo"
+          (click)="seleccionarTrabajo(trabajo); modalEliminar.toggleModal()"
+        >
+          <i class="fa faTrashCan" aria-hidden="true"></i>
+        </button>
+      </footer>
+    </article>
+  </section>
+</article>
+<app-modal #modalAgregar [titulo]="'Agregar Trabajo'">
+  <app-form-agregar-job
+    (agregar)="agregarTrabajo($event); modalAgregar.toggleModal()"
+  ></app-form-agregar-job>
+</app-modal>
+
+<app-modal #modalEditar [titulo]="'Editar Trabajo'">
+  <app-form-editar-job
+    [job]="this.trabajoSeleccionado"
+    (editar)="editarTrabajo($event); modalEditar.toggleModal()"
+  ></app-form-editar-job>
+</app-modal>
+
+<app-modal #modalEliminar [titulo]="'Eliminar Formación'">
+  <p *ngIf="this.trabajoSeleccionado">
+    ¿Realmente deseas eliminar <b>{{ this.trabajoSeleccionado.job }}</b
+    >?
+  </p>
+  <button
+  *ngIf="this.trabajoSeleccionado"
+    class="btn btn-danger m-2"
+    type="submit"
+    (click)="
+      eliminarTrabajo(this.trabajoSeleccionado.id); modalEliminar.toggleModal()
+    "
+  >
+    Eliminar
+  </button>
+</app-modal>
 <ng-template #noJobs>
-    <p class="text-center">
-      - No pudimos cargar los trabajos en este momento. -
-    </p>
-  </ng-template>
+  <p class="text-center">- No pudimos cargar los trabajos en este momento. -</p>
+</ng-template>

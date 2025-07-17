@@ -1,20 +1,30 @@
-<section class="section-content p-5">
-  <div
-    class="title text-center"
-  >
-    Proyectos
-  </div>
-  <div
+<article class="d-flex flex-column justify-content-center p-5">
+  <header class="title text-center">
+    <h2>Proyectos</h2>
+    <button
+      class="btn btn-outline-success mx-3"
+      type="button"
+      aria-label="agregar nuevo trabajo"
+      (click)="modalAgregar.toggleModal()"
+      *ngIf="estaLogeado()"
+    >
+      <i class="fa faPlus" aria-hidden="true"></i>
+    </button>
+  </header>
+  <section
     class="grid-columns-2 gap-4"
-    *ngIf="this.projects.length > 0; else noProjects"
+    *ngIf="projects.length > 0; else noProjects"
   >
     <div class="project" *ngFor="let project of this.projects">
       <app-card [project]="project" class="p-2"></app-card>
     </div>
-  </div>
-  <ng-template #noProjects>
-    <p class="text-center">
-      - No pudimos cargar los proyectos en este momento. -
-    </p>
-  </ng-template>
-</section>
+  </section>
+</article>
+<app-modal #modalAgregar [titulo]="'Agregar Trabajo'"> </app-modal>
+
+<app-modal #modalEditar [titulo]="'Editar Trabajo'"> </app-modal>
+
+<app-modal #modalEliminar [titulo]="'Eliminar Formación'"> </app-modal>
+<ng-template #noProjects>
+  <p class="text-center">- No pudimos cargar los trabajos en este momento. -</p>
+</ng-template>
