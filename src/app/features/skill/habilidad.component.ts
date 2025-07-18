@@ -8,8 +8,7 @@ import { ISkill } from 'src/app/core/models/ISkill.model';
 import { UserService } from 'src/app/core/services/user-service/user.service';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
-import { FormAgregarSkillComponent } from './components/form-agregar-skill/form-agregar-skill.component';
-import { FormEditarSkillComponent } from './components/form-editar-skill/form-editar-skill.component';
+import { SkillFormComponent } from './components/skill-form/skill-form.component';
 
 @Component({
   selector: 'app-habilidad',
@@ -18,8 +17,7 @@ import { FormEditarSkillComponent } from './components/form-editar-skill/form-ed
     CommonModule,
     ModalComponent,
     FormsModule,
-    FormAgregarSkillComponent,
-    FormEditarSkillComponent,
+    SkillFormComponent
   ],
   templateUrl: './habilidad.component.html',
   styleUrls: ['./habilidad.component.less'],
@@ -33,10 +31,7 @@ export class HabilidadComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.habilidadService.obtenerHabilidades().subscribe({
-      next: (habs: ISkill[]) => (this.habilidades = habs),
-      error: (er: HttpErrorResponse) => console.error(er.message),
-    });
+    this.obtenerHabildades();
   }
 
   seleccionarHabilidad(habilidad: ISkill) {
