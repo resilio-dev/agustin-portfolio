@@ -1,17 +1,34 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-contact',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './form-contact.component.html',
   styleUrls: ['./form-contact.component.less']
 })
-export class FormContactComponent {
+export class FormContactComponent implements OnInit {
 
-  enviar(form: any) {
-    console.log(form.value);
-    alert('Mensaje enviado')
+  @Output() submit = new EventEmitter<{name: string; email: string; message: string}>();
+  contactForm!: FormGroup;
+
+  constructor(private fb :FormBuilder){}
+
+  ngOnInit(): void {
+    this.contactForm = this.fb.group({
+      name: ['', [Validators.required, Validators.maxLength(50)]],
+      email: ['', [Validators.required, Validators.email]],
+      message: ['', [Validators.required, Validators.maxLength(1000)]],
+    });
+  }
+
+  enviar() {
+    if(this.contactForm.valid) {
+      this.submit.emit(this.contactForm.value);
+    } else {
+      this.contactForm.markAllAsTouched();
+    }
   }
 }

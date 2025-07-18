@@ -1,40 +1,56 @@
 <form
-  #contactForm
+  [formGroup]="contactForm"
   class="contact-form p-4 rounded shadow d-flex flex-column gap-3"
-  (ngSubmit)="enviar(contactForm)"
+  (ngSubmit)="enviar()"
 >
   <div class="form-group mb-3">
     <label for="nombre" class="form-label fw-bold">Nombre:</label>
     <input
       type="text"
       id="nombre"
-      name="nombre"
-      placeholder="Tu nombre"
-      required
       class="form-control custom-input"
+      formControlName="nombre"
+      placeholder="Tu nombre"
     />
+    <small class="text-danger" *ngIf="contactForm.get('nombre')?.invalid && contactForm.get('nombre')?.touched">
+      El nombre es obligatorio (máx 50 caracteres).
+    </small>
   </div>
 
   <div class="form-group mb-3">
     <label for="email" class="form-label fw-bold">Email</label>
     <input
       type="email"
-      name="email"
       id="email"
       class="form-control custom-input"
+      formControlName="email"
       placeholder="Tu correo electrónico"
     />
+    <small class="text-danger" *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+      Ingresá un email válido.
+    </small>
   </div>
 
   <div class="form-group mb-4">
     <label for="message" class="form-label fw-bold">Mensaje</label>
     <textarea
-      name="message"
       id="message"
-      placeholder="Escribí tu mensaje"
       class="form-control custom-input"
+      formControlName="message"
+      placeholder="Escribí tu mensaje"
+      rows="4"
     ></textarea>
+    <small class="text-danger" *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
+      El mensaje es obligatorio (máx 1000 caracteres).
+    </small>
   </div>
 
-  <button class="btn w-100 custom-btn" type="submit">Enviar</button>
+  <button
+    type="submit"
+    class="btn btn-success w-100 custom-btn"
+    [disabled]="contactForm.invalid"
+  >
+    Enviar
+  </button>
 </form>
+

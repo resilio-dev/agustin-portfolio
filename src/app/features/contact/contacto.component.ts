@@ -25,4 +25,8 @@ export class ContactoComponent implements OnInit {
   irAHome() {
     this.router.navigateByUrl('/desktop');
   }
+
+  enviarMensaje(data: { name: string; email: string; message: string }) {
+    alert('¡Mensaje enviado!. Gracias por escribir ' + data.name);
+  }
 }
