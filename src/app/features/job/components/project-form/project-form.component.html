@@ -1,0 +1,85 @@
+<form [formGroup]="projectForm" (ngSubmit)="submit()" class="project-form p-3 rounded shadow">
+  <input type="hidden" formControlName="id" />
+
+  <div class="form-group mb-3">
+    <label for="title">Título</label>
+    <input
+      id="title"
+      class="form-control custom-input"
+      formControlName="title"
+      placeholder="Título del proyecto"
+    />
+    <small *ngIf="projectForm.get('title')?.invalid && projectForm.get('title')?.touched" class="text-danger">
+      Requerido. Máx. 100 caracteres.
+    </small>
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="description">Descripción</label>
+    <textarea
+      id="description"
+      class="form-control custom-input"
+      formControlName="description"
+      placeholder="Breve descripción del proyecto"
+    ></textarea>
+    <small *ngIf="projectForm.get('description')?.invalid && projectForm.get('description')?.touched" class="text-danger">
+      Requerido. Máx. 1000 caracteres.
+    </small>
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="imgSrc">URL de imagen</label>
+    <input
+      type="url"
+      id="imgSrc"
+      class="form-control custom-input"
+      formControlName="imgSrc"
+      placeholder="https://ejemplo.com/img.jpg"
+    />
+    <small *ngIf="projectForm.get('imgSrc')?.invalid && projectForm.get('imgSrc')?.touched" class="text-danger">
+      Ingresá una URL válida.
+    </small>
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="linkDemo">Link a Demo</label>
+    <input
+      type="url"
+      id="linkDemo"
+      class="form-control custom-input"
+      formControlName="linkDemo"
+      placeholder="https://demo.com"
+    />
+    <small *ngIf="projectForm.get('linkDemo')?.invalid && projectForm.get('linkDemo')?.touched" class="text-danger">
+      Ingresá una URL válida.
+    </small>
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="creationDate">Fecha de creación</label>
+    <input
+      type="date"
+      id="creationDate"
+      class="form-control custom-input"
+      formControlName="creationDate"
+    />
+    <small *ngIf="projectForm.get('creationDate')?.invalid && projectForm.get('creationDate')?.touched" class="text-danger">
+      Formato de fecha inválido.
+    </small>
+  </div>
+
+  <div class="form-group mb-4">
+    <label for="tecnologies">Tecnologías usadas</label>
+    <input
+      id="tecnologies"
+      class="form-control custom-input"
+      formControlName="tecnologies"
+      placeholder="HTML, CSS, JavaScript"
+    />
+    <small *ngIf="projectForm.get('tecnologies')?.invalid && projectForm.get('tecnologies')?.touched" class="text-danger">
+      Este campo es obligatorio.
+    </small>
+  </div>
+
+  <button type="submit" class="btn btn-success w-100 custom-btn">Guardar</button>
+</form>

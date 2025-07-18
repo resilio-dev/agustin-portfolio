@@ -43,16 +43,16 @@
   </section>
 </article>
 <app-modal #modalAgregar [titulo]="'Agregar Trabajo'">
-  <app-form-agregar-project
-    (agregar)="agregarProyecto($event); modalAgregar.toggleModal()"
-  ></app-form-agregar-project>
+  <app-project-form
+    (formSubmitted)="agregarProyecto($event); modalAgregar.toggleModal()"
+  ></app-project-form>
 </app-modal>
 
 <app-modal #modalEditar [titulo]="'Editar Trabajo'">
-  <app-form-editar-project
-    [proyecto]="this.proyectoSeleccionado"
-    (editar)="editarProyecto($event); modalEditar.toggleModal()"
-  ></app-form-editar-project>
+  <app-project-form
+    [projectData]="this.proyectoSeleccionado"
+    (formSubmitted)="editarProyecto($event); modalEditar.toggleModal()"
+  ></app-project-form>
 </app-modal>
 
 <app-modal #modalEliminar [titulo]="'Eliminar Formación'"> </app-modal>

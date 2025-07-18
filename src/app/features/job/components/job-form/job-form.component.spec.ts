@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModalAgregarJobComponent } from './form-agregar-job.component';
+import { JobFormComponent } from './job-form.component';
 
-describe('ModalAgregarJobComponent', () => {
-  let component: ModalAgregarJobComponent;
-  let fixture: ComponentFixture<ModalAgregarJobComponent>;
+describe('JobFormComponent', () => {
+  let component: JobFormComponent;
+  let fixture: ComponentFixture<JobFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ModalAgregarJobComponent]
+      imports: [JobFormComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ModalAgregarJobComponent);
+    fixture = TestBed.createComponent(JobFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

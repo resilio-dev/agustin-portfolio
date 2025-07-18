@@ -4,9 +4,8 @@ import { CommonModule } from '@angular/common';
 import { CardComponent } from '../card/card.component';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 import { ProyectoService } from 'src/app/core/services/project-service/project.service';
-import { FormAgregarProjectComponent } from '../form-agregar-project/form-agregar-project.component';
-import { FormEditarProjectComponent } from '../form-editar-project/form-editar-project.component';
 import { HttpErrorResponse } from '@angular/common/module.d-CnjH8Dlt';
+import { ProjectFormComponent } from "../project-form/project-form.component";
 
 @Component({
   selector: 'app-projects',
@@ -15,15 +14,14 @@ import { HttpErrorResponse } from '@angular/common/module.d-CnjH8Dlt';
     CommonModule,
     CardComponent,
     ModalComponent,
-    FormAgregarProjectComponent,
-    FormEditarProjectComponent,
-  ],
+    ProjectFormComponent
+],
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.less'],
 })
 export class ProjectsComponent implements OnInit {
   projects: IProject[] = [];
-  proyectoSeleccionado?: IProject;
+  proyectoSeleccionado!: IProject;
 
   constructor(private proyService: ProyectoService) {}
 

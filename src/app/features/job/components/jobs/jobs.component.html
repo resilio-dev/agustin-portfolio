@@ -1,7 +1,5 @@
 <article class="d-flex flex-column justify-content-space-between">
-  <header
-    class="d-flex gap-3 justify-content-center align-items-center"
-  >
+  <header class="d-flex gap-3 justify-content-center align-items-center">
     <h2 class="title">Mis últimos trabajos</h2>
     <button
       class="btn btn-outline-success"
@@ -47,16 +45,16 @@
   </section>
 </article>
 <app-modal #modalAgregar [titulo]="'Agregar Trabajo'">
-  <app-form-agregar-job
-    (agregar)="agregarTrabajo($event); modalAgregar.toggleModal()"
-  ></app-form-agregar-job>
+  <app-job-form
+    (formSubmitted)="agregarTrabajo($event); modalAgregar.toggleModal()"
+  ></app-job-form>
 </app-modal>
 
 <app-modal #modalEditar [titulo]="'Editar Trabajo'">
-  <app-form-editar-job
-    [job]="this.trabajoSeleccionado"
-    (editar)="editarTrabajo($event); modalEditar.toggleModal()"
-  ></app-form-editar-job>
+  <app-job-form
+    [jobData]="this.trabajoSeleccionado"
+    (formSubmitted)="editarTrabajo($event); modalEditar.toggleModal()"
+  ></app-job-form>
 </app-modal>
 
 <app-modal #modalEliminar [titulo]="'Eliminar Formación'">
@@ -65,7 +63,7 @@
     >?
   </p>
   <button
-  *ngIf="this.trabajoSeleccionado"
+    *ngIf="this.trabajoSeleccionado"
     class="btn btn-danger m-2"
     type="submit"
     (click)="

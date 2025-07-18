@@ -4,7 +4,7 @@ export interface IJob {
   id: number;
   job: string;
   description: string;
-  linkJob?: string;
+  linkJob: string;
   initialDate: string;
   finalDate: string;
   imgSrc: string;

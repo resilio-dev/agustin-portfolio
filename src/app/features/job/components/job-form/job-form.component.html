@@ -1,0 +1,47 @@
+<form [formGroup]="jobForm" (ngSubmit)="submit()" class="job-form p-3 rounded shadow">
+  <input type="hidden" formControlName="id" />
+
+  <div class="form-group mb-3">
+    <label for="job" class="form-label">Nombre</label>
+    <input
+      type="text"
+      id="job"
+      class="form-control custom-input"
+      placeholder="Nombre del trabajo"
+      formControlName="job"
+    />
+    <small *ngIf="jobForm?.get('job')?.invalid && jobForm?.get('job')?.touched" class="text-danger">
+      Requerido. Máx 50 caracteres.
+    </small>
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="description" class="form-label">Descripción</label>
+    <input
+      type="text"
+      id="description"
+      class="form-control custom-input"
+      placeholder="Descripción"
+      formControlName="description"
+    />
+    <small *ngIf="jobForm?.get('description')?.invalid && jobForm?.get('description')?.touched" class="text-danger">
+      Requerido. Máx 255 caracteres.
+    </small>
+  </div>
+
+  <div class="form-group mb-4">
+    <label for="imgSrc" class="form-label">URL de imagen</label>
+    <input
+      type="url"
+      id="imgSrc"
+      class="form-control custom-input"
+      placeholder="https://imagen.jpg"
+      formControlName="imgSrc"
+    />
+    <small *ngIf="jobForm?.get('imgSrc')?.invalid && jobForm?.get('imgSrc')?.touched" class="text-danger">
+      Ingresá una URL válida.
+    </small>
+  </div>
+
+  <button type="submit" class="btn btn-success w-100 custom-btn">Guardar</button>
+</form>
