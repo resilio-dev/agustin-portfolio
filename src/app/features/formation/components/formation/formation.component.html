@@ -47,12 +47,14 @@
 <app-modal #modalAdd [titulo]="'Agregar Formacion'">
   <app-formation-form
     (formSubmitted)="agregarFormacion($event); modalAdd.toggleModal()"
+    (formCancel)="modalAdd.toggleModal()"
   ></app-formation-form>
 </app-modal>
 <app-modal #modalEdit [titulo]="'Editar Formacion'">
   <app-formation-form
     [formationData]="this.formacionSeleccionada"
     (formSubmitted)="editarFormacion($event); modalEdit.toggleModal()"
+    (formCancel)="modalEdit.toggleModal()"
   ></app-formation-form>
 </app-modal>
 <app-modal #modalEliminar [titulo]="'Eliminar Formación'">

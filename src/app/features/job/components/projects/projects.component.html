@@ -45,6 +45,7 @@
 <app-modal #modalAgregar [titulo]="'Agregar Trabajo'">
   <app-project-form
     (formSubmitted)="agregarProyecto($event); modalAgregar.toggleModal()"
+    (formCancel)="modalAgregar.toggleModal()"
   ></app-project-form>
 </app-modal>
 
@@ -52,6 +53,7 @@
   <app-project-form
     [projectData]="this.proyectoSeleccionado"
     (formSubmitted)="editarProyecto($event); modalEditar.toggleModal()"
+    (formCancel)="modalEditar.toggleModal()"
   ></app-project-form>
 </app-modal>
 

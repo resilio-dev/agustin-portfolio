@@ -13,6 +13,7 @@ import { ProjectFormBuilderService } from '../../services/project-form-builder.s
 export class ProjectFormComponent {
   @Input() projectData: Partial<IProject> | null = null;
   @Output() formSubmitted = new EventEmitter<IProject>();
+  @Output() formCancel = new EventEmitter<void>();
 
   projectForm!: FormGroup;
 
@@ -28,5 +29,10 @@ export class ProjectFormComponent {
     } else {
       this.projectForm.markAllAsTouched();
     }
+  }
+
+  cancel() {
+    this.projectForm.reset();
+    this.formCancel.emit();
   }
 }

@@ -4,15 +4,15 @@
   (ngSubmit)="enviar()"
 >
   <div class="form-group mb-3">
-    <label for="nombre" class="form-label fw-bold">Nombre:</label>
+    <label for="name" class="form-label fw-bold">Nombre:</label>
     <input
       type="text"
-      id="nombre"
+      id="name"
       class="form-control custom-input"
-      formControlName="nombre"
+      formControlName="name"
       placeholder="Tu nombre"
     />
-    <small class="text-danger" *ngIf="contactForm.get('nombre')?.invalid && contactForm.get('nombre')?.touched">
+    <small class="text-danger" *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
       El nombre es obligatorio (máx 50 caracteres).
     </small>
   </div>
@@ -45,12 +45,22 @@
     </small>
   </div>
 
-  <button
-    type="submit"
-    class="btn btn-success w-100 custom-btn"
-    [disabled]="contactForm.invalid"
-  >
-    Enviar
-  </button>
+  <div class="d-flex justify-content-end gap-2 mt-3">
+    <button
+      type="button"
+      class="btn btn-outline-danger w-50"
+      (click)="cancel()"
+    >
+      Limpiar
+    </button>
+
+    <button
+      type="submit"
+      class="btn btn-success w-50 custom-btn"
+      [disabled]="contactForm.invalid"
+    >
+      Enviar
+    </button>
+  </div>
 </form>
 

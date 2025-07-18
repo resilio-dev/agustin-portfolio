@@ -31,4 +31,8 @@ export class FormContactComponent implements OnInit {
       this.contactForm.markAllAsTouched();
     }
   }
+
+  cancel() {
+    this.contactForm.reset();
+  }
 }

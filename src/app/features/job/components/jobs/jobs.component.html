@@ -47,6 +47,7 @@
 <app-modal #modalAgregar [titulo]="'Agregar Trabajo'">
   <app-job-form
     (formSubmitted)="agregarTrabajo($event); modalAgregar.toggleModal()"
+    (formCancel)="modalAgregar.toggleModal()"
   ></app-job-form>
 </app-modal>
 
@@ -54,6 +55,7 @@
   <app-job-form
     [jobData]="this.trabajoSeleccionado"
     (formSubmitted)="editarTrabajo($event); modalEditar.toggleModal()"
+    (formCancel)="modalEditar.toggleModal()"
   ></app-job-form>
 </app-modal>
 

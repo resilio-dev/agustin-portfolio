@@ -14,6 +14,7 @@ import { IJob } from 'src/app/core/models/IJob.model';
 export class JobFormComponent implements OnInit {
   @Input() jobData: Partial<IJob> | null = null;
   @Output() formSubmitted = new EventEmitter<IJob>();
+  @Output() formCancel = new EventEmitter<void>();
 
   jobForm!: FormGroup;
 
@@ -29,6 +30,11 @@ export class JobFormComponent implements OnInit {
     } else {
       this.jobForm.markAllAsTouched();
     }
+  }
+
+  cancel() {
+    this.jobForm.reset();
+    this.formCancel.emit();
   }
 }
 

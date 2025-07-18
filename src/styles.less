@@ -97,9 +97,38 @@ a {
 input.form-control,
 select.form-control,
 textarea.form-control {
-  background-color: var(--card-color);
+  background-color: var(--bg-secondary-color-color);
   color: var(--primary-text-color);
   border: 1px solid var(--bg-secondary-color);
+
+  &::placeholder {
+    color: var(--primary-text-color);
+  }
+}
+
+.custom-input {
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  border-radius: 0.5rem;
+  border: 1px solid var(--bg-secondary-color);
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: var(--link-color);
+    box-shadow: 0 0 0 0.2rem var(--bg-primary-color);
+  }
+}
+
+.custom-btn {
+  border-radius: 0.5rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  background-color: var(--bg-secondary-color);
+
+  &:hover {
+    background-color: var(--bg-primary-color);
+  }
 }
 
 /* Fondo y texto utilitarios */

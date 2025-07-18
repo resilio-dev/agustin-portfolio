@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 export class FormationFormComponent {
   @Input() formationData: Partial<IFormation> | null = null;
   @Output() formSubmitted = new EventEmitter<IFormation>();
+  @Output() formCancel = new EventEmitter<void>();
 
   formationForm!: FormGroup;
 
@@ -28,5 +29,9 @@ export class FormationFormComponent {
     } else {
       this.formationForm.markAllAsTouched();
     }
+  }
+  cancel() {
+    this.formationForm.reset();
+    this.formCancel.emit();
   }
 }

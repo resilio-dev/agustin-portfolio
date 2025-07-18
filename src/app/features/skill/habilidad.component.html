@@ -54,6 +54,7 @@
 <app-modal #modalAgregar [titulo]="'Agregar Habilidad'">
   <app-skill-form
     (formSubmitted)="agregarHabilidad($event); modalAgregar.toggleModal()"
+    (formCancel)="modalAgregar.toggleModal()"
   ></app-skill-form>
 </app-modal>
 
@@ -61,6 +62,7 @@
   <app-skill-form
     [skillData]="habilidadSeleccionada"
     (formSubmitted)="editarHabilidad($event); modalEditar.toggleModal()"
+    (formCancel)="modalEditar.toggleModal()"
   ></app-skill-form>
 </app-modal>
 

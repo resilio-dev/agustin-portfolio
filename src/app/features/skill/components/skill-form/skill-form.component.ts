@@ -13,6 +13,7 @@ import { SkillFormBuilderService } from '../../services/skill-form-builder.servi
 export class SkillFormComponent {
   @Input() skillData: Partial<ISkill> | null = null;
   @Output() formSubmitted = new EventEmitter<ISkill>();
+  @Output() formCancel = new EventEmitter<void>();
 
   skillForm!: FormGroup;
 
@@ -28,5 +29,10 @@ export class SkillFormComponent {
     } else {
       this.skillForm.markAllAsTouched();
     }
+  }
+
+  cancel() {
+    this.skillForm.reset();
+    this.formCancel.emit();
   }
 }
