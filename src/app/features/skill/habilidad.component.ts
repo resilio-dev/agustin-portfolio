@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HabilidadService } from 'src/app/core/services/skill-service/habilidad.service';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from 'src/app/core/services/auth-service/login/login.service';
@@ -25,7 +25,7 @@ import { FormEditarSkillComponent } from './components/form-editar-skill/form-ed
   templateUrl: './habilidad.component.html',
   styleUrls: ['./habilidad.component.less'],
 })
-export class HabilidadComponent {
+export class HabilidadComponent implements OnInit {
   habilidades: ISkill[] = [];
   habilidadSeleccionada!: ISkill;
   constructor(
@@ -33,6 +33,14 @@ export class HabilidadComponent {
     private loginService: LoginService,
     private usuarioService: UserService
   ) {}
+
+  ngOnInit(): void {
+    const aux = localStorage.getItem('user');
+    if (aux != null) {
+      const usuario: IUser = JSON.parse(aux) as IUser;
+      this.habilidades = usuario.skills;
+    }
+  }
 
   seleccionarHabilidad(habilidad: ISkill) {
     this.habilidadSeleccionada = habilidad;
@@ -92,6 +100,6 @@ export class HabilidadComponent {
   }
 
   estaLogeado(): boolean {
-    return false;
+    return localStorage.getItem('user') != null;
   }
 }

@@ -1,6 +1,7 @@
 import { ISkill } from "./ISkill.model";
 import { IProject } from "./IProject.model";
 import { IJob } from "./IJob.model";
+import { IFormation } from "./IFormation.model";
 
 
 export interface IUser {
@@ -13,5 +14,6 @@ export interface IUser {
   picture: string,
   projects: IProject[],
   jobs: IJob[],
+  formations: IFormation[],
   skills: ISkill[]
 }

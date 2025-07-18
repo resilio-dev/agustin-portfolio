@@ -1,14 +1,14 @@
 <article class="d-flex flex-column justify-content-center p-5">
-  <header class="title text-center">
-    <h2>Proyectos</h2>
+  <header class="d-flex align-items-center justify-content-center">
+    <h2 class="title">Proyectos</h2>
     <button
-      class="btn btn-outline-success mx-3"
+      class="btn"
       type="button"
       aria-label="agregar nuevo trabajo"
       (click)="modalAgregar.toggleModal()"
       *ngIf="estaLogeado()"
     >
-      <i class="fa faPlus" aria-hidden="true"></i>
+      <i class="fa fa-plus" aria-hidden="true"></i>
     </button>
   </header>
   <section

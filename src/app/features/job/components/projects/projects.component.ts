@@ -4,6 +4,7 @@ import { IProject } from 'src/app/core/models/IProject.model';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from '../card/card.component';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
+import { IUser } from 'src/app/core/models/IUser.model';
 
 @Component({
   selector: 'app-projects',
@@ -17,14 +18,14 @@ export class ProjectsComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    /*this.userService.obtenerUsuario(1).subscribe((user) => {
-     if (user) {
-        this.projects = user?.projects;
-      }
-    });*/
+    const aux = localStorage.getItem('user');
+    if (aux != null) {
+      const usuario :IUser = JSON.parse(aux) as IUser;
+      this.projects = usuario.projects;
+    }
   }
 
   estaLogeado(): boolean {
-    return false;
+    return localStorage.getItem('user') != null;
   }
 }

@@ -1,16 +1,16 @@
 <article class="d-flex flex-column justify-content-space-between">
   <header
-    class="d-flex flex-column justify-content-space-between align-ites-center"
+    class="d-flex justify-content-center align-items-center"
   >
     <h2 class="title">Mis últimos trabajos</h2>
     <button
-      class="btn btn-outline-success mx-3"
+      class="btn"
       type="button"
       aria-label="agregar nuevo trabajo"
       (click)="modalAgregar.toggleModal()"
       *ngIf="estaLogeado()"
     >
-      <i class="fa faPlus" aria-hidden="true"></i>
+      <i class="fa fa-plus" aria-hidden="true"></i>
     </button>
   </header>
   <section *ngIf="trabajos.length > 0; else noJobs">
@@ -18,7 +18,7 @@
       class="row text-center border rounded-top p-3 m-2"
       *ngFor="let trabajo of this.trabajos"
     >
-      <header class="col">
+      <header class="d-flex align-items-center justify-content-center">
         <h5>{{ trabajo.job }}</h5>
       </header>
       <section>
