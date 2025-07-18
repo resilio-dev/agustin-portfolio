@@ -1,0 +1,85 @@
+<form
+  [formGroup]="formationForm"
+  (ngSubmit)="submit()"
+  class="job-form p-3 rounded shadow"
+>
+  <input type="hidden" formControlName="id" />
+
+  <div class="form-group mb-3">
+    <label for="title">Titulo de la formación</label>
+    <input
+      type="text"
+      id="title"
+      formControlName="title"
+      class="form-control custom-input"
+      placeholder="Titulo de la formación"
+    />
+    <small
+      *ngIf="
+        formationForm.get('title')?.invalid &&
+        formationForm.get('title')?.touched
+      "
+      class="text-danger"
+    >
+      El nombre es obligatorio.
+    </small>
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="img">Url de la imagen</label>
+    <input
+      type="text"
+      id="img"
+      formControlName="img"
+      class="form-control custom-input"
+      placeholder="Url de la imagen"
+    />
+    <small
+      *ngIf="
+        formationForm.get('img')?.invalid && formationForm.get('img')?.touched
+      "
+      class="text-danger"
+    >
+      La URL de la imagen es obligatoria.
+    </small>
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="link">Ir a empresa</label>
+    <input
+      type="text"
+      id="link"
+      formControlName="link"
+      class="form-control custom-input"
+      placeholder="Ir a empresa"
+    />
+    <small
+      *ngIf="
+        formationForm.get('link')?.invalid && formationForm.get('link')?.touched
+      "
+      class="text-danger"
+    >
+      La URL de la empresa es obligatoria.
+    </small>
+  </div>
+  <div class="form-group mb-4">
+    <label for="timeForm">Tiempo</label>
+    <input
+      type="text"
+      id="timeForm"
+      formControlName="timeForm"
+      class="form-control custom-input"
+      placeholder="Tiempo de la formación"
+    />
+    <small
+      *ngIf="
+        formationForm.get('timeForm')?.invalid &&
+        formationForm.get('timeForm')?.touched
+      "
+      class="text-danger"
+    ></small>
+  </div>
+  <button type="submit" class="btn btn-success w-100 custom-btn">
+    Guardar
+  </button>
+</form>

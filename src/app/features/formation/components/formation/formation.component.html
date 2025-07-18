@@ -10,9 +10,14 @@
       <i class="fa fa-plus"></i>
     </button>
   </header>
-  <section class="w-100 d-flex flew-wrap justify-content-center align-items-center" *ngIf="this.formaciones.length > 0; else noFormations">
+  <section
+    class="w-100 d-flex flew-wrap justify-content-center align-items-center"
+    *ngIf="this.formaciones.length > 0; else noFormations"
+  >
     <article class="col-4" *ngFor="let formacion of this.formaciones">
-      <header class="d-flex flex-column justify-content-center align-items-center gap-3">
+      <header
+        class="d-flex flex-column justify-content-center align-items-center gap-3"
+      >
         <img [src]="formacion.img" alt="img-item-formacion" width="150px" />
         <h4>{{ formacion.title }}</h4>
       </header>
@@ -40,15 +45,15 @@
   </section>
 </article>
 <app-modal #modalAdd [titulo]="'Agregar Formacion'">
-  <app-form-agregar-formation
-    (agregar)="agregarFormacion($event); modalAdd.toggleModal()"
-  ></app-form-agregar-formation>
+  <app-formation-form
+    (formSubmitted)="agregarFormacion($event); modalAdd.toggleModal()"
+  ></app-formation-form>
 </app-modal>
 <app-modal #modalEdit [titulo]="'Editar Formacion'">
-  <app-form-editar-formation
-    [formacion]="this.formacionSeleccionada"
-    (editar)="editarFormacion($event); modalEdit.toggleModal()"
-  ></app-form-editar-formation>
+  <app-formation-form
+    [formationData]="this.formacionSeleccionada"
+    (formSubmitted)="editarFormacion($event); modalEdit.toggleModal()"
+  ></app-formation-form>
 </app-modal>
 <app-modal #modalEliminar [titulo]="'Eliminar Formación'">
   <p *ngIf="this.formacionSeleccionada">
