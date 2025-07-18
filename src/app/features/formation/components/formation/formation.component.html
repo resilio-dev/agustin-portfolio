@@ -1,8 +1,8 @@
 <article class="text-center w-100">
-  <header class="d-flex align-items-center justify-content-center">
+  <header class="d-flex gap-3 align-items-center justify-content-center">
     <h1 class="title">Formación</h1>
     <button
-      class="btn"
+      class="btn btn-outline-success"
       type="button"
       (click)="modalAdd.toggleModal()"
       *ngIf="estaLogeado()"
@@ -10,19 +10,19 @@
       <i class="fa fa-plus"></i>
     </button>
   </header>
-  <section *ngIf="this.formaciones.length > 0; else noFormations">
-    <article class="row p-3" *ngFor="let formacion of this.formaciones">
-      <header class="col">
+  <section class="w-100 d-flex flew-wrap justify-content-center align-items-center" *ngIf="this.formaciones.length > 0; else noFormations">
+    <article class="col-4" *ngFor="let formacion of this.formaciones">
+      <header class="d-flex flex-column justify-content-center align-items-center gap-3">
         <img [src]="formacion.img" alt="img-item-formacion" width="150px" />
         <h4>{{ formacion.title }}</h4>
       </header>
       <section class="descripcion p-2">
         <p>{{ formacion.timeForm }}</p>
-        <a [href]="formacion.link">link</a>
+        <a [href]="formacion.link">Demo</a>
       </section>
-      <footer>
+      <footer class="d-flex justify-content-center alignt-items-center gap-3">
         <button
-          class="btn"
+          class="btn btn-outline-secondary"
           type="button"
           (click)="seleccionarFormacion(formacion); modalEdit.toggleModal()"
         >
@@ -33,7 +33,7 @@
           type="button"
           (click)="eliminarFormacion(formacion.id)"
         >
-          <i class="fa faTrashCan"></i>
+          <i class="fa fa-trash-can"></i>
         </button>
       </footer>
     </article>

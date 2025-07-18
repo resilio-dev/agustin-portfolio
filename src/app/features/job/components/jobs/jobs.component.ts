@@ -4,7 +4,8 @@ import { FormAgregarJobComponent } from '../form-agregar-job/form-agregar-job.co
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 import { IJob } from 'src/app/core/models/IJob.model';
 import { FormEditarJobComponent } from '../form-editar-job/form-editar-job.component';
-import { IUser } from 'src/app/core/models/IUser.model';
+import { TrabajoService } from 'src/app/core/services/job-service/trabajo.service';
+import { HttpErrorResponse } from '@angular/common/module.d-CnjH8Dlt';
 
 @Component({
   selector: 'app-jobs',
@@ -21,12 +22,15 @@ export class JobsComponent implements OnInit {
   trabajos: IJob[] = [];
   trabajoSeleccionado?: IJob;
 
+  constructor(private trabService: TrabajoService) {}
+
   ngOnInit(): void {
-    const aux = localStorage.getItem('user');
-    if (aux != null) {
-      const usuario: IUser = JSON.parse(aux) as IUser;
-      this.trabajos = usuario.jobs;
-    }
+    this.trabService.obtenerTrabajos().subscribe({
+      next: (trabs: IJob[]) => {
+        this.trabajos = trabs;
+      },
+      error: (er: HttpErrorResponse) => console.error(er.message),
+    });
   }
 
   agregarTrabajo(job: IJob) {

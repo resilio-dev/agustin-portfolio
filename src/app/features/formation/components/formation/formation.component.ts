@@ -4,7 +4,8 @@ import { IFormation } from 'src/app/core/models/IFormation.model';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 import { FormAgregarFormationComponent } from '../form-agregar-formation/form-agregar-formation.component';
 import { FormEditarFormationComponent } from '../form-editar-formation/form-editar-formation.component';
-import { IUser } from 'src/app/core/models/IUser.model';
+import { HttpErrorResponse } from '@angular/common/module.d-CnjH8Dlt';
+import { FormacionService } from 'src/app/core/services/formation-service/formacion.service';
 
 @Component({
   selector: 'app-formation',
@@ -21,12 +22,10 @@ export class FormationComponent implements OnInit {
   formaciones: IFormation[] = [];
   formacionSeleccionada?: IFormation;
 
+constructor(private formService: FormacionService) {}
+
   ngOnInit(): void {
-    const aux = localStorage.getItem('user');
-    if (aux != null) {
-      const usuario: IUser = JSON.parse(aux) as IUser;
-      this.formaciones = usuario.formations;
-    }
+    this.obtenerFormaciones();
   }
 
   eliminarFormacion(id: number) {
@@ -46,5 +45,14 @@ export class FormationComponent implements OnInit {
 
   estaLogeado(): boolean {
     return localStorage.getItem('user') != null;
+  }
+
+  obtenerFormaciones() {
+    this.formService.obtenerFormaciones().subscribe({
+      next: (forms: IFormation[]) => {
+        this.formaciones = forms;
+      },
+      error: (er: HttpErrorResponse) => console.error(er.message)
+    })
   }
 }

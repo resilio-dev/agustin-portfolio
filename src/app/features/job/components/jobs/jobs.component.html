@@ -1,10 +1,10 @@
 <article class="d-flex flex-column justify-content-space-between">
   <header
-    class="d-flex justify-content-center align-items-center"
+    class="d-flex gap-3 justify-content-center align-items-center"
   >
     <h2 class="title">Mis últimos trabajos</h2>
     <button
-      class="btn"
+      class="btn btn-outline-success"
       type="button"
       aria-label="agregar nuevo trabajo"
       (click)="modalAgregar.toggleModal()"
@@ -18,21 +18,21 @@
       class="row text-center border rounded-top p-3 m-2"
       *ngFor="let trabajo of this.trabajos"
     >
-      <header class="d-flex align-items-center justify-content-center">
-        <h5>{{ trabajo.job }}</h5>
+      <header class="d-flex gap-3 align-items-center justify-content-center">
+        <h4>{{ trabajo.job }}</h4>
       </header>
       <section>
-        <img [src]="trabajo.imgSrc" alt="img-item-proyecto" width="200px" />
+        <img [src]="trabajo.imgSrc" [alt]="trabajo.description" width="200px" />
         <p>{{ trabajo.description }}</p>
       </section>
-      <footer class="d-flex justify-content-center" *ngIf="estaLogeado()">
+      <footer class="d-flex gap-3 justify-content-center" *ngIf="estaLogeado()">
         <button
           class="btn btn-outline-secondary"
           type="button"
           aria-label="editar trabajo"
           (click)="seleccionarTrabajo(trabajo); modalEditar.toggleModal()"
         >
-          <i class="fa faPencil" aria-hidden="true"></i>
+          <i class="fa fa-pencil" aria-hidden="true"></i>
         </button>
         <button
           class="btn btn-outline-danger"
@@ -40,7 +40,7 @@
           aria-label="eliminar trabajo"
           (click)="seleccionarTrabajo(trabajo); modalEliminar.toggleModal()"
         >
-          <i class="fa faTrashCan" aria-hidden="true"></i>
+          <i class="fa fa-trash-can" aria-hidden="true"></i>
         </button>
       </footer>
     </article>

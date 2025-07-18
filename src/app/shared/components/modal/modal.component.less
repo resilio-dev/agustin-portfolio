@@ -1,3 +1,43 @@
-.bg-gradient {
-  background: linear-gradient(var(--bg-primary-color), var(--bg-secondary-color));
+.custom-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1055;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow-y: auto;
+  outline: none;
+}
+
+.custom-modal-container {
+  background-color: var(--bg-primary-color);
+  color: var(--primary-text-color);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;
+  padding: 1.5rem;
+
+  @media (min-width: 768px) {
+    padding: 2rem;
+  }
+}
+
+.custom-modal-header {
+  border-bottom: 1px solid var(--primary-text-color);
+  margin-bottom: 1rem;
+
+  .modal-title {
+    font-size: var(--medium-font-size);
+    font-weight: bold;
+  }
+}
+
+.custom-modal-body {
+  font-size: var(--small-font-size);
+  line-height: 1.5;
 }

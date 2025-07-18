@@ -2,7 +2,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { HabilidadService } from 'src/app/core/services/skill-service/habilidad.service';
 import { FormsModule } from '@angular/forms';
-import { LoginService } from 'src/app/core/services/auth-service/login/login.service';
 
 import { IUser } from 'src/app/core/models/IUser.model';
 import { ISkill } from 'src/app/core/models/ISkill.model';
@@ -30,16 +29,14 @@ export class HabilidadComponent implements OnInit {
   habilidadSeleccionada!: ISkill;
   constructor(
     private habilidadService: HabilidadService,
-    private loginService: LoginService,
     private usuarioService: UserService
   ) {}
 
   ngOnInit(): void {
-    const aux = localStorage.getItem('user');
-    if (aux != null) {
-      const usuario: IUser = JSON.parse(aux) as IUser;
-      this.habilidades = usuario.skills;
-    }
+    this.habilidadService.obtenerHabilidades().subscribe({
+      next: (habs: ISkill[]) => (this.habilidades = habs),
+      error: (er: HttpErrorResponse) => console.error(er.message),
+    });
   }
 
   seleccionarHabilidad(habilidad: ISkill) {

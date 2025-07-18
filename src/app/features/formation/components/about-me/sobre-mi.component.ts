@@ -25,15 +25,4 @@ export class SobreMiComponent implements OnInit {
   irAContacto() {
     this.router.navigateByUrl('/desktop/contact');
   }
-
-  calcularEdad(fechaNac: string) {
-    const hoy: Date = new Date();
-    const fechaNacimiento: Date = new Date(fechaNac);
-    let edad: number = hoy.getFullYear() - fechaNacimiento.getFullYear();
-    const mes: number = hoy.getMonth() - fechaNacimiento.getMonth();
-    if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNacimiento.getDate())) {
-      edad--;
-    }
-    return edad;
-  }
 }

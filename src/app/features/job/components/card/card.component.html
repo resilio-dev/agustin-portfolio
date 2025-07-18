@@ -4,11 +4,15 @@
     <h5 class="card-title">{{ this.project.title }}</h5>
   </header>
   <section class="card-body">
-    <p>{{ this.project.description }}</p>
-    <div class="d-flex flex-column gap-2">
-      <a [href]="this.project.linkDemo" class="btn">Demo</a>
-      <button class="btn">Tecnologías</button>
+    <p class="text-muted">{{ this.project.description }}</p>
+    <h5>Tecnologías usadas</h5>
+    <div class="d-flex gap-2 align-items-center justify-content-center">
+      <div class="col-3" *ngFor="let skill of this.project.tecnologies">
+        <img [src]="skill.logo" [alt]="skill.name" *ngIf="skill.logo != '#'; else noLogo">
+        <ng-template #noLogo><p class="text-decoration-underline">{{ skill.name }}</p></ng-template>
+      </div>
     </div>
+    <a [href]="this.project.linkDemo" class="btn shadow m-3">Ir a Demo</a>
   </section>
   <footer class="card-footer text-muted">
     {{ this.project.creationDate }}

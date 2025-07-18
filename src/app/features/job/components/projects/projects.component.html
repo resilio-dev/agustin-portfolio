@@ -1,8 +1,8 @@
 <article class="d-flex flex-column justify-content-center p-5">
-  <header class="d-flex align-items-center justify-content-center">
+  <header class="d-flex gap-3 align-items-center justify-content-center">
     <h2 class="title">Proyectos</h2>
     <button
-      class="btn"
+      class="btn btn-outline-success"
       type="button"
       aria-label="agregar nuevo trabajo"
       (click)="modalAgregar.toggleModal()"
@@ -15,14 +15,45 @@
     class="grid-columns-2 gap-4"
     *ngIf="projects.length > 0; else noProjects"
   >
-    <div class="project" *ngFor="let project of this.projects">
-      <app-card [project]="project" class="p-2"></app-card>
-    </div>
+    <article class="project" *ngFor="let project of this.projects">
+      <header>
+        <app-card [project]="project" class="p-2"></app-card>
+      </header>
+      <footer class="d-flex align-items-center justify-content-center gap-3">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          aria-label="editar nuevo trabajo"
+          (click)="seleccionarProyecto(project); modalEditar.toggleModal()"
+          *ngIf="estaLogeado()"
+        >
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        </button>
+        <button
+          class="btn btn-outline-danger"
+          type="button"
+          aria-label="eliminar trabajo"
+          (click)="seleccionarProyecto(project); modalEliminar.toggleModal()"
+          *ngIf="estaLogeado()"
+        >
+          <i class="fa fa-trash-can" aria-hidden="true"></i>
+        </button>
+      </footer>
+    </article>
   </section>
 </article>
-<app-modal #modalAgregar [titulo]="'Agregar Trabajo'"> </app-modal>
+<app-modal #modalAgregar [titulo]="'Agregar Trabajo'">
+  <app-form-agregar-project
+    (agregar)="agregarProyecto($event); modalAgregar.toggleModal()"
+  ></app-form-agregar-project>
+</app-modal>
 
-<app-modal #modalEditar [titulo]="'Editar Trabajo'"> </app-modal>
+<app-modal #modalEditar [titulo]="'Editar Trabajo'">
+  <app-form-editar-project
+    [proyecto]="this.proyectoSeleccionado"
+    (editar)="editarProyecto($event); modalEditar.toggleModal()"
+  ></app-form-editar-project>
+</app-modal>
 
 <app-modal #modalEliminar [titulo]="'Eliminar Formación'"> </app-modal>
 <ng-template #noProjects>

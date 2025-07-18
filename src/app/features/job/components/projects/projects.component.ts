@@ -1,28 +1,52 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/core/services/user-service/user.service';
 import { IProject } from 'src/app/core/models/IProject.model';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from '../card/card.component';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
-import { IUser } from 'src/app/core/models/IUser.model';
+import { ProyectoService } from 'src/app/core/services/project-service/project.service';
+import { FormAgregarProjectComponent } from '../form-agregar-project/form-agregar-project.component';
+import { FormEditarProjectComponent } from '../form-editar-project/form-editar-project.component';
+import { HttpErrorResponse } from '@angular/common/module.d-CnjH8Dlt';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, CardComponent, ModalComponent],
+  imports: [
+    CommonModule,
+    CardComponent,
+    ModalComponent,
+    FormAgregarProjectComponent,
+    FormEditarProjectComponent,
+  ],
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.less'],
 })
 export class ProjectsComponent implements OnInit {
   projects: IProject[] = [];
-  constructor(private userService: UserService) {}
+  proyectoSeleccionado?: IProject;
+
+  constructor(private proyService: ProyectoService) {}
 
   ngOnInit(): void {
-    const aux = localStorage.getItem('user');
-    if (aux != null) {
-      const usuario :IUser = JSON.parse(aux) as IUser;
-      this.projects = usuario.projects;
-    }
+    this.proyService.obtenerProyectos().subscribe({
+      next: (proys: IProject[]) => {
+        this.projects = proys;
+        console.log(proys)
+      },
+      error: (er: HttpErrorResponse) => console.error(er.message)
+    });
+  }
+
+  seleccionarProyecto(proy: IProject) {
+    this.proyectoSeleccionado = proy;
+  }
+
+  agregarProyecto(proy: IProject) {
+    alert('proyecto agregado');
+  }
+
+  editarProyecto(proy: IProject) {
+    alert('proyecto editado');
   }
 
   estaLogeado(): boolean {
