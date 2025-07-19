@@ -1,14 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { IUser } from 'src/app/core/models/IUser.model';
-import { BrandComponent } from 'src/app/shared/components/brand/brand.component';
 import { TemaService } from 'src/app/shared/services/multitemas/tema.service';
 import { NavIconComponent } from "./components/nav-icon/nav-icon.component";
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, BrandComponent, NavIconComponent],
+  imports: [CommonModule, NavIconComponent],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.less'],
 })

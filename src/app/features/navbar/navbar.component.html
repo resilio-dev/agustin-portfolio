@@ -1,5 +1,4 @@
 <nav class="navbar align-items-center">
-  <app-brand></app-brand>
   <div class="menu text-center">
     <button (click)="showHideMenu()" class="btn-menu">
       <div
@@ -26,10 +25,10 @@
       <hr />
       <button class="btn-nav" (click)="toggleTema()">
         <span *ngIf="this.getTema() === 'light'">
-          <i class="fa fa-sun"></i>
+          <i class="fa fa-moon"></i>
         </span>
         <span *ngIf="this.getTema() === 'dark'">
-          <i class="fa fa-moon"></i>
+          <i class="fa fa-sun"></i>
         </span>
       </button>
     </ul>

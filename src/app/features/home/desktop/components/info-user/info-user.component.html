@@ -1,24 +1,23 @@
-<div
-  class="d-md-flex align-items-center"
->
+<article class="d-md-flex align-items-center">
   <div
     class="d-flex align-items-center flex-column gap-3 w-50 info-user"
     *ngIf="this.usuario"
   >
-    <div class="position-relative">
-      <h1>Web Developer</h1>
-      <span class="icon-graduate">
-        <i class="fa faUserGraduate"></i>
-      </span>
-    </div>
-    <p>
-      {{ this.usuario.description }}
-    </p>
-    <button
-      class="btn w-50 call-button"
-    (click)="irAContacto()"
-    >
-      <b>Contactame</b>
-    </button>
+    <header class="titulo-destacado position-relative d-inline-block my-5">
+      <h1 class="titulo-neon">Web Developer</h1>
+      <span class="orbe orbe-1"></span>
+      <span class="orbe orbe-2"></span>
+      <span class="orbe orbe-3"></span>
+    </header>
+    <section>
+      <p>
+        {{ this.usuario.description }}
+      </p>
+    </section>
+    <footer class="w-100">
+      <button class="btn w-50 call-button" (click)="irAContacto()">
+        <b>Contactame</b>
+      </button>
+    </footer>
   </div>
-</div>
+</article>
