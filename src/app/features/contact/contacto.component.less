@@ -1,28 +1,22 @@
 .bg-contact {
   color: var(--primary-text-color);
-  padding-top: 200px;
-  background: linear-gradient(
-    145deg,
-    var(--bg-primary-color) 0%,
-    var(--bg-secondary-color) 100%
+  padding: 150px 0;
+  background: radial-gradient(
+    circle,
+    var(--bg-primary-color),
+    var(--card-bg-color),
+    var(--bg-primary-color)
   );
-  background-size: 200% 200%;
-  animation: backgroundShift 10s ease infinite;
-  transition: background 0.5s ease;
-
-  @keyframes backgroundShift {
-    0% {
-      background-position: 0% 50%;
+  animation: pulseBackground 10s ease-in-out infinite;
+  background-repeat: no-repeat;
+  background-position: center;
+  @keyframes pulseBackground {
+    0%,
+    100% {
+      background-size: 100% 100%;
     }
     50% {
-      background-position: 100% 50%;
+      background-size: 120% 120%;
     }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
-  p {
-    font-size: var(--medium-text-size);
   }
 }

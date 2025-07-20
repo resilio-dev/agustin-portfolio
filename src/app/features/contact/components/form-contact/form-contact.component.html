@@ -1,10 +1,9 @@
 <form
   [formGroup]="contactForm"
-  class="contact-form p-4 rounded shadow d-flex flex-column gap-3"
+  class="contact-form d-flex flex-column gap-3"
   (ngSubmit)="enviar()"
 >
   <div class="form-group mb-3">
-    <label for="name" class="form-label fw-bold">Nombre:</label>
     <input
       type="text"
       id="name"
@@ -12,13 +11,12 @@
       formControlName="name"
       placeholder="Tu nombre"
     />
-    <small class="text-danger" *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+    <small *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
       El nombre es obligatorio (máx 50 caracteres).
     </small>
   </div>
 
   <div class="form-group mb-3">
-    <label for="email" class="form-label fw-bold">Email</label>
     <input
       type="email"
       id="email"
@@ -26,13 +24,12 @@
       formControlName="email"
       placeholder="Tu correo electrónico"
     />
-    <small class="text-danger" *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+    <small *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
       Ingresá un email válido.
     </small>
   </div>
 
-  <div class="form-group mb-4">
-    <label for="message" class="form-label fw-bold">Mensaje</label>
+  <div class="form-group mb-3">
     <textarea
       id="message"
       class="form-control custom-input"
@@ -40,15 +37,15 @@
       placeholder="Escribí tu mensaje"
       rows="4"
     ></textarea>
-    <small class="text-danger" *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
+    <small *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
       El mensaje es obligatorio (máx 1000 caracteres).
     </small>
   </div>
 
-  <div class="d-flex justify-content-end gap-2 mt-3">
+  <div class="d-flex justify-content-center gap-4">
     <button
       type="reset"
-      class="btn btn-outline-danger w-50"
+      class="btn-default danger-button"
       (click)="cancel()"
     >
       Limpiar
@@ -56,8 +53,7 @@
 
     <button
       type="submit"
-      class="btn btn-success w-50"
-      [disabled]="contactForm.invalid"
+      class="btn-default primary-button"
     >
       Enviar
     </button>
