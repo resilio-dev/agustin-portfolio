@@ -41,12 +41,15 @@ export class TemaService {
       bgPrimaryColor: style.getPropertyValue('--bg-primary-color').trim(),
       bgSecondaryColor: style.getPropertyValue('--bg-secondary-color').trim(),
       primaryTextColor: style.getPropertyValue('--primary-text-color').trim(),
-      cardColor: style.getPropertyValue('--card-bg').trim(),
-      cardShadowConfig: style.getPropertyValue('--card-shadow-config').trim(),
-      linkColor: style.getPropertyValue('--link-color').trim(),
       bigTextSize: style.getPropertyValue('--big-text-size').trim(),
-      mediumTextSize: style.getPropertyValue('--medium-text-size').trim(),
+      middleTextSize: style.getPropertyValue('--middle-text-size').trim(),
       smallTextSize: style.getPropertyValue('--small-text-size').trim(),
+      cardBgColor: style.getPropertyValue('--card-bg-color').trim(),
+      cardTextColor: style.getPropertyValue('--card-text-color').trim(),
+      cardShadowColor: style.getPropertyValue('--card-shadow-color').trim(),
+      dangerColor: style.getPropertyValue('--danger-color').trim(),
+      successColor: style.getPropertyValue('--success-color').trim(),
+      neutralColor: style.getPropertyValue('--neutral-color').trim(),
     };
   }
 }

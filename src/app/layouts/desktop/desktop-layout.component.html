@@ -4,6 +4,11 @@
 <main class="position-relative z-1">
   <router-outlet></router-outlet>
 </main>
-<nav class="position-fixed bottom-0 left-0 w-100 z-3" id="navbar-bottom">
-  <app-navbar-bottom></app-navbar-bottom>
+<nav
+  class="w-100 d-flex align-items-center justify-content-center"
+  id="navbar-bottom"
+>
+  <div class="position-fixed z-3 container-nav-bottom">
+    <app-navbar-bottom></app-navbar-bottom>
+  </div>
 </nav>

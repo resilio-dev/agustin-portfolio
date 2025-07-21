@@ -1,11 +1,14 @@
 export interface IPropertiesTheme {
   bgPrimaryColor: string,
   bgSecondaryColor: string,
-  cardColor: string,
-  cardShadowConfig: string,
   primaryTextColor: string,
-  linkColor: string,
   smallTextSize: string,
-  mediumTextSize: string,
+  middleTextSize: string,
   bigTextSize: string,
+  cardBgColor: string,
+  cardTextColor: string,
+  cardShadowColor: string,
+  dangerColor: string,
+  successColor: string,
+  neutralColor: string
 }
