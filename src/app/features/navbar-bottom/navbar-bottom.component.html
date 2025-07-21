@@ -1,44 +1,12 @@
 <nav class="d-flex justify-content-center align-items-center gap-4">
   <button
-    class="btn nav-icon center-icon diamond-wrapper"
-    (click)="navigateTo('contact')"
+    *ngFor="let page of pages"
+    class="btn diamon-wrapper nav-icon center-icon"
+    (click)="navigateTo(page)"
   >
-    <div
-      class="diamond-shape"
-    ></div>
-  </button>
-
-  <button
-    class="btn nav-icon center-icon diamond-wrapper"
-    (click)="navigateTo('skills')"
-    >
-    <div
-      class="diamond-shape"
-    ></div>
-  </button>
-
-  <button
-    class="btn nav-icon center-icon diamond-wrapper"
-    (click)="navigateTo('home')"
-  >
-    <div
-      class="diamond-shape"
-    ></div>
-  </button>
-  <button
-    class="btn nav-icon center-icon diamond-wrapper"
-    (click)="navigateTo('formation')"
-  >
-    <div
-      class="diamond-shape"
-    ></div>
-  </button>
-  <button
-    class="btn nav-icon center-icon diamond-wrapper"
-    (click)="navigateTo('jobs')"
-  >
-    <div
-      class="diamond-shape"
-    ></div>
+    <app-nav-bottom-button
+      [page]="page"
+      [active]="(currentRoute$ | async) === routeMap[page]"
+    ></app-nav-bottom-button>
   </button>
 </nav>

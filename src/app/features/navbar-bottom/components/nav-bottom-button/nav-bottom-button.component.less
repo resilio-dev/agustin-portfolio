@@ -1,0 +1,45 @@
+.diamond-shape {
+  width: 15px;
+  height: 15px;
+  transform: rotate(45deg);
+  background-color: var(--primary-text-color);
+  animation: pulse-glow 1s ease-in-out infinite;
+  animation-iteration-count: 3;
+}
+
+.active {
+  background-color: var(--bg-secondary-color);
+  box-shadow: 0 0 5px var(--bg-primary-color),
+      0 0 10px var(--bg-primary-color), 0 0 20px var(--bg-secondary-color),
+      0 0 40px var(--bg-secondary-color);
+}
+
+.tooltip-text {
+  position: absolute;
+  bottom: 120%;
+  background-color: var(--bg-primary-color);
+  color: var(--primary-text-color);
+  padding: 6px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-shadow: 0 0 5px var(--bg-primary-color),
+    0 0 10px var(--bg-secondary-color);
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px var(--bg-primary-color),
+      0 0 10px var(--bg-primary-color), 0 0 20px var(--bg-secondary-color),
+      0 0 40px var(--bg-secondary-color);
+  }
+  50% {
+    box-shadow: none;
+  }
+}

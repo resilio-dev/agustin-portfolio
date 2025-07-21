@@ -1,6 +1,6 @@
 .diamond-wrapper {
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   padding: 0;
   border-radius: 50%;
   position: relative;
@@ -8,13 +8,21 @@
   align-items: center;
   justify-content: center;
   border: none;
+  background: transparent;
+  cursor: pointer;
 
-  .diamond-shape {
-    width: 10px;
-    height: 10px;
-    transform: rotate(45deg);
-    background-color: var(--primary-text-color);
+  box-shadow: 0 0 5px var(--bg-primary-color), 0 0 10px var(--bg-primary-color),
+    0 0 20px var(--bg-secondary-color), 0 0 40px var(--bg-secondary-color);
+  transition: box-shadow 0.3s ease-in-out;
+
+  
+  &:hover {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-
+button:focus {
+  outline: none;
+  border: none;
+}
