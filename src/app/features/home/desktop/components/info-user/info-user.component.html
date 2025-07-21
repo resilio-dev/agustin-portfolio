@@ -3,7 +3,7 @@
     class="d-flex align-items-center flex-column gap-3 w-50 info-user"
     *ngIf="this.usuario"
   >
-    <header class="titulo-destacado position-relative d-inline-block my-5">
+    <header class="titulo-destacado position-relative d-inline-block">
       <h1 class="titulo-neon">Web Developer</h1>
       <span class="orbe orbe-1"></span>
       <span class="orbe orbe-2"></span>
@@ -15,8 +15,8 @@
       </p>
     </section>
     <footer class="w-100">
-      <button class="btn w-50 call-button" (click)="irAContacto()">
-        <b>Contactame</b>
+      <button class="call-button" (click)="irAContacto()">
+      Contact me
       </button>
     </footer>
   </div>
