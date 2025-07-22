@@ -2,21 +2,20 @@
   <img
     *ngIf="imageUrl"
     [src]="imageUrl"
-    width="200px"
     class="card-img-top rounded"
     alt="Imagen de {{ title }}"
   />
-
-  <header class="card-title">
+  <header class="card-title mt-3">
     <h5 class="card-title">{{ title }}</h5>
     <h6 *ngIf="subtitle" class="card-subtitle mb-2 text-muted">
       {{ subtitle }}
     </h6>
   </header>
-  <section class="card-body">
+  <hr>
+  <section class="card-body d-flex flex-column justify-content-between">
     <p *ngIf="description" class="card-text">{{ description }}</p>
 
-    <div *ngIf="tags?.length" class="d-flex flex-wrap gap-1 mt-3">
+    <div *ngIf="tags?.length" class="d-flex justify-content-center align-items-center flex-wrap gap-1 mt-3">
       <span class="badge rounded-pill custom-badge" *ngFor="let tag of tags">
         {{ tag }}
       </span>
