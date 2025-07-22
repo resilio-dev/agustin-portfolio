@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IJob } from 'src/app/core/models/IJob.model';
 import { datePatternValidator } from 'src/app/shared/validators/date-pattern.validator';
+import { linkPatternValidator } from 'src/app/shared/validators/link-pattern.validator';
 
 @Injectable({ providedIn: 'root' })
 export class JobFormBuilderService {
@@ -10,18 +11,18 @@ export class JobFormBuilderService {
   build(job?: Partial<IJob>): FormGroup {
     return this.fb.group({
       id: [job?.id ?? null],
-      job: [job?.job ?? '', [Validators.required, Validators.maxLength(50)]],
+      job: [job?.job ?? '', [Validators.required, Validators.maxLength(100)]],
       description: [
         job?.description ?? '',
-        [Validators.required, Validators.maxLength(255)],
+        [Validators.required, Validators.maxLength(1000)],
       ],
       imgSrc: [
         job?.imgSrc ?? '',
-        [Validators.required, Validators.pattern(/https?:\/\/.+/)],
+        [Validators.required, Validators.maxLength(1000), linkPatternValidator()],
       ],
       linkJob: [
         job?.linkJob ?? '',
-        [Validators.required, Validators.maxLength(100)],
+        [Validators.required, Validators.maxLength(1000), linkPatternValidator()]
       ],
       initialDate: [
         job?.initialDate ?? '',
@@ -32,6 +33,7 @@ export class JobFormBuilderService {
         Validators.required,
         datePatternValidator(),
       ],
+      technologies: [(job?.tecnologies ?? [], Validators.required)],
     });
   }
 }
