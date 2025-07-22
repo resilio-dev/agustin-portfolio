@@ -1,8 +1,8 @@
 <article class="text-center w-100">
   <header class="d-flex gap-3 align-items-center justify-content-center">
-    <h1 class="title">Formación</h1>
+    <h2 class="m-0">Formation</h2>
     <button
-      class="btn btn-outline-success"
+      class="btn-default primary-button"
       type="button"
       (click)="modalAdd.toggleModal()"
       *ngIf="estaLogeado()"
@@ -11,69 +11,69 @@
     </button>
   </header>
   <section
-    class="w-100 d-flex flew-wrap justify-content-center align-items-center"
+    class="w-100 d-flex flew-wrap justify-content-center align-items-center row mx-auto"
     *ngIf="this.formaciones.length > 0; else noFormations"
   >
-    <article class="col-4" *ngFor="let formacion of this.formaciones">
-      <header
-        class="d-flex flex-column justify-content-center align-items-center gap-3"
+    <app-card
+      [title]="formacion.title"
+      [subtitle]="formacion.link"
+      [imageUrl]="formacion.img"
+      [footer]="formacion.timeForm"
+      *ngFor="let formacion of formaciones"
+      class="col-4 m-2"
+    >
+      <footer
+        class="d-flex justify-content-center alignt-items-center gap-3"
+        *ngIf="this.estaLogeado()"
       >
-        <img [src]="formacion.img" alt="img-item-formacion" width="150px" />
-        <h4>{{ formacion.title }}</h4>
-      </header>
-      <section class="descripcion p-2">
-        <p>{{ formacion.timeForm }}</p>
-        <a [href]="formacion.link">Demo</a>
-      </section>
-      <footer class="d-flex justify-content-center alignt-items-center gap-3">
         <button
-          class="btn btn-outline-secondary"
+          class="btn-default neutral-button"
           type="button"
           (click)="seleccionarFormacion(formacion); modalEdit.toggleModal()"
         >
-          <i class="fa fa-plus"></i>
+          <i class="fa fa-pencil"></i>
         </button>
         <button
-          class="btn btn-outline-danger"
+          class="btn-default danger-button"
           type="button"
-          (click)="eliminarFormacion(formacion.id)"
+          (click)="seleccionarFormacion(formacion); modalEliminar.toggleModal()"
         >
           <i class="fa fa-trash-can"></i>
         </button>
       </footer>
-    </article>
+    </app-card>
   </section>
 </article>
-<app-modal #modalAdd [titulo]="'Agregar Formacion'">
+<app-modal #modalAdd [titulo]="'Add Formation'">
   <app-formation-form
     (formSubmitted)="agregarFormacion($event); modalAdd.toggleModal()"
     (formCancel)="modalAdd.toggleModal()"
   ></app-formation-form>
 </app-modal>
-<app-modal #modalEdit [titulo]="'Editar Formacion'">
+<app-modal #modalEdit [titulo]="'Edit Formation'">
   <app-formation-form
     [formationData]="this.formacionSeleccionada"
     (formSubmitted)="editarFormacion($event); modalEdit.toggleModal()"
     (formCancel)="modalEdit.toggleModal()"
   ></app-formation-form>
 </app-modal>
-<app-modal #modalEliminar [titulo]="'Eliminar Formación'">
+<app-modal #modalEliminar [titulo]="'Delete Formation'">
   <p *ngIf="this.formacionSeleccionada">
-    ¿Realmente deseas eliminar <b>{{ this.formacionSeleccionada }}</b
+    Do you really want to remove <b>{{ this.formacionSeleccionada.title }}</b
     >?
   </p>
   <button
     *ngIf="this.formacionSeleccionada"
-    class="btn btn-danger m-2"
+    class="btn-default danger-button m-2"
     type="submit"
     (click)="
       eliminarFormacion(this.formacionSeleccionada.id);
       modalEliminar.toggleModal()
     "
   >
-    Eliminar
+    Delete
   </button>
 </app-modal>
 <ng-template #noFormations>
-  <p>- No podemos cargar las formaciones en este momento. -</p>
+  <p>- We cannot load academic formations at this time. -</p>
 </ng-template>

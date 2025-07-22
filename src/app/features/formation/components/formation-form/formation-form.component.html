@@ -1,99 +1,94 @@
-<form
-  [formGroup]="formationForm"
-  (ngSubmit)="submit()"
-  class="skill-form p-3 rounded shadow"
->
-  <input type="hidden" formControlName="id" />
-
+<form [formGroup]="formationForm" (ngSubmit)="submit()">
+  <div
+    class="form-group mb-3 d-flex align-items-center justify-content-center"
+    *ngIf="formationData"
+  >
+    <input
+      [type]="showId ? 'text' : 'password'"
+      id="id"
+      formControlName="id"
+      class="form-control custom-input"
+      readonly
+      [value]="this.formationData.id"
+    />
+    <button type="button" class="btn" (click)="this.showId = !this.showId">
+      <i class="fas fa-eye" *ngIf="this.showId"></i>
+      <i class="fas fa-eye-slash" *ngIf="!this.showId"></i>
+    </button>
+  </div>
   <div class="form-group mb-3">
-    <label for="title">Titulo de la formación</label>
     <input
       type="text"
       id="title"
+      [ngModel]="formationData?.title"
       formControlName="title"
       class="form-control custom-input"
-      placeholder="Titulo de la formación"
+      placeholder="Formation title"
     />
     <small
       *ngIf="
         formationForm.get('title')?.invalid &&
         formationForm.get('title')?.touched
       "
-      class="text-danger"
     >
-      El nombre es obligatorio.
+      Name is mandatory.
     </small>
   </div>
 
   <div class="form-group mb-3">
-    <label for="img">Url de la imagen</label>
     <input
       type="text"
       id="img"
+      [ngModel]="formationData?.img"
       formControlName="img"
       class="form-control custom-input"
-      placeholder="Url de la imagen"
+      placeholder="Image url"
     />
     <small
       *ngIf="
         formationForm.get('img')?.invalid && formationForm.get('img')?.touched
       "
-      class="text-danger"
     >
-      La URL de la imagen es obligatoria.
+      Image url is mandatory.
     </small>
   </div>
 
   <div class="form-group mb-3">
-    <label for="link">Ir a empresa</label>
     <input
       type="text"
-      id="link"
+      id="institution"
+      [ngModel]="formationData?.link"
       formControlName="link"
       class="form-control custom-input"
-      placeholder="Ir a empresa"
+      placeholder="Academic institution name"
     />
     <small
       *ngIf="
         formationForm.get('link')?.invalid && formationForm.get('link')?.touched
       "
-      class="text-danger"
     >
-      La URL de la empresa es obligatoria.
+      Institution name is mandatory.
     </small>
   </div>
-  <div class="form-group mb-4">
-    <label for="timeForm">Tiempo</label>
+  <div class="form-group mb-3">
     <input
       type="text"
       id="timeForm"
+      [ngModel]="formationData?.timeForm"
       formControlName="timeForm"
       class="form-control custom-input"
-      placeholder="Tiempo de la formación"
+      placeholder="Formation time"
     />
     <small
       *ngIf="
         formationForm.get('timeForm')?.invalid &&
         formationForm.get('timeForm')?.touched
       "
-      class="text-danger"
-    ></small>
-  </div>
-  <div class="d-flex justify-content-end gap-2 mt-3">
-    <button
-      type="button"
-      class="btn btn-outline-danger"
-      (click)="cancel()"
+      >Formation time is mandatory.</small
     >
-      Cancelar
-    </button>
-
-    <button
-      type="submit"
-      class="btn btn-success w-100 custom-btn"
-      [disabled]="formationForm.invalid"
-    >
-      Guardar
-    </button>
   </div>
+  <app-form-actions-button
+    (save)="submit()"
+    (cancel)="cancel()"
+  ></app-form-actions-button>
 </form>

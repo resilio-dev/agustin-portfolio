@@ -5,13 +5,15 @@ import { ModalComponent } from 'src/app/shared/components/modal/modal.component'
 import { HttpErrorResponse } from '@angular/common/module.d-CnjH8Dlt';
 import { FormacionService } from 'src/app/core/services/formation-service/formacion.service';
 import { FormationFormComponent } from "../formation-form/formation-form.component";
+import { CardComponent } from 'src/app/shared/components/card/card.component';
 
 @Component({
   selector: 'app-formation',
   imports: [
     CommonModule,
     ModalComponent,
-    FormationFormComponent
+    FormationFormComponent,
+    CardComponent
 ],
   templateUrl: './formation.component.html',
   styleUrl: './formation.component.less',

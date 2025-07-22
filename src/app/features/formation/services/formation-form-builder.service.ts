@@ -14,7 +14,7 @@ constructor(private fb: FormBuilder) {}
       title: [formation?.title ?? '', [Validators.required, Validators.maxLength(100)]],
       img: [
         formation?.img ?? '',
-        [Validators.required, Validators.pattern(/https?:\/\/.+/)],
+        [Validators.required, Validators.pattern(/https?:\/\/.+/), Validators.maxLength(1000)],
       ],
       link: [
         formation?.link ?? '',

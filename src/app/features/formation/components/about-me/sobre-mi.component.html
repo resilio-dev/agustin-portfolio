@@ -1,9 +1,9 @@
 <article class="sobre-mi text-center w-100">
   <header>
-    <h1 class="title">Perfil Profesional</h1>
-    <p>Desarrollador Web con + de 2 años de experiencia.</p>
+    <h2>Professional Profile</h2>
+    <p>Web developer with more than 2 (two) years of experience</p>
   </header>
-  <hr />
+  <hr class="underline-title"/>
   <section class="px-4 mi-perfil">
     <p *ngIf="this.usuario; else noDescription">
       {{ this.usuario.description }}
@@ -13,16 +13,16 @@
     >I like to craft solid and scalable frontend products with great user
     experiences.</ng-template
   >
-  <hr />
-  <footer class="buttons d-flex align-items-center">
+  <hr class="underline-title"/>
+  <footer class="d-flex align-items-center justify-content-center gap-4">
     <a
       href="assets\CV Agustin Collueque.pdf"
       download="cv-agustin-collueque"
-      class="btn w-50 call-button"
-      >Descargar CV</a
+      class="call-button"
+      >Download CV</a
     >
-    <button class="btn w-50 call-button" (click)="irAContacto()">
-      <b>Contactame</b>
+    <button class="call-button" (click)="irAContacto()">
+      Contact me
     </button>
   </footer>
 </article>
