@@ -1,8 +1,8 @@
 <article class="d-flex flex-column justify-content-space-between">
-  <header class="d-flex gap-3 justify-content-center align-items-center">
-    <h2 class="title">Mis últimos trabajos</h2>
+  <header class="d-flex gap-3 justify-content-center align-items-center p-2">
+    <h2 class="m-0">Last Jobs</h2>
     <button
-      class="btn btn-outline-success"
+      class="btn-default primary-button"
       type="button"
       aria-label="agregar nuevo trabajo"
       (click)="modalAgregar.toggleModal()"
@@ -11,37 +11,23 @@
       <i class="fa fa-plus" aria-hidden="true"></i>
     </button>
   </header>
-  <section *ngIf="trabajos.length > 0; else noJobs">
-    <article
-      class="row text-center border rounded-top p-3 m-2"
+  <section *ngIf="trabajos.length > 0; else noJobs" class="row">
+    <app-card
+      class="col-6 p-3 "
       *ngFor="let trabajo of this.trabajos"
+      [title]="trabajo.job"
+      [imageUrl]="trabajo.imgSrc"
+      [description]="trabajo.description"
+      [footer]="trabajo.initialDate + ' - ' + trabajo.finalDate"
+      [tags]="getTecnologies(trabajo.tecnologies)"
     >
-      <header class="d-flex gap-3 align-items-center justify-content-center">
-        <h4>{{ trabajo.job }}</h4>
-      </header>
-      <section>
-        <img [src]="trabajo.imgSrc" [alt]="trabajo.description" width="200px" />
-        <p>{{ trabajo.description }}</p>
-      </section>
-      <footer class="d-flex gap-3 justify-content-center" *ngIf="estaLogeado()">
-        <button
-          class="btn btn-outline-secondary"
-          type="button"
-          aria-label="editar trabajo"
-          (click)="seleccionarTrabajo(trabajo); modalEditar.toggleModal()"
-        >
-          <i class="fa fa-pencil" aria-hidden="true"></i>
-        </button>
-        <button
-          class="btn btn-outline-danger"
-          type="button"
-          aria-label="eliminar trabajo"
-          (click)="seleccionarTrabajo(trabajo); modalEliminar.toggleModal()"
-        >
-          <i class="fa fa-trash-can" aria-hidden="true"></i>
-        </button>
-      </footer>
-    </article>
+    <div class="d-flex justify-content-center align-items-center gap-4 p-4">
+      <button class="btn-default primary-button">Demo View</button>
+      <button class="btn-default primary-button">Go to Site</button>
+    </div>
+      <app-modal-actions-button *ngIf="estaLogeado()" (edit)="seleccionarTrabajo(trabajo); modalEditar.toggleModal()" (remove)="seleccionarTrabajo(trabajo); modalEliminar.toggleModal()">
+      </app-modal-actions-button>
+    </app-card>
   </section>
 </article>
 <app-modal #modalAgregar [titulo]="'Agregar Trabajo'">
@@ -61,7 +47,7 @@
 
 <app-modal #modalEliminar [titulo]="'Eliminar Formación'">
   <p *ngIf="this.trabajoSeleccionado">
-    ¿Realmente deseas eliminar <b>{{ this.trabajoSeleccionado.job }}</b
+    Do you really want to remove <b>{{ this.trabajoSeleccionado.job }}</b
     >?
   </p>
   <button
@@ -72,9 +58,9 @@
       eliminarTrabajo(this.trabajoSeleccionado.id); modalEliminar.toggleModal()
     "
   >
-    Eliminar
+    Delete
   </button>
 </app-modal>
 <ng-template #noJobs>
-  <p class="text-center">- No pudimos cargar los trabajos en este momento. -</p>
+  <p class="text-center">- We cannot load jobs at this time. -</p>
 </ng-template>
