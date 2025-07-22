@@ -1,54 +1,41 @@
 <article
   class="bg-skills text-center position-absolute top-0 left-0 min-vh-100 w-100"
 >
-  <header class="d-flex gap-3 align-items-center justify-content-center">
-    <h1 class="title">Habilidades</h1>
-    <button
-      class="btn btn-outline-success"
-      type="button"
-      (click)="modalAgregar.toggleModal()"
-      *ngIf="estaLogeado()"
+  <div class="container">
+    <header>
+      <div class="d-flex gap-3 align-items-center justify-content-center">
+        <h1 class="title m-0">Habilidades</h1>
+        <button
+          class="btn-default primary-button"
+          type="button"
+          (click)="modalAgregar.toggleModal()"
+          *ngIf="estaLogeado()"
+        >
+          <i class="fa fa-plus"></i>
+        </button>
+      </div>
+    </header>
+    <section
+      class="d-flex align-items-baseline justify-content-center text-center flex-wrap py-3 mb-3 gap-3"
+      *ngIf="habilidades.length > 0; else noSkills"
     >
-      <i class="fa fa-plus"></i>
-    </button>
-  </header>
-  <section
-    class="d-flex align-items-baseline justify-content-center text-center flex-wrap py-3 mb-3"
-    *ngIf="habilidades.length > 0; else noSkills"
-  >
-    <article class="col-3" *ngFor="let habilidad of this.habilidades">
-      <header
-        class="d-flex gap-3 flex-column align-items-center justify-content-center"
+      <app-card
+        [title]="habilidad.name"
+        [imageUrl]="habilidad.logo"
+        class="col-3"
+        *ngFor="let habilidad of this.habilidades"
       >
-        <h5>{{ habilidad.name }}</h5>
-        <img
-          [src]="habilidad.logo"
-          alt="logo-item"
-          width="25px"
-          height="30px"
-        />
-      </header>
-      <footer
-        class="d-flex gap-3 align-items-center justify-content-center"
-        *ngIf="estaLogeado()"
-      >
-        <button
-          class="btn btn-outline-secondary"
-          type="button"
-          (click)="seleccionarHabilidad(habilidad); modalEditar.toggleModal()"
-        >
-          <i class="fa fa-pencil"></i>
-        </button>
-        <button
-          class="btn btn-outline-danger"
-          type="button"
-          (click)="seleccionarHabilidad(habilidad); modalEliminar.toggleModal()"
-        >
-          <i class="fa fa-trash-can"></i>
-        </button>
-      </footer>
-    </article>
-  </section>
+        <div *ngIf="estaLogeado()">
+          <app-modal-actions-button
+            (edit)="seleccionarHabilidad(habilidad); modalEditar.toggleModal()"
+            (remove)="
+              seleccionarHabilidad(habilidad); modalEliminar.toggleModal()
+            "
+          ></app-modal-actions-button>
+        </div>
+      </app-card>
+    </section>
+  </div>
 </article>
 
 <app-modal #modalAgregar [titulo]="'Agregar Habilidad'">
@@ -66,14 +53,14 @@
   ></app-skill-form>
 </app-modal>
 
-<app-modal #modalEliminar [titulo]="'Eliminar Habilidad'">
+<app-modal #modalEliminar [titulo]="'Eliminar Habilidad'" class="text-center">
   <p *ngIf="this.habilidadSeleccionada">
     ¿Realmente deseas eliminar <b>{{ habilidadSeleccionada.name }}</b
     >?
   </p>
   <button
     *ngIf="this.habilidadSeleccionada"
-    class="btn btn-danger m-2"
+    class="btn-default danger-button m-2"
     type="submit"
     (click)="
       eliminarHabilidad(habilidadSeleccionada.id); modalEliminar.toggleModal()

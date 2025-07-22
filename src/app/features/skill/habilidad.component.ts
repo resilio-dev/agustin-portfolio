@@ -9,6 +9,8 @@ import { UserService } from 'src/app/core/services/user-service/user.service';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 import { SkillFormComponent } from './components/skill-form/skill-form.component';
+import { ModalActionsButtonComponent } from 'src/app/shared/components/modal-actions-button/modal-actions-button.component';
+import { CardComponent } from 'src/app/shared/components/card/card.component';
 
 @Component({
   selector: 'app-habilidad',
@@ -17,14 +19,19 @@ import { SkillFormComponent } from './components/skill-form/skill-form.component
     CommonModule,
     ModalComponent,
     FormsModule,
-    SkillFormComponent
-  ],
+    SkillFormComponent,
+    ModalActionsButtonComponent,
+    CardComponent
+],
   templateUrl: './habilidad.component.html',
   styleUrls: ['./habilidad.component.less'],
 })
 export class HabilidadComponent implements OnInit {
   habilidades: ISkill[] = [];
   habilidadSeleccionada!: ISkill;
+  showModalEdit = false;
+  showModalDelete = false;
+
   constructor(
     private habilidadService: HabilidadService,
     private usuarioService: UserService
@@ -44,10 +51,10 @@ export class HabilidadComponent implements OnInit {
         this.habilidades = response;
       },
       error: (error: HttpErrorResponse) => {
-        console.error(error.message);
-      },
-    });
-  }
+        console.error(error.error)
+    }
+  })
+}
 
   agregarHabilidad(formHab: ISkill) {
     this.usuarioService.obtenerUsuario(1).subscribe({
@@ -93,5 +100,9 @@ export class HabilidadComponent implements OnInit {
 
   estaLogeado(): boolean {
     return localStorage.getItem('user') != null;
+  }
+
+  showModal(nameModal: string) {
+    nameModal === 'edit' ? this.showModalEdit = true : this.showModalDelete = true;
   }
 }
