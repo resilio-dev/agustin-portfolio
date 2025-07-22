@@ -1,0 +1,31 @@
+.custom-card {
+  background-color: var(--card-bg-color);
+  color: var(--card-text-color);
+  border: 1px solid var(--card-shadow-color);
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0.5rem 1rem var(--card-shadow-color);
+    transform: translateY(-4px);
+  }
+
+  .card-title {
+    font-size: var(--middle-text-size);
+    font-weight: bold;
+  }
+
+  .card-img-top {
+    width: 200px;
+    align-self: center;
+  }
+
+  .card-text {
+    font-size: var(--small-text-size);
+  }
+
+  .custom-badge {
+    background-color: var(--bg-primary-color);
+    color: var(--primary-text-color);
+    font-size: var(--middle-text-size);
+  }
+}

@@ -1,0 +1,16 @@
+<div class="d-flex gap-3 align-items-center justify-content-center">
+  <button
+    class="btn-default neutral-button"
+    type="button"
+    (click)="this.edit.emit()"
+  >
+    <i class="fa fa-pencil"></i>
+  </button>
+  <button
+    class="btn-default danger-button"
+    type="button"
+    (click)="this.remove.emit()"
+  >
+    <i class="fa fa-trash-can"></i>
+  </button>
+</div>

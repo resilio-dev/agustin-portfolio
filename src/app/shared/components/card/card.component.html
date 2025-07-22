@@ -1,0 +1,29 @@
+<div class="card custom-card h-100 shadow-sm rounded-3 p-3">
+  <img
+    *ngIf="imageUrl"
+    [src]="imageUrl"
+    width="200px"
+    class="card-img-top rounded"
+    alt="Imagen de {{ title }}"
+  />
+
+  <header class="card-title">
+    <h5 class="card-title">{{ title }}</h5>
+    <h6 *ngIf="subtitle" class="card-subtitle mb-2 text-muted">
+      {{ subtitle }}
+    </h6>
+  </header>
+  <section class="card-body">
+    <p *ngIf="description" class="card-text">{{ description }}</p>
+
+    <div *ngIf="tags?.length" class="d-flex flex-wrap gap-1 mt-3">
+      <span class="badge rounded-pill custom-badge" *ngFor="let tag of tags">
+        {{ tag }}
+      </span>
+    </div>
+  </section>
+  <footer *ngIf="footer" class="card-footer text-muted small">
+    {{ footer }}
+  </footer>
+  <ng-content></ng-content>
+</div>
