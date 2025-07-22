@@ -1,8 +1,5 @@
 <article class="d-md-flex align-items-center">
-  <div
-    class="d-flex align-items-center flex-column gap-3 w-50 info-user"
-    *ngIf="this.usuario"
-  >
+  <div class="d-flex align-items-center flex-column gap-3 w-50 info-user">
     <header class="titulo-destacado position-relative d-inline-block">
       <h1 class="titulo-neon">Web Developer</h1>
       <span class="orbe orbe-1"></span>
@@ -10,14 +7,16 @@
       <span class="orbe orbe-3"></span>
     </header>
     <section>
-      <p>
-        {{ this.usuario.description }}
+      <p *ngIf="usuario">
+        {{ usuario.description }}
+      </p>
+      <p *ngIf="!usuario">
+        I like to craft solid and scalable frontend products with great user
+        experiences.
       </p>
     </section>
     <footer class="w-100">
-      <button class="call-button" (click)="irAContacto()">
-      Contact me
-      </button>
+      <button class="call-button" (click)="irAContacto()">Contact me</button>
     </footer>
   </div>
 </article>
