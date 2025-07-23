@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "mi-portfolio": {
+    "agustin-portfolio": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/mi-portfolio",
+            "outputPath": "dist/agustin-portfolio",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -71,14 +71,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "mi-portfolio:build"
+            "buildTarget": "agustin-portfolio:build"
           },
           "configurations": {
             "production": {
-              "buildTarget": "mi-portfolio:build:production"
+              "buildTarget": "agustin-portfolio:build:production"
             },
             "development": {
-              "buildTarget": "mi-portfolio:build:development"
+              "buildTarget": "agustin-portfolio:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "mi-portfolio:build"
+            "buildTarget": "agustin-portfolio:build"
           }
         },
         "test": {

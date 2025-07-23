@@ -1,23 +1,23 @@
 {
-  "name": "portfolio-frontend",
+  "name": "agustin-portfolio",
   "version": "1.0.0",
-  "description": "Codigo referente a la capa de frontend del proyecto Argentina Programa",
+  "description": "Frontend de mi portfolio personal.",
   "main": "karma.conf.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LicDeveloperJunior/portfolio-frontend.git"
+    "url": "git+https://github.com/LicDeveloperJunior/agustin-portfolio.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["portfolio", "angular", "frontend", "developer", "fullstack", "agustin"],
+  "author": "Agustín",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/LicDeveloperJunior/portfolio-frontend/issues"
+    "url": "https://github.com/LicDeveloperJunior/agustin-portfolio/issues"
   },
-  "homepage": "https://github.com/LicDeveloperJunior/portfolio-frontend#readme",
+  "homepage": "https://github.com/LicDeveloperJunior/agustin-portfolio#readme",
   "dependencies": {
     "@angular/animations": "^19.2.0",
     "@angular/common": "^19.2.0",
