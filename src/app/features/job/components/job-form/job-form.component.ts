@@ -3,11 +3,22 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, FormsModule } from '@angular/forms';
 import { JobFormBuilderService } from '../../services/job-form-builder.service';
 import { IJob } from 'src/app/core/models/IJob.model';
+import { FormActionsButtonComponent } from 'src/app/shared/components/form-actions-button/form-actions-button.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { Observable } from 'rxjs';
+import { SkillService } from 'src/app/core/services/skill-data-service/skill-data.service';
+import { ISkill } from 'src/app/core/models/ISkill.model';
 
 @Component({
   selector: 'app-job-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    FormActionsButtonComponent,
+    NgSelectModule
+  ],
   styleUrl: './job-form.component.less',
   templateUrl: './job-form.component.html',
 })
@@ -17,24 +28,30 @@ export class JobFormComponent implements OnInit {
   @Output() formCancel = new EventEmitter<void>();
 
   jobForm!: FormGroup;
+  showId = false;
 
-  constructor(private formBuilderService: JobFormBuilderService) {}
+  skills$!: Observable<ISkill[]>;
+
+  constructor(
+    private formBuilderService: JobFormBuilderService,
+    private skillService: SkillService
+  ) {}
 
   ngOnInit(): void {
     this.jobForm = this.formBuilderService.build(this.jobData ?? {});
+    this.skills$ = this.skillService.skills$;
   }
 
   submit(): void {
     if (this.jobForm.valid) {
       this.formSubmitted.emit(this.jobForm.value);
+      this.jobForm.reset();
     } else {
       this.jobForm.markAllAsTouched();
     }
   }
 
   cancel() {
-    this.jobForm.reset();
     this.formCancel.emit();
   }
 }
-

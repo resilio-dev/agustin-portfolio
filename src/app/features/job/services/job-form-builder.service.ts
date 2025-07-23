@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IJob } from 'src/app/core/models/IJob.model';
+import { arrayNoEmptyValidator } from 'src/app/shared/validators/array-no-empty.validator';
 import { datePatternValidator } from 'src/app/shared/validators/date-pattern.validator';
 import { linkPatternValidator } from 'src/app/shared/validators/link-pattern.validator';
 
@@ -18,11 +19,19 @@ export class JobFormBuilderService {
       ],
       imgSrc: [
         job?.imgSrc ?? '',
-        [Validators.required, Validators.maxLength(1000), linkPatternValidator()],
+        [
+          Validators.required,
+          Validators.maxLength(1000),
+          linkPatternValidator(),
+        ],
       ],
       linkJob: [
         job?.linkJob ?? '',
-        [Validators.required, Validators.maxLength(1000), linkPatternValidator()]
+        [
+          Validators.required,
+          Validators.maxLength(1000),
+          linkPatternValidator(),
+        ],
       ],
       initialDate: [
         job?.initialDate ?? '',
@@ -30,10 +39,9 @@ export class JobFormBuilderService {
       ],
       finalDate: [
         job?.finalDate ?? '',
-        Validators.required,
-        datePatternValidator(),
+        [Validators.required, datePatternValidator()],
       ],
-      technologies: [(job?.tecnologies ?? [], Validators.required)],
+      technologies: [job?.tecnologies ?? [], [arrayNoEmptyValidator()]],
     });
   }
 }

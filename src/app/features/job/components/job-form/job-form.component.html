@@ -1,63 +1,153 @@
-<form [formGroup]="jobForm" (ngSubmit)="submit()" class="job-form p-3 rounded shadow">
-  <input type="hidden" formControlName="id" />
+<form [formGroup]="jobForm" (ngSubmit)="submit()">
+  <div
+    class="form-group mb-3 d-flex align-items-center justify-content-center"
+    *ngIf="jobData"
+  >
+    <input
+      [type]="showId ? 'text' : 'password'"
+      id="id"
+      formControlName="id"
+      class="form-control custom-input"
+      readonly
+      [ngModel]="jobData.id"
+    />
+    <button type="button" class="btn" (click)="this.showId = !this.showId">
+      <i class="fas fa-eye" *ngIf="this.showId"></i>
+      <i class="fas fa-eye-slash" *ngIf="!this.showId"></i>
+    </button>
+  </div>
 
   <div class="form-group mb-3">
-    <label for="job" class="form-label">Nombre</label>
     <input
-      type="text"
-      id="job"
+      type="date"
+      id="initialDate"
+      [ngModel]="jobData?.initialDate"
       class="form-control custom-input"
-      placeholder="Nombre del trabajo"
-      formControlName="job"
+      placeholder="Date start"
+      formControlName="initialDate"
     />
-    <small *ngIf="jobForm?.get('job')?.invalid && jobForm?.get('job')?.touched" class="text-danger">
-      Requerido. Máx 50 caracteres.
+    <small
+      *ngIf="
+        jobForm?.get('initialDate')?.invalid &&
+        jobForm?.get('initialDate')?.touched
+      "
+    >
+      Start date is required.
     </small>
   </div>
 
   <div class="form-group mb-3">
-    <label for="description" class="form-label">Descripción</label>
+    <input
+      type="date"
+      id="finalDate"
+      [ngModel]="jobData?.finalDate"
+      class="form-control custom-input"
+      placeholder="Date end"
+      formControlName="finalDate"
+    />
+    <small
+      *ngIf="
+        jobForm?.get('finalDate')?.invalid && jobForm?.get('finalDate')?.touched
+      "
+    >
+      End date is required.
+    </small>
+  </div>
+
+  <div class="form-group mb-3">
+    <input
+      type="text"
+      id="job"
+      [ngModel]="jobData?.job"
+      class="form-control custom-input"
+      placeholder="Job name"
+      formControlName="job"
+    />
+    <small *ngIf="jobForm?.get('job')?.invalid && jobForm?.get('job')?.touched">
+      Required. Max 50 characters.
+    </small>
+  </div>
+
+  <div class="form-group mb-3">
     <input
       type="text"
       id="description"
       class="form-control custom-input"
-      placeholder="Descripción"
+      [ngModel]="jobData?.description"
+      placeholder="Description"
       formControlName="description"
     />
-    <small *ngIf="jobForm?.get('description')?.invalid && jobForm?.get('description')?.touched" class="text-danger">
-      Requerido. Máx 255 caracteres.
+    <small
+      *ngIf="
+        jobForm?.get('description')?.invalid &&
+        jobForm?.get('description')?.touched
+      "
+    >
+      Required. Max 255 characters.
     </small>
   </div>
 
-  <div class="form-group mb-4">
-    <label for="imgSrc" class="form-label">URL de imagen</label>
+  <div class="form-group mb-3">
+    <input
+      type="url"
+      id="linkJob"
+      class="form-control custom-input"
+      [ngModel]="jobData?.linkJob"
+      placeholder="https://www.bussiness.com"
+      formControlName="linkJob"
+    />
+    <small
+      *ngIf="
+        jobForm?.get('linkJob')?.invalid && jobForm?.get('linkJob')?.touched
+      "
+    >
+      Enter a valid URL.
+    </small>
+  </div>
+  <div class="form-group mb-3">
     <input
       type="url"
       id="imgSrc"
       class="form-control custom-input"
-      placeholder="https://imagen.jpg"
+      [ngModel]="jobData?.imgSrc"
+      placeholder="https://imagen.png or assets/img.png"
       formControlName="imgSrc"
     />
-    <small *ngIf="jobForm?.get('imgSrc')?.invalid && jobForm?.get('imgSrc')?.touched" class="text-danger">
-      Ingresá una URL válida.
+    <small
+      *ngIf="jobForm?.get('imgSrc')?.invalid && jobForm?.get('imgSrc')?.touched"
+    >
+      Enter a valid image URL.
     </small>
   </div>
 
-  <div class="d-flex justify-content-end gap-2 mt-3">
-    <button
-      type="button"
-      class="btn btn-outline-danger"
-      (click)="cancel()"
+  <div class="form-group mb-4">
+    <ng-select
+      [items]="skills$ | async"
+      bindLabel="name"
+      bindValue="id"
+      [multiple]="true"
+      [placeholder]="
+        (jobForm.get('technologies')?.value?.length || 0) === 0
+          ? 'Select technologies...'
+          : ''
+      "
+      [closeOnSelect]="false"
+      [hideSelected]="true"
+      formControlName="technologies"
+      class="form-control"
     >
-      Cancelar
-    </button>
-
-    <button
-      type="submit"
-      class="btn btn-success w-100 custom-btn"
-      [disabled]="jobForm.invalid"
+    </ng-select>
+    <small
+      *ngIf="
+        jobForm.get('technologies')?.hasError('required') &&
+        jobForm.get('technologies')?.touched
+      "
     >
-      Guardar
-    </button>
+      Select at least one technology.
+    </small>
   </div>
+  <app-form-actions-button
+    (save)="submit()"
+    (cancel)="cancel()"
+  ></app-form-actions-button>
 </form>

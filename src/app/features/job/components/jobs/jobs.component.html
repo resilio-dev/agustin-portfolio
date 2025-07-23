@@ -30,14 +30,14 @@
     </app-card>
   </section>
 </article>
-<app-modal #modalAgregar [titulo]="'Agregar Trabajo'">
+<app-modal #modalAgregar [titulo]="'Add Job'">
   <app-job-form
     (formSubmitted)="agregarTrabajo($event); modalAgregar.toggleModal()"
     (formCancel)="modalAgregar.toggleModal()"
   ></app-job-form>
 </app-modal>
 
-<app-modal #modalEditar [titulo]="'Editar Trabajo'">
+<app-modal #modalEditar [titulo]="'Edit Job'">
   <app-job-form
     [jobData]="this.trabajoSeleccionado"
     (formSubmitted)="editarTrabajo($event); modalEditar.toggleModal()"
@@ -45,14 +45,14 @@
   ></app-job-form>
 </app-modal>
 
-<app-modal #modalEliminar [titulo]="'Eliminar Formación'">
+<app-modal #modalEliminar [titulo]="'Remove Job'">
   <p *ngIf="this.trabajoSeleccionado">
     Do you really want to remove <b>{{ this.trabajoSeleccionado.job }}</b
     >?
   </p>
   <button
     *ngIf="this.trabajoSeleccionado"
-    class="btn btn-danger m-2"
+    class="btn-default danger-button m-2"
     type="submit"
     (click)="
       eliminarTrabajo(this.trabajoSeleccionado.id); modalEliminar.toggleModal()
