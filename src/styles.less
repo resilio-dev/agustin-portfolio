@@ -175,7 +175,7 @@ input.form-control,
 select.form-control,
 textarea.form-control {
   background-color: var(--card-shadow-color);
-  color: var(--bg-primary-color);
+  color: var(--bg-secondary-color);
   font-weight: 600;
   letter-spacing: 0.3rem;
   resize: vertical;
@@ -197,6 +197,10 @@ textarea.form-control {
   }
 }
 
+input[type="date"] {
+  color: var(--bg-secondary-color);
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -204,19 +208,20 @@ textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
 textarea:-webkit-autofill:focus,
 select:-webkit-autofill {
-  background-color: var(--bg-secondary-color) !important;
-  color: var(--bg-primary-color) !important;
+  background-color: var(--bg-secondary-color);
+  color: var(--bg-primary-color);
   font-weight: 600;
   letter-spacing: 0.3rem;
   transition: background-color 5000s ease-in-out 0s;
-  -webkit-text-fill-color: var(--bg-primary-color) !important;
-  box-shadow: 0 0 0px 1000px var(--card-shadow-color) inset !important;
+  -webkit-text-fill-color: var(--bg-secondary-color);
+  box-shadow: 0 0 0px 1000px var(--card-shadow-color) inset;
 }
 
 
 form {
   background: transparent;
   border-radius: 0.5rem;
+  overflow-y: auto;
   &:focus {
     border-color: var(--bg-secondary-color);
     box-shadow: 0 0 0 0.2rem var(--shadow-card-color);

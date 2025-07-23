@@ -4,7 +4,7 @@ import { ISkill } from '../../models/ISkill.model';
 import { HabilidadService } from '../skill-service/habilidad.service';
 
 @Injectable({ providedIn: 'root' })
-export class SkillService {
+export class SkillDataService {
   private skillsSubject = new BehaviorSubject<ISkill[]>([
     { id: 1, name: 'Angular', logo: '#' },
     { id: 2, name: 'Spring', logo: '#' },
