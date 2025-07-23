@@ -9,10 +9,10 @@
       id="name"
       class="form-control custom-input"
       formControlName="name"
-      placeholder="Tu nombre"
+      placeholder="Your name"
     />
     <small *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
-      El nombre es obligatorio (máx 50 caracteres).
+      The name is required (max 50 characters).
     </small>
   </div>
 
@@ -22,10 +22,10 @@
       id="email"
       class="form-control custom-input"
       formControlName="email"
-      placeholder="Tu correo electrónico"
+      placeholder="Your email address"
     />
     <small *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
-      Ingresá un email válido.
+      Enter a valid email.
     </small>
   </div>
 
@@ -34,11 +34,11 @@
       id="message"
       class="form-control custom-input"
       formControlName="message"
-      placeholder="Escribí tu mensaje"
+      placeholder="Write your message..."
       rows="4"
     ></textarea>
     <small *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
-      El mensaje es obligatorio (máx 1000 caracteres).
+      Message cannot be empty (max 1000 characters).
     </small>
   </div>
 
@@ -48,14 +48,14 @@
       class="btn-default danger-button"
       (click)="cancel()"
     >
-      Limpiar
+      Clean form
     </button>
 
     <button
       type="submit"
       class="btn-default primary-button"
     >
-      Enviar
+      Send
     </button>
   </div>
 </form>

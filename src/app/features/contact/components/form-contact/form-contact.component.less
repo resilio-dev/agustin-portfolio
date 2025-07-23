@@ -3,9 +3,13 @@
   max-width: 900px;
   margin: 40px auto;
   padding: 2rem;
-  border: 1px solid var(--card-shadow-color);
+  border: 1px solid var(--shadow-card-color);
   box-shadow: 0 10px 30px var(--bg-primary-color), 0 5px 15px var(--card-bg-color);
   transition: transform 0.7s ease, box-shadow 0.3s ease;
+
+  input[type='email'], textarea {
+    color: var(--bg-secondary-color);
+  }
 }
 
 .contact-form:hover {
@@ -13,3 +17,4 @@
   box-shadow: 0 15px 40px var(--bg-primary-color),
     0 8px 20px var(--bg-secondary-color);
 }
+

@@ -4,7 +4,7 @@
   <div class="container">
     <header>
       <div class="d-flex gap-3 align-items-center justify-content-center">
-        <h1 class="title m-0">Habilidades</h1>
+        <h1 class="m-0"><b>Skills</b></h1>
         <button
           class="btn-default primary-button"
           type="button"
@@ -38,14 +38,14 @@
   </div>
 </article>
 
-<app-modal #modalAgregar [titulo]="'Agregar Habilidad'">
+<app-modal #modalAgregar [titulo]="'Add Skill'">
   <app-skill-form
     (formSubmitted)="agregarHabilidad($event); modalAgregar.toggleModal()"
     (formCancel)="modalAgregar.toggleModal()"
   ></app-skill-form>
 </app-modal>
 
-<app-modal #modalEditar [titulo]="'Editar Habilidad'">
+<app-modal #modalEditar [titulo]="'Edit Skill'">
   <app-skill-form
     [skillData]="habilidadSeleccionada"
     (formSubmitted)="editarHabilidad($event); modalEditar.toggleModal()"
@@ -53,9 +53,9 @@
   ></app-skill-form>
 </app-modal>
 
-<app-modal #modalEliminar [titulo]="'Eliminar Habilidad'" class="text-center">
+<app-modal #modalEliminar [titulo]="'Remove Skill'" class="text-center">
   <p *ngIf="this.habilidadSeleccionada">
-    ¿Realmente deseas eliminar <b>{{ habilidadSeleccionada.name }}</b
+    Do you really want to remove <b>{{ habilidadSeleccionada.name }}</b
     >?
   </p>
   <button
@@ -66,11 +66,11 @@
       eliminarHabilidad(habilidadSeleccionada.id); modalEliminar.toggleModal()
     "
   >
-    Eliminar
+    Delete
   </button>
 </app-modal>
 <ng-template #noSkills>
   <p class="text-center">
-    - No pudimos cargar las habilidades en este momento. -
+    - We cannot load skills at this time. -
   </p>
 </ng-template>

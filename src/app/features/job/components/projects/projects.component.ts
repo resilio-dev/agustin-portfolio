@@ -23,14 +23,7 @@ import { ISkill } from 'src/app/core/models/ISkill.model';
   styleUrls: ['./projects.component.less'],
 })
 export class ProjectsComponent implements OnInit {
-  projects: IProject[] = [
-    {id: 1, title: 'Portfolio Web', imgSrc: '#', description: 'Creacion de mi propio Portfolio Web como SPA', linkDemo: '#', creationDate: '2025-07-23', tecnologies: [{id: 1, name: 'HTML5', logo: '#'}, {id:2, name: 'CSS3', logo: '#'}, {id: 3, name: 'JS', logo: '#'}]},
-    {id: 2, title: 'Portfolio Web', imgSrc: '#', description: 'Creacion de mi propio Portfolio Web como SPA', linkDemo: '#', creationDate: '2025-07-23', tecnologies: [{id: 1, name: 'HTML5', logo: '#'}, {id:2, name: 'CSS3', logo: '#'}, {id: 3, name: 'JS', logo: '#'}]},
-    {id: 3, title: 'Portfolio Web', imgSrc: '#', description: 'Creacion de mi propio Portfolio Web como SPA', linkDemo: '#', creationDate: '2025-07-23', tecnologies: [{id: 1, name: 'HTML5', logo: '#'}, {id:2, name: 'CSS3', logo: '#'}, {id: 3, name: 'JS', logo: '#'}]},
-    {id: 4, title: 'Portfolio Web', imgSrc: '#', description: 'Creacion de mi propio Portfolio Web como SPA', linkDemo: '#', creationDate: '2025-07-23', tecnologies: [{id: 1, name: 'HTML5', logo: '#'}, {id:2, name: 'CSS3', logo: '#'}, {id: 3, name: 'JS', logo: '#'}]},
-    {id: 5, title: 'Portfolio Web', imgSrc: '#', description: 'Creacion de mi propio Portfolio Web como SPA', linkDemo: '#', creationDate: '2025-07-23', tecnologies: [{id: 1, name: 'HTML5', logo: '#'}, {id:2, name: 'CSS3', logo: '#'}, {id: 3, name: 'JS', logo: '#'}]},
-    {id: 6, title: 'Portfolio Web', imgSrc: '#', description: 'Creacion de mi propio Portfolio Web como SPA', linkDemo: '#', creationDate: '2025-07-23', tecnologies: [{id: 1, name: 'HTML5', logo: '#'}, {id:2, name: 'CSS3', logo: '#'}, {id: 3, name: 'JS', logo: '#'}]},
-  ];
+  projects: IProject[] = [];
   proyectoSeleccionado!: IProject;
 
   constructor(private proyService: ProyectoService) {}

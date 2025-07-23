@@ -25,7 +25,7 @@
     <small
       *ngIf="skillForm.get('name')?.invalid && skillForm.get('name')?.touched"
     >
-      El nombre de la habilidad es obligatorio.</small
+      Skill name is required.</small
     >
   </div>
 
@@ -35,12 +35,12 @@
       id="logo"
       formControlName="logo"
       class="form-control custom-input"
-      placeholder="Url del Logo"
+      placeholder="https://logos/logo.svg"
       [ngModel]="this.skillData?.logo"
     />
     <small
       *ngIf="skillForm.get('logo')?.invalid && skillForm.get('logo')?.touched"
-      >La url del Logo es obligatoria.</small
+      >Logo URL is required</small
     >
   </div>
 
