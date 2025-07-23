@@ -1,17 +1,18 @@
 <div class="d-flex justify-content-center gap-3">
   <button
     type="button"
-    class="btn-default primary-button"
+    class="btn-default danger-button"
+    aria-label="cancel "
     (click)="this.cancel.emit()"
   >
-    Cancelar
+    Cancel
   </button>
 
   <button
     type="submit"
-    class="btn-default danger-button"
+    class="btn-default primary-button"
     (click)="this.save.emit()"
   >
-    Guardar
+    Save
   </button>
 </div>

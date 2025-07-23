@@ -1,10 +1,10 @@
 <article class="d-flex flex-column justify-content-center p-5">
-  <header class="d-flex gap-3 align-items-center justify-content-center">
-    <h2 class="title">Proyectos</h2>
+  <header class="d-flex gap-3 align-items-center justify-content-center p-2">
+    <h2 class="m-0">Proyectos</h2>
     <button
-      class="btn btn-outline-success"
+      class="btn-default primary-button"
       type="button"
-      aria-label="agregar nuevo trabajo"
+      aria-label="add new job"
       (click)="modalAgregar.toggleModal()"
       *ngIf="estaLogeado()"
     >
@@ -15,41 +15,29 @@
     class="grid-columns-2 gap-4"
     *ngIf="projects.length > 0; else noProjects"
   >
-    <article class="project" *ngFor="let project of this.projects">
-      <header>
-        <app-card [project]="project" class="p-2"></app-card>
-      </header>
-      <footer class="d-flex align-items-center justify-content-center gap-3">
-        <button
-          class="btn btn-outline-secondary"
-          type="button"
-          aria-label="editar nuevo trabajo"
-          (click)="seleccionarProyecto(project); modalEditar.toggleModal()"
-          *ngIf="estaLogeado()"
-        >
-          <i class="fa fa-pencil" aria-hidden="true"></i>
-        </button>
-        <button
-          class="btn btn-outline-danger"
-          type="button"
-          aria-label="eliminar trabajo"
-          (click)="seleccionarProyecto(project); modalEliminar.toggleModal()"
-          *ngIf="estaLogeado()"
-        >
-          <i class="fa fa-trash-can" aria-hidden="true"></i>
-        </button>
-      </footer>
-    </article>
+    <app-card
+      *ngFor="let project of projects"
+      [title]="project.title"
+      [description]="project.description"
+      [imageUrl]="project.imgSrc"
+      [footer]="project.creationDate"
+      [tags]="getTecnologies(project.tecnologies)"
+    >
+      <app-modal-actions-button
+        (edit)="seleccionarProyecto(project); modalEditar.toggleModal()"
+        (remove)="seleccionarProyecto(project); modalEliminar.toggleModal()"
+      ></app-modal-actions-button>
+    </app-card>
   </section>
 </article>
-<app-modal #modalAgregar [titulo]="'Agregar Trabajo'">
+<app-modal #modalAgregar [titulo]="'Add Project'">
   <app-project-form
     (formSubmitted)="agregarProyecto($event); modalAgregar.toggleModal()"
     (formCancel)="modalAgregar.toggleModal()"
   ></app-project-form>
 </app-modal>
 
-<app-modal #modalEditar [titulo]="'Editar Trabajo'">
+<app-modal #modalEditar [titulo]="'Edit Project'">
   <app-project-form
     [projectData]="this.proyectoSeleccionado"
     (formSubmitted)="editarProyecto($event); modalEditar.toggleModal()"
@@ -57,7 +45,12 @@
   ></app-project-form>
 </app-modal>
 
-<app-modal #modalEliminar [titulo]="'Eliminar Formación'"> </app-modal>
+<app-modal #modalEliminar [titulo]="'Remove Project'">
+  <p *ngIf="proyectoSeleccionado">
+    Do you really want to remove <b>{{ proyectoSeleccionado.title }}</b
+      >?
+    </p>
+    </app-modal>
 <ng-template #noProjects>
   <p class="text-center">- No pudimos cargar los trabajos en este momento. -</p>
 </ng-template>
