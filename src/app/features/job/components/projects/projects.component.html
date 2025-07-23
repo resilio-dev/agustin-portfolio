@@ -1,6 +1,6 @@
 <article class="d-flex flex-column justify-content-center p-5">
   <header class="d-flex gap-3 align-items-center justify-content-center p-2">
-    <h2 class="m-0">Proyectos</h2>
+    <h2 class="m-0">Projects</h2>
     <button
       class="btn-default primary-button"
       type="button"
@@ -48,9 +48,19 @@
 <app-modal #modalEliminar [titulo]="'Remove Project'">
   <p *ngIf="proyectoSeleccionado">
     Do you really want to remove <b>{{ proyectoSeleccionado.title }}</b
-      >?
-    </p>
-    </app-modal>
+    >?
+  </p>
+  <button
+    *ngIf="proyectoSeleccionado"
+    class="btn-default danger-button m-2"
+    type="submit"
+    (click)="
+      eliminarProyecto(proyectoSeleccionado.id); modalEliminar.toggleModal()
+    "
+  >
+    Delete
+  </button>
+</app-modal>
 <ng-template #noProjects>
   <p class="text-center">- No pudimos cargar los trabajos en este momento. -</p>
 </ng-template>

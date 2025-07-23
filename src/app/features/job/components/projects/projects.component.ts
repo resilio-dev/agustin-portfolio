@@ -60,6 +60,10 @@ export class ProjectsComponent implements OnInit {
     alert('proyecto editado');
   }
 
+  eliminarProyecto(id: number) {
+    alert('proyecto eliminado');
+  }
+
   estaLogeado(): boolean {
     return localStorage.getItem('user') != null;
   }

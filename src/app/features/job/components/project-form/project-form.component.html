@@ -1,101 +1,114 @@
-<form [formGroup]="projectForm" (ngSubmit)="submit()" class="project-form p-3 rounded shadow">
-  <input type="hidden" formControlName="id" />
+<form [formGroup]="projectForm">
+  <div
+    class="form-group mb-3 d-flex align-items-center justify-content-center"
+    *ngIf="projectData"
+  >
+    <input
+      [type]="showId ? 'text' : 'password'"
+      id="id"
+      formControlName="id"
+      class="form-control custom-input"
+      readonly
+      [ngModel]="projectData.id"
+    />
+    <button type="button" class="btn" (click)="this.showId = !this.showId">
+      <i class="fas fa-eye" *ngIf="this.showId"></i>
+      <i class="fas fa-eye-slash" *ngIf="!this.showId"></i>
+    </button>
+  </div>
 
   <div class="form-group mb-3">
-    <label for="title">Título</label>
     <input
       id="title"
       class="form-control custom-input"
+      [ngModel]="projectData?.title"
       formControlName="title"
-      placeholder="Título del proyecto"
+      placeholder="Project title"
     />
-    <small *ngIf="projectForm.get('title')?.invalid && projectForm.get('title')?.touched" class="text-danger">
-      Requerido. Máx. 100 caracteres.
+    <small *ngIf="projectForm.get('title')?.invalid && projectForm.get('title')?.touched">
+      Required. Max. 100 characters.
     </small>
   </div>
 
   <div class="form-group mb-3">
-    <label for="description">Descripción</label>
     <textarea
       id="description"
       class="form-control custom-input"
+      [ngModel]="projectData?.description"
       formControlName="description"
-      placeholder="Breve descripción del proyecto"
+      placeholder="Project description"
     ></textarea>
-    <small *ngIf="projectForm.get('description')?.invalid && projectForm.get('description')?.touched" class="text-danger">
-      Requerido. Máx. 1000 caracteres.
+    <small *ngIf="projectForm.get('description')?.invalid && projectForm.get('description')?.touched">
+      Required. Max. 1000 characters.
     </small>
   </div>
 
   <div class="form-group mb-3">
-    <label for="imgSrc">URL de imagen</label>
     <input
       type="url"
       id="imgSrc"
       class="form-control custom-input"
       formControlName="imgSrc"
-      placeholder="https://ejemplo.com/img.jpg"
+      placeholder="https://ejemplo.com/img.png or assets/img.png"
     />
-    <small *ngIf="projectForm.get('imgSrc')?.invalid && projectForm.get('imgSrc')?.touched" class="text-danger">
-      Ingresá una URL válida.
+    <small *ngIf="projectForm.get('imgSrc')?.invalid && projectForm.get('imgSrc')?.touched">
+      Enter a image URL valid.
     </small>
   </div>
 
   <div class="form-group mb-3">
-    <label for="linkDemo">Link a Demo</label>
     <input
       type="url"
       id="linkDemo"
       class="form-control custom-input"
+      [ngModel]="projectData?.linkDemo"
       formControlName="linkDemo"
       placeholder="https://demo.com"
     />
-    <small *ngIf="projectForm.get('linkDemo')?.invalid && projectForm.get('linkDemo')?.touched" class="text-danger">
-      Ingresá una URL válida.
+    <small *ngIf="projectForm.get('linkDemo')?.invalid && projectForm.get('linkDemo')?.touched">
+      Enter a demo URL valid.
     </small>
   </div>
 
   <div class="form-group mb-3">
-    <label for="creationDate">Fecha de creación</label>
     <input
       type="date"
       id="creationDate"
+      [ngModel]="projectData?.creationDate"
       class="form-control custom-input"
       formControlName="creationDate"
     />
-    <small *ngIf="projectForm.get('creationDate')?.invalid && projectForm.get('creationDate')?.touched" class="text-danger">
-      Formato de fecha inválido.
+    <small *ngIf="projectForm.get('creationDate')?.invalid && projectForm.get('creationDate')?.touched">
+      Invalid format date.
     </small>
   </div>
 
   <div class="form-group mb-4">
-    <label for="tecnologies">Tecnologías usadas</label>
-    <input
-      id="tecnologies"
-      class="form-control custom-input"
-      formControlName="tecnologies"
-      placeholder="HTML, CSS, JavaScript"
-    />
-    <small *ngIf="projectForm.get('tecnologies')?.invalid && projectForm.get('tecnologies')?.touched" class="text-danger">
-      Este campo es obligatorio.
+    <ng-select
+      [items]="skills$ | async"
+      bindLabel="name"
+      bindValue="id"
+      [multiple]="true"
+      [placeholder]="
+        (projectForm.get('technologies')?.value?.length || 0) === 0
+          ? 'Select technologies...'
+          : ''
+      "
+      [closeOnSelect]="false"
+      [hideSelected]="true"
+      formControlName="technologies"
+      class="form-control"
+    >
+    </ng-select>
+    <small
+      *ngIf="
+        projectForm.get('technologies')?.hasError('required') &&
+        projectForm.get('technologies')?.touched
+      "
+    >
+      Select at least one technology.
     </small>
   </div>
 
-  <div class="d-flex justify-content-end gap-2 mt-3">
-    <button
-      type="button"
-      class="btn btn-outline-danger"
-      (click)="cancel()"
-    >
-      Cancelar
-    </button>
-
-    <button
-      type="submit"
-      class="btn btn-success w-100 custom-btn"
-      [disabled]="projectForm.invalid"
-    >
-      Guardar
-    </button>
-  </div>
+  <app-form-actions-button (cancel)="cancel()" (save)="submit()"></app-form-actions-button>
 </form>

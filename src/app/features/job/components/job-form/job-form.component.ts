@@ -6,8 +6,8 @@ import { IJob } from 'src/app/core/models/IJob.model';
 import { FormActionsButtonComponent } from 'src/app/shared/components/form-actions-button/form-actions-button.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { Observable } from 'rxjs';
-import { SkillService } from 'src/app/core/services/skill-data-service/skill-data.service';
 import { ISkill } from 'src/app/core/models/ISkill.model';
+import { SkillDataService } from 'src/app/core/services/skill-data-service/skill-data.service';
 
 @Component({
   selector: 'app-job-form',
@@ -34,12 +34,12 @@ export class JobFormComponent implements OnInit {
 
   constructor(
     private formBuilderService: JobFormBuilderService,
-    private skillService: SkillService
+    private skillDataService: SkillDataService
   ) {}
 
   ngOnInit(): void {
     this.jobForm = this.formBuilderService.build(this.jobData ?? {});
-    this.skills$ = this.skillService.skills$;
+    this.skills$ = this.skillDataService.skills$;
   }
 
   submit(): void {
