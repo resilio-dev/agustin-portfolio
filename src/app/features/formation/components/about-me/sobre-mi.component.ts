@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IUser } from 'src/app/core/models/IUser.model';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { IDataUser } from 'src/app/core/models/IDataUser.model';
+import { AppDataService } from 'src/app/core/services/app-data-service/app-data.service';
 
 @Component({
   selector: 'app-sobre-mi',
@@ -11,15 +12,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./sobre-mi.component.less'],
 })
 export class SobreMiComponent implements OnInit {
-  usuario?: IUser;
-  constructor(private router: Router) {}
+  data!: IDataUser;
+  constructor(private router: Router, private appDataService: AppDataService) {}
 
   ngOnInit(): void {
-    const aux = localStorage.getItem('user');
-    if (aux != null) {
-      const usuario: IUser = JSON.parse(aux) as IUser;
-      this.usuario = usuario;
-    }
+    this.data = this.appDataService.getAboutMe();
   }
 
   irAContacto() {

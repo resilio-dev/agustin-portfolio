@@ -16,9 +16,9 @@
   >
     <app-card
       [title]="formacion.title"
-      [subtitle]="formacion.link"
-      [imageUrl]="formacion.img"
-      [footer]="formacion.timeForm"
+      [subtitle]="formacion.academy"
+      [description]="formacion.description"
+      [footer]="formacion.startDate + ' - ' + formacion.endDate"
       *ngFor="let formacion of formaciones"
       class="col-4 m-2"
     >

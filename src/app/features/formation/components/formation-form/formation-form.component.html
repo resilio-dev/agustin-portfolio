@@ -31,60 +31,95 @@
         formationForm.get('title')?.touched
       "
     >
-      Name is mandatory.
+      Title is required.
+    </small>
+  </div>
+  <div class="form-group mb-3">
+    <textarea
+      id="description"
+      class="form-control custom-input"
+      formControlName="description"
+      [ngModel]="formationData?.description"
+      placeholder="Write formation description..."
+      rows="2"
+    ></textarea>
+    <small
+      *ngIf="
+        formationForm.get('title')?.invalid &&
+        formationForm.get('title')?.touched
+      "
+    >
+      Description is required.
     </small>
   </div>
 
   <div class="form-group mb-3">
     <input
       type="text"
-      id="img"
-      [ngModel]="formationData?.img"
-      formControlName="img"
+      id="type"
+      [ngModel]="formationData?.type"
+      formControlName="type"
       class="form-control custom-input"
-      placeholder="Image url"
+      placeholder="Formation type"
     />
     <small
       *ngIf="
-        formationForm.get('img')?.invalid && formationForm.get('img')?.touched
+        formationForm.get('type')?.invalid && formationForm.get('type')?.touched
       "
     >
-      Image url is mandatory.
+      Formation type is required.
     </small>
   </div>
 
   <div class="form-group mb-3">
     <input
       type="text"
-      id="institution"
-      [ngModel]="formationData?.link"
-      formControlName="link"
+      id="academy"
+      [ngModel]="formationData?.type"
+      formControlName="academy"
       class="form-control custom-input"
       placeholder="Academic institution name"
     />
     <small
       *ngIf="
-        formationForm.get('link')?.invalid && formationForm.get('link')?.touched
+        formationForm.get('academy')?.invalid && formationForm.get('academy')?.touched
       "
     >
-      Institution name is mandatory.
+      Academy name is required.
     </small>
   </div>
   <div class="form-group mb-3">
     <input
       type="text"
-      id="timeForm"
-      [ngModel]="formationData?.timeForm"
-      formControlName="timeForm"
+      id="startDate"
+      [ngModel]="formationData?.startDate"
+      formControlName="startDate"
       class="form-control custom-input"
-      placeholder="Formation time"
+      placeholder="Formation start date"
     />
     <small
       *ngIf="
-        formationForm.get('timeForm')?.invalid &&
-        formationForm.get('timeForm')?.touched
+        formationForm.get('startDate')?.invalid &&
+        formationForm.get('startDate')?.touched
       "
-      >Formation time is mandatory.</small
+      >Formation start date is required.</small
+    >
+  </div>
+  <div class="form-group mb-3">
+    <input
+      type="text"
+      id="endDate"
+      [ngModel]="formationData?.endDate"
+      formControlName="endDate"
+      class="form-control custom-input"
+      placeholder="Formation end date"
+    />
+    <small
+      *ngIf="
+        formationForm.get('endDate')?.invalid &&
+        formationForm.get('endDate')?.touched
+      "
+      >Formation end date is required.</small
     >
   </div>
   <app-form-actions-button

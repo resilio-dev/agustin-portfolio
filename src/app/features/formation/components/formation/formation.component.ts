@@ -7,6 +7,7 @@ import { FormacionService } from 'src/app/core/services/formation-service/formac
 import { FormationFormComponent } from '../formation-form/formation-form.component';
 import { CardComponent } from 'src/app/shared/components/card/card.component';
 import { ToastrService } from 'ngx-toastr';
+import { AppDataService } from 'src/app/core/services/app-data-service/app-data.service';
 
 @Component({
   selector: 'app-formation',
@@ -24,12 +25,13 @@ export class FormationComponent implements OnInit {
   formacionSeleccionada!: IFormation;
 
   constructor(
+    private appDataService: AppDataService,
     private formService: FormacionService,
     private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
-    this.obtenerFormaciones();
+    this.formaciones = this.appDataService.getFormations();
   }
 
   eliminarFormacion(id: number) {
