@@ -11,23 +11,23 @@ export class FormacionService {
   private url:string = environment.apiUrl;
   constructor(private http: HttpClient) { }
 
-  public obtenerFormacion(id:Number):Observable<IFormation> {
+  obtenerFormacion(id:Number):Observable<IFormation> {
     return this.http.get<IFormation>(`${this.url}/formaciones/${id}`)
   }
 
-  public obtenerFormaciones():Observable<IFormation[]>{
+  obtenerFormaciones():Observable<IFormation[]>{
     return this.http.get<IFormation[]>(`${this.url}/formaciones`)
   }
 
-  public agregarFormacion(formacion :IFormation):Observable<IFormation> {
+  agregarFormacion(formacion :IFormation):Observable<IFormation> {
     return this.http.post<IFormation>(`${this.url}/formaciones`, formacion)
   }
 
-  public actualizarFormacion(formacion :IFormation):Observable<IFormation> {
+  actualizarFormacion(formacion :IFormation):Observable<IFormation> {
     return this.http.put<IFormation>(`${this.url}/formaciones/${formacion.id}`, formacion)
   }
 
-  public eliminarFormacion(id:Number):Observable<void> {
+  eliminarFormacion(id:Number):Observable<void> {
     return this.http.delete<void>(`${this.url}/formaciones/${id}`);
   }
 }

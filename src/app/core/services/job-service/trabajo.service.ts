@@ -11,23 +11,23 @@ export class TrabajoService {
   private url:string = environment.apiUrl;
   constructor(private http: HttpClient) { }
 
-  public obtenerTrabajo(id:number):Observable<IJob> {
+  obtenerTrabajo(id:number):Observable<IJob> {
     return this.http.get<IJob>(`${this.url}/trabajos/${id}`);
   }
 
-  public obtenerTrabajos():Observable<IJob[]> {
+  obtenerTrabajos():Observable<IJob[]> {
     return this.http.get<IJob[]>(`${this.url}/trabajos`);
   }
 
-  public actualizarTrabajo(trabajo:IJob):Observable<void> {
+  actualizarTrabajo(trabajo:IJob):Observable<void> {
     return this.http.put<void>(`${this.url}/trabajos/${trabajo.id}`,trabajo);
   }
 
-  public eliminarTrabajo(id:number):Observable<void> {
+  eliminarTrabajo(id:number):Observable<void> {
     return this.http.delete<void>(`${this.url}/trabajos/${id}`);
   }
 
-  public agregarTrabajo(trabajo:IJob):Observable<void> {
+  agregarTrabajo(trabajo:IJob):Observable<void> {
     return this.http.post<void>(`${this.url}/trabajos`,trabajo);
   }
 }
