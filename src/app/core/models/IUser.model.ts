@@ -13,6 +13,7 @@ export interface IUser {
   secondaryPhrase: string,
   age: number,
   description: string,
+  yearsXP: number,
   email: string,
   urlImg: string,
   urlCV: string,

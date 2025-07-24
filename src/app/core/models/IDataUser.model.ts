@@ -5,6 +5,7 @@ export interface IDataUser {
   mainPhrase: string,
   secondaryPhrase: string,
   description: string,
+  yearsXP: number,
   email: string,
   age: number,
   urlImg: string,

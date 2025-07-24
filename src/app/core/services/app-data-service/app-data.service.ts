@@ -25,9 +25,14 @@ export class AppDataService {
     this.http.get<IUser>(`${this.url}/usuarios/1`).subscribe({
       next: (data: IUser) => this.appDataSubject.next(data),
       error: (err: HttpErrorResponse) => {
-      console.error('Error al obtener datos del servidor: ', err.error.message);
-      this.toastr.warning('No se pudo obtener la información del servidor. Mostrando datos por defecto.');
-    },
+        console.error(
+          'Error al obtener datos del servidor: ',
+          err.error.message
+        );
+        this.toastr.warning(
+          'No se pudo obtener la información del servidor. Mostrando datos por defecto.'
+        );
+      },
     });
   }
 
@@ -56,7 +61,8 @@ export class AppDataService {
       secondaryPhrase: user.secondaryPhrase,
       email: user.email,
       urlImg: user.urlImg,
-      urlCV: user.urlCV
-    }
-   }
+      urlCV: user.urlCV,
+      yearsXP: user.yearsXP,
+    };
+  }
 }

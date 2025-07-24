@@ -15,5 +15,6 @@ export const DEFAULT_USER_DATA: IUser = {
   projects: [],
   jobs: [],
   formations: [],
-  skills: []
+  skills: [],
+  yearsXP: 3
 };
