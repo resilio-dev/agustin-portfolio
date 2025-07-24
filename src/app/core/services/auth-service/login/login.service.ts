@@ -12,7 +12,12 @@ export class LoginService {
   login(request: ILoginRequest): void {
     this.http
       .post<string>(`${environment.apiUrl}/login`, request)
-      .subscribe((response) => localStorage.setItem('user-token', response));
+      .subscribe({
+        next: (response) => {
+          localStorage.setItem('user-token', response);
+        },
+        error: (er) => console.error(er.message)
+      });
   }
 
   logout(): void {

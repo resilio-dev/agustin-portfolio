@@ -22,7 +22,7 @@
       <li *ngFor="let item of items">
         <app-nav-icon [link]="item.link" [classIcon]="item.iconClass"></app-nav-icon>
       </li>
-      <hr class="underline-title w-75"/>
+      <hr class="section-separator w-75"/>
       <button class="btn" (click)="toggleTema()">
         <span *ngIf="this.getTema() === 'light'">
           <i class="fa fa-moon"></i>

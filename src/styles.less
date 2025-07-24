@@ -58,10 +58,23 @@ p {
 /* === Decoration === */
 .underline-title {
   height: 4px;
-  background-color: var(--bg-secondary-color);
+  background-color: var(--primary-text-color);
+  opacity: 0.9;
   border: none;
   margin: 0.5rem auto 1rem auto;
   border-radius: 2px;
+}
+
+.section-separator {
+  height: 3px;
+  background-color: var(--bg-secondary-color);
+  opacity: 0.6;
+  border: none;
+  margin: 0.5rem auto 1rem auto;
+  border-radius: 2px;
+  box-shadow: 0 0 5px var(--bg-primary-color),
+      0 0 10px var(--bg-primary-color), 0 0 20px var(--bg-secondary-color),
+      0 0 40px var(--bg-secondary-color);
 }
 
 /* ====== Bootstrap ====== */
@@ -87,11 +100,12 @@ p {
 }
 
 .primary-button {
-  border: 2px solid var(--success-color);
-  color: var(--success-color);
+  border: 2px solid var(--bg-primary-color);
+  color: var(--bg-primary-color);
 
   &:hover {
-    background-color: var(--success-color);
+    background-color: var(--bg-primary-color);
+    box-shadow: 0 5px 15px var(--bg-primary-color);
     color: var(--bg-secondary-color);
   }
 }
@@ -102,8 +116,9 @@ p {
   color: var(--danger-color);
 
   &:hover {
+    box-shadow: 0 5px 15px var(--danger-color);
     background-color: var(--danger-color);
-    color: var(--secondary-text-color);
+    color: var(--bg-secondary-color);
   }
 }
 
@@ -165,53 +180,6 @@ li {
 }
 
 /* Formulario */
-input.form-control,
-select.form-control,
-textarea.form-control {
-  background-color: var(--shadow-card-color)!important;
-  color: var(--bg-secondary-color)!important;
-  font-weight: 600;
-  letter-spacing: 0.3rem;
-  resize: vertical;
-  overflow-y: auto;
-  white-space: nowrap;
-  transition: border-color 1s ease;
-
-  &:focus {
-    color: var(--bg-primary-color);
-    border-color: var(--shadow-card-color);
-    box-shadow: 0 0 0 0.2rem var(--bg-primary-color);
-    &::placeholder {
-      color: var(--shadow-card-color);
-    }
-  }
-
-  &::placeholder {
-    color: var(--bg-secondary-color);
-  }
-}
-
-input[type="date"] {
-  color: var(--bg-secondary-color);
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill {
-  background-color: var(--bg-secondary-color)!important;
-  color: var(--bg-primary-color)!important;
-  font-weight: 600;
-  letter-spacing: 0.3rem;
-  transition: background-color 5000s ease-in-out 0s;
-  -webkit-text-fill-color: var(--bg-secondary-color)!important;
-  box-shadow: 0 0 0px 1000px var(--card-shadow-color) inset!important;
-}
-
-
 form {
   background: transparent;
   border-radius: 0.5rem;
@@ -220,8 +188,52 @@ form {
     border-color: var(--bg-secondary-color);
     box-shadow: 0 0 0 0.2rem var(--shadow-card-color);
   }
-}
 
-.form-group > small {
-  color: var(--danger-color);
+  .form-group {
+    padding: 0.5rem 1rem;
+
+    small {
+      color: var(--danger-color);
+    }
+  }
+
+  input.form-control,
+  select.form-control,
+  textarea.form-control {
+    background-color: var(--card-shadow-color) !important;
+    color: var(--primary-text-color);
+    font-weight: 600;
+    letter-spacing: 0.3rem;
+    resize: vertical;
+    overflow-y: auto;
+    white-space: nowrap;
+    transition: border-color 1s ease;
+    border: 2px solid var(--bg-secondary-color);
+
+    &:focus {
+      color: var(--bg-secondary-color);
+      background-color: var(--bg-secondary-color);
+      border-color: var(--shadow-card-color);
+      box-shadow: 0 0 0 0.2rem var(--bg-primary-color);
+      &::placeholder {
+        color: var(--shadow-card-color);
+      }
+    }
+
+    &::placeholder {
+      color: var(--bg-secondary-color);
+    }
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill {
+    -webkit-text-fill-color: var(--bg-secondary-color) !important;
+    letter-spacing: 0.3rem;
+    border: 2px solid var(--shadow-card-color);
+  }
 }

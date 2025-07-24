@@ -6,15 +6,18 @@
   border: 1px solid var(--shadow-card-color);
   box-shadow: 0 10px 30px var(--bg-primary-color), 0 5px 15px var(--card-bg-color);
   transition: transform 0.7s ease, box-shadow 0.3s ease;
-
-  input[type='email'], textarea {
-    color: var(--bg-secondary-color);
-  }
+  
 }
 
 .contact-form:hover {
   transform: translateY(-2px);
   box-shadow: 0 15px 40px var(--bg-primary-color),
-    0 8px 20px var(--bg-secondary-color);
+  0 8px 20px var(--bg-secondary-color);
 }
 
+.form-group > textarea {
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  overflow-y: hidden;
+  
+}

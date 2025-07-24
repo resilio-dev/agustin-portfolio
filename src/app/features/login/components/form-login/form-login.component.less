@@ -1,0 +1,14 @@
+input[type="email"],
+input[type="password"] {
+  height: 50px;
+  border: 1px solid var(--shadow-card-color);
+  color: var(--bg-secondary-color);
+  box-shadow: 10px 5px 15px var(--bg-primary-color),
+    0 5px 10px var(--card-bg-color);
+
+  &:hover {
+    transform: translateY(2px);
+    box-shadow: 0 5px 10px var(--bg-primary-color),
+      10px 5px 15px var(--bg-primary-color);
+  }
+}

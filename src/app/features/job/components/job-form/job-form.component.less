@@ -1,3 +1,4 @@
+/* Ng Select */
 ::ng-deep .ng-value-container > .ng-value {
   padding-left: 5px;
 }
@@ -9,7 +10,7 @@
   padding: 5px 0;
   color: var(--bg-primary-color);
   font-weight: bold;
-  background-color: var(--primary-text-color);
+  background-color: var(--card-shadow-color);
   left: 0;
   top: 110%;
 }
@@ -34,8 +35,10 @@
 
 ::ng-deep .ng-option {
   padding: 5px;
+  background-color: var(--card-shadow-color);
+  color: var(--primary-text-color);
   &:hover {
-    background-color: var(--bg-primary-color);
-    color: var(--primary-text-color);
+    background-color: var(--primary-text-color);
+    color: var(--card-shadow-color);
   }
 }

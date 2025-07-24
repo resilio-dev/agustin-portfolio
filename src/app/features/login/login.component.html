@@ -1,3 +1,8 @@
-<app-modal #modalLogin titulo="Iniciar Sesión">
-  <app-form-login (loginForm)="login($event)"></app-form-login>
-</app-modal>
+<div class="login-wrapper d-flex flex-column align-items-center justify-content-center min-vh-100 text-center">
+  <div class="login-form">
+    <header>
+      <h1><b>Login</b></h1>
+    </header>
+    <app-form-login (submitForm)="login($event)"></app-form-login>
+  </div>
+</div>

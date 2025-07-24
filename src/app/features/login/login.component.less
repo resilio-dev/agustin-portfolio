@@ -1,0 +1,35 @@
+.login-wrapper {
+  background: linear-gradient(
+    135deg,
+    var(--bg-primary-color),
+    var(--bg-secondary-color)
+  );
+  overflow: hidden;
+
+  .login-form {
+    width: 600px;
+    max-width: 900px;
+    padding: 2rem;
+    transition: transform 1s ease, box-shadow 0.7s ease;
+    z-index: 890;
+    padding: 100px;
+  }
+
+  .login-form:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px var(--bg-primary-color),
+      0 8px 20px var(--bg-secondary-color);
+  }
+}
+
+@keyframes float-bg {
+  0% {
+    transform: translate(0%, 0%);
+  }
+  50% {
+    transform: translate(100%, 100%);
+  }
+  100% {
+    transform: translate(0%, 0%);
+  }
+}
