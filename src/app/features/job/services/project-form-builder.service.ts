@@ -20,19 +20,19 @@ export class ProjectFormBuilderService {
         project?.description ?? '',
         [Validators.required, Validators.maxLength(1000)],
       ],
-      imgSrc: [
+      urlImg: [
         project?.urlImg ?? '',
         [Validators.required, linkPatternValidator()],
       ],
-      linkDemo: [
+      link: [
         project?.link ?? '',
         [Validators.required, linkPatternValidator()],
       ],
-      creationDate: [
+      startDate: [
         project?.startDate ?? '',
         [Validators.required, datePatternValidator()],
       ],
-      finalDate: [
+      endDate: [
         project?.endDate ?? '',
         [Validators.required, datePatternValidator()],
       ],

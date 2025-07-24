@@ -4,9 +4,9 @@
     <hr class="underline-title"/>
   </header>
   <section class="container">
-    <app-jobs></app-jobs>
+    <app-jobs [userLogged]="isLogin"></app-jobs>
   </section>
   <section class="container">
-    <app-projects></app-projects>
+    <app-projects [userLogged]="isLogin"></app-projects>
   </section>
 </article>

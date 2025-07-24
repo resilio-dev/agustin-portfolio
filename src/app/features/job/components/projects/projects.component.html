@@ -19,10 +19,11 @@
       *ngFor="let project of projects"
       [title]="project.title"
       [description]="project.description"
-      [imageUrl]="project.imgSrc"
-      [footer]="project.creationDate"
+      [imageUrl]="project.urlImg"
+      [footer]="project.startDate + ' - ' + project.endDate"
       [tags]="getTecnologies(project.tecnologies)"
     >
+      <a class="btn netral-button" [href]="project.link">Go Site</a>
       <app-modal-actions-button
         (edit)="seleccionarProyecto(project); modalEditar.toggleModal()"
         (remove)="seleccionarProyecto(project); modalEliminar.toggleModal()"

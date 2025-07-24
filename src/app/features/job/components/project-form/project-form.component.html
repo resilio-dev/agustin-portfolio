@@ -59,26 +59,26 @@
   <div class="form-group mb-3">
     <input
       type="url"
-      id="linkDemo"
+      id="link"
       class="form-control custom-input"
-      [ngModel]="projectData?.linkDemo"
-      formControlName="linkDemo"
-      placeholder="https://demo.com"
+      [ngModel]="projectData?.link"
+      formControlName="link"
+      placeholder="https://site.com"
     />
-    <small *ngIf="projectForm.get('linkDemo')?.invalid && projectForm.get('linkDemo')?.touched">
-      Enter a demo URL valid.
+    <small *ngIf="projectForm.get('link')?.invalid && projectForm.get('link')?.touched">
+      Enter a site URL valid.
     </small>
   </div>
 
   <div class="form-group mb-3">
     <input
       type="date"
-      id="creationDate"
-      [ngModel]="projectData?.creationDate"
+      id="startDate"
+      [ngModel]="projectData?.startDate"
       class="form-control custom-input"
-      formControlName="creationDate"
+      formControlName="startDate"
     />
-    <small *ngIf="projectForm.get('creationDate')?.invalid && projectForm.get('creationDate')?.touched">
+    <small *ngIf="projectForm.get('startDate')?.invalid && projectForm.get('startDate')?.touched">
       Invalid format date. Start date is required.
     </small>
   </div>
@@ -86,12 +86,12 @@
   <div class="form-group mb-3">
     <input
       type="date"
-      id="finalDate"
-      [ngModel]="projectData?.finalDate"
+      id="endDate"
+      [ngModel]="projectData?.endDate"
       class="form-control custom-input"
-      formControlName="finalDate"
+      formControlName="endDate"
     />
-    <small *ngIf="projectForm.get('finalDate')?.invalid && projectForm.get('finalDate')?.touched">
+    <small *ngIf="projectForm.get('endDate')?.invalid && projectForm.get('endDate')?.touched">
       Invalid format date. End date is requerid.
     </small>
   </div>
