@@ -10,7 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/LicDeveloperJunior/agustin-portfolio.git"
   },
-  "keywords": ["portfolio", "angular", "frontend", "developer", "fullstack", "agustin"],
+  "keywords": [
+    "portfolio",
+    "angular",
+    "frontend",
+    "developer",
+    "fullstack",
+    "agustin"
+  ],
   "author": "Agustín",
   "license": "ISC",
   "type": "commonjs",
@@ -19,7 +26,7 @@
   },
   "homepage": "https://github.com/LicDeveloperJunior/agustin-portfolio#readme",
   "dependencies": {
-    "@angular/animations": "^19.2.0",
+    "@angular/animations": "^19.2.14",
     "@angular/common": "^19.2.0",
     "@angular/compiler": "^19.2.0",
     "@angular/core": "^19.2.0",
@@ -31,6 +38,7 @@
     "@ng-select/ng-select": "^14.1.0",
     "bootstrap": "^5.3.7",
     "jquery": "^3.7.1",
+    "ngx-toastr": "^19.0.0",
     "rxjs": "^7.8.1",
     "zone.js": "^0.15.0"
   },
