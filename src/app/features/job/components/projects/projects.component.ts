@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 import { ProyectoService } from 'src/app/core/services/project-service/project.service';
 import { HttpErrorResponse } from '@angular/common/module.d-CnjH8Dlt';
-import { ProjectFormComponent } from "../project-form/project-form.component";
 import { ModalActionsButtonComponent } from 'src/app/shared/components/modal-actions-button/modal-actions-button.component';
 import { CardComponent } from 'src/app/shared/components/card/card.component';
 import { ISkill } from 'src/app/core/models/ISkill.model';
+import { ToastrService } from 'ngx-toastr';
+import { ProjectFormComponent } from '../project-form/project-form.component';
 
 @Component({
   selector: 'app-projects',
@@ -26,7 +27,7 @@ export class ProjectsComponent implements OnInit {
   projects: IProject[] = [];
   proyectoSeleccionado!: IProject;
 
-  constructor(private proyService: ProyectoService) {}
+  constructor(private proyService: ProyectoService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.proyService.obtenerProyectos().subscribe({
@@ -44,20 +45,71 @@ export class ProjectsComponent implements OnInit {
   seleccionarProyecto(proy: IProject) {
     this.proyectoSeleccionado = proy;
   }
-
-  agregarProyecto(proy: IProject) {
-    alert('proyecto agregado');
-  }
-
-  editarProyecto(proy: IProject) {
-    alert('proyecto editado');
-  }
-
-  eliminarProyecto(id: number) {
-    alert('proyecto eliminado');
-  }
-
+  
   estaLogeado(): boolean {
     return localStorage.getItem('user') != null;
   }
+  
+  eliminarProyecto(id: number) {
+      this.proyService.eliminarProyecto(id).subscribe({
+        next: () => {
+          this.toastr.success(
+            'project with ID '+id+' deleted.',
+            'Submitted project'
+          );
+        },
+        error: (err: HttpErrorResponse) => {
+          const error =
+            err.error?.message ||
+            'An error ocurred while the project was deleting.';
+          this.toastr.error(error);
+        },
+      })
+    }
+    editarProyecto(proy: IProject) {
+      this.proyService.actualizarProyecto(proy).subscribe({
+        next: () => {
+          this.toastr.success(
+            'Updated project.',
+            'Submitted project'
+          );
+        },
+        error: (err: HttpErrorResponse) => {
+          const error =
+            err.error?.message ||
+            'An error ocurred while the project was updating.';
+          this.toastr.error(error);
+        },
+      })
+    }
+  
+    agregarProyecto(proy: IProject) {
+      this.proyService.agregarProyecto(proy).subscribe({
+        next: () => {
+          this.toastr.success(
+            'Created new project.',
+            'Submitted project'
+          );
+        },
+        error: (err: HttpErrorResponse) => {
+          const error =
+            err.error?.message ||
+            'An error ocurred while the project was creating.';
+          this.toastr.error(error);
+        },
+      });
+    }
+    
+    obtenerProyectos() {
+      this.proyService.obtenerProyectos().subscribe({
+        next: (proys: IProject[]) => {
+          this.projects = proys;
+        },
+        error: (er: HttpErrorResponse) => {
+          const error = er.error.message || 'We cannot load projects at this time.';
+          this.toastr.error(error);
+        },
+      });
+    }
+
 }

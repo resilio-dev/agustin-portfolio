@@ -4,8 +4,9 @@ import { IFormation } from 'src/app/core/models/IFormation.model';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 import { HttpErrorResponse } from '@angular/common/module.d-CnjH8Dlt';
 import { FormacionService } from 'src/app/core/services/formation-service/formacion.service';
-import { FormationFormComponent } from "../formation-form/formation-form.component";
+import { FormationFormComponent } from '../formation-form/formation-form.component';
 import { CardComponent } from 'src/app/shared/components/card/card.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-formation',
@@ -13,8 +14,8 @@ import { CardComponent } from 'src/app/shared/components/card/card.component';
     CommonModule,
     ModalComponent,
     FormationFormComponent,
-    CardComponent
-],
+    CardComponent,
+  ],
   templateUrl: './formation.component.html',
   styleUrl: './formation.component.less',
 })
@@ -22,21 +23,75 @@ export class FormationComponent implements OnInit {
   formaciones: IFormation[] = [];
   formacionSeleccionada!: IFormation;
 
-constructor(private formService: FormacionService) {}
+  constructor(
+    private formService: FormacionService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.obtenerFormaciones();
   }
 
   eliminarFormacion(id: number) {
-    alert('formacion eliminada -> ' + id);
+    this.formService.eliminarFormacion(id).subscribe({
+      next: () => {
+        this.toastr.success(
+          'Formation with ID '+id+' deleted.',
+          'Submitted Form'
+        );
+      },
+      error: (err: HttpErrorResponse) => {
+        const error =
+          err.error?.message ||
+          'An error ocurred while the formation was deleting.';
+        this.toastr.error(error);
+      },
+    })
   }
   editarFormacion(form: IFormation) {
-    alert('formacion editada ' + form.id);
+    this.formService.actualizarFormacion(form).subscribe({
+      next: () => {
+        this.toastr.success(
+          'Updated formation.',
+          'Submitted Form'
+        );
+      },
+      error: (err: HttpErrorResponse) => {
+        const error =
+          err.error?.message ||
+          'An error ocurred while the formation was updating.';
+        this.toastr.error(error);
+      },
+    })
   }
 
   agregarFormacion(form: IFormation) {
-    alert('formacion creada ' + form.title);
+    this.formService.agregarFormacion(form).subscribe({
+      next: () => {
+        this.toastr.success(
+          'Created new formation.',
+          'Submitted Form'
+        );
+      },
+      error: (err: HttpErrorResponse) => {
+        const error =
+          err.error?.message ||
+          'An error ocurred while the formation was creating.';
+        this.toastr.error(error);
+      },
+    });
+  }
+  
+  obtenerFormaciones() {
+    this.formService.obtenerFormaciones().subscribe({
+      next: (forms: IFormation[]) => {
+        this.formaciones = forms;
+      },
+      error: (er: HttpErrorResponse) => {
+        const error = er.error.message || 'We cannot load academic formations at this time.';
+        this.toastr.error(error);
+      },
+    });
   }
 
   seleccionarFormacion(form: IFormation) {
@@ -45,14 +100,5 @@ constructor(private formService: FormacionService) {}
 
   estaLogeado(): boolean {
     return localStorage.getItem('user') != null;
-  }
-
-  obtenerFormaciones() {
-    this.formService.obtenerFormaciones().subscribe({
-      next: (forms: IFormation[]) => {
-        this.formaciones = forms;
-      },
-      error: (er: HttpErrorResponse) => console.error(er.message)
-    })
   }
 }

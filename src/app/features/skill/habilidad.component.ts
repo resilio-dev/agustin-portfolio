@@ -2,8 +2,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { HabilidadService } from 'src/app/core/services/skill-service/habilidad.service';
 import { FormsModule } from '@angular/forms';
-
-import { IUser } from 'src/app/core/models/IUser.model';
 import { ISkill } from 'src/app/core/models/ISkill.model';
 import { UserService } from 'src/app/core/services/user-service/user.service';
 import { CommonModule } from '@angular/common';
@@ -35,7 +33,6 @@ export class HabilidadComponent implements OnInit {
 
   constructor(
     private habilidadService: HabilidadService,
-    private usuarioService: UserService,
     private toastr: ToastrService
   ) {}
 
@@ -47,13 +44,18 @@ export class HabilidadComponent implements OnInit {
     this.habilidadSeleccionada = habilidad;
   }
 
+  estaLogeado(): boolean {
+    return localStorage.getItem('user') != null;
+  }
+
   obtenerHabildades() {
     this.habilidadService.obtenerHabilidades().subscribe({
       next: (response: ISkill[]) => {
         this.habilidades = response;
       },
-      error: (error: HttpErrorResponse) => {
-        console.error(error.error);
+      error: (er: HttpErrorResponse) => {
+        const error = er.error.message || 'We cannot load skills at this time.';
+        this.toastr.error(error);
       },
     });
   }
@@ -61,12 +63,13 @@ export class HabilidadComponent implements OnInit {
   agregarHabilidad(formHab: ISkill) {
     this.habilidadService.agregarHabilidad2(formHab, 1).subscribe({
       next: () => {
-        this.toastr.success('New skill creation successfully');
+        this.toastr.success('Created new skill');
         this.obtenerHabildades();
       },
       error: (error: HttpErrorResponse) => {
         const mensaje =
-          error.error?.message || 'Ocurrió un error al crear la nueva skill.';
+          error.error?.message ||
+          'An error ocurred while the skill was creating.';
         this.toastr.error(mensaje, 'Error');
       },
     });
@@ -75,10 +78,16 @@ export class HabilidadComponent implements OnInit {
   eliminarHabilidad(id: number) {
     this.habilidadService.eliminarHabilidad(id).subscribe({
       next: () => {
-        this.obtenerHabildades();
+        this.toastr.success(
+          'Skill with ID ' + id + ' deleted.',
+          'Submitted Skill'
+        );
       },
-      error: (error: HttpErrorResponse) => {
-        console.error(error.message);
+      error: (err: HttpErrorResponse) => {
+        const error =
+          err.error?.message ||
+          'An error ocurred while the skill was deleting.';
+        this.toastr.error(error);
       },
     });
   }
@@ -86,21 +95,14 @@ export class HabilidadComponent implements OnInit {
   editarHabilidad(hab: ISkill) {
     this.habilidadService.actualizarHabilidad(hab).subscribe({
       next: () => {
-        this.obtenerHabildades();
+        this.toastr.success('Updated skill.', 'Submitted Skill');
       },
-      error: (error: HttpErrorResponse) => {
-        console.error(error.message);
+      error: (err: HttpErrorResponse) => {
+        const error =
+          err.error?.message ||
+          'An error ocurred while the skill was updating.';
+        this.toastr.error(error);
       },
     });
-  }
-
-  estaLogeado(): boolean {
-    return localStorage.getItem('user') != null;
-  }
-
-  showModal(nameModal: string) {
-    nameModal === 'edit'
-      ? (this.showModalEdit = true)
-      : (this.showModalDelete = true);
   }
 }

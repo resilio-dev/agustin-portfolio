@@ -32,7 +32,7 @@ export class ContactoComponent implements OnInit {
   enviarMensaje(data: { name: string; email: string; message: string }) :void{
     this.enviarMesajeSimulado().subscribe({
       next: () => {
-        this.toastr.success('Message sent successfully. Thanks for agreeing '+data.name+' !', 'Success');
+        this.toastr.success('Thanks for writing to me '+data.name+' !', 'Message sent successfully');
       },
       error: (error: HttpErrorResponse) => {
         const mensaje = error.error?.message || 'Ocurrió un error al enviar el mensaje.';
