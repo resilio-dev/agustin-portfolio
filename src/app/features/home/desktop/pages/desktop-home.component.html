@@ -1,10 +1,15 @@
 <div
   class="bg-home text-center position-absolute top-0 left-0 min-vh-100 w-100 d-flex flex-column align-items-center justify-content-center pb-4"
 >
-
   <div class="d-flex align-items-center justify-content-space-between mt-200">
-    <app-info-user [usuario]="usuario"></app-info-user>
-    <app-foto-user></app-foto-user>
+    <app-info-user
+      [title]="data.title"
+      [mainPrase]="data.mainPhrase"
+      [secondaryPhrase]="data.secondaryPhrase"
+    ></app-info-user>
+    <app-foto-user
+      [urlImg]="data.urlImg"
+      [completeName]="data.name + ' ' + data.lastName"
+    ></app-foto-user>
   </div>
 </div>
-

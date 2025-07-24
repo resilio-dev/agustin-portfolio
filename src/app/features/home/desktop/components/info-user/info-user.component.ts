@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { IUser } from 'src/app/core/models/IUser.model';
 
 @Component({
   selector: 'app-info-user',
@@ -10,13 +9,14 @@ import { IUser } from 'src/app/core/models/IUser.model';
   styleUrl: './info-user.component.less'
 })
 export class InfoUserComponent {
-  @Input() usuario?: IUser;
+  @Input() title!: string;
+  @Input() mainPrase!: string;
+  @Input() secondaryPhrase!: string;
 
-  constructor(private router: Router) {
 
-  }
+  constructor(private router: Router) {}
 
-  irAContacto() {
+  goToContact() {
     this.router.navigateByUrl("/desktop/contact")
   }
 }

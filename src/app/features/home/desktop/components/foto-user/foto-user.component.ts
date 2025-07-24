@@ -7,4 +7,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './foto-user.component.less'
 })
 export class FotoUserComponent {
+  @Input() urlImg!: string;
+  @Input() completeName!: string;
 }
