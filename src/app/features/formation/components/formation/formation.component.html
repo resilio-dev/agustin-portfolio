@@ -5,14 +5,14 @@
       class="btn-default primary-button"
       type="button"
       (click)="modalAdd.toggleModal()"
-      *ngIf="estaLogeado()"
+      *ngIf="isLogin()"
     >
       <i class="fa fa-plus"></i>
     </button>
   </header>
   <section
     class="w-100 d-flex flew-wrap justify-content-center align-items-center row mx-auto"
-    *ngIf="this.formaciones.length > 0; else noFormations"
+    *ngIf="formaciones.length > 0; else noFormations"
   >
     <app-card
       [title]="formacion.title"
@@ -24,7 +24,7 @@
     >
       <footer
         class="d-flex justify-content-center alignt-items-center gap-3"
-        *ngIf="this.estaLogeado()"
+        *ngIf="isLogin()"
       >
         <button
           class="btn-default neutral-button"
@@ -52,22 +52,22 @@
 </app-modal>
 <app-modal #modalEdit [titulo]="'Edit Formation'">
   <app-formation-form
-    [formationData]="this.formacionSeleccionada"
+    [formationData]="formacionSeleccionada"
     (formSubmitted)="editarFormacion($event); modalEdit.toggleModal()"
     (formCancel)="modalEdit.toggleModal()"
   ></app-formation-form>
 </app-modal>
 <app-modal #modalEliminar [titulo]="'Delete Formation'">
-  <p *ngIf="this.formacionSeleccionada">
-    Do you really want to remove <b>{{ this.formacionSeleccionada.title }}</b
+  <p *ngIf="formacionSeleccionada">
+    Do you really want to remove <b>{{ formacionSeleccionada.title }}</b
     >?
   </p>
   <button
-    *ngIf="this.formacionSeleccionada"
+    *ngIf="formacionSeleccionada"
     class="btn-default danger-button m-2"
     type="submit"
     (click)="
-      eliminarFormacion(this.formacionSeleccionada.id);
+      eliminarFormacion(formacionSeleccionada.id);
       modalEliminar.toggleModal()
     "
   >
@@ -75,5 +75,5 @@
   </button>
 </app-modal>
 <ng-template #noFormations>
-  <p>- We cannot load academic formations at this time. -</p>
+  <p>- We cannot load academic formations at time. -</p>
 </ng-template>
