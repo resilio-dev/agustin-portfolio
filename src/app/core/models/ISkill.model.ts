@@ -1,5 +1,7 @@
 export interface ISkill {
   id: number,
   name: string,
-  logo: string
+  description: string,
+  urlLogo: string,
+  isLearning: boolean
 }

@@ -12,13 +12,13 @@ export class JobFormBuilderService {
   build(job?: Partial<IJob>): FormGroup {
     return this.fb.group({
       id: [job?.id ?? null],
-      job: [job?.job ?? '', [Validators.required, Validators.maxLength(100)]],
+      job: [job?.title ?? '', [Validators.required, Validators.maxLength(100)]],
       description: [
         job?.description ?? '',
         [Validators.required, Validators.maxLength(1000)],
       ],
       imgSrc: [
-        job?.imgSrc ?? '',
+        job?.urlImg ?? '',
         [
           Validators.required,
           Validators.maxLength(1000),
@@ -26,7 +26,7 @@ export class JobFormBuilderService {
         ],
       ],
       linkJob: [
-        job?.linkJob ?? '',
+        job?.link ?? '',
         [
           Validators.required,
           Validators.maxLength(1000),
@@ -34,14 +34,15 @@ export class JobFormBuilderService {
         ],
       ],
       initialDate: [
-        job?.initialDate ?? '',
+        job?.startDate ?? '',
         [Validators.required, datePatternValidator()],
       ],
       finalDate: [
-        job?.finalDate ?? '',
+        job?.endDate ?? '',
         [Validators.required, datePatternValidator()],
       ],
-      technologies: [job?.tecnologies ?? [], [arrayNoEmptyValidator()]],
+      technologies: [job?.technologies ?? [], [arrayNoEmptyValidator()]],
+
     });
   }
 }

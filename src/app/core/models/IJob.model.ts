@@ -2,11 +2,11 @@ import { ISkill } from './ISkill.model';
 
 export interface IJob {
   id: number;
-  job: string;
+  title: string;
   description: string;
-  linkJob: string;
-  initialDate: string;
-  finalDate: string;
-  imgSrc: string;
-  tecnologies: ISkill[];
+  link: string;
+  startDate: string;
+  endDate: string;
+  urlImg: string;
+  technologies: ISkill[];
 }

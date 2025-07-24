@@ -29,12 +29,7 @@ export class JobsComponent implements OnInit {
   constructor(private trabService: TrabajoService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
-    this.trabService.obtenerTrabajos().subscribe({
-      next: (trabs: IJob[]) => {
-        this.trabajos = trabs;
-      },
-      error: (er: HttpErrorResponse) => console.error(er.message),
-    });
+    this.obtenerTrabajos();
   }
 
   getTecnologies(tecno: ISkill[]): string[] {

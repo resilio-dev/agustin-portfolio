@@ -1,19 +1,26 @@
 <article class="sobre-mi text-center w-100">
   <header>
-    <h2>Professional Profile</h2>
-    <p>Web developer with more than 2 (two) years of experience</p>
+    <h2>Web developer specialized in Angular and Spring boot</h2>
+    <p>With more than 2 (two) years of experience.</p>
   </header>
-  <hr class="section-separator w-50"/>
+  <hr class="section-separator w-50" />
   <section class="px-4 mi-perfil">
-    <p *ngIf="this.usuario; else noDescription">
+    <p *ngIf="this.usuario">
       {{ this.usuario.description }}
     </p>
+    <div *ngIf="!usuario">
+      <p>
+        I like to create robust and scalable web applications with the best user
+        experiences.
+      </p>
+      <hr />
+      <i>
+        Passionate about constant learning and creative solutions that make a
+        difference.
+      </i>
+    </div>
   </section>
-  <ng-template #noDescription
-    >I like to craft solid and scalable frontend products with great user
-    experiences.</ng-template
-  >
-  <hr class="section-separator w-50"/>
+  <hr class="section-separator w-50" />
   <footer class="d-flex align-items-center justify-content-center gap-4">
     <a
       href="assets\CV Agustin Collueque.pdf"
@@ -21,8 +28,6 @@
       class="call-button"
       >Download CV</a
     >
-    <button class="call-button" (click)="irAContacto()">
-      Contact me
-    </button>
+    <button class="call-button" (click)="irAContacto()">Contact me</button>
   </footer>
 </article>

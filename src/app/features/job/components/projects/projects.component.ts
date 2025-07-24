@@ -30,12 +30,7 @@ export class ProjectsComponent implements OnInit {
   constructor(private proyService: ProyectoService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
-    this.proyService.obtenerProyectos().subscribe({
-      next: (proys: IProject[]) => {
-        this.projects = proys;
-      },
-      error: (er: HttpErrorResponse) => console.error(er.message)
-    });
+    this.obtenerProyectos();
   }
 
   getTecnologies(tecn: ISkill[]) {

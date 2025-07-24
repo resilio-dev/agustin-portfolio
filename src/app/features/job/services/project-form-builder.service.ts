@@ -12,12 +12,31 @@ export class ProjectFormBuilderService {
   build(project?: Partial<IProject>): FormGroup {
     return this.fb.group({
       id: [project?.id ?? null],
-      title: [project?.title ?? '', [Validators.required, Validators.maxLength(100)]],
-      description: [project?.description ?? '', [Validators.required, Validators.maxLength(1000)]],
-      imgSrc: [project?.imgSrc ?? '', [Validators.required, linkPatternValidator()]],
-      linkDemo: [project?.linkDemo ?? '', [Validators.required, linkPatternValidator()]],
-      creationDate: [project?.creationDate ?? '', [Validators.required, datePatternValidator()]],
-      technologies: [project?.tecnologies ?? [], [arrayNoEmptyValidator()]]
+      title: [
+        project?.title ?? '',
+        [Validators.required, Validators.maxLength(100)],
+      ],
+      description: [
+        project?.description ?? '',
+        [Validators.required, Validators.maxLength(1000)],
+      ],
+      imgSrc: [
+        project?.urlImg ?? '',
+        [Validators.required, linkPatternValidator()],
+      ],
+      linkDemo: [
+        project?.link ?? '',
+        [Validators.required, linkPatternValidator()],
+      ],
+      creationDate: [
+        project?.startDate ?? '',
+        [Validators.required, datePatternValidator()],
+      ],
+      finalDate: [
+        project?.endDate ?? '',
+        [Validators.required, datePatternValidator()],
+      ],
+      technologies: [project?.tecnologies ?? [], [arrayNoEmptyValidator()]],
     });
   }
 }

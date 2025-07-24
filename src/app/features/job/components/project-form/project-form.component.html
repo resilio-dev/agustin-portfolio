@@ -79,7 +79,20 @@
       formControlName="creationDate"
     />
     <small *ngIf="projectForm.get('creationDate')?.invalid && projectForm.get('creationDate')?.touched">
-      Invalid format date.
+      Invalid format date. Start date is required.
+    </small>
+  </div>
+
+  <div class="form-group mb-3">
+    <input
+      type="date"
+      id="finalDate"
+      [ngModel]="projectData?.finalDate"
+      class="form-control custom-input"
+      formControlName="finalDate"
+    />
+    <small *ngIf="projectForm.get('finalDate')?.invalid && projectForm.get('finalDate')?.touched">
+      Invalid format date. End date is requerid.
     </small>
   </div>
 

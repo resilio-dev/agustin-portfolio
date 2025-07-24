@@ -1,7 +1,9 @@
 export interface IFormation {
   id: number,
-  timeForm: string,
+  startDate: string,
+  endDate: string,
   title: string,
-  link: string,
-  img: string
+  description: string,
+  type: 'FORMACION_FORMAL' | 'CURSO' | 'AUTODIDACTA' | 'OTRO',
+  academy: string
 }

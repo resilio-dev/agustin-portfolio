@@ -19,7 +19,7 @@
       id="name"
       formControlName="name"
       class="form-control custom-input"
-      placeholder="Nombre de la habilidad"
+      placeholder="Skill name"
       [ngModel]="this.skillData?.name"
     />
     <small
@@ -29,19 +29,45 @@
     >
   </div>
 
+  <div class="form-group mb-3">
+    <input
+      type="text"
+      id="description"
+      formControlName="description"
+      class="form-control custom-input"
+      placeholder="Skill description"
+      [ngModel]="this.skillData?.description"
+    />
+    <small
+      *ngIf="skillForm.get('name')?.invalid && skillForm.get('name')?.touched"
+    >
+      Skill description is required.</small
+    >
+  </div>
+
   <div class="form-group mb-4">
     <input
       type="text"
       id="logo"
       formControlName="logo"
       class="form-control custom-input"
-      placeholder="https://logos/logo.svg"
-      [ngModel]="this.skillData?.logo"
+      placeholder="https://logos/logo.svg or assets/logo.png"
+      [ngModel]="this.skillData?.urlLogo"
     />
     <small
       *ngIf="skillForm.get('logo')?.invalid && skillForm.get('logo')?.touched"
       >Logo URL is required</small
     >
+  </div>
+  <div class="form-group mb-4">
+    <input
+      type="checkbox"
+      id="isLearning"
+      formControlName="isLearning"
+      class="form-control custom-input"
+      placeholder="https://logos/logo.svg or assets/logo.png"
+      [ngModel]="this.skillData?.isLearning"
+    />
   </div>
 
   <app-form-actions-button
