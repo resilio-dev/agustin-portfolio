@@ -44,10 +44,6 @@
 
 body {
   min-width: 50vw;
-  background-color: var(--bg-primary-color);
-  color: var(--primary-text-color);
-  font-size: var(--middle-text-size);
-  font-optical-sizing: auto;
 }
 
 /* Tipografía */
@@ -72,9 +68,8 @@ p {
   border: none;
   margin: 0.5rem auto 1rem auto;
   border-radius: 2px;
-  box-shadow: 0 0 5px var(--bg-primary-color),
-      0 0 10px var(--bg-primary-color), 0 0 20px var(--bg-secondary-color),
-      0 0 40px var(--bg-secondary-color);
+  box-shadow: 0 0 5px var(--bg-primary-color), 0 0 10px var(--bg-primary-color),
+    0 0 20px var(--bg-secondary-color), 0 0 40px var(--bg-secondary-color);
 }
 
 /* ====== Bootstrap ====== */
@@ -236,4 +231,43 @@ form {
     letter-spacing: 0.3rem;
     border: 2px solid var(--shadow-card-color);
   }
+}
+
+/* Toastr */
+.toast-center-screen {
+  text-align: center;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 1060 !important;
+  font-weight: 500;
+}
+
+.toast-success {
+  background-color: var(--bg-primary-color) !important;
+  color: var(--bg-secondary-color) !important;
+  padding: 15px;
+  border-radius: 0.5rem;
+}
+
+.toast-error {
+  background-color: var(--danger-color) !important;
+  color: var(--neutral-color) !important;
+  padding: 15px;
+  border-radius: 0.5rem;
+}
+
+.toast-info {
+  background-color: var(--neutral-color) !important;
+  color: var(--primary-text-color) !important;
+  padding: 15px;
+  border-radius: 0.5rem;
+}
+
+.toast-warning {
+  background-color: var(--bg-secondary-color) !important;
+  color: var(--primary-text-color) !important;
+  padding: 15px;
+  border-radius: 0.5rem;
 }

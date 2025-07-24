@@ -11,6 +11,7 @@ import { ModalComponent } from 'src/app/shared/components/modal/modal.component'
 import { SkillFormComponent } from './components/skill-form/skill-form.component';
 import { ModalActionsButtonComponent } from 'src/app/shared/components/modal-actions-button/modal-actions-button.component';
 import { CardComponent } from 'src/app/shared/components/card/card.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-habilidad',
@@ -21,8 +22,8 @@ import { CardComponent } from 'src/app/shared/components/card/card.component';
     FormsModule,
     SkillFormComponent,
     ModalActionsButtonComponent,
-    CardComponent
-],
+    CardComponent,
+  ],
   templateUrl: './habilidad.component.html',
   styleUrls: ['./habilidad.component.less'],
 })
@@ -34,7 +35,8 @@ export class HabilidadComponent implements OnInit {
 
   constructor(
     private habilidadService: HabilidadService,
-    private usuarioService: UserService
+    private usuarioService: UserService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -51,27 +53,21 @@ export class HabilidadComponent implements OnInit {
         this.habilidades = response;
       },
       error: (error: HttpErrorResponse) => {
-        console.error(error.error)
-    }
-  })
-}
+        console.error(error.error);
+      },
+    });
+  }
 
   agregarHabilidad(formHab: ISkill) {
-    this.usuarioService.obtenerUsuario(1).subscribe({
-      next: (response: IUser) => {
-        this.habilidadService
-          .agregarHabilidad2(formHab, response.id)
-          .subscribe({
-            next: () => {
-              this.obtenerHabildades();
-            },
-            error: (error: HttpErrorResponse) => {
-              console.error(error.message);
-            },
-          });
+    this.habilidadService.agregarHabilidad2(formHab, 1).subscribe({
+      next: () => {
+        this.toastr.success('New skill creation successfully');
+        this.obtenerHabildades();
       },
       error: (error: HttpErrorResponse) => {
-        console.error(error.message);
+        const mensaje =
+          error.error?.message || 'Ocurrió un error al crear la nueva skill.';
+        this.toastr.error(mensaje, 'Error');
       },
     });
   }
@@ -103,6 +99,8 @@ export class HabilidadComponent implements OnInit {
   }
 
   showModal(nameModal: string) {
-    nameModal === 'edit' ? this.showModalEdit = true : this.showModalDelete = true;
+    nameModal === 'edit'
+      ? (this.showModalEdit = true)
+      : (this.showModalDelete = true);
   }
 }

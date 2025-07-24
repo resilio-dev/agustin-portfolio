@@ -1,14 +1,12 @@
-<header class="position-absolute top-0 z-3" id="navbar-top">
+<header class="position-relative w-100" id="navbar-top">
   <app-navbar></app-navbar>
 </header>
 <main class="position-relative z-1">
   <router-outlet></router-outlet>
 </main>
 <nav
-  class="w-100 d-flex align-items-center justify-content-center"
+  class="w-100 position-fixed z-3 container-nav-bottom d-flex align-items-center justify-content-center"
   id="navbar-bottom"
 >
-  <div class="position-fixed z-3 container-nav-bottom">
-    <app-navbar-bottom></app-navbar-bottom>
-  </div>
+  <app-navbar-bottom></app-navbar-bottom>
 </nav>

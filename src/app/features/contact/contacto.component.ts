@@ -1,5 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/module.d-CnjH8Dlt';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { of } from 'rxjs';
 import { IUser } from 'src/app/core/models/IUser.model';
 import { FormContactComponent } from 'src/app/features/contact/components/form-contact/form-contact.component';
 
@@ -12,7 +15,7 @@ import { FormContactComponent } from 'src/app/features/contact/components/form-c
 export class ContactoComponent implements OnInit {
   usuario?: IUser;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private toastr : ToastrService) {}
 
   ngOnInit(): void {
     const aux = localStorage.getItem('user');
@@ -26,7 +29,19 @@ export class ContactoComponent implements OnInit {
     this.router.navigateByUrl('/desktop');
   }
 
-  enviarMensaje(data: { name: string; email: string; message: string }) {
-    alert('¡Mensaje enviado!. Gracias por escribir ' + data.name);
+  enviarMensaje(data: { name: string; email: string; message: string }) :void{
+    this.enviarMesajeSimulado().subscribe({
+      next: () => {
+        this.toastr.success('Message sent successfully. Thanks for agreeing '+data.name+' !', 'Success');
+      },
+      error: (error: HttpErrorResponse) => {
+        const mensaje = error.error?.message || 'Ocurrió un error al enviar el mensaje.';
+        this.toastr.error(mensaje, 'Error');
+      },
+    })
+  }
+  
+  enviarMesajeSimulado() {
+    return of(null)
   }
 }
