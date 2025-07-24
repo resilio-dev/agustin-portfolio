@@ -17,7 +17,7 @@ export class JobFormBuilderService {
         job?.description ?? '',
         [Validators.required, Validators.maxLength(1000)],
       ],
-      imgSrc: [
+      urlImg: [
         job?.urlImg ?? '',
         [
           Validators.required,
@@ -25,24 +25,15 @@ export class JobFormBuilderService {
           linkPatternValidator(),
         ],
       ],
-      linkJob: [
-        job?.link ?? '',
-        [
-          Validators.required,
-          Validators.maxLength(1000),
-          linkPatternValidator(),
-        ],
-      ],
-      initialDate: [
+      startDate: [
         job?.startDate ?? '',
         [Validators.required, datePatternValidator()],
       ],
-      finalDate: [
+      endDate: [
         job?.endDate ?? '',
         [Validators.required, datePatternValidator()],
       ],
       technologies: [job?.technologies ?? [], [arrayNoEmptyValidator()]],
-
     });
   }
 }

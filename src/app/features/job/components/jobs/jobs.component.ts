@@ -9,6 +9,7 @@ import { ISkill } from 'src/app/core/models/ISkill.model';
 import { ModalActionsButtonComponent } from 'src/app/shared/components/modal-actions-button/modal-actions-button.component';
 import { ToastrService } from 'ngx-toastr';
 import { JobFormComponent } from '../job-form/job-form.component';
+import { AppDataService } from 'src/app/core/services/app-data-service/app-data.service';
 
 @Component({
   selector: 'app-jobs',
@@ -29,11 +30,12 @@ export class JobsComponent implements OnInit {
 
   constructor(
     private trabService: TrabajoService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private appDataService: AppDataService
   ) {}
 
   ngOnInit(): void {
-    this.obtenerTrabajos();
+    this.trabajos = this.appDataService.getJobs();
   }
 
   getTecnologies(tecno: ISkill[]): string[] {
@@ -42,10 +44,6 @@ export class JobsComponent implements OnInit {
       tecnoArray.push(tec.name);
     }
     return tecnoArray;
-  }
-
-  estaLogeado() {
-    return localStorage.getItem('user') != null;
   }
 
   seleccionarTrabajo(job: IJob) {

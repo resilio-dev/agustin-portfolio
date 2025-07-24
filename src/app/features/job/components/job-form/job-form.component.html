@@ -20,16 +20,16 @@
   <div class="form-group mb-3">
     <input
       type="date"
-      id="initialDate"
-      [ngModel]="jobData?.initialDate"
+      id="startDate"
+      [ngModel]="jobData?.startDate"
       class="form-control custom-input"
       placeholder="Date start"
-      formControlName="initialDate"
+      formControlName="startDate"
     />
     <small
       *ngIf="
-        jobForm?.get('initialDate')?.invalid &&
-        jobForm?.get('initialDate')?.touched
+        jobForm?.get('startDate')?.invalid &&
+        jobForm?.get('startDate')?.touched
       "
     >
       Start date is required.
@@ -39,15 +39,15 @@
   <div class="form-group mb-3">
     <input
       type="date"
-      id="finalDate"
-      [ngModel]="jobData?.finalDate"
+      id="endDate"
+      [ngModel]="jobData?.endDate"
       class="form-control custom-input"
       placeholder="Date end"
-      formControlName="finalDate"
+      formControlName="endDate"
     />
     <small
       *ngIf="
-        jobForm?.get('finalDate')?.invalid && jobForm?.get('finalDate')?.touched
+        jobForm?.get('endDate')?.invalid && jobForm?.get('endDate')?.touched
       "
     >
       End date is required.
@@ -57,13 +57,13 @@
   <div class="form-group mb-3">
     <input
       type="text"
-      id="job"
-      [ngModel]="jobData?.job"
+      id="title"
+      [ngModel]="jobData?.title"
       class="form-control custom-input"
-      placeholder="Job name"
-      formControlName="job"
+      placeholder="Title"
+      formControlName="title"
     />
-    <small *ngIf="jobForm?.get('job')?.invalid && jobForm?.get('job')?.touched">
+    <small *ngIf="jobForm?.get('title')?.invalid && jobForm?.get('title')?.touched">
       Required. Max 50 characters.
     </small>
   </div>
@@ -86,35 +86,18 @@
       Required. Max 255 characters.
     </small>
   </div>
-
+  
   <div class="form-group mb-3">
     <input
       type="url"
-      id="linkJob"
+      id="urlImg"
       class="form-control custom-input"
-      [ngModel]="jobData?.linkJob"
-      placeholder="https://www.bussiness.com"
-      formControlName="linkJob"
-    />
-    <small
-      *ngIf="
-        jobForm?.get('linkJob')?.invalid && jobForm?.get('linkJob')?.touched
-      "
-    >
-      Enter a valid URL.
-    </small>
-  </div>
-  <div class="form-group mb-3">
-    <input
-      type="url"
-      id="imgSrc"
-      class="form-control custom-input"
-      [ngModel]="jobData?.imgSrc"
+      [ngModel]="jobData?.urlImg"
       placeholder="https://imagen.png or assets/img.png"
-      formControlName="imgSrc"
+      formControlName="urlImg"
     />
     <small
-      *ngIf="jobForm?.get('imgSrc')?.invalid && jobForm?.get('imgSrc')?.touched"
+      *ngIf="jobForm?.get('urlImg')?.invalid && jobForm?.get('urlImg')?.touched"
     >
       Enter a valid image URL.
     </small>

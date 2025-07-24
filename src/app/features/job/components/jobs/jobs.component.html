@@ -6,26 +6,26 @@
       type="button"
       aria-label="add new job"
       (click)="modalAgregar.toggleModal()"
-      *ngIf="estaLogeado()"
+      *ngIf="userLogged"
     >
       <i class="fa fa-plus" aria-hidden="true"></i>
     </button>
   </header>
   <section *ngIf="trabajos.length > 0; else noJobs" class="row">
     <app-card
-      class="col-6 p-3 "
+      class="col-6 p-3"
       *ngFor="let trabajo of this.trabajos"
-      [title]="trabajo.job"
-      [imageUrl]="trabajo.imgSrc"
+      [title]="trabajo.title"
+      [imageUrl]="trabajo.urlImg"
       [description]="trabajo.description"
-      [footer]="trabajo.initialDate + ' - ' + trabajo.finalDate"
-      [tags]="getTecnologies(trabajo.tecnologies)"
+      [footer]="trabajo.startDate + ' - ' + trabajo.endDate"
+      [tags]="getTecnologies(trabajo.technologies)"
     >
-    <div class="d-flex justify-content-center align-items-center gap-4 p-4">
-      <button class="btn-default primary-button">Demo View</button>
-      <button class="btn-default primary-button">Go to Site</button>
-    </div>
-      <app-modal-actions-button *ngIf="estaLogeado()" (edit)="seleccionarTrabajo(trabajo); modalEditar.toggleModal()" (remove)="seleccionarTrabajo(trabajo); modalEliminar.toggleModal()">
+      <app-modal-actions-button
+        *ngIf="userLogged"
+        (edit)="seleccionarTrabajo(trabajo); modalEditar.toggleModal()"
+        (remove)="seleccionarTrabajo(trabajo); modalEliminar.toggleModal()"
+      >
       </app-modal-actions-button>
     </app-card>
   </section>
@@ -47,7 +47,7 @@
 
 <app-modal #modalEliminar [titulo]="'Remove Job'">
   <p *ngIf="this.trabajoSeleccionado">
-    Do you really want to remove <b>{{ this.trabajoSeleccionado.job }}</b
+    Do you really want to remove <b>{{ this.trabajoSeleccionado.title }}</b
     >?
   </p>
   <button
