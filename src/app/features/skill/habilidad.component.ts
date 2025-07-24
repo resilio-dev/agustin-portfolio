@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HabilidadService } from 'src/app/core/services/skill-service/habilidad.service';
 import { FormsModule } from '@angular/forms';
 import { ISkill } from 'src/app/core/models/ISkill.model';
-import { UserService } from 'src/app/core/services/user-service/user.service';
+import { UserService } from 'src/app/core/services/app-data-service/app-data.service';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 import { SkillFormComponent } from './components/skill-form/skill-form.component';
