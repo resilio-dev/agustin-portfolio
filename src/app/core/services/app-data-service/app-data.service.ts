@@ -26,43 +26,43 @@ export class AppDataService {
       next: (data: IUser) => this.appDataSubject.next(data),
       error: (err: HttpErrorResponse) => {
         console.error(
-          'Error al obtener datos del servidor: ',
+          'Error obtaining server data: ',
           err.error.message
         );
         this.toastr.warning(
-          'No se pudo obtener la información del servidor. Mostrando datos por defecto.'
+          'You are also seeing a default view of my profile.', "Oh, it looks like we can't connect to the server right now."
         );
       },
     });
   }
 
   getSkills(): ISkill[] {
-    return this.appDataSubject.value.skills || [];
+    return this.appDataSubject.value?.skills || [];
   }
   getJobs(): IJob[] {
-    return this.appDataSubject.value.jobs || [];
+    return this.appDataSubject.value?.jobs || [];
   }
   getProjects(): IProject[] {
-    return this.appDataSubject.value.projects || [];
+    return this.appDataSubject.value?.projects || [];
   }
   getFormations(): IFormation[] {
-    return this.appDataSubject.value.formations || [];
+    return this.appDataSubject.value?.formations || [];
   }
 
   getAboutMe(): IDataUser {
     const user = this.appDataSubject.value;
     return {
-      name: user.name,
-      lastName: user.lastName,
-      age: user.age,
-      description: user.description,
-      title: user.title,
-      mainPhrase: user.mainPhrase,
-      secondaryPhrase: user.secondaryPhrase,
-      email: user.email,
-      urlImg: user.urlImg,
-      urlCV: user.urlCV,
-      yearsXP: user.yearsXP,
+      name: user?.name || '',
+      lastName: user?.lastName || '',
+      age: user?.age || 27,
+      description: user?.description || '',
+      title: user?.title || '',
+      mainPhrase: user?.mainPhrase || '',
+      secondaryPhrase: user?.secondaryPhrase || '',
+      email: user?.email || '',
+      urlImg: user?.urlImg || '',
+      urlCV: user?.urlCV || '',
+      yearsXP: user?.yearsXP || 3,
     };
   }
 }

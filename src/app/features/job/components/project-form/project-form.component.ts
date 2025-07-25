@@ -24,8 +24,9 @@ export class ProjectFormComponent {
   showId = false;
   skills$!: Observable<ISkill[]>;
 
-  constructor(private formBuilderService: ProjectFormBuilderService, private skillDataService: SkillDataService) {}
-
+  constructor(private formBuilderService: ProjectFormBuilderService, private skillDataService: SkillDataService) {
+  }
+  
   ngOnInit(): void {
     this.projectForm = this.formBuilderService.build(this.projectData ?? {});
     this.skills$ = this.skillDataService.skills$;

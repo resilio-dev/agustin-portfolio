@@ -12,7 +12,7 @@ export class JobFormBuilderService {
   build(job?: Partial<IJob>): FormGroup {
     return this.fb.group({
       id: [job?.id ?? null],
-      job: [job?.title ?? '', [Validators.required, Validators.maxLength(100)]],
+      title: [job?.title ?? '', [Validators.required, Validators.maxLength(100)]],
       description: [
         job?.description ?? '',
         [Validators.required, Validators.maxLength(1000)],

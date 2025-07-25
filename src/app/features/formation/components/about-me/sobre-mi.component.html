@@ -1,20 +1,21 @@
-<article class="sobre-mi text-center w-100">
+<article class="text-center w-100">
   <header>
     <h2>Hi! I'm {{ data.name }}, {{ data.title }}</h2>
     <p>With more than {{ data.yearsXP }} years of experience.</p>
   </header>
   <hr class="section-separator w-50" />
-  <section class="px-4 mi-perfil">
+  <section class="px-4 d-flex justify-content-center align-items-center">
+    <div class="w-50 text-justify">
+      <p class="fw-bold">
+        {{ data.mainPhrase }}
+    </p>
     <p>
       {{ data.description }}
     </p>
-    <p>
-      {{ data.mainPhrase }}
+    <p class="fw-light">
+      "{{ data.secondaryPhrase }}"
     </p>
-    <hr />
-    <i>
-      {{ data.secondaryPhrase }}
-    </i>
+  </div>
   </section>
   <hr class="section-separator w-50" />
   <footer class="d-flex align-items-center justify-content-center gap-4">
@@ -22,7 +23,7 @@
       [href]="data.urlCV"
       [download]="'CV-' + data.name + '-' + data.title"
       class="call-button"
-      >Download CV</a
+      >Download CV</a 
     >
     <button class="call-button" (click)="irAContacto()">Contact me</button>
   </footer>

@@ -9,6 +9,7 @@ import { CardComponent } from 'src/app/shared/components/card/card.component';
 import { ISkill } from 'src/app/core/models/ISkill.model';
 import { ToastrService } from 'ngx-toastr';
 import { ProjectFormComponent } from '../project-form/project-form.component';
+import { AppDataService } from 'src/app/core/services/app-data-service/app-data.service';
 
 @Component({
   selector: 'app-projects',
@@ -30,11 +31,12 @@ export class ProjectsComponent implements OnInit {
 
   constructor(
     private proyService: ProyectoService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private appDataService: AppDataService
   ) {}
 
   ngOnInit(): void {
-    this.obtenerProyectos();
+    this.projects = this.appDataService.getProjects();
   }
 
   getTecnologies(tecn: ISkill[]) {
@@ -43,10 +45,6 @@ export class ProjectsComponent implements OnInit {
 
   seleccionarProyecto(proy: IProject) {
     this.proyectoSeleccionado = proy;
-  }
-
-  estaLogeado(): boolean {
-    return localStorage.getItem('user') != null;
   }
 
   eliminarProyecto(id: number) {

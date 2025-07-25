@@ -6,7 +6,7 @@
       type="button"
       aria-label="add new job"
       (click)="modalAgregar.toggleModal()"
-      *ngIf="estaLogeado()"
+      *ngIf="userLogged"
     >
       <i class="fa fa-plus" aria-hidden="true"></i>
     </button>
