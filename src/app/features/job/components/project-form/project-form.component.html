@@ -46,12 +46,12 @@
   <div class="form-group mb-3">
     <input
       type="url"
-      id="imgSrc"
+      id="urlImg"
       class="form-control custom-input"
-      formControlName="imgSrc"
+      formControlName="urlImg"
       placeholder="https://ejemplo.com/img.png or assets/img.png"
     />
-    <small *ngIf="projectForm.get('imgSrc')?.invalid && projectForm.get('imgSrc')?.touched">
+    <small *ngIf="projectForm.get('urlImg')?.invalid && projectForm.get('urlImg')?.touched">
       Enter a image URL valid.
     </small>
   </div>

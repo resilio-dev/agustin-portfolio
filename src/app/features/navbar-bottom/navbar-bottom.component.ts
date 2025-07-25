@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 export class NavbarBottomComponent implements OnInit {
   pages = ['CONTACT-ME', 'MY-SKILLS', 'HOME', 'MY-JOBS', 'MY-FORMATIONS'];
   routeMap: { [key: string]: string } = {
-    HOME: '/desktop',
+    'HOME': '/desktop',
     'MY-JOBS': '/desktop/jobs',
     'CONTACT-ME': '/desktop/contact',
     'MY-FORMATIONS': '/desktop/formation',
