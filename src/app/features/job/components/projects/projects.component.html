@@ -1,5 +1,5 @@
-<article class="d-flex flex-column justify-content-center p-5">
-  <header class="d-flex gap-3 align-items-center justify-content-center p-2">
+<article class="d-flex flex-column justify-content-center">
+  <header class="d-flex gap-3 align-items-center justify-content-center p-2 mb-4">
     <h2 class="m-0">Projects</h2>
     <button
       class="btn-default primary-button"
@@ -23,11 +23,14 @@
       [footer]="project.startDate + ' - ' + project.endDate"
       [tags]="getTecnologies(project.tecnologies)"
     >
-      <a class="btn netral-button" [href]="project.link">Go Site</a>
+    <div class="container p-3"> 
+      <a class="btn-default card-button" [href]="project.link">Go Site</a>
       <app-modal-actions-button
-        (edit)="seleccionarProyecto(project); modalEditar.toggleModal()"
-        (remove)="seleccionarProyecto(project); modalEliminar.toggleModal()"
+      (edit)="seleccionarProyecto(project); modalEditar.toggleModal()"
+      (remove)="seleccionarProyecto(project); modalEliminar.toggleModal()"
+      *ngIf="userLogged"
       ></app-modal-actions-button>
+    </div>
     </app-card>
   </section>
 </article>

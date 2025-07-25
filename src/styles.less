@@ -10,16 +10,16 @@
 
 /* Tema oscuro */
 :root.dark {
-  --bg-primary-color: #3a1e3e;
+  --bg-primary-color: #1f0923;
   --bg-secondary-color: #f9c54e;
   --primary-text-color: #f9f6f1;
   --small-text-size: 1.3rem;
   --middle-text-size: 1.7rem;
   --big-text-size: 2.5rem;
-  --card-bg-color: #7c2d3b;
-  --card-text-color: #7c10f8;
+  --card-bg-color: #3a1e3e;
+  --card-text-color: #fff1e0;
   --card-shadow-color: #421d47;
-  --danger-color: #3d0c2d;
+  --danger-color: #93163d;
   --success-color: #3c1841;
   --neutral-color: #d6d6d6;
 }
@@ -32,9 +32,10 @@
   --small-text-size: 1.2rem;
   --middle-text-size: 1.7rem;
   --big-text-size: 3rem;
-  --card-bg-color: #ffdb80;
-  --card-text-color: #ffdb80;
-  --card-shadow-color: #ff8b3d;
+  //--card-bg-color: #ffdb80;
+  --card-bg-color: #fff1e0;
+  --card-text-color: #311904;
+  --card-shadow-color: #2e1500;
   --danger-color: #910202;
   --success-color: #2e1500;
   --neutral-color: #d6d6d6;
@@ -49,6 +50,11 @@ body {
 /* Tipografía */
 p {
   font-size: var(--small-text-size);
+}
+
+h2 {
+  font-size: var(--big-text-size)!important;
+  font-weight: bold;
 }
 
 /* === Decoration === */
@@ -76,14 +82,6 @@ p {
 
 /* ====== Bootstrap ====== */
 
-/* Card */
-.card {
-  background-color: var(--card-bg-color) !important;
-  box-shadow: var(--card-shadow-color) !important;
-  color: var(--card-text-color);
-  border: none;
-}
-
 /* Botones */
 
 /* SUCCESS */
@@ -100,7 +98,7 @@ p {
   border: 3px solid var(--bg-primary-color);
   color: var(--bg-primary-color);
   box-shadow: 0 5px 15px var(--bg-primary-color);
-  
+
   &:hover {
     background-color: var(--bg-primary-color);
     box-shadow: 0 5px 20px var(--bg-secondary-color);
@@ -116,7 +114,7 @@ p {
 
   &:hover {
     background-color: var(--danger-color);
-    color: var(--primary-text-color);
+    color: var(--bg-secondary-color);
     box-shadow: 0 5px 15px var(--bg-primary-color);
   }
 }
@@ -132,15 +130,16 @@ p {
   }
 }
 
-/* Card Button */
+/* CARD BUTTON */
 .card-button {
-  background-color: var(--primary-text-color);
-  border: 2px solid var(--card-shadow-color);
-  color: var(--card-bg-color);
+  background-color: var(--card-bg-color);
+  border: 2px solid var(--card-text-color);
+  color: var(--card-text-color);
 
   &:hover {
-    background-color: var(--card-bg-color);
-    color: var(--primary-text-color);
+    background-color: var(--card-text-color);
+    color: var(--card-bg-color);
+    box-shadow: 0 4px 12px var(--card-bg-color);
   }
 }
 

@@ -1,17 +1,16 @@
-<div class="card custom-card h-100 shadow-sm rounded-3 p-3">
+<div class="card shadow">
   <img
     *ngIf="imageUrl"
     [src]="imageUrl"
-    class="card-img-top rounded"
+    class="card-img-top"
     alt="Imagen de {{ title }}"
   />
-  <header class="card-title mt-3">
-    <h5 class="card-title">{{ title }}</h5>
-    <h6 *ngIf="subtitle" class="card-subtitle mb-2 text-muted">
+  <header class="card-title p-3">
+    <h5 class="card-title fw-bold">{{ title }}</h5>
+    <h6 *ngIf="subtitle" class="card-subtitle">
       {{ subtitle }}
     </h6>
   </header>
-  <hr>
   <section class="card-body d-flex flex-column justify-content-between">
     <p *ngIf="description" class="card-text">{{ description }}</p>
 
@@ -21,7 +20,7 @@
       </span>
     </div>
   </section>
-  <footer *ngIf="footer" class="card-footer text-muted small">
+  <footer *ngIf="footer" class="card-footer small">
     {{ footer }}
   </footer>
   <ng-content></ng-content>
