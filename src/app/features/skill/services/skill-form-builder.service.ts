@@ -16,7 +16,7 @@ export class SkillFormBuilderService {
         skill?.name ?? '',
         [Validators.required, Validators.maxLength(50)],
       ],
-      logo: [
+      urlLogo: [
         skill?.urlLogo ?? '',
         [Validators.required, linkPatternValidator()],
       ],

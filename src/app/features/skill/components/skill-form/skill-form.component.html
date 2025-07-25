@@ -48,14 +48,14 @@
   <div class="form-group mb-4">
     <input
       type="text"
-      id="logo"
-      formControlName="logo"
+      id="urlLogo"
+      formControlName="urlLogo"
       class="form-control custom-input"
       placeholder="https://logos/logo.svg or assets/logo.png"
       [ngModel]="this.skillData?.urlLogo"
     />
     <small
-      *ngIf="skillForm.get('logo')?.invalid && skillForm.get('logo')?.touched"
+      *ngIf="skillForm.get('urlLogo')?.invalid && skillForm.get('urlLogo')?.touched"
       >Logo URL is required</small
     >
   </div>

@@ -1,15 +1,15 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HabilidadService } from 'src/app/core/services/skill-service/habilidad.service';
 import { FormsModule } from '@angular/forms';
 import { ISkill } from 'src/app/core/models/ISkill.model';
-import { UserService } from 'src/app/core/services/app-data-service/app-data.service';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 import { SkillFormComponent } from './components/skill-form/skill-form.component';
 import { ModalActionsButtonComponent } from 'src/app/shared/components/modal-actions-button/modal-actions-button.component';
 import { CardComponent } from 'src/app/shared/components/card/card.component';
 import { ToastrService } from 'ngx-toastr';
+import { AppDataService } from 'src/app/core/services/app-data-service/app-data.service';
 
 @Component({
   selector: 'app-habilidad',
@@ -26,6 +26,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./habilidad.component.less'],
 })
 export class HabilidadComponent implements OnInit {
+  @Input() isLogged!:boolean;
   habilidades: ISkill[] = [];
   habilidadSeleccionada!: ISkill;
   showModalEdit = false;
@@ -33,19 +34,16 @@ export class HabilidadComponent implements OnInit {
 
   constructor(
     private habilidadService: HabilidadService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private appDataService: AppDataService
   ) {}
 
   ngOnInit(): void {
-    this.obtenerHabildades();
+    this.habilidades = this.appDataService.getSkills();
   }
 
   seleccionarHabilidad(habilidad: ISkill) {
     this.habilidadSeleccionada = habilidad;
-  }
-
-  estaLogeado(): boolean {
-    return localStorage.getItem('user') != null;
   }
 
   obtenerHabildades() {

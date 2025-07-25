@@ -11,7 +11,7 @@
         class="btn-default primary-button"
         type="button"
         (click)="modalAgregar.toggleModal()"
-        *ngIf="estaLogeado()"
+        *ngIf="isLogged"
       >
         <i class="fa fa-plus"></i>
       </button>
@@ -22,11 +22,11 @@
     >
       <app-card
         [title]="habilidad.name"
-        [imageUrl]="habilidad.logo"
+        [imageUrl]="habilidad.urlLogo"
         class="col-3"
         *ngFor="let habilidad of this.habilidades"
       >
-        <div *ngIf="estaLogeado()">
+        <div *ngIf="isLogged">
           <app-modal-actions-button
             (edit)="seleccionarHabilidad(habilidad); modalEditar.toggleModal()"
             (remove)="
@@ -54,7 +54,7 @@
   ></app-skill-form>
 </app-modal>
 
-<app-modal #modalEliminar [titulo]="'Remove Skill'" class="text-center">
+<app-modal #modalEliminar [titulo]="'Remove Skill'">
   <p *ngIf="this.habilidadSeleccionada">
     Do you really want to remove <b>{{ habilidadSeleccionada.name }}</b
     >?
