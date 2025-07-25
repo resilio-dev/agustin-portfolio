@@ -17,8 +17,8 @@
   --middle-text-size: 1.7rem;
   --big-text-size: 2.5rem;
   --card-bg-color: #7c2d3b;
-  --text-card-color: #7c10f8;
-  --shadow-card-color: #501923;
+  --card-text-color: #7c10f8;
+  --card-shadow-color: #421d47;
   --danger-color: #3d0c2d;
   --success-color: #3c1841;
   --neutral-color: #d6d6d6;
@@ -35,7 +35,7 @@
   --card-bg-color: #ffdb80;
   --card-text-color: #ffdb80;
   --card-shadow-color: #ff8b3d;
-  --danger-color: #790008;
+  --danger-color: #910202;
   --success-color: #2e1500;
   --neutral-color: #d6d6d6;
 }
@@ -55,10 +55,12 @@ p {
 .underline-title {
   height: 4px;
   background-color: var(--primary-text-color);
-  opacity: 0.9;
+  opacity: 1;
   border: none;
   margin: 0.5rem auto 1rem auto;
   border-radius: 2px;
+  box-shadow: 0 0 5px var(--bg-primary-color), 0 0 10px var(--bg-primary-color),
+    0 0 20px var(--bg-secondary-color), 0 0 40px var(--bg-secondary-color);
 }
 
 .section-separator {
@@ -76,7 +78,7 @@ p {
 
 /* Card */
 .card {
-  background-color: var(--bg-card-color) !important;
+  background-color: var(--card-bg-color) !important;
   box-shadow: var(--card-shadow-color) !important;
   color: var(--card-text-color);
   border: none;
@@ -90,36 +92,38 @@ p {
   transition: 0.8s;
   padding: 5px 8px;
   font-size: var(--small-text-size);
-  font-weight: 600;
+  font-weight: bold;
   background-color: transparent;
 }
 
 .primary-button {
-  border: 2px solid var(--bg-primary-color);
+  border: 3px solid var(--bg-primary-color);
   color: var(--bg-primary-color);
-
+  box-shadow: 0 5px 15px var(--bg-primary-color);
+  
   &:hover {
     background-color: var(--bg-primary-color);
-    box-shadow: 0 5px 15px var(--bg-primary-color);
+    box-shadow: 0 5px 20px var(--bg-secondary-color);
     color: var(--bg-secondary-color);
   }
 }
 
 /* DANGER */
 .danger-button {
-  border: 2px solid var(--danger-color);
+  border: 3px solid var(--danger-color);
   color: var(--danger-color);
+  box-shadow: 0 5px 20px var(--bg-primary-color);
 
   &:hover {
-    box-shadow: 0 5px 15px var(--danger-color);
     background-color: var(--danger-color);
-    color: var(--bg-secondary-color);
+    color: var(--primary-text-color);
+    box-shadow: 0 5px 15px var(--bg-primary-color);
   }
 }
 
 /* SECONDARY */
 .neutral-button {
-  border: 2px solid var(--neutral-color);
+  border: 3px solid var(--neutral-color);
   color: var(--neutral-color);
 
   &:hover {
@@ -156,7 +160,7 @@ p {
     background-color: var(--primary-text-color);
     color: var(--bg-secondary-color);
     border-color: none;
-    box-shadow: 0 4px 12px var(--card-bg-color-shadow);
+    box-shadow: 0 4px 12px var(--card-shadow-color);
     transform: translateY(-2px);
   }
 }
@@ -181,7 +185,7 @@ form {
   overflow-y: auto;
   &:focus {
     border-color: var(--bg-secondary-color);
-    box-shadow: 0 0 0 0.2rem var(--shadow-card-color);
+    box-shadow: 0 0 0 0.2rem var(--card-shadow-color);
   }
 
   .form-group {
@@ -195,28 +199,23 @@ form {
   input.form-control,
   select.form-control,
   textarea.form-control {
-    background-color: var(--card-shadow-color) !important;
-    color: var(--primary-text-color);
+    color: var(--bg-primary-color);
     font-weight: 600;
     letter-spacing: 0.3rem;
     resize: vertical;
     overflow-y: auto;
     white-space: nowrap;
     transition: border-color 1s ease;
-    border: 2px solid var(--bg-secondary-color);
+    border: 2px solid var(--card-shadow-color);
 
     &:focus {
-      color: var(--bg-secondary-color);
-      background-color: var(--bg-secondary-color);
-      border-color: var(--shadow-card-color);
+      border-color: var(--card-shadow-color);
+      color: var(--bg-primary-color);
       box-shadow: 0 0 0 0.2rem var(--bg-primary-color);
-      &::placeholder {
-        color: var(--shadow-card-color);
-      }
     }
 
     &::placeholder {
-      color: var(--bg-secondary-color);
+      color: var(--bg-primary-color);
     }
   }
 
@@ -227,9 +226,9 @@ form {
   textarea:-webkit-autofill:hover,
   textarea:-webkit-autofill:focus,
   select:-webkit-autofill {
-    -webkit-text-fill-color: var(--bg-secondary-color) !important;
+    -webkit-text-fill-color: var(--bg-primary-color) !important;
     letter-spacing: 0.3rem;
-    border: 2px solid var(--shadow-card-color);
+    border: 2px solid var(--card-shadow-color);
   }
 }
 
@@ -239,7 +238,7 @@ form {
   top: 10% !important;
   left: 50% !important;
   transform: translate(-50%, -50%);
-  position: absolute;
+  position: fixed !important;
   z-index: 1060 !important;
   font-weight: 500;
 }
