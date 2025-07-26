@@ -58,7 +58,7 @@ export const DEFAULT_USER_DATA: IUser = {
       startDate: '2022-11-16',
       endDate: '2023-08-22',
       type: 'CURSO',
-      academy: 'Instituto Nacional de Tecnología Industrial',
+      academy: 'National Institute of Industrial Technology',
       skills: []
     },
     {
@@ -68,7 +68,7 @@ export const DEFAULT_USER_DATA: IUser = {
       startDate: '2023-08-25',
       endDate: '2023-10-22',
       type: 'CURSO',
-      academy: 'Centro Universitario de Idiomas',
+      academy: 'University Language Center',
       skills: []
     },
     {
