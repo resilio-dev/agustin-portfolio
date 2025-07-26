@@ -9,7 +9,7 @@ import { SkillFormComponent } from './components/skill-form/skill-form.component
 import { ModalActionsButtonComponent } from 'src/app/shared/components/modal-actions-button/modal-actions-button.component';
 import { ToastrService } from 'ngx-toastr';
 import { AppDataService } from 'src/app/core/services/app-data-service/app-data.service';
-import { SkillCardComponent } from "./components/skill-card/skill-card.component";
+import { SkillCardComponent } from './components/skill-card/skill-card.component';
 
 @Component({
   selector: 'app-habilidad',
@@ -20,17 +20,42 @@ import { SkillCardComponent } from "./components/skill-card/skill-card.component
     FormsModule,
     SkillFormComponent,
     ModalActionsButtonComponent,
-    SkillCardComponent
-],
+    SkillCardComponent,
+  ],
   templateUrl: './habilidad.component.html',
   styleUrls: ['./habilidad.component.less'],
 })
 export class HabilidadComponent implements OnInit {
-  @Input() isLogged!:boolean;
+  @Input() isLogged!: boolean;
   habilidades: ISkill[] = [];
   habilidadSeleccionada!: ISkill;
   showModalEdit = false;
   showModalDelete = false;
+
+  groupedSkills: { [key: string]: ISkill[] } = {};
+
+  skillTypes: string[] = [
+  'LANGUAGE',
+  'FRAMEWORK',
+  'LIBRARY',
+  'TOOL',
+  'IDE',
+  'PLATFORM',
+  'SECURITY',
+  'DATABASE',
+];
+
+skillTypeLabels: { [key: string]: string } = {
+  LANGUAGE: 'Languages',
+  FRAMEWORK: 'Frameworks',
+  LIBRARY: 'Libraries',
+  TOOL: 'Tools',
+  IDE: 'IDEs',
+  PLATFORM: 'Platforms',
+  SECURITY: 'Security',
+  DATABASE: 'Databases',
+};
+
 
   constructor(
     private habilidadService: HabilidadService,
@@ -40,6 +65,17 @@ export class HabilidadComponent implements OnInit {
 
   ngOnInit(): void {
     this.habilidades = this.appDataService.getSkills();
+    this.groupSkillsByType();
+  }
+
+  groupSkillsByType() {
+    this.groupedSkills = this.habilidades.reduce((acc, skill) => {
+      if (!acc[skill.type]) {
+        acc[skill.type] = [];
+      }
+      acc[skill.type].push(skill);
+      return acc;
+    }, {} as { [key: string]: ISkill[] });
   }
 
   seleccionarHabilidad(habilidad: ISkill) {

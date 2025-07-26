@@ -3,6 +3,6 @@ export interface ISkill {
   name: string,
   skills: string[],
   urlLogo: string,
-  type: "LANGUAGE" | "FRAMEWORK" | "TOOL" | "LIBRARY" | "PLATFORM" | "SECURITY" | "IDE" | "DATABASE" | "FORMAT",
+  type: "LANGUAGE" | "FRAMEWORK" | "TOOL" | "LIBRARY" | "PLATFORM" | "SECURITY" | "IDE" | "DATABASE",
   isLearning: boolean
 }

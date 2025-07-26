@@ -17,25 +17,35 @@
       </button>
     </header>
     <section
-      class="d-flex align-items-baseline justify-content-center text-center flex-wrap py-3 mb-3 gap-3"
+      class="container text-center flex-wrap py-3 mb-3 gap-3"
       *ngIf="habilidades.length > 0; else noSkills"
     >
-      <div class="row">
-        <div
-          class="col-6 col-md-4 col-lg-3 mb-4"
-          *ngFor="let skill of habilidades"
-        >
-          <div class="card-group">
-            <app-skill-card [technology]="skill"></app-skill-card>
-            <div *ngIf="isLogged">
-              <app-modal-actions-button
-                (edit)="seleccionarHabilidad(skill); modalEditar.toggleModal()"
-                (remove)="
-                  seleccionarHabilidad(skill); modalEliminar.toggleModal()
-                "
-              ></app-modal-actions-button>
+      <div *ngFor="let tipo of skillTypes">
+        <div *ngIf="groupedSkills[tipo]" class="my-4">
+          <h2 class="text-center mb-4">{{ skillTypeLabels[tipo] }}</h2>
+
+          <div class="row">
+            <div
+              class="col-6 col-md-4 col-lg-3 mb-4"
+              *ngFor="let skill of groupedSkills[tipo]"
+            >
+              <div class="card-group">
+                <app-skill-card [technology]="skill"></app-skill-card>
+
+                <div *ngIf="isLogged">
+                  <app-modal-actions-button
+                    (edit)="
+                      seleccionarHabilidad(skill); modalEditar.toggleModal()
+                    "
+                    (remove)="
+                      seleccionarHabilidad(skill); modalEliminar.toggleModal()
+                    "
+                  ></app-modal-actions-button>
+                </div>
+              </div>
             </div>
           </div>
+          <hr class="section-separator" />
         </div>
       </div>
     </section>

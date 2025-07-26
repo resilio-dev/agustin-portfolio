@@ -129,7 +129,7 @@ export const DEFAULT_USER_DATA: IUser = {
     skills: ["Formato de intercambio", "APIs REST", "Serialización"],
     urlLogo: "json-logo.png",
     isLearning: false,
-    type: "FORMAT"
+    type: "LANGUAGE"
   },
   {
     id: 7,
