@@ -1,8 +1,8 @@
 export interface ISkill {
   id: number,
   name: string,
-  description: string,
+  skills: string[],
   urlLogo: string,
-  type: 'FRAMEWORK' | 'LIBRARY' | 'HOSTING' | 'SOFTWARE' | 'LANGUAGE' | 'OTROS',
+  type: "LANGUAGE" | "FRAMEWORK" | "TOOL" | "LIBRARY" | "PLATFORM" | "SECURITY" | "IDE" | "DATABASE" | "FORMAT",
   isLearning: boolean
 }

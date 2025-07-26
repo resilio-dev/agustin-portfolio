@@ -1,6 +1,18 @@
 .nav-link {
   color: var(--bg-secondary-color);
-  text-shadow: 0 0 5px var(--bg-primary-color),
-      0 0 10px var(--bg-primary-color), 0 0 20px var(--bg-secondary-color),
-      0 0 40px var(--bg-secondary-color);
+  text-shadow: 0 0 5px var(--bg-primary-color), 0 0 10px var(--bg-primary-color),
+    0 0 20px var(--bg-secondary-color), 0 0 40px var(--bg-secondary-color);
+    width: fit-content;
+    margin: auto;
+}
+
+i {
+  cursor: pointer;
+  font-size: var(--middle-text-size);
+  color: var(--bg-secondary-color);
+  transition: transform 0.7s;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 }

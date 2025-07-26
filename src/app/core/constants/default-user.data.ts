@@ -83,54 +83,182 @@ export const DEFAULT_USER_DATA: IUser = {
     },
   ],
   skills: [
-    {
-      id: 1,
-      name: 'HTML5',
-      description: '',
-      urlLogo: 'assets/img/logos/language/html5.svg',
-      isLearning: false,
-      type: 'LANGUAGE'
-    },
-    {
-      id: 2,
-      name: 'CSS3',
-      description: '',
-      urlLogo: 'assets/img/logos/language/css_old.svg',
-      isLearning: false,
-      type: 'LANGUAGE'
-    },
-    {
-      id: 3,
-      name: 'JS',
-      description: '',
-      urlLogo: 'assets/img/logos/language/javascript.svg',
-      isLearning: false,
-      type: 'LANGUAGE'
-    },
-    {
-      id: 4,
-      name: 'Java',
-      description: '',
-      urlLogo: 'assets/img/logos/language/java.svg',
-      isLearning: false,
-      type: 'LANGUAGE'
-    },
-    {
-      id: 5,
-      name: 'Typescript',
-      description: '',
-      urlLogo: 'assets/img/logos/language/typescript.svg',
-      isLearning: false,
-      type: 'LANGUAGE'
-    },
-    {
-      id: 6,
-      name: 'JSON',
-      description: '',
-      urlLogo: 'assets/img/logos/language/json.svg',
-      isLearning: false,
-      type: 'LANGUAGE'
-    },
+  {
+    id: 1,
+    name: "HTML5",
+    skills: ["Semántica", "Accesibilidad", "Etiquetas multimedia"],
+    urlLogo: "assets/img/logos/language/html5.svg",
+    isLearning: false,
+    type: "LANGUAGE"
+  },
+  {
+    id: 2,
+    name: "CSS3",
+    skills: ["Flexbox", "Grid", "Responsive Design"],
+    urlLogo: "css3-logo.png",
+    isLearning: false,
+    type: "LANGUAGE"
+  },
+  {
+    id: 3,
+    name: "JavaScript",
+    skills: ["DOM Manipulation", "Eventos", "Funciones de orden superior"],
+    urlLogo: "javascript-logo.png",
+    isLearning: false,
+    type: "LANGUAGE"
+  },
+  {
+    id: 4,
+    name: "TypeScript",
+    skills: ["Tipado estático", "Interfaces", "Decoradores"],
+    urlLogo: "typescript-logo.png",
+    isLearning: false,
+    type: "LANGUAGE"
+  },
+  {
+    id: 5,
+    name: "Java",
+    skills: ["POO", "Colecciones", "Streams", "Lambdas"],
+    urlLogo: "java-logo.png",
+    isLearning: false,
+    type: "LANGUAGE"
+  },
+  {
+    id: 6,
+    name: "JSON",
+    skills: ["Formato de intercambio", "APIs REST", "Serialización"],
+    urlLogo: "json-logo.png",
+    isLearning: false,
+    type: "FORMAT"
+  },
+  {
+    id: 7,
+    name: "Angular",
+    skills: ["Componentes", "Servicios", "Rutas", "Standalone Components"],
+    urlLogo: "angular-logo.png",
+    isLearning: false,
+    type: "FRAMEWORK"
+  },
+  {
+    id: 8,
+    name: "RxJS",
+    skills: ["Observables", "Subjects", "Operators"],
+    urlLogo: "rxjs-logo.png",
+    isLearning: false,
+    type: "LIBRARY"
+  },
+  {
+    id: 9,
+    name: "Spring Boot",
+    skills: ["REST API", "JPA", "Seguridad", "Inyección de dependencias"],
+    urlLogo: "springboot-logo.png",
+    isLearning: false,
+    type: "FRAMEWORK"
+  },
+  {
+    id: 10,
+    name: "Bootstrap",
+    skills: ["Componentes UI", "Sistema de rejilla", "Utilidades"],
+    urlLogo: "bootstrap-logo.png",
+    isLearning: false,
+    type: "FRAMEWORK"
+  },
+  {
+    id: 11,
+    name: "Tailwind CSS",
+    skills: ["Utility-First", "Responsive", "Customización"],
+    urlLogo: "tailwind-logo.png",
+    isLearning: false,
+    type: "FRAMEWORK"
+  },
+  {
+    id: 12,
+    name: "Git",
+    skills: ["Commits", "Branching", "Merge", "Rebase"],
+    urlLogo: "git-logo.png",
+    isLearning: false,
+    type: "TOOL"
+  },
+  {
+    id: 13,
+    name: "GitHub",
+    skills: ["Repositorios remotos", "Pull Requests", "Actions"],
+    urlLogo: "github-logo.png",
+    isLearning: false,
+    type: "PLATFORM"
+  },
+  {
+    id: 14,
+    name: "PostgreSQL",
+    skills: ["Consultas SQL", "Modelado relacional", "Índices"],
+    urlLogo: "postgresql-logo.png",
+    isLearning: false,
+    type: "DATABASE"
+  },
+  {
+    id: 15,
+    name: "MySQL",
+    skills: ["Joins", "Stored Procedures", "Integración con JPA"],
+    urlLogo: "mysql-logo.png",
+    isLearning: false,
+    type: "DATABASE"
+  },
+  {
+    id: 16,
+    name: "NetBeans",
+    skills: ["Desarrollo Java", "Depuración", "Maven"],
+    urlLogo: "netbeans-logo.png",
+    isLearning: false,
+    type: "IDE"
+  },
+  {
+    id: 17,
+    name: "VS Code",
+    skills: ["Extensiones", "Snippets", "Depuración de código"],
+    urlLogo: "vscode-logo.png",
+    isLearning: false,
+    type: "IDE"
+  },
+  {
+    id: 18,
+    name: "Docker",
+    skills: ["Imágenes", "Contenedores", "Docker Compose"],
+    urlLogo: "docker-logo.png",
+    isLearning: false,
+    type: "TOOL"
+  },
+  {
+    id: 19,
+    name: "npm",
+    skills: ["Instalación de paquetes", "Scripts", "Gestión de dependencias"],
+    urlLogo: "npm-logo.png",
+    isLearning: false,
+    type: "TOOL"
+  },
+  {
+    id: 20,
+    name: "Swagger",
+    skills: ["Documentación de APIs", "OpenAPI", "UI interactiva"],
+    urlLogo: "swagger-logo.png",
+    isLearning: false,
+    type: "TOOL"
+  },
+  {
+    id: 21,
+    name: "JWT Token",
+    skills: ["Autenticación", "Claims", "Validación de tokens"],
+    urlLogo: "jwt-logo.png",
+    isLearning: false,
+    type: "SECURITY"
+  },
+  {
+    id: 22,
+    name: "Auth0",
+    skills: ["Gestión de identidad", "OAuth", "Single Sign-On"],
+    urlLogo: "auth0-logo.png",
+    isLearning: false,
+    type: "PLATFORM"
+  }
   ],
   yearsXP: 3,
 };
