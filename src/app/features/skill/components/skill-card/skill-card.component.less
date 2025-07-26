@@ -1,0 +1,46 @@
+.skill-card {
+  background-color: var(--card-bg-color);
+  color: var(--primary-text-color);
+  min-width: 200px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px var(--card-shadow-color);
+  }
+
+  .logo-img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+  }
+
+  .badge-learning {
+    background-color: var(--bg-primary-color);
+    color: white;
+    padding: 0.4rem 0.6rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .skills-list, small {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+
+    &.visible {
+      max-height: 200px;
+      opacity: 1;
+    }
+
+    li {
+      color: var(--primary-text-color)!important;
+      cursor: default;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    }
+  }
+}

@@ -1,0 +1,24 @@
+<div class="skill-card position-relative rounded-4 shadow-lg p-4 text-center d-flex flex-column align-items-center"
+     [style.borderTop]=" '5px solid ' + skillTypeColor "
+     (click)="toggleList()">
+
+  <img [src]="technology.urlLogo"
+       [alt]="technology.name"
+       class="logo-img mb-3" />
+
+  <h3 class="fw-bold mb-1">{{ technology.name }}</h3>
+  <small class="fst-italic mb-2" [class.visible]="showSkills">{{ technology.type }}</small>
+
+  <div class="skills-list mt-2" [class.visible]="showSkills">
+    <ul class="list-unstyled m-0" *ngIf="technology.skills.length > 0">
+      <li *ngFor="let sk of technology.skills" class="small py-1">
+        {{ sk }}
+      </li>
+    </ul>
+  </div>
+
+  <span *ngIf="technology.isLearning"
+        class="badge badge-learning position-absolute top-0 end-0 m-2">
+    Learning
+  </span>
+</div>

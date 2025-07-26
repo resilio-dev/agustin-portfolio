@@ -7,9 +7,9 @@ import { CommonModule } from '@angular/common';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 import { SkillFormComponent } from './components/skill-form/skill-form.component';
 import { ModalActionsButtonComponent } from 'src/app/shared/components/modal-actions-button/modal-actions-button.component';
-import { CardComponent } from 'src/app/shared/components/card/card.component';
 import { ToastrService } from 'ngx-toastr';
 import { AppDataService } from 'src/app/core/services/app-data-service/app-data.service';
+import { SkillCardComponent } from "./components/skill-card/skill-card.component";
 
 @Component({
   selector: 'app-habilidad',
@@ -20,8 +20,8 @@ import { AppDataService } from 'src/app/core/services/app-data-service/app-data.
     FormsModule,
     SkillFormComponent,
     ModalActionsButtonComponent,
-    CardComponent,
-  ],
+    SkillCardComponent
+],
   templateUrl: './habilidad.component.html',
   styleUrls: ['./habilidad.component.less'],
 })
