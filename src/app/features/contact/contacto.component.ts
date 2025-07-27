@@ -1,7 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/module.d-CnjH8Dlt';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { IUser } from 'src/app/core/models/IUser.model';
 import { ContactService } from 'src/app/core/services/contact-service/contact.service';
 import { FormContactComponent } from 'src/app/features/contact/components/form-contact/form-contact.component';
 
@@ -11,33 +10,24 @@ import { FormContactComponent } from 'src/app/features/contact/components/form-c
   templateUrl: './contacto.component.html',
   styleUrl: './contacto.component.less',
 })
-export class ContactoComponent implements OnInit {
-  usuario?: IUser;
+export class ContactoComponent {
 
   constructor(
     private toastr: ToastrService,
     private contactService: ContactService
   ) {}
 
-  ngOnInit(): void {
-    const aux = localStorage.getItem('user');
-    if (aux != null) {
-      const usuario: IUser = JSON.parse(aux) as IUser;
-      this.usuario = usuario;
-    }
-  }
-
   enviarMensaje(data: { name: string; email: string; message: string }): void {
     this.contactService.enviarMensaje(data).subscribe({
-      next: () => {
+      next: (response: {message: string}) => {
         this.toastr.success(
-          'Thanks for writing to me ' + data.name + ' !',
-          'Message sent successfully'
+          'Thanks for writing to me ' + data.name +'!',
+          response.message
         );
       },
       error: (error: HttpErrorResponse) => {
         const mensaje =
-          error.error?.message || 'Ocurrió un error al enviar el mensaje.';
+          error.error?.message || 'Error sending the message..';
         this.toastr.error(mensaje, 'Error');
       },
     });

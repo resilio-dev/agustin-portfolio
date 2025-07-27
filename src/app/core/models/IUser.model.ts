@@ -12,6 +12,7 @@ export interface IUser {
   mainPhrase: string,
   secondaryPhrase: string,
   age: number,
+  numberPhone: string,
   description: string,
   yearsXP: number,
   email: string,
