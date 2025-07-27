@@ -30,7 +30,7 @@ export class AppDataService {
           err.error.message
         );
         this.toastr.warning(
-          'You are also seeing a default view of my profile.', "Oh, it looks like we can't connect to the server right now."
+          'You are seeing a default view of my profile.', "Oh, it looks like we can't connect to the server right now.", {timeOut: 10000}
         );
       },
     });

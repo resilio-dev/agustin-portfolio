@@ -46,7 +46,7 @@ export const DEFAULT_USER_DATA: IUser = {
       description: 'Aplicación web para agendar turnos, realizar publicidad, controlar servicios y clientes, con panel de administración.',
       urlImg: 'assets/img/projects/shift-manager.png',
       startDate: '2025-08-12',
-      endDate: 'Actually',
+      endDate: 'Currently',
       technologies: []
     }
   ],
@@ -198,7 +198,7 @@ export const DEFAULT_USER_DATA: IUser = {
   {
     id: 15,
     name: "MySQL",
-    skills: ["Joins", "Stored Procedures", "Integración con JPA"],
+    skills: ["Consultas SQL", "Stored Procedures", "Integración con JPA"],
     urlLogo: "mysql-logo.png",
     isLearning: false,
     type: "DATABASE"

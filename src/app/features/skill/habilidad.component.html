@@ -21,8 +21,8 @@
       *ngIf="habilidades.length > 0; else noSkills"
     >
       <div *ngFor="let tipo of skillTypes">
-        <div *ngIf="groupedSkills[tipo]" class="my-4">
-          <h2 class="text-center mb-4">{{ skillTypeLabels[tipo] }}</h2>
+        <div *ngIf="groupedSkills[tipo]" class="my-4" >
+          <h2 class="text-center mb-4" [translate]="tipo !== 'FRAMEWORK'">{{ skillTypeLabels[tipo] }}</h2>
 
           <div class="row">
             <div
