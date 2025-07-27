@@ -2,32 +2,31 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IFormation } from '../../models/IFormation.model';
-import { environment } from 'src/environments/environment';
+import { ApiLinks } from '../../constants/ApiLinks';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormacionService {
-  private url:string = environment.apiUrl;
   constructor(private http: HttpClient) { }
 
-  obtenerFormacion(id:Number):Observable<IFormation> {
-    return this.http.get<IFormation>(`${this.url}/formaciones/${id}`)
+  obtenerFormacion(id:number):Observable<IFormation> {
+    return this.http.get<IFormation>(ApiLinks.FORMATIONS_ID(id))
   }
 
   obtenerFormaciones():Observable<IFormation[]>{
-    return this.http.get<IFormation[]>(`${this.url}/formaciones`)
+    return this.http.get<IFormation[]>(ApiLinks.FORMATIONS())
   }
 
   agregarFormacion(formacion :IFormation):Observable<IFormation> {
-    return this.http.post<IFormation>(`${this.url}/formaciones`, formacion)
+    return this.http.post<IFormation>(ApiLinks.FORMATIONS(), formacion)
   }
 
   actualizarFormacion(formacion :IFormation):Observable<IFormation> {
-    return this.http.put<IFormation>(`${this.url}/formaciones/${formacion.id}`, formacion)
+    return this.http.put<IFormation>(ApiLinks.FORMATIONS_ID(formacion.id), formacion)
   }
 
-  eliminarFormacion(id:Number):Observable<void> {
-    return this.http.delete<void>(`${this.url}/formaciones/${id}`);
+  eliminarFormacion(id:number):Observable<void> {
+    return this.http.delete<void>(ApiLinks.FORMATIONS_ID(id));
   }
 }

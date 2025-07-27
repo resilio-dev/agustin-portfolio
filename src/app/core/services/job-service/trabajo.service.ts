@@ -2,32 +2,31 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IJob } from '../../models/IJob.model';
-import { environment } from 'src/environments/environment';
+import { ApiLinks } from '../../constants/ApiLinks';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TrabajoService {
-  private url:string = environment.apiUrl;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  obtenerTrabajo(id:number):Observable<IJob> {
-    return this.http.get<IJob>(`${this.url}/trabajos/${id}`);
+  obtenerTrabajo(id: number): Observable<IJob> {
+    return this.http.get<IJob>(ApiLinks.JOBS_ID(id));
   }
 
-  obtenerTrabajos():Observable<IJob[]> {
-    return this.http.get<IJob[]>(`${this.url}/trabajos`);
+  obtenerTrabajos(): Observable<IJob[]> {
+    return this.http.get<IJob[]>(ApiLinks.JOBS());
   }
 
-  actualizarTrabajo(trabajo:IJob):Observable<void> {
-    return this.http.put<void>(`${this.url}/trabajos/${trabajo.id}`,trabajo);
+  actualizarTrabajo(trabajo: IJob): Observable<void> {
+    return this.http.put<void>(ApiLinks.JOBS_ID(trabajo.id), trabajo);
   }
 
-  eliminarTrabajo(id:number):Observable<void> {
-    return this.http.delete<void>(`${this.url}/trabajos/${id}`);
+  eliminarTrabajo(id: number): Observable<void> {
+    return this.http.delete<void>(ApiLinks.JOBS_ID(id));
   }
 
-  agregarTrabajo(trabajo:IJob):Observable<void> {
-    return this.http.post<void>(`${this.url}/trabajos`,trabajo);
+  agregarTrabajo(trabajo: IJob): Observable<void> {
+    return this.http.post<void>(ApiLinks.JOBS(), trabajo);
   }
 }

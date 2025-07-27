@@ -1,9 +1,22 @@
 import { environment } from 'src/environments/environment';
 
-export class UsuarioApiLinks {
-  public static readonly USERS = `${environment.apiUrl}/users`;
-  public static readonly USERS_ID = (id: number) => `${this.USERS}/${id}`;
-  public static readonly SKILLS = (id: number) => `${this.USERS_ID(id)}/skills`;
-  public static readonly SKILLS_ID = (userId: number, skillsId: number) =>
-    `${this.SKILLS(userId)}/${skillsId}`;
+export class ApiLinks {
+  public static readonly URL_API = `${environment.apiUrl}`;
+  public static readonly APP_DATA = () => `${this.URL_API}/1/public`;
+
+  public static readonly SKILLS = () => `${this.URL_API}/habilidades`;
+  public static readonly SKILLS_ID = (skillsId: number) =>
+    `${this.SKILLS()}/${skillsId}`;
+
+  public static readonly JOBS = () => `${this.URL_API}/trabajos`;
+  public static readonly JOBS_ID = (jobId: number) =>
+    `${this.JOBS()}/${jobId}`;
+
+  public static readonly PROJECTS = () => `${this.URL_API}/proyectos`;
+  public static readonly PROJECTS_ID = (projectId: number) =>
+    `${this.PROJECTS()}/${projectId}`;
+
+  public static readonly FORMATIONS = () => `${this.URL_API}/formaciones`;
+  public static readonly FORMATIONS_ID = (formationId: number) =>
+    `${this.FORMATIONS()}/${formationId}`;
 }
