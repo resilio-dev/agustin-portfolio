@@ -11,25 +11,46 @@ import { FormContactComponent } from 'src/app/features/contact/components/form-c
   styleUrl: './contacto.component.less',
 })
 export class ContactoComponent {
-
   constructor(
     private toastr: ToastrService,
     private contactService: ContactService
   ) {}
 
-  enviarMensaje(data: { name: string; email: string; message: string }): void {
-    this.contactService.enviarMensaje(data).subscribe({
-      next: (response: {message: string}) => {
-        this.toastr.success(
-          'Thanks for writing to me ' + data.name +'!',
-          response.message
-        );
-      },
-      error: (error: HttpErrorResponse) => {
-        const mensaje =
-          error.error?.message || 'Error sending the message..';
-        this.toastr.error(mensaje, 'Error');
-      },
-    });
+  attemps = 0;
+  attempsLimit = 2;
+
+  trySend(data: { name: string; email: string; message: string }): void {
+    if (this.canSend()) {
+      this.contactService.enviarMensaje(data).subscribe({
+        next: (response: { message: string }) => {
+          this.toastr.success(
+            'Thanks for writing to me ' + data.name + '!',
+            response.message
+          );
+          this.updateAttempts();
+        },
+        error: (error: HttpErrorResponse) => {
+          const mensaje = error.error?.message || 'Error sending the message..';
+          this.toastr.error(mensaje, 'Error');
+        },
+      });
+    } else {
+      this.showWaitMessage();
+    }
+  }
+
+  updateAttempts() {
+    this.attemps++;
+  }
+
+  canSend(): boolean {
+    return this.attemps >= this.attempsLimit;
+  }
+
+  showWaitMessage(): void {
+    this.toastr.error(
+      'Please allow one hour to send a new message.',
+      'Limit of messages reached'
+    );
   }
 }
