@@ -2,10 +2,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IUser } from 'src/app/core/models/IUser.model';
 import { BehaviorSubject } from 'rxjs';
-import { ISkill } from '../../models/ISkill.model';
-import { IJob } from '../../models/IJob.model';
-import { IProject } from '../../models/IProject.model';
-import { IFormation } from '../../models/IFormation.model';
 import { IDataUser } from '../../models/IDataUser.model';
 import { DEFAULT_USER_DATA } from '../../constants/default-user.data';
 import { ToastrService } from 'ngx-toastr';
@@ -43,20 +39,7 @@ export class AppDataService {
       },
     });
   }
-
-  getSkills(): ISkill[] {
-    return this.appDataSubject.value?.skills || [];
-  }
-  getJobs(): IJob[] {
-    return this.appDataSubject.value?.jobs || [];
-  }
-  getProjects(): IProject[] {
-    return this.appDataSubject.value?.projects || [];
-  }
-  getFormations(): IFormation[] {
-    return this.appDataSubject.value?.formations || [];
-  }
-
+  
   getAboutMe(): IDataUser {
     const user = this.appDataSubject.value;
     return {
@@ -72,5 +55,13 @@ export class AppDataService {
       urlCV: user?.urlCV || '#',
       yearsXP: user?.yearsXP || 3,
     };
+  }
+
+  getDataValue(): IUser | null {
+    return this.appDataSubject.value;
+  }
+
+  setData(user: IUser) {
+    this.appDataSubject.next(user);
   }
 }

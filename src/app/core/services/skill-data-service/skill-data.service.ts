@@ -1,22 +1,17 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { ISkill } from '../../models/ISkill.model';
-import { HabilidadService } from '../skill-service/habilidad.service';
+import { AppDataService } from '../app-data-service/app-data.service';
 
 @Injectable({ providedIn: 'root' })
-export class SkillDataService {
-  private skillsSubject = new BehaviorSubject<ISkill[]>([]);
-  skills$ = this.skillsSubject.asObservable();
+export class SkillDataService{
+  skills$ :Observable<ISkill[]>;
 
-  constructor(private skillService: HabilidadService) {}
-
-  loadSkills(): void {
-    this.skillService.obtenerHabilidades().subscribe((skills) => {
-      this.skillsSubject.next(skills);
-    });
+  constructor(private appDataService: AppDataService) {
+    this.skills$ = this.appDataService.appData$.pipe(map(data => data?.skills ?? []));
   }
 
-  getCurrentSkills(): ISkill[] {
-    return this.skillsSubject.getValue();
+  getByIds(ids: number[]) :Observable<ISkill[]>{
+    return this.skills$.pipe(map(skills => skills.filter(sk => ids.includes(sk.id))))
   }
 }
