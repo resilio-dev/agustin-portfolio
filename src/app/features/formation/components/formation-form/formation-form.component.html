@@ -1,4 +1,4 @@
-<form [formGroup]="formationForm" (ngSubmit)="submit()">
+<form [formGroup]="formationForm">
   <div
     class="form-group mb-3 d-flex align-items-center justify-content-center"
     *ngIf="formationData"
@@ -20,7 +20,7 @@
     <input
       type="text"
       id="title"
-      [ngModel]="formationData?.title"
+      [value]="formationData?.title"
       formControlName="title"
       class="form-control custom-input"
       placeholder="Formation title"
@@ -39,7 +39,7 @@
       id="description"
       class="form-control custom-input"
       formControlName="description"
-      [ngModel]="formationData?.description"
+      [value]="formationData?.description"
       placeholder="Write formation description..."
       rows="2"
     ></textarea>
@@ -57,7 +57,7 @@
     <input
       type="text"
       id="type"
-      [ngModel]="formationData?.type"
+      [value]="formationData?.type"
       formControlName="type"
       class="form-control custom-input"
       placeholder="Formation type"
@@ -75,7 +75,7 @@
     <input
       type="text"
       id="academy"
-      [ngModel]="formationData?.type"
+      [value]="formationData?.type"
       formControlName="academy"
       class="form-control custom-input"
       placeholder="Academic institution name"
@@ -92,7 +92,7 @@
     <input
       type="text"
       id="startDate"
-      [ngModel]="formationData?.startDate"
+      [value]="formationData?.startDate"
       formControlName="startDate"
       class="form-control custom-input"
       placeholder="Formation start date"
@@ -109,7 +109,7 @@
     <input
       type="text"
       id="endDate"
-      [ngModel]="formationData?.endDate"
+      [value]="formationData?.endDate"
       formControlName="endDate"
       class="form-control custom-input"
       placeholder="Formation end date"
@@ -121,6 +121,9 @@
       "
       >Formation end date is required.</small
     >
+  </div>
+  <div class="form-group mb-4">
+    Select Skills Here...
   </div>
   <app-form-actions-button
     (save)="submit()"

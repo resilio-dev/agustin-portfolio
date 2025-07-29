@@ -9,7 +9,7 @@
       formControlName="id"
       class="form-control custom-input"
       readonly
-      [ngModel]="projectData.id"
+      [value]="projectData.id"
     />
     <button type="button" class="btn" (click)="this.showId = !this.showId">
       <i class="fas fa-eye" *ngIf="this.showId"></i>
@@ -21,7 +21,7 @@
     <input
       id="title"
       class="form-control custom-input"
-      [ngModel]="projectData?.title"
+      [value]="projectData?.title"
       formControlName="title"
       placeholder="Project title"
     />
@@ -34,7 +34,7 @@
     <textarea
       id="description"
       class="form-control custom-input"
-      [ngModel]="projectData?.description"
+      [value]="projectData?.description"
       formControlName="description"
       placeholder="Project description"
     ></textarea>
@@ -61,7 +61,7 @@
       type="url"
       id="link"
       class="form-control custom-input"
-      [ngModel]="projectData?.link"
+      [value]="projectData?.link"
       formControlName="link"
       placeholder="https://site.com"
     />
@@ -74,7 +74,7 @@
     <input
       type="date"
       id="startDate"
-      [ngModel]="projectData?.startDate"
+      [value]="projectData?.startDate"
       class="form-control custom-input"
       formControlName="startDate"
     />
@@ -87,7 +87,7 @@
     <input
       type="date"
       id="endDate"
-      [ngModel]="projectData?.endDate"
+      [value]="projectData?.endDate"
       class="form-control custom-input"
       formControlName="endDate"
     />

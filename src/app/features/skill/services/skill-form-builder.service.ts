@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ISkill } from 'src/app/core/models/ISkill.model';
-import { arrayNoEmptyValidator } from 'src/app/shared/validators/array-no-empty.validator';
 import { linkPatternValidator } from 'src/app/shared/validators/link-pattern.validator';
 
 @Injectable({
@@ -21,10 +20,10 @@ export class SkillFormBuilderService {
         skill?.urlLogo ?? '',
         [Validators.required, linkPatternValidator()],
       ],
-      isLearning: [skill?.urlLogo ?? false, [Validators.required]],
+      isLearning: [skill?.urlLogo ?? false],
       skills: [
-        skill?.skills ?? [],
-        [Validators.required, arrayNoEmptyValidator()],
+        skill?.skills ?? '',
+        [Validators.required],
       ],
       type: [
         skill?.type ?? '',

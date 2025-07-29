@@ -9,7 +9,7 @@
       formControlName="id"
       class="form-control custom-input"
       readonly
-      [ngModel]="jobData.id"
+      [value]="jobData.id"
     />
     <button type="button" class="btn" (click)="this.showId = !this.showId">
       <i class="fas fa-eye" *ngIf="this.showId"></i>
@@ -21,7 +21,7 @@
     <input
       type="date"
       id="startDate"
-      [ngModel]="jobData?.startDate"
+      [value]="jobData?.startDate"
       class="form-control custom-input"
       placeholder="Date start"
       formControlName="startDate"
@@ -40,7 +40,7 @@
     <input
       type="date"
       id="endDate"
-      [ngModel]="jobData?.endDate"
+      [value]="jobData?.endDate"
       class="form-control custom-input"
       placeholder="Date end"
       formControlName="endDate"
@@ -58,7 +58,7 @@
     <input
       type="text"
       id="title"
-      [ngModel]="jobData?.title"
+      [value]="jobData?.title"
       class="form-control custom-input"
       placeholder="Title"
       formControlName="title"
@@ -73,7 +73,7 @@
       type="text"
       id="description"
       class="form-control custom-input"
-      [ngModel]="jobData?.description"
+      [value]="jobData?.description"
       placeholder="Description"
       formControlName="description"
     />
@@ -92,7 +92,7 @@
       type="url"
       id="urlImg"
       class="form-control custom-input"
-      [ngModel]="jobData?.urlImg"
+      [value]="jobData?.urlImg"
       placeholder="https://imagen.png or assets/img.png"
       formControlName="urlImg"
     />
