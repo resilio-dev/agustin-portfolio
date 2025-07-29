@@ -1,5 +1,3 @@
-import { ISkill } from "./ISkill.model";
-
 export interface IFormation {
   id: number,
   startDate: string,
@@ -8,5 +6,5 @@ export interface IFormation {
   description: string,
   type: 'FORMACION_FORMAL' | 'CURSO' | 'AUTODIDACTA' | 'OTRO',
   academy: string,
-  skills: ISkill[]
+  technologies: number[]
 }

@@ -1,5 +1,3 @@
-import { ISkill } from './ISkill.model';
-
 export interface IProject {
   id: number,
   title: string,
@@ -8,5 +6,5 @@ export interface IProject {
   urlImg: string,
   startDate: string,
   endDate: string,
-  tecnologies: ISkill[]
+  tecnologies: number[]
 }

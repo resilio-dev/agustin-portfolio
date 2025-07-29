@@ -1,5 +1,3 @@
-import { ISkill } from './ISkill.model';
-
 export interface IJob {
   id: number,
   title: string,
@@ -7,5 +5,5 @@ export interface IJob {
   startDate: string,
   endDate: string,
   urlImg: string,
-  technologies: ISkill[],
+  technologies: number[],
 }
