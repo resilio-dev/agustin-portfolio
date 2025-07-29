@@ -25,13 +25,14 @@ export class ContactoComponent {
         next: (response: { message: string }) => {
           this.toastr.success(
             'Thanks for writing to me ' + data.name + '!',
-            response.message
+            response.message,
+            {timeOut: 10000}
           );
           this.updateAttempts();
         },
         error: (error: HttpErrorResponse) => {
           const mensaje = error.error?.message || 'Error sending the message..';
-          this.toastr.error(mensaje, 'Error');
+          this.toastr.error(mensaje, 'Error', {timeOut: 10000});
         },
       });
     } else {
@@ -44,13 +45,14 @@ export class ContactoComponent {
   }
 
   canSend(): boolean {
-    return this.attemps >= this.attempsLimit;
+    return this.attemps < this.attempsLimit;
   }
 
   showWaitMessage(): void {
     this.toastr.error(
       'Please allow one hour to send a new message.',
-      'Limit of messages reached'
+      'Limit of messages reached',
+      {timeOut: 10000}
     );
   }
 }
