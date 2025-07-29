@@ -1,8 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
+import { ApiLinks } from 'src/app/core/constants/ApiLinks';
 import { ILoginRequest } from 'src/app/core/models/ILoginRequest.model';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +12,11 @@ import { environment } from 'src/environments/environment';
 export class LoginService {
   private tokenSubject: BehaviorSubject<string | null>;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private toastr: ToastrService,
+    private router: Router
+  ) {
     const storedToken = localStorage.getItem('user-token');
     this.tokenSubject = new BehaviorSubject<string | null>(storedToken);
   }
@@ -19,21 +25,20 @@ export class LoginService {
     return this.tokenSubject.asObservable();
   }
 
-  login(request: ILoginRequest): void {
-    this.http.post<string>(`${environment.apiUrl}/login`, request).subscribe({
-      next: (response) => {
-        localStorage.setItem('user-token', response);
-        this.tokenSubject.next(response);
-      },
-      error: (error) => console.error('Login error:', error.message)
-    });
+  login(request: ILoginRequest) {
+    return this.http.post<{ token: string }>(ApiLinks.LOGIN(), request).pipe(
+      tap((response) => {
+        this.tokenSubject.next(response.token);
+        localStorage.setItem('user-token', response.token);
+      })
+    );
   }
 
   logout(): void {
     localStorage.removeItem('user-token');
     this.tokenSubject.next(null);
   }
-  
+
   isLogin(): boolean {
     return this.tokenSubject.value !== null;
   }
