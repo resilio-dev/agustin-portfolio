@@ -2,15 +2,15 @@ import { environment } from 'src/environments/environment';
 
 export class ApiLinks {
   public static readonly URL_API = `${environment.apiUrl}`;
-  public static readonly APP_DATA = () => `${this.URL_API}/1/public`;
+  public static readonly APP_DATA = () => `${this.URL_API}/usuarios/1/public`;
+  public static readonly LOGIN = () => `${this.URL_API}/auth/login`;
 
   public static readonly SKILLS = () => `${this.URL_API}/habilidades`;
   public static readonly SKILLS_ID = (skillsId: number) =>
     `${this.SKILLS()}/${skillsId}`;
 
   public static readonly JOBS = () => `${this.URL_API}/trabajos`;
-  public static readonly JOBS_ID = (jobId: number) =>
-    `${this.JOBS()}/${jobId}`;
+  public static readonly JOBS_ID = (jobId: number) => `${this.JOBS()}/${jobId}`;
 
   public static readonly PROJECTS = () => `${this.URL_API}/proyectos`;
   public static readonly PROJECTS_ID = (projectId: number) =>

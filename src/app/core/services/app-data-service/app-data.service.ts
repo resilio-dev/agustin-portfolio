@@ -15,22 +15,31 @@ import { ApiLinks } from '../../constants/ApiLinks';
   providedIn: 'root',
 })
 export class AppDataService {
-  private appDataSubject = new BehaviorSubject<IUser>(DEFAULT_USER_DATA);
+  private appDataSubject = new BehaviorSubject<IUser | null>(null);
   readonly appData$ = this.appDataSubject.asObservable();
 
   constructor(private http: HttpClient, private toastr: ToastrService) {}
 
   uploadData(): void {
+    console.log('Connecting to server...');
     this.http.get<IUser>(ApiLinks.APP_DATA()).subscribe({
-      next: (data: IUser) => this.appDataSubject.next(data),
+      next: (data: IUser) => {
+        this.appDataSubject.next(data);
+        this.toastr.success(
+          'You are seeing a live view of my profile.',
+          'Successful connection',
+          { timeOut: 5000 }
+        );
+        console.log('Connection susccessful');
+      },
       error: (err: HttpErrorResponse) => {
-        console.error(
-          'Error obtaining server data: ',
-          err.error.message
-        );
+        this.appDataSubject.next(DEFAULT_USER_DATA);
         this.toastr.warning(
-          'You are seeing a default view of my profile.', "Oh, it looks like we can't connect to the server right now.", {timeOut: 10000}
+          'You are seeing a default view of my profile.',
+          "Oh, it looks like we can't connect to the server right now.",
+          { timeOut: 10000 }
         );
+        console.error('Error server connect.', err.error.message);
       },
     });
   }
