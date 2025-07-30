@@ -36,7 +36,7 @@ export class ProjectFormBuilderService {
         project?.endDate ?? '',
         [Validators.required, datePatternValidator()],
       ],
-      technologies: [project?.tecnologies ?? [], [arrayNoEmptyValidator()]],
+      technologies: [project?.tecnologies ?? '', [Validators.required]],
     });
   }
 }

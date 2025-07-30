@@ -34,7 +34,17 @@ export class ProjectFormComponent {
 
   submit(): void {
     if (this.projectForm.valid) {
-      this.formSubmitted.emit(this.projectForm.value);
+      const project :IProject = {
+        id: this.projectForm.get('id')?.value,
+        title: this.projectForm.get('title')?.value,
+        description: this.projectForm.get('description')?.value,
+        startDate: this.projectForm.get('starDate')?.value,
+        endDate: this.projectForm.get('endDate')?.value,
+        tecnologies: this.projectForm.get('technologies')?.value,
+        link: this.projectForm.get('link')?.value,
+        urlImg: this.projectForm.get('urlImg')?.value
+      }
+      this.formSubmitted.emit(project);
       this.projectForm.reset();
     } else {
       this.projectForm.markAllAsTouched();

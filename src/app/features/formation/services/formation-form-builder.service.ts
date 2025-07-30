@@ -33,6 +33,10 @@ export class FormationFormBuilderService {
         formation?.endDate ?? '',
         [Validators.required, datePatternValidator()],
       ],
+      technologies: [
+        formation?.technologies ?? '',
+        [Validators.required]
+      ]
     });
   }
 }

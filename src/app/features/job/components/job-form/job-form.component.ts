@@ -44,6 +44,15 @@ export class JobFormComponent implements OnInit {
 
   submit(): void {
     if (this.jobForm.valid) {
+      const job :IJob = {
+        id: this.jobForm.get('id')?.value,
+        title: this.jobForm.get('title')?.value,
+        description: this.jobForm.get('description')?.value,
+        startDate: this.jobForm.get('starDate')?.value,
+        endDate: this.jobForm.get('endDate')?.value,
+        urlImg: this.jobForm.get('urlImg')?.value,
+        technologies: this.jobForm.get('technologies')?.value
+      }
       this.formSubmitted.emit(this.jobForm.value);
       this.jobForm.reset();
     } else {

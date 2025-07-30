@@ -33,7 +33,7 @@ export class JobFormBuilderService {
         job?.endDate ?? '',
         [Validators.required, datePatternValidator()],
       ],
-      technologies: [job?.technologies ?? [], [arrayNoEmptyValidator()]],
+      technologies: [job?.technologies ?? '', [Validators.required]],
     });
   }
 }

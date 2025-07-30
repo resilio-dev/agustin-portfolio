@@ -61,7 +61,7 @@ export const DEFAULT_USER_DATA: IUser = {
       endDate: '2023-08-22',
       type: 'CURSO',
       academy: 'National Institute of Industrial Technology',
-      skills: [],
+      technologies: [],
     },
     {
       id: 2,
@@ -72,7 +72,7 @@ export const DEFAULT_USER_DATA: IUser = {
       endDate: '2023-10-22',
       type: 'CURSO',
       academy: 'University Language Center',
-      skills: [],
+      technologies: [],
     },
     {
       id: 3,
@@ -83,7 +83,7 @@ export const DEFAULT_USER_DATA: IUser = {
       endDate: 'Actually',
       type: 'FORMACION_FORMAL',
       academy: 'National University of Comahue',
-      skills: [],
+      technologies: [],
     },
   ],
   skills: [
