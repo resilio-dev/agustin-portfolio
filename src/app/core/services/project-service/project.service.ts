@@ -18,15 +18,15 @@ export class ProyectoService {
     return this.http.get<IProject[]>(ApiLinks.PROJECTS());
   }
 
-  actualizarProyecto(trabajo: IProject): Observable<void> {
-    return this.http.put<void>(ApiLinks.PROJECTS_ID(trabajo.id), trabajo);
+  actualizarProyecto(trabajo: IProject): Observable<IProject> {
+    return this.http.put<IProject>(ApiLinks.PROJECTS_ID(trabajo.id), trabajo);
   }
 
   eliminarProyecto(id: number): Observable<void> {
     return this.http.delete<void>(ApiLinks.PROJECTS_ID(id));
   }
 
-  agregarProyecto(trabajo: IProject): Observable<void> {
-    return this.http.post<void>(ApiLinks.PROJECTS(), trabajo);
+  agregarProyecto(trabajo: IProject): Observable<IProject> {
+    return this.http.post<IProject>(ApiLinks.PROJECTS(), trabajo);
   }
 }

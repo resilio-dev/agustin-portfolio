@@ -1,34 +1,60 @@
 import { Injectable } from '@angular/core';
 import { IJob } from '../../models/IJob.model';
-import { map, Observable } from 'rxjs';
-import { AppDataService } from '../app-data-service/app-data.service';
+import { BehaviorSubject, map, Observable } from 'rxjs';
+import { TrabajoService } from '../job-service/trabajo.service';
+import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/module.d-CnjH8Dlt';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class JobDataService {
-jobs$ :Observable<IJob[]>;
+  jobsSubject = new BehaviorSubject<IJob[]>([]);
+  jobs$ = this.jobsSubject.asObservable();
 
-  constructor(private appDataService: AppDataService) {
-    this.jobs$ = this.appDataService.appData$.pipe(
-      map((data) => data?.jobs ?? [])
-    );
+  constructor(
+    private trabajoService: TrabajoService,
+    private toastr: ToastrService
+  ) {}
+
+  addJob(job: IJob): void {
+    this.trabajoService.agregarTrabajo(job).subscribe({
+      next: () => {
+        const actual = this.jobsSubject.value;
+        this.jobsSubject.next([...actual, job]);
+        this.toastr.success('Created new Job');
+      },
+      error: (error: HttpErrorResponse) => {
+        this.toastr.error(`Error adding job: ${error.message}`, 'Error');
+      },
+    });
   }
 
-  updateJobs(jobs: IJob[]) {
-    const user = this.appDataService.getDataValue();
-    if (user) {
-      this.appDataService.setData({ ...user, jobs: jobs });
-    }
+  updateJob(job: IJob): void {
+    this.trabajoService.actualizarTrabajo(job).subscribe({
+      next: (updatedJob: IJob) => {
+        const updated = this.jobsSubject.value.map((j) =>
+          j.id === updatedJob.id ? updatedJob : j);
+        this.jobsSubject.next(updated);
+        this.toastr.success('Job updated successfully');
+      },
+      error: (error: HttpErrorResponse) => {
+        this.toastr.error(`Error updating job: ${error.message}`, 'Error');
+      },
+    });
   }
 
-  updateJobSkills(id: number, newIds: number[]) {
-    const user = this.appDataService.getDataValue();
-    if (!user) return;
-    const jobs = user.jobs.map((p) =>
-      p.id === id ? { ...p, technologies: newIds } : p
-    );
-    this.updateJobs(jobs);
+  deleteJob(id: number): void {
+    this.trabajoService.eliminarTrabajo(id).subscribe({
+      next: () => {
+        const updated = this.jobsSubject.value.filter((j) => j.id !== id);
+        this.jobsSubject.next(updated);
+        this.toastr.success('Job deleted successfully');
+      },
+      error: (error: HttpErrorResponse) => {
+        this.toastr.error(`Error deleting job: ${error.message}`, 'Error');
+      },
+    });
   }
 
   getByIds(ids: number[]): Observable<IJob[]> {

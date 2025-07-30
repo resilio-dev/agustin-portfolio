@@ -18,15 +18,15 @@ export class TrabajoService {
     return this.http.get<IJob[]>(ApiLinks.JOBS());
   }
 
-  actualizarTrabajo(trabajo: IJob): Observable<void> {
-    return this.http.put<void>(ApiLinks.JOBS_ID(trabajo.id), trabajo);
+  actualizarTrabajo(trabajo: IJob): Observable<IJob> {
+    return this.http.put<IJob>(ApiLinks.JOBS_ID(trabajo.id), trabajo);
   }
 
   eliminarTrabajo(id: number): Observable<void> {
     return this.http.delete<void>(ApiLinks.JOBS_ID(id));
   }
 
-  agregarTrabajo(trabajo: IJob): Observable<void> {
-    return this.http.post<void>(ApiLinks.JOBS(), trabajo);
+  agregarTrabajo(trabajo: IJob): Observable<IJob> {
+    return this.http.post<IJob>(ApiLinks.JOBS(), trabajo);
   }
 }

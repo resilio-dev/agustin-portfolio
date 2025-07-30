@@ -1,34 +1,69 @@
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { IProject } from '../../models/IProject.model';
-import { AppDataService } from '../app-data-service/app-data.service';
+import { ProyectoService } from '../project-service/project.service';
+import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/module.d-CnjH8Dlt';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProjectDataService {
-  projects$ :Observable<IProject[]>;
+  projectsSubject = new BehaviorSubject<IProject[]>([]);
+  projects$ = this.projectsSubject.asObservable();
 
-  constructor(private appDataService: AppDataService) {
-    this.projects$ = this.appDataService.appData$.pipe(
-      map((data) => data?.projects ?? [])
-    );
+  constructor(
+    private projectService: ProyectoService,
+    private toastr: ToastrService
+  ) {}
+
+  addProject(project: IProject) {
+    this.projectService.agregarProyecto(project).subscribe({
+      next: (newProject: IProject) => {
+        const actual = this.projectsSubject.value;
+        this.projectsSubject.next([...actual, newProject]);
+        this.toastr.success('Created new project');
+      },
+      error: (error: HttpErrorResponse) => {
+        const mensaje =
+          error.error?.message ||
+          'An error ocurred while the project was creating.';
+        this.toastr.error(mensaje, 'Error');
+      },
+    });
   }
 
-  updateProjects(projects: IProject[]) {
-    const user = this.appDataService.getDataValue();
-    if (user) {
-      this.appDataService.setData({ ...user, projects: projects });
-    }
+  updateProject(project: IProject) {
+    this.projectService.actualizarProyecto(project).subscribe({
+      next: (updatedProject: IProject) => {
+        const updated = this.projectsSubject.value.map((p) =>
+          p.id === project.id ? updatedProject : p
+        );
+        this.projectsSubject.next(updated);
+        this.toastr.success('Updated project');
+      },
+      error: (error: HttpErrorResponse) => {
+        const mensaje =
+          error.error?.message ||
+          'An error ocurred while the project was updating.';
+        this.toastr.error(mensaje, 'Error');
+      }})
   }
 
-  updateProjectSkills(id: number, newIds: number[]) {
-    const user = this.appDataService.getDataValue();
-    if (!user) return;
-    const projects = user.projects.map((p) =>
-      p.id === id ? { ...p, technologies: newIds } : p
-    );
-    this.updateProjects(projects);
+  deleteProject(id: number) {
+    this.projectService.eliminarProyecto(id).subscribe({
+      next: () => {
+        const updated = this.projectsSubject.value.filter((p) => p.id !== id);
+        this.projectsSubject.next(updated);
+        this.toastr.success('Deleted project');
+      },
+      error: (error: HttpErrorResponse) => {
+        const mensaje =
+          error.error?.message ||
+          'An error ocurred while the project was deleting.';
+        this.toastr.error(mensaje, 'Error');
+      },
+    });
   }
 
   getByIds(ids: number[]): Observable<IProject[]> {
