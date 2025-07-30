@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HabilidadService } from 'src/app/core/services/skill-service/habilidad.service';
 import { FormsModule } from '@angular/forms';
 import { ISkill } from 'src/app/core/models/ISkill.model';
@@ -8,8 +8,9 @@ import { ModalComponent } from 'src/app/shared/components/modal/modal.component'
 import { SkillFormComponent } from './components/skill-form/skill-form.component';
 import { ModalActionsButtonComponent } from 'src/app/shared/components/modal-actions-button/modal-actions-button.component';
 import { ToastrService } from 'ngx-toastr';
-import { AppDataService } from 'src/app/core/services/app-data-service/app-data.service';
 import { SkillCardComponent } from './components/skill-card/skill-card.component';
+import { LoginService } from 'src/app/core/services/auth-service/login/login.service';
+import { SkillDataService } from 'src/app/core/services/skill-data-service/skill-data.service';
 
 @Component({
   selector: 'app-habilidad',
@@ -26,7 +27,6 @@ import { SkillCardComponent } from './components/skill-card/skill-card.component
   styleUrls: ['./habilidad.component.less'],
 })
 export class HabilidadComponent implements OnInit {
-  @Input() isLogged!: boolean;
   habilidades: ISkill[] = [];
   habilidadSeleccionada!: ISkill;
   showModalEdit = false;
@@ -59,12 +59,13 @@ skillTypeLabels: { [key: string]: string } = {
 
   constructor(
     private habilidadService: HabilidadService,
+    private skillDataService: SkillDataService,
     private toastr: ToastrService,
-    private appDataService: AppDataService
+    private loginService: LoginService
   ) {}
 
   ngOnInit(): void {
-    this.habilidades = this.appDataService.getSkills();
+    this.skillDataService.skills$.subscribe((skills) => this.habilidades = skills)
     this.groupSkillsByType();
   }
 
@@ -82,23 +83,10 @@ skillTypeLabels: { [key: string]: string } = {
     this.habilidadSeleccionada = habilidad;
   }
 
-  obtenerHabildades() {
-    this.habilidadService.obtenerHabilidades().subscribe({
-      next: (response: ISkill[]) => {
-        this.habilidades = response;
-      },
-      error: (er: HttpErrorResponse) => {
-        const error = er.error.message || 'We cannot load skills at this time.';
-        this.toastr.error(error);
-      },
-    });
-  }
-
   agregarHabilidad(formHab: ISkill) {
-    this.habilidadService.agregarHabilidad2(formHab, 1).subscribe({
+    this.habilidadService.agregarHabilidad(formHab).subscribe({
       next: () => {
         this.toastr.success('Created new skill');
-        this.obtenerHabildades();
       },
       error: (error: HttpErrorResponse) => {
         const mensaje =
@@ -138,5 +126,9 @@ skillTypeLabels: { [key: string]: string } = {
         this.toastr.error(error);
       },
     });
+  }
+
+  isLogin(): boolean {
+    return this.loginService.isLogin();
   }
 }

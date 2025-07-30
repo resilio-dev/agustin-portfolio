@@ -12,14 +12,14 @@
   </header>
   <section
     class="w-100 d-flex flew-wrap justify-content-center align-items-center row mx-auto"
-    *ngIf="formaciones.length > 0; else noFormations"
+    *ngIf="formations$ | async as formations; else noFormations"
   >
     <app-card
       [title]="formacion.title"
       [subtitle]="formacion.academy"
       [description]="formacion.description"
       [footer]="formacion.startDate + ' - ' + formacion.endDate"
-      *ngFor="let formacion of formaciones"
+      *ngFor="let formacion of formations"
       class="col-4 m-2"
     >
       <footer

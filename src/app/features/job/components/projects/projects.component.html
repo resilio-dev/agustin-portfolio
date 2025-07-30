@@ -13,7 +13,7 @@
   </header>
   <section
     class="grid-columns-2 gap-4"
-    *ngIf="projects.length > 0; else noProjects"
+    *ngIf="projects$ | async as projects; else noProjects"
   >
     <app-card
       *ngFor="let project of projects"
@@ -21,7 +21,7 @@
       [description]="project.description"
       [imageUrl]="project.urlImg"
       [footer]="project.startDate + ' - ' + project.endDate"
-      [tags]="getTecnologies(project.tecnologies)"
+      [tags]="getTecnologiesNameByIds(project.tecnologies)"
     >
     <div class="container p-3"> 
       <a class="btn-default card-button" [href]="project.link">Go Site</a>

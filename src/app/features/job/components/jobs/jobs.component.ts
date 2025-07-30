@@ -9,7 +9,9 @@ import { ISkill } from 'src/app/core/models/ISkill.model';
 import { ModalActionsButtonComponent } from 'src/app/shared/components/modal-actions-button/modal-actions-button.component';
 import { ToastrService } from 'ngx-toastr';
 import { JobFormComponent } from '../job-form/job-form.component';
-import { AppDataService } from 'src/app/core/services/app-data-service/app-data.service';
+import { JobDataService } from 'src/app/core/services/job-data-service/job-data.service';
+import { combineLatest, map, Observable, take } from 'rxjs';
+import { SkillDataService } from 'src/app/core/services/skill-data-service/skill-data.service';
 
 @Component({
   selector: 'app-jobs',
@@ -25,25 +27,37 @@ import { AppDataService } from 'src/app/core/services/app-data-service/app-data.
 })
 export class JobsComponent implements OnInit {
   @Input() userLogged!: boolean;
-  trabajos: IJob[] = [];
+  jobs$!: Observable<(IJob & { skillsDetails: ISkill[] })[]>;
+  skillsNames: string[] = [];
   trabajoSeleccionado!: IJob;
 
   constructor(
     private trabService: TrabajoService,
     private toastr: ToastrService,
-    private appDataService: AppDataService
+    private jobDataService: JobDataService,
+    private skillDataService: SkillDataService
   ) {}
 
   ngOnInit(): void {
-    this.trabajos = this.appDataService.getJobs();
+    this.jobs$ = combineLatest([
+      this.jobDataService.jobs$,
+      this.skillDataService.skills$,
+    ]).pipe(
+      map(([jobs, skills]) =>
+        jobs.map((j) => ({
+          ...j,
+          skillsDetails: skills.filter((h) => j.technologies.includes(h.id)),
+        }))
+      )
+    );
   }
 
-  getTecnologies(tecno: ISkill[]): string[] {
-    const tecnoArray = [];
-    for (let tec of tecno) {
-      tecnoArray.push(tec.name);
-    }
-    return tecnoArray;
+  getTechnologiesNamesById(tecn: number[]): string[] {
+    let names: string[] = [];
+    this.skillDataService.getByIds(tecn).subscribe((tecns) => {
+      names = tecns.map((tecn) => tecn.name);
+    });
+    return names;
   }
 
   seleccionarTrabajo(job: IJob) {
@@ -62,6 +76,7 @@ export class JobsComponent implements OnInit {
       },
     });
   }
+
   editarTrabajo(job: IJob) {
     this.trabService.actualizarTrabajo(job).subscribe({
       next: () => {
@@ -83,19 +98,6 @@ export class JobsComponent implements OnInit {
       error: (err: HttpErrorResponse) => {
         const error =
           err.error?.message || 'An error ocurred while the Job was creating.';
-        this.toastr.error(error);
-      },
-    });
-  }
-
-  obtenerTrabajos() {
-    this.trabService.obtenerTrabajos().subscribe({
-      next: (jobs: IJob[]) => {
-        this.trabajos = jobs;
-      },
-      error: (er: HttpErrorResponse) => {
-        const error =
-          er.error.message || 'We cannot load academic Jobs at this time.';
         this.toastr.error(error);
       },
     });

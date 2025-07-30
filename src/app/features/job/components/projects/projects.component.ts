@@ -9,7 +9,9 @@ import { CardComponent } from 'src/app/shared/components/card/card.component';
 import { ISkill } from 'src/app/core/models/ISkill.model';
 import { ToastrService } from 'ngx-toastr';
 import { ProjectFormComponent } from '../project-form/project-form.component';
-import { AppDataService } from 'src/app/core/services/app-data-service/app-data.service';
+import { ProjectDataService } from 'src/app/core/services/project-data-service/project-data.service';
+import { combineLatest, map, Observable } from 'rxjs';
+import { SkillDataService } from 'src/app/core/services/skill-data-service/skill-data.service';
 
 @Component({
   selector: 'app-projects',
@@ -26,21 +28,37 @@ import { AppDataService } from 'src/app/core/services/app-data-service/app-data.
 })
 export class ProjectsComponent implements OnInit {
   @Input() userLogged!: boolean;
-  projects: IProject[] = [];
+  projects$!: Observable<(IProject & { skillsDetails: ISkill[] })[]>;
+  skillsNames: string[] = [];
   proyectoSeleccionado!: IProject;
 
   constructor(
     private proyService: ProyectoService,
     private toastr: ToastrService,
-    private appDataService: AppDataService
+    private projectDataService: ProjectDataService,
+    private skillDataService: SkillDataService
   ) {}
 
   ngOnInit(): void {
-    this.projects = this.appDataService.getProjects();
+    this.projects$ = combineLatest([
+      this.projectDataService.projects$,
+      this.skillDataService.skills$,
+    ]).pipe(
+      map(([projects, skills]) =>
+        projects.map((p) => ({
+          ...p,
+          skillsDetails: skills.filter((h) => p.tecnologies.includes(h.id)),
+        }))
+      )
+    );
   }
 
-  getTecnologies(tecn: ISkill[]) {
-    return tecn.map((t) => t.name);
+  getTecnologiesNameByIds(tecn: number[]) :string[] {
+    let names :string[] = [];
+    this.skillDataService.getByIds(tecn).subscribe((skills) => {
+      names = skills.map(sk => sk.name);
+    });
+    return names;
   }
 
   seleccionarProyecto(proy: IProject) {
@@ -86,19 +104,6 @@ export class ProjectsComponent implements OnInit {
         const error =
           err.error?.message ||
           'An error ocurred while the project was creating.';
-        this.toastr.error(error);
-      },
-    });
-  }
-
-  obtenerProyectos() {
-    this.proyService.obtenerProyectos().subscribe({
-      next: (proys: IProject[]) => {
-        this.projects = proys;
-      },
-      error: (er: HttpErrorResponse) => {
-        const error =
-          er.error.message || 'We cannot load projects at this time.';
         this.toastr.error(error);
       },
     });

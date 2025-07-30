@@ -7,8 +7,11 @@ import { FormacionService } from 'src/app/core/services/formation-service/formac
 import { FormationFormComponent } from '../formation-form/formation-form.component';
 import { CardComponent } from 'src/app/shared/components/card/card.component';
 import { ToastrService } from 'ngx-toastr';
-import { AppDataService } from 'src/app/core/services/app-data-service/app-data.service';
 import { LoginService } from 'src/app/core/services/auth-service/login/login.service';
+import { combineLatest, map, Observable } from 'rxjs';
+import { ISkill } from 'src/app/core/models/ISkill.model';
+import { FormationDataService } from 'src/app/core/services/formation-data-service/formation-data.service';
+import { SkillDataService } from 'src/app/core/services/skill-data-service/skill-data.service';
 
 @Component({
   selector: 'app-formation',
@@ -22,18 +25,29 @@ import { LoginService } from 'src/app/core/services/auth-service/login/login.ser
   styleUrl: './formation.component.less',
 })
 export class FormationComponent implements OnInit {
-  formaciones: IFormation[] = [];
+  formations$!: Observable<(IFormation & { skillsDetails: ISkill[] })[]>;
   formacionSeleccionada!: IFormation;
 
   constructor(
-    private appDataService: AppDataService,
     private formService: FormacionService,
     private loginService: LoginService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private formationDataService: FormationDataService,
+    private skillDataService: SkillDataService
   ) {}
 
   ngOnInit(): void {
-    this.formaciones = this.appDataService.getFormations();
+    this.formations$ = combineLatest([
+      this.formationDataService.formations$,
+      this.skillDataService.skills$,
+    ]).pipe(
+      map(([formations, skills]) =>
+        formations.map((f) => ({
+          ...f,
+          skillsDetails: skills.filter((h) => f.technologies.includes(h.id)),
+        }))
+      )
+    );
   }
 
   eliminarFormacion(id: number) {
@@ -75,20 +89,6 @@ export class FormationComponent implements OnInit {
         const error =
           err.error?.message ||
           'An error ocurred while the formation was creating.';
-        this.toastr.error(error);
-      },
-    });
-  }
-
-  obtenerFormaciones() {
-    this.formService.obtenerFormaciones().subscribe({
-      next: (forms: IFormation[]) => {
-        this.formaciones = forms;
-      },
-      error: (er: HttpErrorResponse) => {
-        const error =
-          er.error.message ||
-          'We cannot load academic formations at this time.';
         this.toastr.error(error);
       },
     });

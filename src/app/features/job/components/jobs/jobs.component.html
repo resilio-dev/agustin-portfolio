@@ -11,14 +11,14 @@
       <i class="fa fa-plus" aria-hidden="true"></i>
     </button>
   </header>
-  <section *ngIf="trabajos.length > 0; else noJobs" class="grid-columns-2 gap-4">
+  <section *ngIf="jobs$ | async as jobs; else noJobs" class="grid-columns-2 gap-4">
     <app-card
-      *ngFor="let trabajo of this.trabajos"
+      *ngFor="let trabajo of jobs"
       [title]="trabajo.title"
       [imageUrl]="trabajo.urlImg"
       [description]="trabajo.description"
       [footer]="trabajo.startDate + ' - ' + trabajo.endDate"
-      [tags]="getTecnologies(trabajo.technologies)"
+      [tags]="getTechnologiesNamesById(trabajo.technologies)"
     >
       <app-modal-actions-button
         *ngIf="userLogged"
