@@ -2,12 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { IProject } from 'src/app/core/models/IProject.model';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
-import { ProyectoService } from 'src/app/core/services/project-service/project.service';
-import { HttpErrorResponse } from '@angular/common/module.d-CnjH8Dlt';
 import { ModalActionsButtonComponent } from 'src/app/shared/components/modal-actions-button/modal-actions-button.component';
 import { CardComponent } from 'src/app/shared/components/card/card.component';
 import { ISkill } from 'src/app/core/models/ISkill.model';
-import { ToastrService } from 'ngx-toastr';
 import { ProjectFormComponent } from '../project-form/project-form.component';
 import { ProjectDataService } from 'src/app/core/services/project-data-service/project-data.service';
 import { combineLatest, map, Observable } from 'rxjs';
@@ -33,8 +30,6 @@ export class ProjectsComponent implements OnInit {
   proyectoSeleccionado!: IProject;
 
   constructor(
-    private proyService: ProyectoService,
-    private toastr: ToastrService,
     private projectDataService: ProjectDataService,
     private skillDataService: SkillDataService
   ) {}
@@ -66,46 +61,14 @@ export class ProjectsComponent implements OnInit {
   }
 
   eliminarProyecto(id: number) {
-    this.proyService.eliminarProyecto(id).subscribe({
-      next: () => {
-        this.toastr.success(
-          'project with ID ' + id + ' deleted.',
-          'Submitted project'
-        );
-      },
-      error: (err: HttpErrorResponse) => {
-        const error =
-          err.error?.message ||
-          'An error ocurred while the project was deleting.';
-        this.toastr.error(error);
-      },
-    });
+    this.projectDataService.deleteProject(id);
   }
+  
   editarProyecto(proy: IProject) {
-    this.proyService.actualizarProyecto(proy).subscribe({
-      next: () => {
-        this.toastr.success('Updated project.', 'Submitted project');
-      },
-      error: (err: HttpErrorResponse) => {
-        const error =
-          err.error?.message ||
-          'An error ocurred while the project was updating.';
-        this.toastr.error(error);
-      },
-    });
+    this.projectDataService.updateProject(proy);
   }
 
   agregarProyecto(proy: IProject) {
-    this.proyService.agregarProyecto(proy).subscribe({
-      next: () => {
-        this.toastr.success('Created new project.', 'Submitted project');
-      },
-      error: (err: HttpErrorResponse) => {
-        const error =
-          err.error?.message ||
-          'An error ocurred while the project was creating.';
-        this.toastr.error(error);
-      },
-    });
+    this.projectDataService.addProject(proy);
   }
 }

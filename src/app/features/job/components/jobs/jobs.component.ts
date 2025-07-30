@@ -2,12 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 import { IJob } from 'src/app/core/models/IJob.model';
-import { TrabajoService } from 'src/app/core/services/job-service/trabajo.service';
-import { HttpErrorResponse } from '@angular/common/module.d-CnjH8Dlt';
 import { CardComponent } from 'src/app/shared/components/card/card.component';
 import { ISkill } from 'src/app/core/models/ISkill.model';
 import { ModalActionsButtonComponent } from 'src/app/shared/components/modal-actions-button/modal-actions-button.component';
-import { ToastrService } from 'ngx-toastr';
 import { JobFormComponent } from '../job-form/job-form.component';
 import { JobDataService } from 'src/app/core/services/job-data-service/job-data.service';
 import { combineLatest, map, Observable, take } from 'rxjs';
@@ -32,8 +29,6 @@ export class JobsComponent implements OnInit {
   trabajoSeleccionado!: IJob;
 
   constructor(
-    private trabService: TrabajoService,
-    private toastr: ToastrService,
     private jobDataService: JobDataService,
     private skillDataService: SkillDataService
   ) {}
@@ -65,41 +60,14 @@ export class JobsComponent implements OnInit {
   }
 
   eliminarTrabajo(id: number) {
-    this.trabService.eliminarTrabajo(id).subscribe({
-      next: () => {
-        this.toastr.success('Job with ID ' + id + ' deleted.', 'Submitted job');
-      },
-      error: (err: HttpErrorResponse) => {
-        const error =
-          err.error?.message || 'An error ocurred while the Job was deleting.';
-        this.toastr.error(error);
-      },
-    });
+    this.jobDataService.deleteJob(id);
   }
 
   editarTrabajo(job: IJob) {
-    this.trabService.actualizarTrabajo(job).subscribe({
-      next: () => {
-        this.toastr.success('Updated Job.', 'Submitted Job');
-      },
-      error: (err: HttpErrorResponse) => {
-        const error =
-          err.error?.message || 'An error ocurred while the Job was updating.';
-        this.toastr.error(error);
-      },
-    });
+    this.jobDataService.updateJob(job)
   }
 
   agregarTrabajo(job: IJob) {
-    this.trabService.agregarTrabajo(job).subscribe({
-      next: () => {
-        this.toastr.success('Created new Job.', 'Submitted Job');
-      },
-      error: (err: HttpErrorResponse) => {
-        const error =
-          err.error?.message || 'An error ocurred while the Job was creating.';
-        this.toastr.error(error);
-      },
-    });
+    this.jobDataService.addJob(job)
   }
 }
