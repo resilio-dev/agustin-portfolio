@@ -17,6 +17,10 @@ export class ProjectDataService {
     private toastr: ToastrService
   ) {}
 
+  setProjects(projects: IProject[]) {
+    this.projectsSubject.next(projects);
+  }
+
   addProject(project: IProject) {
     this.projectService.agregarProyecto(project).subscribe({
       next: (newProject: IProject) => {

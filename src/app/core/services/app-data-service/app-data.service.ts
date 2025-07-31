@@ -2,25 +2,41 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IUser } from 'src/app/core/models/IUser.model';
 import { BehaviorSubject } from 'rxjs';
-import { IDataUser } from '../../models/IDataUser.model';
 import { DEFAULT_USER_DATA } from '../../constants/default-user.data';
 import { ToastrService } from 'ngx-toastr';
 import { ApiLinks } from '../../constants/ApiLinks';
+import { FormationDataService } from '../formation-data-service/formation-data.service';
+import { JobDataService } from '../job-data-service/job-data.service';
+import { ProjectDataService } from '../project-data-service/project-data.service';
+import { SkillDataService } from '../skill-data-service/skill-data.service';
+import { AboutMeService } from '../about-me-service/about-me.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppDataService {
   private appDataSubject = new BehaviorSubject<IUser | null>(null);
-  readonly appData$ = this.appDataSubject.asObservable();
+  appData$ = this.appDataSubject.asObservable();
 
-  constructor(private http: HttpClient, private toastr: ToastrService) {}
+  constructor(private http: HttpClient,
+    private toastr: ToastrService,
+    private formationDataService: FormationDataService,
+    private jobDataService: JobDataService,
+    private skillDataService: SkillDataService,
+    private projectDataService: ProjectDataService,
+    private aboutMeService: AboutMeService
+  ) {}
 
   uploadData(): void {
     console.log('Connecting to server...');
     this.http.get<IUser>(ApiLinks.APP_DATA()).subscribe({
       next: (data: IUser) => {
         this.appDataSubject.next(data);
+        this.formationDataService.setFormations(data.formations);
+        this.jobDataService.setJobs(data.jobs);
+        this.skillDataService.setSkills(data.skills);
+        this.projectDataService.setProjects(data.projects);
+        this.aboutMeService.setAboutMeData(data);
         this.toastr.success(
           'You are seeing a live view of my profile.',
           'Successful connection',
@@ -29,7 +45,13 @@ export class AppDataService {
         console.log('Connection susccessful');
       },
       error: (err: HttpErrorResponse) => {
-        this.appDataSubject.next(DEFAULT_USER_DATA);
+        const data = DEFAULT_USER_DATA;
+        this.appDataSubject.next(data);
+        this.formationDataService.setFormations(data.formations);
+        this.jobDataService.setJobs(data.jobs);
+        this.skillDataService.setSkills(data.skills);
+        this.projectDataService.setProjects(data.projects);
+        this.aboutMeService.setAboutMeData(data);
         this.toastr.warning(
           'You are seeing a default view of my profile.',
           "Oh, it looks like we can't connect to the server right now.",
@@ -38,30 +60,5 @@ export class AppDataService {
         console.error('Error server connect.', err.error.message);
       },
     });
-  }
-  
-  getAboutMe(): IDataUser {
-    const user = this.appDataSubject.value;
-    return {
-      name: user?.name || '',
-      lastName: user?.lastName || '',
-      age: user?.age || 27,
-      description: user?.description || '',
-      title: user?.title || 'Web Developer',
-      mainPhrase: user?.mainPhrase || '',
-      secondaryPhrase: user?.secondaryPhrase || '',
-      email: user?.email || '',
-      urlImg: user?.urlImg || '#',
-      urlCV: user?.urlCV || '#',
-      yearsXP: user?.yearsXP || 3,
-    };
-  }
-
-  getDataValue(): IUser | null {
-    return this.appDataSubject.value;
-  }
-
-  setData(user: IUser) {
-    this.appDataSubject.next(user);
   }
 }

@@ -15,6 +15,10 @@ export class SkillDataService {
     private toastr: ToastrService
   ) {}
 
+  setSkills(skills: ISkill[]) {
+    this.skillsSubject.next(skills);
+  }
+
   getByIds(ids: number[]): Observable<ISkill[]> {
     return this.skills$.pipe(
       map((skills) => skills.filter((sk) => ids.includes(sk.id)))

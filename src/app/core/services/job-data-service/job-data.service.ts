@@ -17,6 +17,10 @@ export class JobDataService {
     private toastr: ToastrService
   ) {}
 
+  setJobs(jobs: IJob[]) {
+    this.jobsSubject.next(jobs);
+  }
+
   addJob(job: IJob): void {
     this.trabajoService.agregarTrabajo(job).subscribe({
       next: () => {

@@ -17,6 +17,10 @@ export class FormationDataService {
     private toastr: ToastrService
   ) {}
 
+  setFormations(formations: IFormation[]) {
+    this.formationsSubject.next(formations);
+  }
+
   addFormation(formation: IFormation): void {
     this.formacionService.agregarFormacion(formation).subscribe({
       next: (newFormation: IFormation) => {
