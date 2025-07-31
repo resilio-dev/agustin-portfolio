@@ -1,4 +1,4 @@
-<article class="text-center w-100 py-3">
+<article class="text-center w-100 py-3" *ngIf="data$ | async as data; else loading" >
   <header>
     <h2>Hi! I'm {{ data.name }}, {{ data.title }}</h2>
     <p>With more than {{ data.yearsXP }} years of experience.</p>
@@ -28,3 +28,8 @@
     <button class="call-button" (click)="irAContacto()">Contact me</button>
   </footer>
 </article>
+<ng-template #loading>
+  <p>
+    Loading data...
+  </p>
+</ng-template>

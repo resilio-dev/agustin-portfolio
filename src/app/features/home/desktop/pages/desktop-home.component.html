@@ -1,9 +1,9 @@
 <div
   class="bg-home text-center position-absolute top-0 left-0 min-vh-100 w-100 d-flex flex-column align-items-center justify-content-center pb-4"
 >
-  <div class="d-flex align-items-center justify-content-space-between mt-200">
+  <div class="d-flex align-items-center justify-content-space-between mt-200" *ngIf="dataUser$ | async as data">
     <app-info-user
-      [title]="data.title"
+      [title]="data.title "
       [mainPrase]="data.mainPhrase"
     ></app-info-user>
     <app-foto-user

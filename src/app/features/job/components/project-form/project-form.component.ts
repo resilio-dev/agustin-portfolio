@@ -38,7 +38,7 @@ export class ProjectFormComponent {
         id: this.projectForm.get('id')?.value,
         title: this.projectForm.get('title')?.value,
         description: this.projectForm.get('description')?.value,
-        startDate: this.projectForm.get('starDate')?.value,
+        startDate: this.projectForm.get('startDate')?.value,
         endDate: this.projectForm.get('endDate')?.value,
         tecnologies: this.projectForm.get('technologies')?.value,
         link: this.projectForm.get('link')?.value,

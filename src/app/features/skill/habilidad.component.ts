@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ISkill } from 'src/app/core/models/ISkill.model';
 import { CommonModule } from '@angular/common';
@@ -8,7 +8,7 @@ import { ModalActionsButtonComponent } from 'src/app/shared/components/modal-act
 import { SkillCardComponent } from './components/skill-card/skill-card.component';
 import { LoginService } from 'src/app/core/services/auth-service/login/login.service';
 import { SkillDataService } from 'src/app/core/services/skill-data-service/skill-data.service';
-import { take } from 'rxjs';
+import { Observable, Subject, take, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-habilidad',
@@ -24,8 +24,9 @@ import { take } from 'rxjs';
   templateUrl: './habilidad.component.html',
   styleUrls: ['./habilidad.component.less'],
 })
-export class HabilidadComponent implements OnInit {
-  habilidades: ISkill[] = [];
+export class HabilidadComponent implements OnInit, OnDestroy {
+  skills$!: Observable<ISkill[] | null>;
+  destroy$ = new Subject<void>();
   habilidadSeleccionada!: ISkill;
   showModalEdit = false;
   showModalDelete = false;
@@ -33,27 +34,26 @@ export class HabilidadComponent implements OnInit {
   groupedSkills: { [key: string]: ISkill[] } = {};
 
   skillTypes: string[] = [
-  'LANGUAGE',
-  'FRAMEWORK',
-  'LIBRARY',
-  'TOOL',
-  'IDE',
-  'PLATFORM',
-  'SECURITY',
-  'DATABASE',
-];
+    'LANGUAGE',
+    'FRAMEWORK',
+    'LIBRARY',
+    'TOOL',
+    'IDE',
+    'PLATFORM',
+    'SECURITY',
+    'DATABASE',
+  ];
 
-skillTypeLabels: { [key: string]: string } = {
-  LANGUAGE: 'Languages',
-  FRAMEWORK: 'Frameworks',
-  LIBRARY: 'Libraries',
-  TOOL: 'Tools',
-  IDE: 'IDEs',
-  PLATFORM: 'Platforms',
-  SECURITY: 'Security',
-  DATABASE: 'Databases',
-};
-
+  skillTypeLabels: { [key: string]: string } = {
+    LANGUAGE: 'Languages',
+    FRAMEWORK: 'Frameworks',
+    LIBRARY: 'Libraries',
+    TOOL: 'Tools',
+    IDE: 'IDEs',
+    PLATFORM: 'Platforms',
+    SECURITY: 'Security',
+    DATABASE: 'Databases',
+  };
 
   constructor(
     private skillDataService: SkillDataService,
@@ -61,18 +61,36 @@ skillTypeLabels: { [key: string]: string } = {
   ) {}
 
   ngOnInit(): void {
-    this.skillDataService.skills$.subscribe((skills) => this.habilidades = skills)
-    this.groupSkillsByType();
+    this.skills$ = this.skillDataService.skills$;
+
+    this.skills$.pipe(takeUntil(this.destroy$)).subscribe((skills) => {
+      if (skills) {
+        this.groupedSkills = skills.reduce((acc, skill) => {
+          if (!acc[skill.type]) {
+            acc[skill.type] = [];
+          }
+          acc[skill.type].push(skill);
+          return acc;
+        }, {} as { [key: string]: ISkill[] });
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   groupSkillsByType() {
-    this.groupedSkills = this.habilidades.reduce((acc, skill) => {
-      if (!acc[skill.type]) {
-        acc[skill.type] = [];
-      }
-      acc[skill.type].push(skill);
-      return acc;
-    }, {} as { [key: string]: ISkill[] });
+    this.groupedSkills = this.skillDataService.skillsSubject
+      .getValue()
+      .reduce((acc, skill) => {
+        if (!acc[skill.type]) {
+          acc[skill.type] = [];
+        }
+        acc[skill.type].push(skill);
+        return acc;
+      }, {} as { [key: string]: ISkill[] });
   }
 
   seleccionarHabilidad(habilidad: ISkill) {
@@ -84,11 +102,11 @@ skillTypeLabels: { [key: string]: string } = {
   }
 
   eliminarHabilidad(id: number) {
-    this.eliminarHabilidad(id);
+    this.skillDataService.removeSkill(id);
   }
 
   editarHabilidad(hab: ISkill) {
-    this.editarHabilidad(hab);
+    this.skillDataService.updateSkill(hab);
   }
 
   isLogin(): boolean {

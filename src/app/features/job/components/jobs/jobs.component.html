@@ -11,7 +11,7 @@
       <i class="fa fa-plus" aria-hidden="true"></i>
     </button>
   </header>
-  <section *ngIf="jobs$ | async as jobs; else noJobs" class="grid-columns-2 gap-4">
+  <section *ngIf="jobs$ | async as jobs; else noJobs" class="row">
     <app-card
       *ngFor="let trabajo of jobs"
       [title]="trabajo.title"
@@ -19,6 +19,7 @@
       [description]="trabajo.description"
       [footer]="trabajo.startDate + ' - ' + trabajo.endDate"
       [tags]="getTechnologiesNamesById(trabajo.technologies)"
+      class="col-6"
     >
       <app-modal-actions-button
         *ngIf="userLogged"

@@ -1,7 +1,7 @@
 <article
   class="bg-skills text-center position-absolute top-0 left-0 min-vh-100 w-100"
 >
-  <div class="container">
+  <div class="container" *ngIf="skills$ | async as habilidades">
     <header class="d-flex gap-3 align-items-center justify-content-center">
       <div>
         <h1 class="m-0"><b>Skills</b></h1>
