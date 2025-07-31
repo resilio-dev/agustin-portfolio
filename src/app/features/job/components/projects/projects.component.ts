@@ -27,7 +27,7 @@ export class ProjectsComponent implements OnInit {
   @Input() userLogged!: boolean;
   projects$!: Observable<(IProject & { skillsDetails: ISkill[] })[]>;
   skillsNames: string[] = [];
-  proyectoSeleccionado!: IProject;
+  proyectoSeleccionado!: (IProject & { skillsDetails: ISkill[] });
 
   constructor(
     private projectDataService: ProjectDataService,
@@ -56,7 +56,7 @@ export class ProjectsComponent implements OnInit {
     return names;
   }
 
-  seleccionarProyecto(proy: IProject) {
+  seleccionarProyecto(proy: (IProject & { skillsDetails: ISkill[] })) {
     this.proyectoSeleccionado = proy;
   }
 

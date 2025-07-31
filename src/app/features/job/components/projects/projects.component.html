@@ -12,16 +12,18 @@
     </button>
   </header>
   <section
-    class="grid-columns-2 gap-4"
-    *ngIf="projects$ | async as projects; else noProjects"
+    class="row"
+    *ngIf="projects$ | async as projects"
   >
+  <ng-container *ngIf="projects.length > 0; else noProjects">
     <app-card
-      *ngFor="let project of projects"
+    *ngFor="let project of projects"
       [title]="project.title"
       [description]="project.description"
       [imageUrl]="project.urlImg"
       [footer]="project.startDate + ' - ' + project.endDate"
       [tags]="getTecnologiesNameByIds(project.tecnologies)"
+      class="col-6 py-3"
     >
     <div class="container p-3"> 
       <a class="btn-default card-button" [href]="project.link">Go Site</a>
@@ -31,7 +33,8 @@
       *ngIf="userLogged"
       ></app-modal-actions-button>
     </div>
-    </app-card>
+  </app-card>
+</ng-container>
   </section>
 </article>
 <app-modal #modalAgregar [titulo]="'Add Project'">
@@ -66,5 +69,5 @@
   </button>
 </app-modal>
 <ng-template #noProjects>
-  <p class="text-center">- We cannot load projects at this time. -</p>
+  <p class="text-center">Loading projects ...</p>
 </ng-template>

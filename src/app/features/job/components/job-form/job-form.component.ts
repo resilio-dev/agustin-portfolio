@@ -17,13 +17,13 @@ import { SkillDataService } from 'src/app/core/services/skill-data-service/skill
     ReactiveFormsModule,
     FormsModule,
     FormActionsButtonComponent,
-    NgSelectModule
+    NgSelectModule,
   ],
   styleUrl: './job-form.component.less',
   templateUrl: './job-form.component.html',
 })
 export class JobFormComponent implements OnInit {
-  @Input() jobData: Partial<IJob> | null = null;
+  @Input() jobData: (IJob & { skillsDetails: ISkill[] }) | null = null;
   @Output() formSubmitted = new EventEmitter<IJob>();
   @Output() formCancel = new EventEmitter<void>();
 
@@ -40,19 +40,24 @@ export class JobFormComponent implements OnInit {
   ngOnInit(): void {
     this.jobForm = this.formBuilderService.build(this.jobData ?? {});
     this.skills$ = this.skillDataService.skills$;
+
+    if (this.jobData?.skillsDetails) {
+      const selectedIds = this.jobData.skillsDetails.map((s) => s.id);
+      this.jobForm.get('technologies')?.setValue(selectedIds);
+    }
   }
 
   submit(): void {
     if (this.jobForm.valid) {
-      const job :IJob = {
+      const job: IJob = {
         id: this.jobForm.get('id')?.value,
         title: this.jobForm.get('title')?.value,
         description: this.jobForm.get('description')?.value,
         startDate: this.jobForm.get('starDate')?.value,
         endDate: this.jobForm.get('endDate')?.value,
         urlImg: this.jobForm.get('urlImg')?.value,
-        technologies: this.jobForm.get('technologies')?.value
-      }
+        technologies: this.jobForm.get('technologies')?.value,
+      };
       this.formSubmitted.emit(this.jobForm.value);
       this.jobForm.reset();
     } else {

@@ -1,9 +1,12 @@
 <div
   class="bg-home text-center position-absolute top-0 left-0 min-vh-100 w-100 d-flex flex-column align-items-center justify-content-center pb-4"
 >
-  <div class="d-flex align-items-center justify-content-space-between mt-200" *ngIf="dataUser$ | async as data">
+  <div
+    class="d-flex align-items-center justify-content-space-between"
+    *ngIf="dataUser$ | async as data; else loading"
+  >
     <app-info-user
-      [title]="data.title "
+      [title]="data.title"
       [mainPrase]="data.mainPhrase"
     ></app-info-user>
     <app-foto-user
@@ -11,4 +14,12 @@
       [completeName]="data.name + ' ' + data.lastName"
     ></app-foto-user>
   </div>
+  <ng-template #loading>
+    <div class="spinner-container d-flex flex-column align-items-center my-4">
+      <div class="spinner-border mb-2" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p>Loading user data...</p>
+    </div>
+  </ng-template>
 </div>

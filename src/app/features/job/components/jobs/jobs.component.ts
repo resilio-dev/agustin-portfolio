@@ -26,7 +26,7 @@ export class JobsComponent implements OnInit {
   @Input() userLogged!: boolean;
   jobs$!: Observable<(IJob & { skillsDetails: ISkill[] })[]>;
   skillsNames: string[] = [];
-  trabajoSeleccionado!: IJob;
+  trabajoSeleccionado!: (IJob & { skillsDetails: ISkill[] });
 
   constructor(
     private jobDataService: JobDataService,
@@ -55,7 +55,7 @@ export class JobsComponent implements OnInit {
     return names;
   }
 
-  seleccionarTrabajo(job: IJob) {
+  seleccionarTrabajo(job: (IJob & { skillsDetails: ISkill[] })) {
     this.trabajoSeleccionado = job;
   }
 

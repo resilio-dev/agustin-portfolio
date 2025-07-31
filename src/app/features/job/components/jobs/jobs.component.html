@@ -11,15 +11,16 @@
       <i class="fa fa-plus" aria-hidden="true"></i>
     </button>
   </header>
-  <section *ngIf="jobs$ | async as jobs; else noJobs" class="row">
-    <app-card
+  <section *ngIf="jobs$ | async as jobs" class="row">
+    <ng-container *ngIf="jobs.length > 0; else noJobs">
+      <app-card
       *ngFor="let trabajo of jobs"
       [title]="trabajo.title"
       [imageUrl]="trabajo.urlImg"
       [description]="trabajo.description"
       [footer]="trabajo.startDate + ' - ' + trabajo.endDate"
       [tags]="getTechnologiesNamesById(trabajo.technologies)"
-      class="col-6"
+      class="col-6 py-3"
     >
       <app-modal-actions-button
         *ngIf="userLogged"
@@ -28,6 +29,7 @@
       >
       </app-modal-actions-button>
     </app-card>
+    </ng-container>
   </section>
 </article>
 <app-modal #modalAgregar [titulo]="'Add Job'">
@@ -62,5 +64,5 @@
   </button>
 </app-modal>
 <ng-template #noJobs>
-  <p class="text-center">- We cannot load jobs at this time. -</p>
+  <p class="text-center">Loading jobs ...</p>
 </ng-template>

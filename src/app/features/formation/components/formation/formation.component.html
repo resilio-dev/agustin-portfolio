@@ -12,36 +12,30 @@
   </header>
   <section
     class="w-100 d-flex flew-wrap justify-content-center align-items-center row mx-auto"
-    *ngIf="formations$ | async as formations; else noFormations"
+    *ngIf="formations$ | async as formations"
   >
+  <ng-container *ngIf="formations.length > 0; else noFormations">
     <app-card
-      [title]="formacion.title"
+    [title]="formacion.title"
       [subtitle]="formacion.academy"
       [description]="formacion.description"
       [footer]="formacion.startDate + ' - ' + formacion.endDate"
       *ngFor="let formacion of formations"
       class="col-4 m-2"
-    >
-      <footer
-        class="d-flex justify-content-center alignt-items-center gap-3"
-        *ngIf="isLogin()"
       >
-        <button
-          class="btn-default neutral-button"
-          type="button"
-          (click)="seleccionarFormacion(formacion); modalEdit.toggleModal()"
-        >
-          <i class="fa fa-pencil"></i>
-        </button>
-        <button
-          class="btn-default danger-button"
-          type="button"
-          (click)="seleccionarFormacion(formacion); modalEliminar.toggleModal()"
-        >
-          <i class="fa fa-trash-can"></i>
-        </button>
+      <footer
+      class="d-flex h justify-content-center align-items-center gap-3"
+      *ngIf="isLogin()"
+      >
+        <app-modal-actions-button
+      (edit)="seleccionarFormacion(formacion); modalEdit.toggleModal()"
+      (remove)="seleccionarFormacion(formacion); modalEliminar.toggleModal()"
+      >
+      </app-modal-actions-button>
       </footer>
     </app-card>
+  </ng-container>
+
   </section>
 </article>
 <app-modal #modalAdd [titulo]="'Add Formation'">
@@ -52,9 +46,9 @@
 </app-modal>
 <app-modal #modalEdit [titulo]="'Edit Formation'">
   <app-formation-form
-    [formationData]="formacionSeleccionada"
-    (formSubmitted)="editarFormacion($event); modalEdit.toggleModal()"
-    (formCancel)="modalEdit.toggleModal()"
+  [formationData]="formacionSeleccionada"
+  (formSubmitted)="editarFormacion($event); modalEdit.toggleModal()"
+  (formCancel)="modalEdit.toggleModal()"
   ></app-formation-form>
 </app-modal>
 <app-modal #modalEliminar [titulo]="'Delete Formation'">
@@ -75,5 +69,5 @@
   </button>
 </app-modal>
 <ng-template #noFormations>
-  <p>- We cannot load academic formations at time. -</p>
+  <p>Loading formations ...</p>
 </ng-template>

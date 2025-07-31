@@ -21,7 +21,8 @@ import { SkillDataService } from 'src/app/core/services/skill-data-service/skill
   styleUrl: './formation-form.component.less',
 })
 export class FormationFormComponent {
-  @Input() formationData: Partial<IFormation> | null = null;
+  @Input() formationData: (IFormation & { skillsDetails: ISkill[] }) | null =
+    null;
   @Output() formSubmitted = new EventEmitter<IFormation>();
   @Output() formCancel = new EventEmitter<void>();
 
@@ -38,7 +39,12 @@ export class FormationFormComponent {
     this.formationForm = this.formBuilderService.build(
       this.formationData ?? {}
     );
+
     this.skills$ = this.skillDataService.skills$;
+    if (this.formationData?.skillsDetails) {
+      const selectedIds = this.formationData.skillsDetails.map((s) => s.id);
+      this.formationForm.get('technologies')?.setValue(selectedIds);
+    }
   }
 
   submit(): void {

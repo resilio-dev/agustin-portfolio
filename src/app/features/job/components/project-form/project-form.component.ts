@@ -16,7 +16,7 @@ import { FormActionsButtonComponent } from 'src/app/shared/components/form-actio
   styleUrl: './project-form.component.less',
 })
 export class ProjectFormComponent {
-  @Input() projectData: Partial<IProject> | null = null;
+  @Input() projectData: (IProject & { skillsDetails: ISkill[] }) | null = null;
   @Output() formSubmitted = new EventEmitter<IProject>();
   @Output() formCancel = new EventEmitter<void>();
 
@@ -30,6 +30,11 @@ export class ProjectFormComponent {
   ngOnInit(): void {
     this.projectForm = this.formBuilderService.build(this.projectData ?? {});
     this.skills$ = this.skillDataService.skills$;
+
+    if (this.projectData?.skillsDetails) {
+      const selectedIds = this.projectData.skillsDetails.map((s) => s.id);
+      this.projectForm.get('technologies')?.setValue(selectedIds);
+    }
   }
 
   submit(): void {
