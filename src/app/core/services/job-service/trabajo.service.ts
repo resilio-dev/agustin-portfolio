@@ -22,7 +22,7 @@ export class TrabajoService {
     return this.http.put<IJob>(ApiLinks.JOBS_ID(trabajo.id), trabajo);
   }
 
-  eliminarTrabajo(id: number): Observable<void> {
+  eliminarTrabajo(id: number) {
     return this.http.delete<void>(ApiLinks.JOBS_ID(id));
   }
 

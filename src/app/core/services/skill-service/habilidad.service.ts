@@ -26,7 +26,7 @@ export class HabilidadService {
     return this.http.post<ISkill>(ApiLinks.SKILLS_ID(habilidad.id), habilidad);
   }
 
-  eliminarHabilidad(id: number): Observable<void> {
+  eliminarHabilidad(id: number) {
     return this.http.delete<void>(ApiLinks.SKILLS_ID(id));
   }
 }
