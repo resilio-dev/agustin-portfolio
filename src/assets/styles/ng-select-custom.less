@@ -1,0 +1,45 @@
+/* Ng Select */
+.ng-select {
+  background-color: transparent;
+
+  .ng-value-container {
+    flex-direction: column;
+    overflow-y: auto;
+
+    .ng-value {
+      padding-left: 5px;
+    }
+  }
+
+  &.ng-select-multiple .ng-value-container {
+    max-height: 40px;
+    overflow-y: hidden;
+    color: var(--bg-primary-color);
+    font-weight: 600;
+    letter-spacing: 0.3rem;
+    white-space: nowrap;
+  }
+
+  .ng-dropdown-panel {
+    max-height: 140px;
+    overflow-y: auto;
+    border-radius: var(--bs-border-radius);
+    padding: 5px 0;
+    color: var(--bg-primary-color);
+    font-weight: bold;
+    background-color: var(--card-shadow-color);
+    left: 0;
+    top: 110%;
+  }
+
+  .ng-option {
+    padding: 5px;
+    background-color: var(--card-shadow-color);
+    color: var(--primary-text-color);
+
+    &:hover {
+      background-color: var(--primary-text-color);
+      color: var(--card-shadow-color);
+    }
+  }
+}
