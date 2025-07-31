@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 import { IUser } from 'src/app/core/models/IUser.model';
 import { TemaService } from 'src/app/shared/services/multitemas/tema.service';
 import { NavIconComponent } from "./components/nav-icon/nav-icon.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, NavIconComponent],
+  imports: [CommonModule, NavIconComponent, RouterLink],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.less'],
 })

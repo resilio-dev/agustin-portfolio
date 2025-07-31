@@ -9,10 +9,7 @@
         <span class="lineup2 config-menu"></span>
         <span class="lineup3 config-menu"></span>
       </div>
-      <span
-        class="button-menu-close"
-        *ngIf="this.showMenu"
-      ></span>
+      <span class="button-menu-close" *ngIf="this.showMenu"></span>
     </button>
     <ul
       class="menu-navbar text-center position-absolute p-4"
@@ -20,17 +17,25 @@
       [class.hide]="!this.showMenu"
     >
       <li *ngFor="let item of items">
-        <app-nav-icon [link]="item.link" [classIcon]="item.iconClass"></app-nav-icon>
+        <app-nav-icon
+          [link]="item.link"
+          [classIcon]="item.iconClass"
+        ></app-nav-icon>
       </li>
-      <hr class="section-separator w-75"/>
-      <button class="btn" (click)="toggleTema()">
-        <span *ngIf="this.getTema() === 'light'">
-          <i class="fa fa-moon"></i>
-        </span>
-        <span *ngIf="this.getTema() === 'dark'">
-          <i class="fa fa-sun"></i>
-        </span>
-      </button>
+      <hr class="section-separator w-75" />
+      <li>
+        <button class="btn" (click)="toggleTema()">
+          <span *ngIf="this.getTema() === 'light'">
+            <i class="fa fa-moon"></i>
+          </span>
+          <span *ngIf="this.getTema() === 'dark'">
+            <i class="fa fa-sun"></i>
+          </span>
+        </button>
+      </li>
+      <li>
+        <a routerLink="/login" class="btn"><i class="fa fa-user"></i></a>
+      </li>
     </ul>
   </div>
 </nav>

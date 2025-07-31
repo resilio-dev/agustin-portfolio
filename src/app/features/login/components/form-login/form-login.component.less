@@ -1,14 +1,56 @@
-input[type="email"],
-input[type="password"] {
-  height: 50px;
-  border: 1px solid var(--shadow-card-color);
-  color: var(--bg-secondary-color);
-  box-shadow: 10px 5px 15px var(--bg-primary-color),
-    0 5px 10px var(--card-bg-color);
-
+.login-form {
+  width: 500px;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 2rem;
+  box-shadow: 0 10px 30px var(--bg-primary-color),
+    0 5px 15px var(--card-bg-color);
+  transition: transform 0.7s ease, box-shadow 0.3s ease;
   &:hover {
-    transform: translateY(2px);
-    box-shadow: 0 5px 10px var(--bg-primary-color),
-      10px 5px 15px var(--bg-primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px var(--bg-primary-color),
+      0 8px 20px var(--bg-secondary-color);
+  }
+
+  input[type="email"],
+  input[type="password"],
+  input[type="text"] {
+    height: 50px;
+    border: 1px solid var(--shadow-card-color);
+    color: var(--bg-primary-color);
+    box-shadow: 10px 5px 15px var(--bg-primary-color),
+      0 5px 10px var(--card-bg-color);
+      transition: transform 0.8s ease;
+
+      &:hover {
+        transform: translateY(5px);
+      }
+
+    &:focus {
+      box-shadow: 15px 10px 10px var(--bg-primary-color),
+        0 5px 10px var(--card-bg-color);
+    }
+  }
+
+  .form-group > button {
+    border: none;
+    color: var(--bg-primary-color);
+    margin-left: 5px;
+    cursor: default;
+
+    i:hover {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+  }
+}
+
+@media(width < 500px) {
+  .login-form {
+    width: 100%;
+
+    .form-group > button {
+      width: 100%
+    }
   }
 }

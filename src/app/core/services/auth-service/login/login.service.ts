@@ -1,8 +1,6 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { BehaviorSubject, map, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { ApiLinks } from 'src/app/core/constants/ApiLinks';
 import { ILoginRequest } from 'src/app/core/models/ILoginRequest.model';
 
@@ -13,9 +11,7 @@ export class LoginService {
   private tokenSubject: BehaviorSubject<string | null>;
 
   constructor(
-    private http: HttpClient,
-    private toastr: ToastrService,
-    private router: Router
+    private http: HttpClient
   ) {
     const storedToken = localStorage.getItem('user-token');
     this.tokenSubject = new BehaviorSubject<string | null>(storedToken);

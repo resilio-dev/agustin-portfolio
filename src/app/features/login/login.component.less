@@ -1,35 +1,45 @@
-.login-wrapper {
-  background: linear-gradient(
-    135deg,
+.bg-login {
+  background: radial-gradient(
+    circle,
     var(--bg-primary-color),
-    var(--bg-secondary-color)
+    var(--card-bg-color),
+    var(--bg-primary-color)
   );
-  overflow: hidden;
-
-  .login-form {
-    width: 600px;
-    max-width: 900px;
-    padding: 2rem;
-    transition: transform 1s ease, box-shadow 0.7s ease;
-    z-index: 890;
-    padding: 100px;
+  height: 100vh;
+  
+  h1 {
+    color: var(--primary-text-color);
   }
 
-  .login-form:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 40px var(--bg-primary-color),
-      0 8px 20px var(--bg-secondary-color);
+  .button-login {
+    top: 80px;
   }
-}
-
-@keyframes float-bg {
-  0% {
-    transform: translate(0%, 0%);
+  
+  .button-theme {
+    top: 140px;
   }
-  50% {
-    transform: translate(100%, 100%);
-  }
-  100% {
-    transform: translate(0%, 0%);
+  
+  .button-login, .button-theme {
+    right: 100px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px var(--bg-primary-color),
+      0 2px 4px var(--card-shadow-color);
+    color: var(--bg-primary-color);
+    transition: transform 1s ease, color 0.8s ease, border 0.6s ease;
+    border: 2px solid var(--bg-primary-color);
+    
+    i {
+      font-size: var(--middle-text-size);
+    }
+    
+    &:hover {
+      transform: scale(1.2);
+      color: var(--bg-secondary-color);
+      border-color: transparent;
+    }
   }
 }

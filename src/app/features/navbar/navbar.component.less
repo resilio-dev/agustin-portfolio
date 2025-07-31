@@ -74,20 +74,22 @@
       margin: 0;
       top: calc(100% + 5px);
       right: 12.5%;
-      transition: opacity 1s ease, visibility 1s ease;
       background-color: var(--bg-primary-color);
 
       .btn {
-        cursor: pointer;
         transition: transform 0.7s;
         font-size: var(--middle-text-size);
         color: var(--bg-secondary-color);
+        padding: 0;
 
         &:hover {
           transform: scale(1.2);
         }
-      }
 
+        &:focus {
+          border: none
+        }
+      }
       li {
         padding: 5px;
       }

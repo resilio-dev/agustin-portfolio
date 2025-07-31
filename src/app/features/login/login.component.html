@@ -1,8 +1,18 @@
-<div class="login-wrapper d-flex flex-column align-items-center justify-content-center min-vh-100 text-center">
-  <div class="login-form">
-    <header>
-      <h1><b>Login</b></h1>
-    </header>
+<div
+  class="bg-login"
+>
+<div class="position-relative text-center w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+
+  <a routerLink="/desktop" class="position-absolute z-3 button-login btn">
+    <i class="fa fa-home"></i>
+  </a>
+  <button (click)="toggleTheme()" class="position-absolute z-3 button-theme btn">
+    <i class="fa fa-sun" *ngIf="getTema() === 'light'"></i>
+    <i class="fa fa-moon" *ngIf="getTema() === 'dark'"></i>
+  </button>
+  <div>
+    <h1 class="text-center"><b>Login</b></h1>
     <app-form-login (submitForm)="login($event)"></app-form-login>
   </div>
+</div>
 </div>
