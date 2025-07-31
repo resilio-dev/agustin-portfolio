@@ -20,8 +20,12 @@
   box-shadow: 0 0.5rem 1.5rem var(--shadow-card-color);
   width: 100%;
   max-width: 600px;
+  max-height: 90vh;
   padding: 1.5rem;
   border-radius: 0.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 
   @media (min-width: 768px) {
     padding: 2rem;
@@ -33,7 +37,7 @@
   margin-bottom: 1rem;
 
   .modal-title {
-    font-size: var(--medium-font-size);
+    font-size: var(--middle-text-size);
     font-weight: bold;
   }
 }
@@ -41,4 +45,7 @@
 .custom-modal-body {
   font-size: var(--small-font-size);
   line-height: 1.5;
+  overflow-y: auto;
+  padding: 1rem;
+  flex-grow: 1;
 }
