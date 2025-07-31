@@ -11,7 +11,7 @@
 }
 
 /* Tema oscuro */
-:root.dark {
+[theme="dark"] {
   --bg-primary-color: #1f0923;
   --bg-secondary-color: #f9c54e;
   --primary-text-color: #f9f6f1;
@@ -27,7 +27,7 @@
 }
 
 /* Tema claro */
-:root.light {
+[theme = "light"] {
   --bg-primary-color: #f65b0f;
   --bg-secondary-color: #ffebad;
   --primary-text-color: #2e0003;
@@ -46,6 +46,7 @@
 
 body {
   min-width: 50vw;
+  transition: backround 1s ease, color 1s ease;
 }
 
 /* Tipografía */

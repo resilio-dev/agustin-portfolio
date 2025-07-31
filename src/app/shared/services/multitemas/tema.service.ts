@@ -19,8 +19,7 @@ export class TemaService {
   }
 
   setTema(tema: 'light' | 'dark') {
-    document.documentElement.classList.remove('light', 'dark');
-    document.documentElement.classList.add(tema);
+    document.body.setAttribute("theme", tema);
     this.temaActual = tema;
     localStorage.setItem('theme', tema);
     this.temaSubject.next(tema);

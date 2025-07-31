@@ -19,5 +19,5 @@
 </html>
 <script>
   const tema = localStorage.getItem("theme") || "light";
-  document.documentElement.classList.add(tema);
+  document.body.setAttribute('theme', tema);
 </script>
