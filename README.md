@@ -1,6 +1,6 @@
 ---
 
-## 📁 `README.md` para el **backend (Spring Boot 2.7.4)**
+## 📁 `README.md` para el **frontend (Angular +19)**
 
 
 # 🌐 Agustin Portfolio - Frontend
