@@ -31,8 +31,14 @@
   display: inline-block;
 }
 
-@media (max-width: 900px) {
-  .photo-frame {
-    display: none;
+@media (max-width: 767px) {
+  .photo-frame, .img {
+    position: static!important;
+    width: 180px!important;
+    height: 210px!important;
+  }
+
+  .decoracion-fondo-img {
+    display:none;
   }
 }
