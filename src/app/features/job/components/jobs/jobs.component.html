@@ -20,7 +20,7 @@
       [description]="trabajo.description"
       [footer]="trabajo.startDate + ' - ' + trabajo.endDate"
       [tags]="getTechnologiesNamesById(trabajo.technologies)"
-      class="col-6 py-3"
+      class="col-12 col-md-6 col-lg-4 py-3"
     >
       <app-modal-actions-button
         *ngIf="userLogged"
