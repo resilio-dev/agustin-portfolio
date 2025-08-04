@@ -4,7 +4,7 @@
   <div class="container" *ngIf="skills$ | async as habilidades">
     <header class="d-flex gap-3 align-items-center justify-content-center">
       <div>
-        <h1 class="m-0"><b>Skills</b></h1>
+        <h1 class="m-0"><b>Tecnologías</b></h1>
         <hr class="underline-title" />
       </div>
       <button
@@ -20,15 +20,16 @@
       class="container text-center flex-wrap py-3 mb-3 gap-3"
       *ngIf="habilidades.length > 0; else noSkills"
     >
-      <div *ngFor="let tipo of skillTypes">
+      <ng-container *ngFor="let tipo of skillTypes">
         <div *ngIf="groupedSkills[tipo]" class="my-4">
-          <h2 class="text-center mb-4" [translate]="tipo !== 'FRAMEWORK'">
+          <h2 class="text-center mb-4">
             {{ skillTypeLabels[tipo] }}
           </h2>
 
-          <div class="row">
+          <!-- Grilla en pantallas medianas y grandes-->
+          <div class="row d-none d-md-flex">
             <div
-              class="col-6 col-md-4 col-lg-3 mb-4"
+              class="col-3 col-lg-2 mb-4"
               *ngFor="let skill of groupedSkills[tipo]"
             >
               <div class="card-group justify-content-center">
@@ -47,9 +48,31 @@
               </div>
             </div>
           </div>
+
+          <!-- Carrousel horizontal en pantallas mobile -->
+          <div class="d-md-none skill-carousel-container">
+            <div
+              class="skill-carousel-item py-2 px-3"
+              *ngFor="let skill of groupedSkills[tipo]"
+            >
+              <app-skill-card [technology]="skill"></app-skill-card>
+
+              <div *ngIf="isLogin()" class="mt-2">
+                <app-modal-actions-button
+                  (edit)="
+                    seleccionarHabilidad(skill); modalEditar.toggleModal()
+                  "
+                  (remove)="
+                    seleccionarHabilidad(skill); modalEliminar.toggleModal()
+                  "
+                ></app-modal-actions-button>
+              </div>
+            </div>
+          </div>
+
           <hr class="section-separator" />
         </div>
-      </div>
+      </ng-container>
     </section>
   </div>
 </article>

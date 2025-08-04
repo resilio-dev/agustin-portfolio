@@ -1,5 +1,34 @@
 .bg-skills {
   color: var(--primary-text-color);
   padding-top: 150px;
-  background: linear-gradient(to left, var(--bg-primary-color), var(--card-bg-color));
+  background: linear-gradient(
+    to left,
+    var(--bg-primary-color),
+    var(--bg-primary-b-color)
+  );
+
+  .skill-carousel-container {
+    max-width: 100vw;
+    margin: 0 auto;
+    overflow-x: auto;
+    white-space: nowrap;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1rem;
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: transparent;
+    }
+  }
+
+  .skill-carousel-item {
+    display: inline-block;
+    scroll-snap-align: start;
+    width: 140px;
+    margin-right: 1rem;
+  }
 }

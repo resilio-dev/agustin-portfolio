@@ -45,14 +45,14 @@ export class HabilidadComponent implements OnInit, OnDestroy {
   ];
 
   skillTypeLabels: { [key: string]: string } = {
-    LANGUAGE: 'Languages',
+    LANGUAGE: 'Lenguajes',
     FRAMEWORK: 'Frameworks',
-    LIBRARY: 'Libraries',
-    TOOL: 'Tools',
+    LIBRARY: 'Librerías',
+    TOOL: 'Herramientas',
     IDE: 'IDEs',
-    PLATFORM: 'Platforms',
-    SECURITY: 'Security',
-    DATABASE: 'Databases',
+    PLATFORM: 'Plataformas',
+    SECURITY: 'Seguridad',
+    DATABASE: 'Bases de Datos',
   };
 
   constructor(
