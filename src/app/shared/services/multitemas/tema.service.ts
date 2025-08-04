@@ -38,6 +38,7 @@ export class TemaService {
     const style = getComputedStyle(document.documentElement);
     return {
       bgPrimaryColor: style.getPropertyValue('--bg-primary-color').trim(),
+      bgPrimaryBColor: style.getPropertyValue('--bg-primary-b-color').trim(),
       bgSecondaryColor: style.getPropertyValue('--bg-secondary-color').trim(),
       primaryTextColor: style.getPropertyValue('--primary-text-color').trim(),
       bigTextSize: style.getPropertyValue('--big-text-size').trim(),

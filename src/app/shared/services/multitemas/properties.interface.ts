@@ -1,5 +1,6 @@
 export interface IPropertiesTheme {
   bgPrimaryColor: string,
+  bgPrimaryBColor: string,
   bgSecondaryColor: string,
   primaryTextColor: string,
   smallTextSize: string,

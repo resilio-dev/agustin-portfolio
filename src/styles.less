@@ -13,6 +13,7 @@
 /* Tema oscuro */
 [theme="dark"] {
   --bg-primary-color: #1f0923;
+  --bg-primary-b-color: #37133d;
   --bg-secondary-color: #f9c54e;
   --primary-text-color: #f9f6f1;
   --small-text-size: 1.3rem;
@@ -29,12 +30,13 @@
 /* Tema claro */
 [theme = "light"] {
   --bg-primary-color: #f65b0f;
+  --bg-primary-b-color: #e7cba9;;
   --bg-secondary-color: #ffebad;
   --primary-text-color: #2e0003;
   --small-text-size: 1.2rem;
   --middle-text-size: 1.7rem;
   --big-text-size: 3rem;
-  --card-bg-color: #e7cba9;
+  --card-bg-color: #c7aa87;
   --card-text-color: #311904;
   --card-shadow-color: #ce884f;
   --danger-color: #910202;
@@ -56,6 +58,12 @@ p {
 
 h2 {
   font-size: calc(var(--big-text-size) - 0.5rem)!important;
+}
+
+@media(width < 700px) {
+  h2 {
+    font-size: calc(var(--big-text-size) - 1rem)!important;
+  }
 }
 
 /* === Decoration === */
@@ -93,6 +101,7 @@ h2 {
   font-size: var(--small-text-size);
   font-weight: bold;
   background-color: transparent;
+  
 }
 
 .primary-button {
