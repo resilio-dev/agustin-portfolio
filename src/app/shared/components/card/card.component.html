@@ -1,4 +1,4 @@
-<div class="card shadow">
+<div class="card">
   <img
     *ngIf="imageUrl"
     [src]="imageUrl"
@@ -12,9 +12,23 @@
     </h6>
   </header>
   <section class="card-body d-flex flex-column justify-content-between">
-    <p *ngIf="description" class="card-text">{{ description }}</p>
-
-    <div *ngIf="tags?.length" class="d-flex justify-content-center align-items-center flex-wrap gap-1 mt-3">
+    <div class="container" *ngIf="description">
+      <p [class.line-clamp]="!showMore" class="card-text mb-2">
+        {{ description }}
+      </p>
+      <button
+        type="button"
+        class="btn btn-sm p-0"
+        (click)="toggleShowMore()"
+        *ngIf="description.length > 100"
+      >
+        {{ showMore ? "Ver menos" : "Ver más" }}
+      </button>
+    </div>
+    <div
+      *ngIf="tags?.length"
+      class="d-flex justify-content-center align-items-center flex-wrap gap-1 mt-3"
+    >
       <span class="badge rounded-pill custom-badge" *ngFor="let tag of tags">
         {{ tag }}
       </span>

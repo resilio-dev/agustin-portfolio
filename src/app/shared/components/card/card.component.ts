@@ -14,4 +14,10 @@ export class CardComponent {
   @Input() imageUrl?: string;
   @Input() tags?: string[];
   @Input() footer?: string;
+
+  showMore = false;
+
+  toggleShowMore() {
+    this.showMore = !this.showMore;
+  }
 }
