@@ -11,7 +11,7 @@
     </button>
   </header>
   <section
-    class="w-100 d-flex flew-wrap justify-content-center align-items-center row mx-auto"
+    class="w-100 d-flex flew-wrap justify-content-center align-items-start row mx-auto"
     *ngIf="formations$ | async as formations"
   >
   <ng-container *ngIf="formations.length > 0; else noFormations">
@@ -21,7 +21,7 @@
       [description]="formacion.description"
       [footer]="formacion.startDate + ' - ' + formacion.endDate"
       *ngFor="let formacion of formations"
-      class="col-4 m-2"
+      class="col-lg-4 col-md-6 col-sm-12 m-2"
       >
       <footer
       class="d-flex h justify-content-center align-items-center gap-3"

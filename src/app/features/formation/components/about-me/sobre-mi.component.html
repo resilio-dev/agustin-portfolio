@@ -1,35 +1,36 @@
-<article class="text-center w-100 py-3" *ngIf="data$ | async as data; else loading" >
-  <header>
-    <h2>Hi! I'm {{ data.name }}, {{ data.title }}</h2>
-    <p>With more than {{ data.yearsXP }} years of experience.</p>
-  </header>
-  <hr class="section-separator w-50" />
-  <section class="px-4 d-flex justify-content-center align-items-center">
-    <div class="w-50 text-justify">
+<article
+  class="text-center w-100 py-3"
+  *ngIf="data$ | async as data; else loading"
+>
+  <div class="container">
+    <header class="px-2">
+      <h2>Hola! Soy {{ data.name }}, {{ data.title }}</h2>
       <p class="fw-bold">
         {{ data.mainPhrase }}
-    </p>
-    <p>
-      {{ data.description }}
-    </p>
-    <p class="fw-light">
-      "{{ data.secondaryPhrase }}"
-    </p>
+      </p>
+    </header>
+    <hr class="section-separator w-50" />
+    <section class="px-4 d-flex justify-content-center align-items-center">
+      <div class="text-justify">
+        <p>Más de {{ data.yearsXP }} años de experiencia.</p>
+        <p>
+          {{ data.description }}
+        </p>
+        <p class="fw-light">"{{ data.secondaryPhrase }}"</p>
+      </div>
+    </section>
+    <hr class="section-separator w-50" />
+    <footer class="d-flex align-items-center justify-content-center gap-4">
+      <a
+        [href]="data.urlCV"
+        [download]="'CV-' + data.name + '-' + data.title"
+        class="call-button"
+        >Download CV</a
+      >
+      <button class="call-button" (click)="irAContacto()">Contact me</button>
+    </footer>
   </div>
-  </section>
-  <hr class="section-separator w-50" />
-  <footer class="d-flex align-items-center justify-content-center gap-4">
-    <a
-      [href]="data.urlCV"
-      [download]="'CV-' + data.name + '-' + data.title"
-      class="call-button"
-      >Download CV</a 
-    >
-    <button class="call-button" (click)="irAContacto()">Contact me</button>
-  </footer>
 </article>
 <ng-template #loading>
-  <p>
-    Loading data...
-  </p>
+  <p>Loading data...</p>
 </ng-template>
