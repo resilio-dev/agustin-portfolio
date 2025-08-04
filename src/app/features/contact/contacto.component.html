@@ -1,16 +1,19 @@
 <article
   class="bg-contact text-center w-100 h-100 d-flex flex-column justify-content-center align-items-center"
 >
-  <header class="text-center">
+<ng-container class="container">
+
+  <header class="text-center px-2">
     <h1><b>Contact me</b></h1>
     <hr class="underline-title w-50">
     <p>Do you have a project in mind or want to ask me a question?</p>
     <p class="lead">I am at your service.</p>
     <p class="fw-light">Write to me! I will respond to you as soon as possible.</p>
   </header>
-  <section>
+  <section class="container">
     <app-form-contact
       (contactSubmit)="trySend($event)"
-    ></app-form-contact>
-  </section>
+      ></app-form-contact>
+    </section>
+  </ng-container>
 </article>
