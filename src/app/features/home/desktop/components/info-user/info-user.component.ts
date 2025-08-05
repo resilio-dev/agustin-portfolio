@@ -17,6 +17,6 @@ export class InfoUserComponent {
   constructor(private router: Router) {}
 
   goToContact() {
-    this.router.navigateByUrl("/desktop/contact")
+    this.router.navigateByUrl("/contacto")
   }
 }

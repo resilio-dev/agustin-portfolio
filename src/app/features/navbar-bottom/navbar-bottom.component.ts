@@ -12,13 +12,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./navbar-bottom.component.less'],
 })
 export class NavbarBottomComponent implements OnInit {
-  pages = ['CONTACT-ME', 'MY-SKILLS', 'HOME', 'MY-JOBS', 'MY-FORMATIONS'];
+  pages = ['CONTACTO', 'TECNOLOGÍAS', 'INICIO', 'PORTAFOLIO', 'FORMACION'];
   routeMap: { [key: string]: string } = {
-    'HOME': '/desktop',
-    'MY-JOBS': '/desktop/jobs',
-    'CONTACT-ME': '/desktop/contact',
-    'MY-FORMATIONS': '/desktop/formation',
-    'MY-SKILLS': '/desktop/skills',
+    'INICIO': '/inicio',
+    'PORTAFOLIO': '/portafolio-web',
+    'CONTACTO': '/contacto',
+    'FORMACION': '/formacion',
+    'TECNOLOGÍAS': '/tecnologias',
   };
   currentRoute$!: Observable<string>;
 

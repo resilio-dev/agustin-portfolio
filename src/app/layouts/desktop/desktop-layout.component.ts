@@ -14,8 +14,7 @@ import { NavbarComponent } from 'src/app/features/navbar/navbar.component';
 export class DesktopLayoutComponent {
   constructor(private router: Router) {}
 
-esHome() {
-  return this.router.url === '/desktop' || ''
-}
-
+  esHome() {
+    return this.router.url === '/inicio';
+  }
 }
