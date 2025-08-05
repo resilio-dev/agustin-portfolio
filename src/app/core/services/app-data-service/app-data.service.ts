@@ -38,9 +38,9 @@ export class AppDataService {
         this.projectDataService.setProjects(data.projects);
         this.aboutMeService.setAboutMeData(data);
         this.toastr.success(
-          'You are seeing a live view of my profile.',
-          'Successful connection',
-          { timeOut: 5000 }
+          'Estás viendo una vista en vivo de mi Portafolio web.',
+          '',
+          { timeOut: 2500 }
         );
         console.log('Connection susccessful');
       },
@@ -52,10 +52,8 @@ export class AppDataService {
         this.skillDataService.setSkills(data.skills);
         this.projectDataService.setProjects(data.projects);
         this.aboutMeService.setAboutMeData(data);
-        this.toastr.warning(
-          'You are seeing a default view of my profile.',
-          "Oh, it looks like we can't connect to the server right now.",
-          { timeOut: 10000 }
+        this.toastr.info(
+          'Estas viendo una vista predeterminada de mi perfil.',
         );
         console.error('Error server connect.', err.error.message);
       },
