@@ -24,7 +24,7 @@ export const DEFAULT_USER_DATA: IUser = {
       link: '#',
       urlImg: 'assets/img/projects/portfolio-web.png',
       startDate: '2025-06-03',
-      endDate: '2025-07-27',
+      endDate: '2025-08-5',
       tecnologies: [],
     },
     {

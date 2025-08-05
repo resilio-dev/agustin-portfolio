@@ -2,14 +2,15 @@
   class="bg-login"
 >
 <div class="position-relative text-center w-100 h-100 d-flex flex-column justify-content-center align-items-center">
-
-  <a routerLink="/" class="position-absolute z-3 button-login btn">
+<div class="buttons-login d-flex gap-3 position-absolute">
+  <a routerLink="/" class="button-login btn">
     <i class="fa fa-home"></i>
   </a>
-  <button (click)="toggleTheme()" class="position-absolute z-3 button-theme btn">
-    <i class="fa fa-sun" *ngIf="getTema() === 'light'"></i>
-    <i class="fa fa-moon" *ngIf="getTema() === 'dark'"></i>
+  <button (click)="toggleTheme()" class="button-theme btn">
+    <i class="fa fa-sun" *ngIf="getTema() === 'dark'"></i>
+    <i class="fa fa-moon" *ngIf="getTema() === 'light'"></i>
   </button>
+</div>
   <div>
     <h1 class="text-center"><b>Login</b></h1>
     <app-form-login (submitForm)="login($event)"></app-form-login>

@@ -35,7 +35,6 @@ export class LoginComponent {
       },
       error: (er: HttpErrorResponse) =>
         this.toastr.error(
-          er.error.message || 'Credentials Invalid',
           er.message || 'Login Error'
         ),
     });

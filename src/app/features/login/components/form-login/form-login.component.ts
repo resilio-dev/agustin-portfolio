@@ -1,13 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { ILoginRequest } from 'src/app/core/models/ILoginRequest.model';
 
 @Component({
   selector: 'app-form-login',
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './form-login.component.html',
-  styleUrl: './form-login.component.less'
+  styleUrl: './form-login.component.less',
 })
 export class FormLoginComponent implements OnInit {
   loginForm!: FormGroup;
@@ -24,11 +29,15 @@ export class FormLoginComponent implements OnInit {
   }
 
   login() {
-    const loginReq :ILoginRequest = {
-      email: this.loginForm.value.email,
-      password: this.loginForm.value.password
+    if (this.loginForm.valid) {
+      const loginReq: ILoginRequest = {
+        email: this.loginForm.value.email,
+        password: this.loginForm.value.password,
+      };
+      this.submitForm.emit(loginReq);
+      this.loginForm.reset();
+    } else {
+      this.loginForm.markAllAsTouched();
     }
-    this.submitForm.emit(loginReq);
-    this.loginForm.reset();
   }
 }

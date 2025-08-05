@@ -1,4 +1,8 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form d-flex flex-column gap-3">
+<form
+  [formGroup]="loginForm"
+  (ngSubmit)="login()"
+  class="login-form d-flex flex-column gap-3"
+>
   <div class="form-group mb-2 w-100">
     <input
       type="email"
@@ -8,24 +12,45 @@
       formControlName="email"
       placeholder="example@email.com"
     />
-  </div>
-  <div class="form-group mb-4 d-flex justify-content-center align-items-center w-100 ">
-    <input
-      [type]="showPassword ? 'text' : 'password'"
-      name="password"
-      class="form-control custom-input"
-      id="password"
-      formControlName="password"
-      placeholder="********"
-    />
-    <button
-      type="button"
-      class="btn"
-      (click)="this.showPassword = !this.showPassword"
+    <small
+      *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
     >
-      <i class="fas fa-eye" *ngIf="this.showPassword"></i>
-      <i class="fas fa-eye-slash" *ngIf="!this.showPassword"></i>
-    </button>
+      El email no es válido.
+    </small>
   </div>
-  <button type="submit" class="btn-default primary-button align-self-center w-25">Login</button>
+  <div
+    class="form-group mb-4 d-flex flex-column align-items-space-between w-100"
+  >
+    <div class="d-flex">
+      <input
+        [type]="showPassword ? 'text' : 'password'"
+        name="password"
+        class="form-control custom-input"
+        id="password"
+        formControlName="password"
+        placeholder="********"
+      />
+      <button
+        type="button"
+        class="btn"
+        (click)="this.showPassword = !this.showPassword"
+      >
+        <i class="fas fa-eye" *ngIf="this.showPassword"></i>
+        <i class="fas fa-eye-slash" *ngIf="!this.showPassword"></i>
+      </button>
+    </div>
+    <small
+      *ngIf="
+        loginForm.get('password')?.invalid && loginForm.get('password')?.touched
+      "
+    >
+      La contraseña es inválida.
+    </small>
+  </div>
+  <button
+    type="submit"
+    class="btn-default primary-button align-self-center w-25"
+  >
+    Login
+  </button>
 </form>
