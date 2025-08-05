@@ -1,11 +1,11 @@
 ---
 
-## 📁 `README.md` para el **backend (Spring Boot 2.7.4)**
+## 📁 `README.md` para el **frontend (Angular +19)**
 
 
-# 🌐 Agustín Portfolio - Frontend
+# 🌐 Agustin Portfolio - Frontend
 
-Este es el frontend de mi portfolio personal desarrollado con **Angular 19**, diseñado para mostrar mi experiencia como desarrollador y entrenador, así como mis proyectos destacados.
+Este es el frontend de mi portfolio personal desarrollado con **Angular 19**, diseñado para mostrar mis trabajos como desarrollador, mis proyectos destacados, experiencia en tecnologías, formación académica y otras cosas interesantes sobre mí.
 
 ---
 
@@ -33,6 +33,6 @@ Este es el frontend de mi portfolio personal desarrollado con **Angular 19**, di
 
 ```bash
 git clone https://github.com/LicDeveloperJunior/agustin-portfolio.git
-cd agustin-portfolio-fe
+cd agustin-portfolio
 npm install
 ng serve
