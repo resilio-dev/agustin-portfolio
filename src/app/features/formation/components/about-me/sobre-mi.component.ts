@@ -21,6 +21,6 @@ export class SobreMiComponent implements OnInit {
   }
 
   irAContacto() {
-    this.router.navigateByUrl('/desktop/contact');
+    this.router.navigateByUrl('/contacto');
   }
 }

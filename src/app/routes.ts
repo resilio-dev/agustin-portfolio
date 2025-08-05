@@ -22,7 +22,7 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'formacion',
+        path: 'sobre-mi',
         loadComponent: () =>
           import('./features/formation/formacion.component').then(
             (m) => m.FormacionComponent

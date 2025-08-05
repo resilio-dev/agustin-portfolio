@@ -17,6 +17,6 @@ export class InfoUserComponent {
   constructor(private router: Router) {}
 
   goToProphile() {
-    this.router.navigateByUrl("/formacion")
+    this.router.navigateByUrl("/sobre-mi")
   }
 }
