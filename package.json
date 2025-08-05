@@ -4,11 +4,18 @@
   "description": "Frontend de mi portfolio personal.",
   "main": "karma.conf.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "start:prod": "ng serve --configuration=production",
+    "build:prod": "ng build --configuration=production"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LicDeveloperJunior/agustin-portfolio.git"
+    "url": "git+https://github.com/resilio-dev/agustin-portfolio.git"
   },
   "keywords": [
     "portfolio",
@@ -18,13 +25,13 @@
     "fullstack",
     "agustin"
   ],
-  "author": "Agustín",
+  "author": "resilio-dev",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/LicDeveloperJunior/agustin-portfolio/issues"
+    "url": "https://github.com/resilio-dev/agustin-portfolio/issues"
   },
-  "homepage": "https://github.com/LicDeveloperJunior/agustin-portfolio#readme",
+  "homepage": "https://github.com/resilio-dev/agustin-portfolio#readme",
   "dependencies": {
     "@angular/animations": "^19.2.14",
     "@angular/common": "^19.2.0",
