@@ -10,13 +10,13 @@
   margin: 0;
   overflow: hidden;
   position: relative;
-
+  
   .spinner-container {
     color: var(--primary-text-color);
     .spinner-border {
       color: var(--primary-text-color);
     }
-
+    
     p {
       font-size: var(--small-text-size);
     }
@@ -25,6 +25,12 @@
 
 @media (max-width: 767px) {
   .bg-home {
+    background: linear-gradient(
+      to right,
+      var(--bg-primary-color) 0%,
+      var(--bg-primary-b-color) 80%,
+      var(--card-bg-color) 100%
+    );
     padding-top: 15px;
   }
 }
