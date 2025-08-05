@@ -1,12 +1,9 @@
 .navbar {
-  width: 200px;
   max-height: 200px;
   top: 100px;
-  right: 100px;
+  right: 150px;
   .menu {
     position: relative;
-    width: 300px;
-    justify-items: center;
     background-color: transparent;
 
     .btn-menu {
@@ -73,7 +70,7 @@
       border-radius: 0.3rem;
       margin: 0;
       top: calc(100% + 5px);
-      right: 12.5%;
+      left: -50px;
       background-color: var(--bg-primary-color);
 
       .btn {
@@ -87,7 +84,7 @@
         }
 
         &:focus {
-          border: none
+          border: none;
         }
       }
       li {
@@ -106,5 +103,32 @@
       opacity: 0;
       transition: 0.4 ease-in-out;
     }
+  }
+}
+
+@media (width < 767px) {
+  .navbar {
+    top: 50px;
+    right: 0;
+    left: calc(50% - 15px);
+  }
+  .button-menu-bar {
+    .config-menu {
+      color: var(--primary-text-color) !important;
+      border-top: 7px solid !important;
+      margin: 2px 0 !important;
+      width: 30px !important;
+      border-radius: 8px;
+    }
+  }
+  .button-menu-close {
+    margin-top: 5px;
+    width: 30px !important;
+    height: 30px !important;
+    background-color: var(--primary-text-color) !important;
+  }
+
+  .menu-navbar {
+    left: -60px !important;
   }
 }
