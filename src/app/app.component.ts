@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { AppDataService } from './core/services/app-data-service/app-data.service';
 import { environment } from 'src/environments/environment';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +12,13 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./app.component.less'],
 })
 export class AppComponent {
-  constructor(private appDataService: AppDataService) {
+  constructor(private appDataService: AppDataService, private router: Router) {
     console.log('Obteniendo datos desde: ' + environment.apiUrl);
     this.appDataService.uploadData();
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
   }
 }
