@@ -1,13 +1,13 @@
 .skill-card {
   width: 150px;
-  background-color: var(--card-bg-color) 5%;
+  background-color: var(--card-bg-color);
   color: var(--primary-text-color);
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 25px var(--card-shadow-color);
+    box-shadow: 0 5px 10px var(--card-shadow-color);
   }
 
   .logo-img {
@@ -18,12 +18,12 @@
 
   .badge-learning {
     background-color: var(--bg-primary-color);
-    color: white;
+    color: var(--primary-text-color);
     padding: 0.4rem 0.6rem;
     border-radius: 1rem;
     font-size: 0.75rem;
     font-weight: 600;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
   }
 
   .skills-list, small {

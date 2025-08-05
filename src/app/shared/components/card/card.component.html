@@ -20,9 +20,8 @@
         type="button"
         class="btn btn-sm p-0"
         (click)="toggleShowMore()"
-        *ngIf="description.length > 180"
       >
-        {{ showMore ? "Ver menos" : "Ver más" }}
+        <span *ngIf="description.length > 180">{{ showMore ? "Ver menos" : "Ver más" }}</span>
       </button>
     </div>
     <div
