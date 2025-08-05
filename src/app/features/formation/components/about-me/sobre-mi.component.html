@@ -3,9 +3,9 @@
   *ngIf="data$ | async as data; else loading"
 >
   <div class="container">
-    <header class="px-2">
+    <header class="p-3">
       <h2>Soy {{ data.name }}, {{ data.title }}</h2>
-      <p class="fw-bold">
+      <p class="fw-bold p-2">
         {{ data.mainPhrase }}
       </p>
     </header>
@@ -25,12 +25,12 @@
         [href]="data.urlCV"
         [download]="'CV-' + data.name + '-' + data.title"
         class="call-button"
-        >Download CV</a
+        >Descarga mi CV</a
       >
-      <button class="call-button" (click)="irAContacto()">Contact me</button>
+      <button class="call-button" (click)="irAContacto()">Contactame</button>
     </footer>
   </div>
 </article>
 <ng-template #loading>
-  <p>Loading data...</p>
+  <p>Cargando mi perfil...</p>
 </ng-template>

@@ -70,4 +70,12 @@ export class JobsComponent implements OnInit {
   agregarTrabajo(job: IJob) {
     this.jobDataService.addJob(job)
   }
+
+  mapDate(date: string):string {
+    if (!date || date.length != 10) {
+      return date;
+    }
+    const aux = date.substring(0, 7);
+    return aux.substring(5) + ' / '+ aux.substring(0, 4);
+  }
 }

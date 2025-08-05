@@ -1,6 +1,6 @@
 <article class="d-flex flex-column justify-content-center">
   <header class="d-flex gap-3 align-items-center justify-content-center p-2 mb-4">
-    <h2 class="m-0">Mis proyectos más recientes</h2>
+    <h2 class="m-0">Proyectos destacados</h2>
     <button
       class="btn-default primary-button"
       type="button"
@@ -21,12 +21,12 @@
       [title]="project.title"
       [description]="project.description"
       [imageUrl]="project.urlImg"
-      [footer]="project.startDate + ' - ' + project.endDate"
+      [footer]="mapDate(project.startDate) + ' - ' + mapDate(project.endDate)"
       [tags]="getTecnologiesNameByIds(project.tecnologies)"
       class="col-12 col-md-6 col-lg-4 py-3"
     >
     <div class="container p-3"> 
-      <a class="btn-default card-button" [href]="project.link">Go Site</a>
+      <a class="btn-default card-button" [href]="project.link">Ir al sitio</a>
       <app-modal-actions-button
       (edit)="seleccionarProyecto(project); modalEditar.toggleModal()"
       (remove)="seleccionarProyecto(project); modalEliminar.toggleModal()"

@@ -16,7 +16,7 @@ export class InfoUserComponent {
 
   constructor(private router: Router) {}
 
-  goToContact() {
-    this.router.navigateByUrl("/contacto")
+  goToProphile() {
+    this.router.navigateByUrl("/formacion")
   }
 }
