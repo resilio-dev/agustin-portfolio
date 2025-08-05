@@ -4,34 +4,56 @@ export const DEFAULT_USER_DATA: IUser = {
   id: 1,
   name: 'Agustin',
   lastName: 'Collueque Velazquez',
-  title: 'Web Developer',
+  title: 'Desarrollador Web',
   mainPhrase:
-    'I like to create robust and scalable web applications with the best user experiences.',
+    'Feliz de ayudarte a resolver problemas (con un poco de código) y aprender algo nuevo en el camino.',
   secondaryPhrase:
-    'Passionate about constant learning and creative solutions that make a difference.',
+    'Apasionado por el aprendizaje constante y las soluciones creativas que marcan la diferencia.',
   description:
-    'I enjoy creating web applications that not only work well, but are carefully designed from the inside out. I have a special love for backend development with Java, where I focus on writing clean, maintainable code, good architecture, and proven design patterns. I care about the details, from how data flows to how users feel, combining depth and technique with a human touch.',
+    "Soy Desarrollador Web Full Stack con una base sólida en programación. Estoy en constante aprendizaje y evolución, siempre buscando mejorar mis habilidades. Disfruto compartiendo lo que sé con quienes recién comienzan en este apasionante mundo de la programación, intercambiando ideas, debatiendo enfoques y creciendo junto a la comunidad. Disfruto creando aplicaciones web que no sólo funcionen bien, sino que estén cuidadosamente diseñadas de adentro hacia afuera. Me concentro en escribir código limpio y mantenible, buena arquitectura y patrones de diseño probados. Me importan los detalles, desde cómo fluyen los datos hasta cómo se sienten los usuarios, combinando profundidad y técnica con un toque humano.",
   email: 'agustincv1997@gmail.com',
   age: 27,
   urlImg: 'assets/img/prophile-default.webp',
-  urlCV: 'assets/CV_AGUSTIN.pdf',
+  urlCV: 'assets/cv-agustin-collueque.pdf',
   projects: [
     {
       id: 1,
       title: 'Portfolio Web',
       description:
-        'Personal site to show projects, skills and track record as a web developer, with responsive design and fluid navigation.',
+        'Aplicación Web personal diseñada para mostrar mis trabajos como desarrollador, mis proyectos destacados, experiencia en tecnologías, formación académica y otras cosas interesantes sobre mí.',
       link: '#',
       urlImg: 'assets/img/projects/portfolio-web.png',
-      startDate: '2025-04-20',
+      startDate: '2025-06-03',
       endDate: '2025-07-27',
       tecnologies: [],
     },
     {
       id: 2,
-      title: 'Tournament Manager App',
+      title: 'Gestor de Torneos de Fútbol',
       description:
-        'Complete application to manage sports tournaments, with team management, fixture, statistics and user control.',
+        'Aplicación completa para gestionar torneos deportivos, con gestión de equipos, partidos, estadísticas y control de usuarios.',
+      link: '#',
+      urlImg: 'assets/img/projects/tournament-manager.png',
+      startDate: '2025-04-20',
+      endDate: '2025-08-12',
+      tecnologies: [],
+    },
+    {
+      id: 1,
+      title: 'Portfolio Web',
+      description:
+        'Aplicación Web personal diseñada para mostrar mis trabajos como desarrollador, mis proyectos destacados, experiencia en tecnologías, formación académica y otras cosas interesantes sobre mí.',
+      link: '#',
+      urlImg: 'assets/img/projects/portfolio-web.png',
+      startDate: '2025-06-03',
+      endDate: '2025-07-27',
+      tecnologies: [],
+    },
+    {
+      id: 2,
+      title: 'Gestor de Torneos de Fútbol',
+      description:
+        'Aplicación completa para gestionar torneos deportivos, con gestión de equipos, partidos, estadísticas y control de usuarios.',
       link: '#',
       urlImg: 'assets/img/projects/tournament-manager.png',
       startDate: '2025-04-20',
@@ -42,47 +64,47 @@ export const DEFAULT_USER_DATA: IUser = {
   jobs: [
     {
       id: 1,
-      title: 'Barbershop Shift Management',
+      title: 'Gestor de Turnos Barbería',
       description:
-        'Web application to schedule appointments, advertise, control services and clients, with an administration panel.',
+        'Aplicación Web para gestionar turnos de una barbería/peluquería, con gestión de usuarios y clientes.',
       urlImg: 'assets/img/projects/shift-manager.png',
-      startDate: '2025-08-12',
-      endDate: 'Currently',
+      startDate: '2025-08-06',
+      endDate: 'Actualidad.',
       technologies: [],
     },
   ],
   formations: [
     {
       id: 1,
-      title: 'Web Full Stack Junior',
+      title: 'Desarrollador Web FullStack',
       description:
-        'Comprehensive training in web development, with a focus on frontend and backend technologies. Practices in responsive design, API consumption, authentication, version control and cloud deployment. Development of a personal portfolio project following agile methodologies.',
+        'Capacitación integral en desarrollo web, con enfoque en tecnologías frontend y backend. Prácticas en diseño responsivo, consumo de API, autenticación, control de versiones e implementación en la nube. Desarrollo de un proyecto de portfolio personal siguiendo buenas prácticas y metodologías ágiles.',
       startDate: '2022-11-16',
       endDate: '2023-08-22',
       type: 'CURSO',
-      academy: 'National Institute of Industrial Technology',
+      academy: 'Instituto Nacional de Tecnología Industrial (INTI)',
       technologies: [],
     },
     {
       id: 2,
-      title: 'Technical English for software developers',
+      title: 'Inglés Técnico para Programadores',
       description:
-        'Oral/written comprehension and production in everyday situations. Practice essential vocabulary, simple grammatical structures and communication skills for personal presentations, descriptions, requests and understanding of basic instructions.',
+        'Comprensión y producción oral/escrita en situaciones cotidianas. Práctica de vocabulario esencial, estructuras gramaticales simples y habilidades de comunicación para presentación personal, descripciones, solicitudes y comprensión de instrucciones básicas.',
       startDate: '2023-08-25',
       endDate: '2023-10-22',
       type: 'CURSO',
-      academy: 'University Language Center',
+      academy: 'Centro Universitario de Idiomas (CUI)',
       technologies: [],
     },
     {
       id: 3,
-      title: "Bachelor's degree in computer science",
+      title: "Licenciatura en Ciencias de la Computación",
       description:
-        'Oral/written comprehension and production in everyday situations. Practice essential vocabulary, simple grammatical structures and communication skills for personal presentations, descriptions, requests and understanding of basic instructions.',
+        'Aprendí conceptos esenciales como Arquitectura de Software, Patrones de Diseño y Paradigmas de Programación, que puedo aplicar de manera eficaz. Además de otros temas como los principios SOLID, separación de responsabilidades y buenas prácticas para el desarrollo de sistemas escalables y mantenibles, aprendí valores como la resiliencia, al enfrentar desafíos técnicos y personales que me ayudaron a crecer. También desarrollé habilidades como el trabajo en equipo, la comunicación efectiva, la organización del tiempo y la capacidad de autogestión, que hoy aplico tanto en proyectos individuales como colaborativos. Esta etapa me preparó no solo para programar, sino también para adaptarme a los cambios, mantener una mentalidad de mejora continua y disfrutar el proceso de aprender cada día algo nuevo. Sigo formándome con pasión, motivado por la curiosidad y el deseo de construir soluciones que realmente aporten valor.',
       startDate: '2015-03-08',
-      endDate: 'Actually',
+      endDate: '2020-03-08',
       type: 'FORMACION_FORMAL',
-      academy: 'National University of Comahue',
+      academy: 'Universidad Nacional del Comahue',
       technologies: [],
     },
   ],
@@ -90,7 +112,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 1,
       name: 'HTML5',
-      skills: ['Semantic', 'Accesibility', 'Multimedia Labels'],
+      skills: ['Sintaxis', 'Semántica', 'Accesibilidad', 'Media Queries', 'Metaetiquetas y Microdatos', 'APIs del navegador', 'Buenas Prácticas'],
       urlLogo: 'assets/img/logos/language/html5.svg',
       isLearning: false,
       type: 'LANGUAGE',
@@ -98,7 +120,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 2,
       name: 'CSS3',
-      skills: ['Flexbox', 'Grid', 'Responsive Design'],
+      skills: ['Flexbox', 'Grid Layout', 'Diseño Responsivo', 'Animaciones y Transiciones', 'Selectores', 'Web Fonts', 'Mejoras para SEO y Rendimiento'],
       urlLogo: 'assets/img/logos/language/css_old.svg',
       isLearning: false,
       type: 'LANGUAGE',
@@ -106,7 +128,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 3,
       name: 'JavaScript',
-      skills: ['DOM Manipulation', 'Events', 'Async/Await Functions'],
+      skills: ['Manipulación del DOM', 'Eventos', 'Funciones Async/Await', 'Interactividad del Usuario', 'AJAX/FETCH', 'Almacenamiento Local', 'Lógica de Programación', 'Integración con APIs','SSR/SSG', 'Seguridad'],
       urlLogo: 'assets/img/logos/language/javascript.svg',
       isLearning: false,
       type: 'LANGUAGE',
@@ -114,7 +136,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 4,
       name: 'TypeScript',
-      skills: ['Static typing', 'Interfaces', 'Decorators'],
+      skills: ['Tipado Genérico y Personalizado', 'Interfaces', 'Decoradores', 'Literales de tipo', 'Union, Intersección y Mapeos', 'Enums', 'POO'],
       urlLogo: 'assets/img/logos/language/typescript.svg',
       isLearning: false,
       type: 'LANGUAGE',
@@ -122,7 +144,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 5,
       name: 'Java',
-      skills: ['POO', 'Collections', 'Streams', 'Lambdas'],
+      skills: ['POO', 'Collections', 'Streams', 'Lambdas', 'Tipados Genéricos'],
       urlLogo: 'assets/img/logos/language/java.svg',
       isLearning: false,
       type: 'LANGUAGE',
@@ -130,7 +152,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 6,
       name: 'JSON',
-      skills: ['Exchange format', 'APIs REST', 'Serialization'],
+      skills: ['Acceso y manipulación', 'APIs REST', 'Serialización', 'Buenas Prácticas', 'Peticiones HTTP'],
       urlLogo: 'assets/img/logos/language/json.svg',
       isLearning: false,
       type: 'LANGUAGE',
@@ -139,10 +161,7 @@ export const DEFAULT_USER_DATA: IUser = {
       id: 7,
       name: 'Angular',
       skills: [
-        'Components/Moduls',
-        'Services',
-        'Routes',
-        'Standalone Components',
+        'Módulos/Componentes', 'Angular Directives', 'Enrutamiento Avanzado', 'Karma/Protractor', 'Componentes Standalone', 'Data Binding', 'Inyección de Dependencias'
       ],
       urlLogo: 'assets/img/logos/framework/angular.svg',
       isLearning: false,
@@ -151,7 +170,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 8,
       name: 'RxJS',
-      skills: ['Observables', 'Subjects', 'Operators'],
+      skills: ['Observables', 'Subscriptions', 'Subjects', 'Operators', 'Pipes'],
       urlLogo: 'assets/img/logos/library/rxjs.svg',
       isLearning: false,
       type: 'LIBRARY',
@@ -159,7 +178,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 9,
       name: 'Spring Boot',
-      skills: ['REST API', 'JPA', 'Security', 'Dependency Injection'],
+      skills: ['REST API', 'JPA', 'Hibernate', 'Spring Web', 'Spring Security', 'Inyeccion de Dependencias', 'Lombok', 'Anotaciones', 'Testing'],
       urlLogo: 'assets/img/logos/framework/spring.svg',
       isLearning: false,
       type: 'FRAMEWORK',
@@ -167,7 +186,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 10,
       name: 'Bootstrap',
-      skills: ['UI Components', 'Flexbox/Grid', 'Utilities'],
+      skills: ['UI Components', 'Flexbox/Grid', 'Utilidades', 'Integración con Popper.js'],
       urlLogo: 'assets/img/logos/framework/bootstrap.svg',
       isLearning: false,
       type: 'FRAMEWORK',
@@ -175,7 +194,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 11,
       name: 'Tailwind CSS',
-      skills: ['Utility-First', 'Responsive', 'Customization'],
+      skills: ['Utility-First', 'Diseño Responsive', 'Personalización'],
       urlLogo: 'assets/img/logos/framework/tailwindcss.svg',
       isLearning: false,
       type: 'FRAMEWORK',
@@ -199,7 +218,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 14,
       name: 'PostgreSQL',
-      skills: ['SQL Queries', 'Relational Modeling', 'Indexs'],
+      skills: ['SQL Queries', 'Modelo Relacional', 'Índices'],
       urlLogo: 'assets/img/logos/database/postgresql.svg',
       isLearning: false,
       type: 'DATABASE',
@@ -207,7 +226,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 15,
       name: 'MySQL',
-      skills: ['SQL Queries', 'Stored Procedures', 'Integration with JPA'],
+      skills: ['SQL Queries', 'Stored Procedures', 'Integración con JPA'],
       urlLogo: 'assets/img/logos/database/mysql.svg',
       isLearning: false,
       type: 'DATABASE',
@@ -223,7 +242,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 17,
       name: 'VS Code',
-      skills: ['Extensions', 'Snippets', 'Code Debugging'],
+      skills: ['Plugins', 'Snippets', 'Code Debugging'],
       urlLogo: 'assets/img/logos/ide/vscode.svg',
       isLearning: false,
       type: 'IDE',
@@ -231,7 +250,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 18,
       name: 'Docker',
-      skills: ['Images', 'Containers', 'Docker Compose'],
+      skills: ['Images', 'Containers', 'Docker Compose', 'Comandos', 'Docker Desktop'],
       urlLogo: 'assets/img/logos/tool/docker.svg',
       isLearning: false,
       type: 'TOOL',
@@ -239,7 +258,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 19,
       name: 'npm',
-      skills: ['Package Installation', 'Scripts', 'Dependency Management'],
+      skills: ['Instalación de paquetes', 'Scripts', 'Gestión de Dependencias'],
       urlLogo: 'assets/img/logos/tool/npm.svg',
       isLearning: false,
       type: 'TOOL',
@@ -247,7 +266,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 20,
       name: 'Swagger',
-      skills: ['Apis Documentation', 'OpenAPI', 'Interactive UI'],
+      skills: ['Uso de UI'],
       urlLogo: 'assets/img/logos/tool/swagger.svg',
       isLearning: false,
       type: 'TOOL',
@@ -255,7 +274,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 21,
       name: 'JWT Token',
-      skills: ['Authentication', 'Claims', 'Token Validation'],
+      skills: ['Authenticación', 'Claims', 'Validación de Token'],
       urlLogo: 'assets/img/logos/security/jwt.svg',
       isLearning: false,
       type: 'SECURITY',
@@ -263,7 +282,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 22,
       name: 'Auth0',
-      skills: ['Identity Management', 'OAuth', 'Single Sign-On'],
+      skills: ['Gestión de Identidad', 'OAuth', 'Único Sign-On'],
       urlLogo: 'assets/img/logos/security/auth0.svg',
       isLearning: true,
       type: 'SECURITY',
@@ -271,7 +290,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 23,
       name: 'Postman',
-      skills: ['API Testing', 'Collections', 'Environment Variables'],
+      skills: ['API Testing', 'Formato JSON', 'Variables de entorno'],
       urlLogo: 'assets/img/logos/tool/postman.svg',
       isLearning: false,
       type: 'TOOL',
@@ -279,7 +298,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 24,
       name: 'jQuery',
-      skills: ['DOM Manipulation', 'Events', 'AJAX'],
+      skills: ['DOM', 'Eventos', 'AJAX', 'JS', 'CSS'],
       urlLogo: 'assets/img/logos/library/jquery.svg',
       isLearning: false,
       type: 'LIBRARY',
@@ -295,7 +314,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 26,
       name: 'Prettier',
-      skills: ['Code Formatting', 'Integration with Editors', 'Custom Rules'],
+      skills: ['Formato Código', 'Integracion con IDEs', 'Reglas personalizadas'],
       urlLogo: 'assets/img/logos/tool/prettier.svg',
       isLearning: false,
       type: 'TOOL',

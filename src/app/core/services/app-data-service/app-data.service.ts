@@ -55,7 +55,7 @@ export class AppDataService {
         this.toastr.info(
           'Estas viendo una vista predeterminada de mi perfil.',
         );
-        console.error('Error server connect.', err.error.message);
+        console.error('Error server connect.', err.message);
       },
     });
   }
