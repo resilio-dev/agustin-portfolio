@@ -4,16 +4,17 @@
 >
   <div class="container">
     <header class="p-3">
-      <h2>Soy {{ data.name }}, {{ data.title }}</h2>
+      <h2>Me llamo {{data.name}}</h2>
+      <h5>Y soy &lt;&lt;<span class="fw-italic">{{data.title}} Full Stack</span>&gt;&gt;</h5>
       <p class="fw-bold p-2">
         {{ data.mainPhrase }}
       </p>
     </header>
     <hr class="section-separator w-50" />
     <section class="px-4 d-flex justify-content-center align-items-center">
-      <div class="text-justify">
+      <div>
         
-        <p>
+        <p class="t-j">
           {{ data.description }}
         </p>
         <p class="fw-light">"{{ data.secondaryPhrase }}"</p>

@@ -7,7 +7,7 @@
   border-radius: 12px;
   box-shadow: 0 4px 16px var(--card-shadow-color);
 
-  .img {
+  .img-container {
     position: absolute;
     width: 250px;
     height: 300px;
@@ -18,6 +18,9 @@
     z-index: 9;
 
     img {
+      position: absolute;
+      width: fit-content;
+      top: 30px;
       height: 100%;
       transform: scale(1.3);
     }
@@ -25,20 +28,31 @@
 }
 
 .decoracion-fondo-img {
-  background-image: radial-gradient(var(--bg-primary-color) 1px, transparent 1px);
+  background-image: radial-gradient(
+    var(--bg-primary-color) 1px,
+    transparent 1px
+  );
   background-color: var(--bg-secondary-color);
   background-size: 10px 10px;
   display: inline-block;
 }
 
 @media (max-width: 767px) {
-  .photo-frame, .img {
-    position: static!important;
-    width: 180px!important;
-    height: 210px!important;
+  .photo-frame {
+    position: relative;
+    overflow: hidden;
+    width: 200px;
+    height: 220px;
+    .img-container {
+      top: -20px;
+      left: -30px;
+      img {
+        height: 100%;
+      }
+    }
   }
 
   .decoracion-fondo-img {
-    display:none;
+    display: none;
   }
 }

@@ -10,7 +10,7 @@ export const DEFAULT_USER_DATA: IUser = {
   secondaryPhrase:
     'Apasionado por el aprendizaje constante y las soluciones creativas que marcan la diferencia.',
   description:
-    "Soy Desarrollador Web Full Stack con una base sólida en programación. Estoy en constante aprendizaje y evolución, siempre buscando mejorar mis habilidades. Disfruto compartiendo lo que sé con quienes recién comienzan en este apasionante mundo de la programación, intercambiando ideas, debatiendo enfoques y creciendo junto a la comunidad. Disfruto creando aplicaciones web que no sólo funcionen bien, sino que estén cuidadosamente diseñadas de adentro hacia afuera. Me concentro en escribir código limpio y mantenible, buena arquitectura y patrones de diseño probados. Me importan los detalles, desde cómo fluyen los datos hasta cómo se sienten los usuarios, combinando profundidad y técnica con un toque humano.",
+    "Me especializo en la construcción de aplicación web estáticas y dinámicas. Estoy en constante aprendizaje y evolución, siempre buscando mejorar mis habilidades. Disfruto creando aplicaciones que no sólo funcionen bien, sino que estén cuidadosamente diseñadas de adentro hacia afuera. Me concentro en escribir código limpio y mantenible, buena arquitectura y patrones de diseño probados. Me importan los detalles, desde cómo fluyen los datos hasta cómo se sienten los usuarios, combinando profundidad y técnica con un toque humano.",
   email: 'agustincv1997@gmail.com',
   age: 27,
   urlImg: 'assets/img/prophile-default.webp',
@@ -25,28 +25,6 @@ export const DEFAULT_USER_DATA: IUser = {
       urlImg: 'assets/img/projects/portfolio-web.png',
       startDate: '2025-06-03',
       endDate: '2025-08-5',
-      tecnologies: [],
-    },
-    {
-      id: 2,
-      title: 'Gestor de Torneos de Fútbol',
-      description:
-        'Aplicación completa para gestionar torneos deportivos, con gestión de equipos, partidos, estadísticas y control de usuarios.',
-      link: '#',
-      urlImg: 'assets/img/projects/tournament-manager.png',
-      startDate: '2025-04-20',
-      endDate: '2025-08-12',
-      tecnologies: [],
-    },
-    {
-      id: 1,
-      title: 'Portfolio Web',
-      description:
-        'Aplicación Web personal diseñada para mostrar mis trabajos como desarrollador, mis proyectos destacados, experiencia en tecnologías, formación académica y otras cosas interesantes sobre mí.',
-      link: '#',
-      urlImg: 'assets/img/projects/portfolio-web.png',
-      startDate: '2025-06-03',
-      endDate: '2025-07-27',
       tecnologies: [],
     },
     {
@@ -78,7 +56,7 @@ export const DEFAULT_USER_DATA: IUser = {
       id: 1,
       title: 'Desarrollador Web FullStack',
       description:
-        'Capacitación integral en desarrollo web, con enfoque en tecnologías frontend y backend. Prácticas en diseño responsivo, consumo de API, autenticación, control de versiones e implementación en la nube. Desarrollo de un proyecto de portfolio personal siguiendo buenas prácticas y metodologías ágiles.',
+        'Obtuve una formación integral en desarrollo web, con enfoque en tecnologías frontend y backend. Prácticas en diseño responsivo, consumo de API, autenticación, control de versiones e implementación en la nube. Desarrollo de un proyecto de portfolio personal con contenido dinámico siguiendo buenas prácticas y metodologías ágiles.',
       startDate: '2022-11-16',
       endDate: '2023-08-22',
       type: 'CURSO',
@@ -89,7 +67,7 @@ export const DEFAULT_USER_DATA: IUser = {
       id: 2,
       title: 'Inglés Técnico para Programadores',
       description:
-        'Comprensión y producción oral/escrita en situaciones cotidianas. Práctica de vocabulario esencial, estructuras gramaticales simples y habilidades de comunicación para presentación personal, descripciones, solicitudes y comprensión de instrucciones básicas.',
+        'Practique comprensión y producción oral/escrita en situaciones cotidianas. Vocabulario esencial, estructuras gramaticales simples y habilidades de comunicación para presentación personal, descripciones, solicitudes y comprensión de instrucciones básicas.',
       startDate: '2023-08-25',
       endDate: '2023-10-22',
       type: 'CURSO',
