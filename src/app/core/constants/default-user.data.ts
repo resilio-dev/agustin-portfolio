@@ -14,7 +14,7 @@ export const DEFAULT_USER_DATA: IUser = {
   email: 'agustincv1997@gmail.com',
   age: 27,
   urlImg: 'assets/img/prophile-default.webp',
-  urlCV: 'assets/cv-agustin-collueque.pdf',
+  urlCV: 'assets/agustin_collueque_cv_dev.pdf',
   projects: [
     {
       id: 1,
@@ -204,7 +204,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 15,
       name: 'MySQL',
-      skills: ['SQL Queries', 'Stored Procedures', 'Integración con JPA'],
+      skills: ['SQL Queries', 'Procedimientos almacenados', 'Integración con JPA'],
       urlLogo: 'assets/img/logos/database/mysql.svg',
       isLearning: false,
       type: 'DATABASE',
@@ -212,7 +212,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 16,
       name: 'NetBeans',
-      skills: ['Java Development', 'Debugging', 'Maven'],
+      skills: ['Kit Java', 'Debugging', 'Maven', 'Gradle'],
       urlLogo: 'assets/img/logos/ide/netbeans.svg',
       isLearning: false,
       type: 'IDE',
@@ -220,7 +220,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 17,
       name: 'VS Code',
-      skills: ['Plugins', 'Snippets', 'Code Debugging'],
+      skills: ['Plugins', 'Snippets', 'Debugging'],
       urlLogo: 'assets/img/logos/ide/vscode.svg',
       isLearning: false,
       type: 'IDE',
@@ -228,7 +228,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 18,
       name: 'Docker',
-      skills: ['Images', 'Containers', 'Docker Compose', 'Comandos', 'Docker Desktop'],
+      skills: ['Imagenes', 'Contenedores', 'Docker Compose', 'Comandos', 'Docker Desktop'],
       urlLogo: 'assets/img/logos/tool/docker.svg',
       isLearning: false,
       type: 'TOOL',
@@ -244,7 +244,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 20,
       name: 'Swagger',
-      skills: ['Uso de UI'],
+      skills: ['Uso de UI', 'Inyección'],
       urlLogo: 'assets/img/logos/tool/swagger.svg',
       isLearning: false,
       type: 'TOOL',
@@ -284,7 +284,7 @@ export const DEFAULT_USER_DATA: IUser = {
     {
       id: 25,
       name: 'Node.js',
-      skills: ['Event Loop', 'Express Integration', 'npm Modules'],
+      skills: ['Event Loop', 'Integración Express', 'Módulos npm'],
       urlLogo: 'assets/img/logos/platform/nodejs.svg',
       isLearning: false,
       type: 'PLATFORM',
