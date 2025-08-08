@@ -15,10 +15,10 @@ import { RouterLink } from '@angular/router';
 export class NavbarComponent {
   showMenu = false;
   items = [
-    { link: 'https://www.instagram.com/acov912/', iconClass: "fab fa-instagram" },
+    { link: 'https://www.instagram.com/aguss_cv07/', iconClass: "fab fa-instagram" },
     { link: 'https://www.facebook.com/agustiin007/', iconClass: "fab fa-facebook" },
     { link: 'https://walink.co/47dd51', iconClass: "fab fa-whatsapp" },
-    { link: 'https://github.com/LicDeveloperJunior/', iconClass: "fab fa-github" },
+    { link: 'https://github.com/resilio-dev/', iconClass: "fab fa-github" },
     {
       link: 'https://www.linkedin.com/in/agustin-collueque/',
       iconClass: "fab fa-linkedin",

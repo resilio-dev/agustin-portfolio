@@ -31,8 +31,9 @@ export class ContactoComponent {
           this.updateAttempts();
         },
         error: (error: HttpErrorResponse) => {
-          const mensaje = error.error?.message || 'Error sending the message..';
-          this.toastr.error(mensaje, 'Error', {timeOut: 10000});
+          console.log(error.message)
+          const mensaje = 'Por el momento esta función no está disponible. Estoy trabajando para solucionarla.';
+          this.toastr.error(mensaje, 'Error enviando el mensaje.', {timeOut: 10000});
         },
       });
     } else {

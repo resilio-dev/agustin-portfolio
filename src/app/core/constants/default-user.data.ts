@@ -67,7 +67,7 @@ export const DEFAULT_USER_DATA: IUser = {
       id: 2,
       title: 'Inglés Técnico para Programadores',
       description:
-        'Practique comprensión y producción oral/escrita en situaciones cotidianas. Vocabulario esencial, estructuras gramaticales simples y habilidades de comunicación para presentación personal, descripciones, solicitudes y comprensión de instrucciones básicas.',
+        'Desarrollé comprensión y producción oral/escrita para uso en situaciones cotidianas de programación. Vocabulario esencial, estructuras gramaticales simples y habilidades de comunicación para presentación personal, descripciones, solicitudes y comprensión de instrucciones básicas.',
       startDate: '2023-08-25',
       endDate: '2023-10-22',
       type: 'CURSO',
@@ -78,7 +78,7 @@ export const DEFAULT_USER_DATA: IUser = {
       id: 3,
       title: "Licenciatura en Ciencias de la Computación",
       description:
-        'Aprendí conceptos esenciales como Arquitectura de Software, Patrones de Diseño y Paradigmas de Programación, que puedo aplicar de manera eficaz. Además de otros temas como los principios SOLID, separación de responsabilidades y buenas prácticas para el desarrollo de sistemas escalables y mantenibles, aprendí valores como la resiliencia, al enfrentar desafíos técnicos y personales que me ayudaron a crecer. También desarrollé habilidades como el trabajo en equipo, la comunicación efectiva, la organización del tiempo y la capacidad de autogestión, que hoy aplico tanto en proyectos individuales como colaborativos. Esta etapa me preparó no solo para programar, sino también para adaptarme a los cambios, mantener una mentalidad de mejora continua y disfrutar el proceso de aprender cada día algo nuevo. Sigo formándome con pasión, motivado por la curiosidad y el deseo de construir soluciones que realmente aporten valor.',
+        'Aprendí conceptos esenciales como Arquitectura de Software, Patrones de Diseño y Paradigmas de Programación, que puedo aplicar de manera eficaz. Además de otros temas como los principios SOLID, separación de responsabilidades y buenas prácticas para el desarrollo de sistemas escalables y mantenibles. Aprendí valores como la resiliencia, al enfrentar desafíos técnicos y personales que me ayudaron a crecer. También desarrollé habilidades como el trabajo en equipo, la comunicación efectiva, la organización del tiempo y la capacidad de autogestión, que hoy aplico tanto en proyectos individuales como colaborativos. Esta etapa me preparó no solo para programar, sino también para adaptarme a los cambios, mantener una mentalidad de mejora continua y disfrutar el proceso de aprender cada día algo nuevo. Sigo formándome con pasión, motivado por la curiosidad y el deseo de construir soluciones que realmente aporten valor.',
       startDate: '2015-03-08',
       endDate: '2020-03-08',
       type: 'FORMACION_FORMAL',
