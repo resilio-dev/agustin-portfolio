@@ -49,6 +49,7 @@
     "jquery": "^3.7.1",
     "ngx-toastr": "^19.0.0",
     "rxjs": "^7.8.1",
+    "split-type": "^0.3.4",
     "zone.js": "^0.15.0"
   },
   "devDependencies": {
