@@ -11,6 +11,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "start:prod": "ng serve --configuration=production",
+    "prebuild:prod": "node generate-env.js",
     "build:prod": "ng build --configuration=production"
   },
   "repository": {

@@ -32,7 +32,7 @@ export class ContactoComponent {
         },
         error: (error: HttpErrorResponse) => {
           console.log(error.message)
-          const mensaje = 'Por el momento esta función no está disponible. Estoy trabajando para solucionarla.';
+          const mensaje = error.message || "Por favor intente nuevamente en una hora.";
           this.toastr.error(mensaje, 'Error enviando el mensaje.', {timeOut: 10000});
         },
       });
@@ -51,8 +51,8 @@ export class ContactoComponent {
 
   showWaitMessage(): void {
     this.toastr.error(
-      'Please allow one hour to send a new message.',
-      'Limit of messages reached',
+      'Por favor espere una hora para enviarme otro mensaje.',
+      'Límite de mensajes alcanzado.',
       {timeOut: 10000}
     );
   }

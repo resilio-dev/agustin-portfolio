@@ -37,11 +37,11 @@ export class AppDataService {
         this.skillDataService.setSkills(data.skills);
         this.projectDataService.setProjects(data.projects);
         this.aboutMeService.setAboutMeData(data);
-        this.toastr.success(
+        /*this.toastr.success(
           'Estás viendo una vista en vivo de mi Portafolio web.',
           '',
           { timeOut: 2500 }
-        );
+        );*/
         console.log('Connection susccessful');
       },
       error: (err: HttpErrorResponse) => {
@@ -52,9 +52,10 @@ export class AppDataService {
         this.skillDataService.setSkills(data.skills);
         this.projectDataService.setProjects(data.projects);
         this.aboutMeService.setAboutMeData(data);
+        /*
         this.toastr.info(
           'Estas viendo una vista predeterminada de mi perfil.',
-        );
+        );*/
         console.error('Error server connect.', err.message);
       },
     });

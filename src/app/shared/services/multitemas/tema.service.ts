@@ -5,7 +5,7 @@ import { IPropertiesTheme } from './properties.interface';
 @Injectable({ providedIn: 'root' })
 export class TemaService {
   private temaActual: 'light' | 'dark' = 'light';
-  private temaSubject = new BehaviorSubject<'light' | 'dark'>('light');
+  private temaSubject = new BehaviorSubject<'light' | 'dark'>('dark');
   public tema$ = this.temaSubject.asObservable();
 
   private propiedadesSubject = new BehaviorSubject<IPropertiesTheme>(this.obtenerPropiedadesTema());

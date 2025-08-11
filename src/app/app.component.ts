@@ -13,7 +13,6 @@ import { filter } from 'rxjs';
 })
 export class AppComponent {
   constructor(private appDataService: AppDataService, private router: Router) {
-    console.log('Obteniendo datos desde: ' + environment.apiUrl);
     this.appDataService.uploadData();
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
