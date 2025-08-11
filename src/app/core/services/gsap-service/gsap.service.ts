@@ -18,4 +18,8 @@ export class GsapService {
   timeline(vars?: gsap.TimelineVars) {
     return gsap.timeline(vars);
   }
+
+  utils() {
+    return gsap.utils;
+  }
 }
